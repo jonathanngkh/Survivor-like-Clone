@@ -40,6 +40,7 @@ size = Vector2(10, 18)
 [node name="enemy_kobold_weak" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_ir6sr")
+movement_speed = 150.0
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
