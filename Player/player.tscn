@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://c6uuvcthpociv"]
+[gd_scene load_steps=26 format=3 uid="uid://c6uuvcthpociv"]
 
 [ext_resource type="Texture2D" uid="uid://d32buwti5ggn" path="res://Textures/Player/player_sprite.png" id="1_4k3e4"]
 [ext_resource type="Script" path="res://Player/player.gd" id="1_6neil"]
 [ext_resource type="PackedScene" uid="uid://c3p0e8l8amscb" path="res://Utility/hurt_box.tscn" id="3_5rw0d"]
+[ext_resource type="Texture2D" uid="uid://hjakswftn2d6" path="res://Textures/B_witch_idle.png" id="3_l6p72"]
+[ext_resource type="Texture2D" uid="uid://cu7sdjuwmkgk0" path="res://Textures/B_witch_run.png" id="4_yew47"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pmwt8"]
 atlas = ExtResource("1_4k3e4")
@@ -11,6 +13,62 @@ region = Rect2(0, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_omq7q"]
 atlas = ExtResource("1_4k3e4")
 region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ga7hy"]
+atlas = ExtResource("3_l6p72")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_euhqe"]
+atlas = ExtResource("3_l6p72")
+region = Rect2(0, 48, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5jrl"]
+atlas = ExtResource("3_l6p72")
+region = Rect2(0, 96, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w43lm"]
+atlas = ExtResource("3_l6p72")
+region = Rect2(0, 144, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rp4ln"]
+atlas = ExtResource("3_l6p72")
+region = Rect2(0, 192, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgi2i"]
+atlas = ExtResource("3_l6p72")
+region = Rect2(0, 240, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1hdf"]
+atlas = ExtResource("4_yew47")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q86hv"]
+atlas = ExtResource("4_yew47")
+region = Rect2(0, 48, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4r40"]
+atlas = ExtResource("4_yew47")
+region = Rect2(0, 96, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ne58o"]
+atlas = ExtResource("4_yew47")
+region = Rect2(0, 144, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crkdn"]
+atlas = ExtResource("4_yew47")
+region = Rect2(0, 192, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_axnit"]
+atlas = ExtResource("4_yew47")
+region = Rect2(0, 240, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjrku"]
+atlas = ExtResource("4_yew47")
+region = Rect2(0, 288, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oc8at"]
+atlas = ExtResource("4_yew47")
+region = Rect2(0, 336, 32, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xllfu"]
 animations = [{
@@ -24,6 +82,58 @@ animations = [{
 "loop": true,
 "name": &"walk",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ga7hy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_euhqe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5jrl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w43lm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rp4ln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wgi2i")
+}],
+"loop": true,
+"name": &"witch_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1hdf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q86hv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4r40")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ne58o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_crkdn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_axnit")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjrku")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oc8at")
+}],
+"loop": true,
+"name": &"witch_walk",
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ypqgu"]
@@ -33,19 +143,24 @@ height = 18.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e4lsk"]
 size = Vector2(10, 20)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_knu3q"]
+radius = 433.094
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 motion_mode = 1
 script = ExtResource("1_6neil")
+movement_speed = 150.0
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xllfu")
-animation = &"walk"
-frame_progress = 0.847209
+animation = &"witch_walk"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.7, 1.7)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(2, 3)
 shape = SubResource("CapsuleShape2D_ypqgu")
 
@@ -55,12 +170,33 @@ wait_time = 0.2
 one_shot = true
 
 [node name="HurtBox" parent="." instance=ExtResource("3_5rw0d")]
+visible = false
 collision_mask = 2
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 position = Vector2(2, 3)
 shape = SubResource("RectangleShape2D_e4lsk")
 
+[node name="Attack" type="Node2D" parent="."]
+
+[node name="IceSpearTimer" type="Timer" parent="Attack"]
+wait_time = 1.5
+
+[node name="IceSpearAttackTimer" type="Timer" parent="Attack/IceSpearTimer"]
+wait_time = 0.075
+
+[node name="EnemyDetectionArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
+shape = SubResource("CircleShape2D_knu3q")
+
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
+[connection signal="timeout" from="Attack/IceSpearTimer" to="." method="_on_ice_spear_timer_timeout"]
+[connection signal="timeout" from="Attack/IceSpearTimer/IceSpearAttackTimer" to="." method="_on_ice_spear_attack_timer_timeout"]
+[connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
+[connection signal="body_exited" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_exited"]
 
 [editable path="HurtBox"]
