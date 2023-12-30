@@ -8,3 +8,4 @@ res://Utility/enemy_spawner.tscn
 res://Player/Attack/ice_spear.tscn
 res://Enemy/enemy.gd
 res://EnemySpawner.gd
+res://Player/player.gd

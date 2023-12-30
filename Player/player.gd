@@ -10,6 +10,8 @@ var iceSpear = preload("res://Player/Attack/ice_spear.tscn")
 @onready var iceSpearTimer = $Attack/IceSpearTimer
 @onready var iceSpearAttackTimer = $Attack/IceSpearTimer/IceSpearAttackTimer
 
+@onready var animator = $AnimationPlayer
+
 #IceSpear
 var icespear_ammo = 0
 var icespear_baseammo = 1
@@ -21,6 +23,18 @@ var enemy_close = []
 
 func _ready():
 	attack()
+	
+func _process(delta):
+#region camera zooming
+	var max_zoom = 1
+	if Input.is_action_just_released("zoom_in"):
+		$Camera2D.zoom *= 1.2
+		print($Camera2D.zoom)
+	if Input.is_action_just_released("zoom_out") and $Camera2D.zoom.x > max_zoom:
+		 #and $Camera2D.zoom >= Vector2D(1,1)
+		print($Camera2D.zoom)
+		$Camera2D.zoom /= 1.2
+#endregion
 
 func _physics_process(_delta):
 	movement()

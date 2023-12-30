@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://ds1caoj3877wy"]
+[gd_scene load_steps=15 format=3 uid="uid://ds1caoj3877wy"]
 
 [ext_resource type="Script" path="res://Enemy/enemy.gd" id="1_ir6sr"]
 [ext_resource type="Texture2D" uid="uid://bodu31a5r328a" path="res://Textures/Enemy/Skeleton Walk.png" id="2_d7ndq"]
+[ext_resource type="Texture2D" uid="uid://c8g0evxfmu8xq" path="res://Textures/Enemy/Skeleton Dead.png" id="2_jvdc3"]
 [ext_resource type="PackedScene" uid="uid://c3p0e8l8amscb" path="res://Utility/hurt_box.tscn" id="3_q1cjw"]
 [ext_resource type="PackedScene" uid="uid://b1l2qb0u8xev8" path="res://Utility/hit_box.tscn" id="4_1amhg"]
 [ext_resource type="Texture2D" uid="uid://ck284t22nqm3g" path="res://Textures/Enemy/Skeleton Hit.png" id="5_sutdu"]
@@ -107,6 +108,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [1]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_jvdc3")]
+}
 
 [sub_resource type="Animation" id="Animation_813kl"]
 resource_name = "skeleton_hit"
@@ -161,9 +174,62 @@ tracks/3/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 
+[sub_resource type="Animation" id="Animation_vx53u"]
+resource_name = "skeleton_die"
+length = 1.50001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_jvdc3")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0m86m"]
 _data = {
 "RESET": SubResource("Animation_y0gu7"),
+"skeleton_die": SubResource("Animation_vx53u"),
 "skeleton_hit": SubResource("Animation_813kl"),
 "skeleton_walk": SubResource("Animation_eymga")
 }
@@ -177,7 +243,7 @@ movement_speed = 120.0
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("5_sutdu")
+texture = ExtResource("2_jvdc3")
 hframes = 13
 frame = 1
 
