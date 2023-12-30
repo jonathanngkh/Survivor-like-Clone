@@ -7,15 +7,7 @@ extends Area2D
 
 signal hurt(damage, angle, knockback)
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
+var hit_once_array = []
 
 func _on_area_entered(area):
 	if area.is_in_group("attack") and not area.get("damage") == null:
@@ -24,7 +16,13 @@ func _on_area_entered(area):
 				collision.call_deferred("set", "disabled", true)
 				disableTimer.start()
 			1: #HitOnce
-				pass
+				if hit_once_array.has(area) == false:
+					hit_once_array.append(area)
+					if area.has_signal("remove_from_array"):
+						if not area.is_connected("remove_from_array", Callable(self, "remove_from_list")):
+							area.connect("remove_from_array", Callable(self, "remove_from_list"))
+				else:
+					pass
 			2: #DisableHitBox
 				if area.has_method("tempdisable"):
 					area.tempDisable()
@@ -38,6 +36,10 @@ func _on_area_entered(area):
 		emit_signal("hurt", damage, angle, knockback)
 		if area.has_method("enemy_hit"):
 			area.enemy_hit(1)
+
+func remove_from_list(object):
+	if hit_once_array.has(object):
+		hit_once_array.erase(object)
 
 
 func _on_disable_timer_timeout():

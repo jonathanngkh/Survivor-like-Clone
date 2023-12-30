@@ -31,10 +31,10 @@ func _process(delta):
 	var max_zoom = 1
 	if Input.is_action_just_released("zoom_in"):
 		$Camera2D.zoom *= 1.2
-		print($Camera2D.zoom)
+		#print($Camera2D.zoom)
 	if Input.is_action_just_released("zoom_out") and $Camera2D.zoom.x > max_zoom:
 		 #and $Camera2D.zoom >= Vector2D(1,1)
-		print($Camera2D.zoom)
+		#print($Camera2D.zoom)
 		$Camera2D.zoom /= 1.2
 #endregion
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ds1caoj3877wy"]
+[gd_scene load_steps=16 format=3 uid="uid://ds1caoj3877wy"]
 
 [ext_resource type="Script" path="res://Enemy/enemy.gd" id="1_ir6sr"]
 [ext_resource type="Texture2D" uid="uid://bodu31a5r328a" path="res://Textures/Enemy/Skeleton Walk.png" id="2_d7ndq"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c3p0e8l8amscb" path="res://Utility/hurt_box.tscn" id="3_q1cjw"]
 [ext_resource type="PackedScene" uid="uid://b1l2qb0u8xev8" path="res://Utility/hit_box.tscn" id="4_1amhg"]
 [ext_resource type="Texture2D" uid="uid://ck284t22nqm3g" path="res://Textures/Enemy/Skeleton Hit.png" id="5_sutdu"]
+[ext_resource type="AudioStream" uid="uid://cputoipngm21g" path="res://Audio/SoundEffect/enemy_hit.ogg" id="7_faaqs"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v0ett"]
 radius = 3.0
@@ -270,6 +271,10 @@ shape = SubResource("RectangleShape2D_26x1i")
 libraries = {
 "": SubResource("AnimationLibrary_0m86m")
 }
+
+[node name="sound_hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_faaqs")
+volume_db = -15.0
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 

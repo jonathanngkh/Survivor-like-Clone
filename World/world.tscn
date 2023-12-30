@@ -25,7 +25,7 @@ enemy_spawn_delay = 1
 [node name="World" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
-texture_filter = 2
+texture_filter = 3
 texture_repeat = 2
 texture = ExtResource("1_yaypj")
 region_enabled = true

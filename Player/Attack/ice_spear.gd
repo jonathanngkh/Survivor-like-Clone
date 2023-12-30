@@ -11,6 +11,8 @@ var angle = Vector2.ZERO
 
 @onready var player = get_tree().get_first_node_in_group("player")
 
+signal remove_from_array(object)
+
 func _ready():
 	angle = global_position.direction_to(target)
 	rotation = angle.angle() + deg_to_rad(135) #should just rotate the sprite rather than use code to 0 it
@@ -39,9 +41,11 @@ func enemy_hit(charge = 1):
 		$CollisionShape2D.set_deferred("disabled", true)
 		$Sprite2D.visible = false
 		await $sound_play.finished
+		emit_signal("remove_from_array", self)
 		queue_free()
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
+	emit_signal("remove_from_array", self)
 	queue_free()
 
 func _on_sound_play_finished():

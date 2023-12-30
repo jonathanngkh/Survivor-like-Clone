@@ -1,12 +1,12 @@
 AnimationPlayer
+AudioStreamPlayer2D
 Sprite2D
+AudioStreamPlayer
 CollisionShape2D
 Area2D
 Timer
 Node2D
 VisibleOnScreenNotifier2D
-AudioStreamPlayer
-AudioStreamPlayer2D
 AnimatedSprite2D
 Camera2D
 CharacterBody2D
