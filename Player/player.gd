@@ -12,7 +12,7 @@ var iceSpear = preload("res://Player/Attack/ice_spear.tscn")
 
 #IceSpear
 var icespear_ammo = 0
-var icespear_baseammo = 2
+var icespear_baseammo = 1
 var icespear_attackspeed = 1.5
 var icespear_level = 1
 
@@ -51,7 +51,7 @@ func movement():
 	move_and_slide()
 
 
-func _on_hurt_box_hurt(damage):
+func _on_hurt_box_hurt(damage, _angle, _knockback):
 	hp -= damage
 	print(hp)
 
@@ -81,7 +81,7 @@ func get_random_target():
 	else:
 		return Vector2.UP
 		
-func get_closest_target() -> Vector2:
+func get_closest_target() -> Vector2: #static typing
 	if enemy_close.size() > 0:
 		var closest_distance = INF
 		var closest_enemy

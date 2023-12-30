@@ -20,7 +20,6 @@ texture = ExtResource("2_0r1so")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.250001, -0.749999)
 rotation = -0.785398
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_detan")
 
 [node name="Timer" type="Timer" parent="."]

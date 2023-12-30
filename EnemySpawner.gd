@@ -24,7 +24,8 @@ func _on_timer_timeout():
 					counter += 1
 
 func get_random_position():
-	var viewport_rect = get_viewport_rect().size * randf_range(1.1, 1.4)
+	#var viewport_rect = get_viewport_rect().size * randf_range(1.1, 1.4)
+	var viewport_rect = get_viewport_rect().size * randf_range(0.5, 0.6)
 	var top_left = Vector2(player.global_position.x - viewport_rect.x/2, player.global_position.y - viewport_rect.y/2)
 	var top_right = Vector2(player.global_position.x + viewport_rect.x/2, player.global_position.y - viewport_rect.y/2)
 	var bottom_left = Vector2(player.global_position.x - viewport_rect.x/2, player.global_position.y + viewport_rect.y/2)

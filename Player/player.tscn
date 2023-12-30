@@ -157,7 +157,7 @@ sprite_frames = SubResource("SpriteFrames_xllfu")
 animation = &"witch_walk"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.7, 1.7)
+zoom = Vector2(3, 3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
