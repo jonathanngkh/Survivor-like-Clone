@@ -22,9 +22,11 @@ var icespear_level = 1
 var enemy_close = []
 
 func _ready():
+	#animator.play("witch_idle")
 	attack()
 	
 func _process(delta):
+	choose_animation()
 #region camera zooming
 	var max_zoom = 1
 	if Input.is_action_just_released("zoom_in"):
@@ -50,19 +52,25 @@ func movement():
 	var x_mov = Input.get_action_strength("right") - Input.get_action_strength("left")
 	var y_mov = Input.get_action_strength("down") - Input.get_action_strength("up")
 	var mov = Vector2(x_mov, y_mov)
-	if mov.x != 0:
-		$AnimatedSprite2D.animation = "witch_walk"
-		$AnimatedSprite2D.play()
-		$AnimatedSprite2D.flip_h = mov.x < 0
+	if mov.x != 0 or mov.y != 0:
+		#animator.stop()
+		#animator.queue("witch_walk")
+		$Sprite2D.flip_h = mov.x < 0
 	else:
-		$AnimatedSprite2D.animation = "witch_idle"
-		$AnimatedSprite2D.play()
+		pass
+		#animator.stop()
+		#animator.queue("witch_idle")
 		#$AnimatedSprite2D.stop()
 	#elif mov.x < 0:
 		#$Sprite2D.flip_h = false
 	velocity = mov.normalized() * movement_speed
-	
 	move_and_slide()
+	
+func choose_animation():
+	if velocity.x != 0 or velocity.y !=0:
+		animator.play("witch_walk")
+	else:
+		animator.play("witch_idle")
 
 
 func _on_hurt_box_hurt(damage, _angle, _knockback):
