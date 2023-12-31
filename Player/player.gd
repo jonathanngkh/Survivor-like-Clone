@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var movement_speed = 400.0
 @export var hp = 80
+var last_movement = Vector2.UP
 
 #Attacks
 var iceSpear = preload("res://Player/Attack/ice_spear.tscn")
@@ -52,7 +53,7 @@ func movement():
 	var x_mov = Input.get_action_strength("right") - Input.get_action_strength("left")
 	var y_mov = Input.get_action_strength("down") - Input.get_action_strength("up")
 	var mov = Vector2(x_mov, y_mov)
-	if mov.x != 0 or mov.y != 0:
+	if not mov == Vector2.ZERO:
 		#animator.stop()
 		#animator.queue("witch_walk")
 		$Sprite2D.flip_h = mov.x < 0

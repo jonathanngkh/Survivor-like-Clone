@@ -32,6 +32,7 @@ func _physics_process(_delta):
 	move_and_slide()
 
 func death():
+	sound_hit.play()
 	$HurtBox/CollisionShape2D.set_deferred("disabled", true)
 	emit_signal("remove_from_array", self)
 	var enemy_death = death_explosion.instantiate()

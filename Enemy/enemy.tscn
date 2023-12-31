@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c3p0e8l8amscb" path="res://Utility/hurt_box.tscn" id="3_q1cjw"]
 [ext_resource type="PackedScene" uid="uid://b1l2qb0u8xev8" path="res://Utility/hit_box.tscn" id="4_1amhg"]
 [ext_resource type="Texture2D" uid="uid://ck284t22nqm3g" path="res://Textures/Enemy/Skeleton Hit.png" id="5_sutdu"]
-[ext_resource type="AudioStream" uid="uid://cputoipngm21g" path="res://Audio/SoundEffect/enemy_hit.ogg" id="7_faaqs"]
+[ext_resource type="AudioStream" uid="uid://ccn0se28frcv8" path="res://Audio/SoundEffect/TOMAHAWK HITMARKER.mp3" id="7_hrt4p"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v0ett"]
 radius = 3.0
@@ -273,8 +273,8 @@ libraries = {
 }
 
 [node name="sound_hit" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_faaqs")
-volume_db = -15.0
+stream = ExtResource("7_hrt4p")
+volume_db = -10.0
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 
