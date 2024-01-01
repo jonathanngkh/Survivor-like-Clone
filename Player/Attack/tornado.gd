@@ -70,4 +70,9 @@ func _physics_process(delta):
 	position += angle * speed * delta
 
 func _on_timer_timeout():
-	emit_signal("remove_from_array")
+	emit_signal("remove_from_array", self)
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	emit_signal("remove_from_array", self)
+	queue_free()

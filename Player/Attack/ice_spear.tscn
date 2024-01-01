@@ -139,9 +139,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jnlsm")
 }],
-"loop": true,
+"loop": false,
 "name": &"ice_hit",
-"speed": 9.0
+"speed": 20.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_detan"]
@@ -157,7 +157,8 @@ script = ExtResource("1_g31if")
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pqpde")
 animation = &"ice_hit"
-frame_progress = 0.930295
+frame = 7
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-4.49999, 0.499993)
