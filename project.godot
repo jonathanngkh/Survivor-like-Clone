@@ -52,7 +52,7 @@ zoom_in={
 }
 zoom_out={
 "deadzone": 0.5,
-"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":8,"position":Vector2(278, 7),"global_position":Vector2(286, 87),"factor":0.0300018,"button_index":4,"canceled":false,"pressed":true,"double_click":false,"script":null)
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":8,"position":Vector2(356, 46),"global_position":Vector2(364, 126),"factor":0.0300018,"button_index":4,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
 

@@ -6,10 +6,13 @@ var last_movement = Vector2.UP
 
 #Attacks
 var iceSpear = preload("res://Player/Attack/ice_spear.tscn")
+var tornado = preload("res://Player/Attack/tornado.tscn")
 
 #AttackNodes
 @onready var iceSpearTimer = $Attack/IceSpearTimer
 @onready var iceSpearAttackTimer = $Attack/IceSpearTimer/IceSpearAttackTimer
+@onready var tornadoTimer = $Attack/TornadoTimer
+@onready var tornadoAttackTimer = $Attack/TornadoTimer/TornadoAttackTimer
 
 @onready var animator = $AnimationPlayer
 
@@ -18,6 +21,12 @@ var icespear_ammo = 0
 var icespear_baseammo = 1
 var icespear_attackspeed = 1.5
 var icespear_level = 1
+
+#Tornado
+var tornado_ammo = 0
+var tornado_baseammo = 5 #1
+var tornado_attackspeed = 2.5
+var tornado_level = 1
 
 #Enemy-Related
 var enemy_close = []
@@ -47,6 +56,11 @@ func attack():
 		iceSpearTimer.wait_time = icespear_attackspeed
 		if iceSpearTimer.is_stopped():
 			iceSpearTimer.start()
+			
+	if tornado_level >= 0:
+		tornadoTimer.wait_time = tornado_attackspeed
+		if tornadoTimer.is_stopped():
+			tornadoTimer.start()
 	
 func movement():
 	#get_action_strength is a boolean. 1 or 0
@@ -54,16 +68,10 @@ func movement():
 	var y_mov = Input.get_action_strength("down") - Input.get_action_strength("up")
 	var mov = Vector2(x_mov, y_mov)
 	if not mov == Vector2.ZERO:
-		#animator.stop()
-		#animator.queue("witch_walk")
 		$Sprite2D.flip_h = mov.x < 0
+		last_movement = mov
 	else:
 		pass
-		#animator.stop()
-		#animator.queue("witch_idle")
-		#$AnimatedSprite2D.stop()
-	#elif mov.x < 0:
-		#$Sprite2D.flip_h = false
 	velocity = mov.normalized() * movement_speed
 	move_and_slide()
 	
@@ -97,6 +105,25 @@ func _on_ice_spear_attack_timer_timeout(): #shooting
 			iceSpearAttackTimer.start()
 		else:
 			iceSpearAttackTimer.stop()
+			
+func _on_tornado_timer_timeout():
+	tornado_ammo += tornado_baseammo
+	tornadoAttackTimer.start()
+			
+func _on_tornado_attack_timer_timeout():
+	if tornado_ammo > 0:
+		var tornado_attack = tornado.instantiate()
+		tornado_attack.position = position
+		#tornado_attack.target = get_random_target()
+		tornado_attack.last_movement = last_movement
+		tornado_attack.level = tornado_level
+		add_child(tornado_attack)
+		tornado_ammo -= 1
+		if tornado_ammo > 0:
+			tornadoAttackTimer.start()
+		else:
+			tornadoAttackTimer.stop()
+
 		
 func get_random_target():
 	if enemy_close.size() > 0:
