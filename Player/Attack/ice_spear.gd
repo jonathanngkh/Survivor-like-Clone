@@ -15,10 +15,12 @@ signal remove_from_array(object)
 
 func _ready():
 	angle = global_position.direction_to(target)
-	rotation = angle.angle() + deg_to_rad(135) #should just rotate the sprite rather than use code to 0 it
+	$Sprite2D.play("ice_bolt")
+	rotation = angle.angle()
+	
 	match level:
 		1:
-			hp = 2 #piercing
+			hp = 1 #piercing
 			speed = 200
 			damage = 5
 			knockback_amount = 150
@@ -39,7 +41,9 @@ func enemy_hit(charge = 1):
 	hp -= 1
 	if hp <= 0:
 		$CollisionShape2D.set_deferred("disabled", true)
-		$Sprite2D.visible = false
+		$Sprite2D.animation = "ice_hit"
+		
+		#$Sprite2D.visible = false
 		await $sound_play.finished
 		emit_signal("remove_from_array", self)
 		queue_free()
@@ -47,6 +51,3 @@ func enemy_hit(charge = 1):
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	emit_signal("remove_from_array", self)
 	queue_free()
-
-func _on_sound_play_finished():
-	pass

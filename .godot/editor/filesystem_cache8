@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1703953692
+::res://::1704123528
 EnemySpawner.gd::GDScript::-1::1703934400::0::1::::<>Node2D<>::
 icon.svg::CompressedTexture2D::1730451811002220422::1667010171::1703657421::1::::<><>::
 README.md::TextFile::-1::1703771705::0::1::::<><>::
@@ -9,7 +9,7 @@ click.wav::AudioStreamWAV::8437723427643852166::1667010171::1703657421::1::::<><
 hover.wav::AudioStreamWAV::2256631513487760126::1667010171::1703657421::1::::<><>::
 ::res://Audio/Music/::1703657421
 battleThemeA.mp3::AudioStreamMP3::717128827575845754::1667010171::1703657421::1::::<><>::
-::res://Audio/SoundEffect/::1704018581
+::res://Audio/SoundEffect/::1704018584
 collectgem.mp3::AudioStreamMP3::4254625080207582645::1667010171::1703657421::1::::<><>::
 enemy_death.ogg::AudioStreamOggVorbis::4088960019020194525::1667010171::1703657421::1::::<><>::
 enemy_hit.ogg::AudioStreamOggVorbis::5868140644973164422::1667010171::1703657421::1::::<><>::
@@ -20,21 +20,21 @@ TOMAHAWK HITMARKER.mp3::AudioStreamMP3::4941606287884335403::1471817642::1704018
 tornado.ogg::AudioStreamOggVorbis::5577069732725873170::1667010171::1703657421::1::::<><>::
 Victory.wav::AudioStreamWAV::5955308973259345776::1667010171::1703657421::1::::<><>::
 woosh.wav::AudioStreamWAV::2367829105369549494::1667010171::1703657421::1::::<><>::
-::res://Enemy/::1704018385
-enemy.gd::GDScript::-1::1703958938::0::1::::<>CharacterBody2D<>::
-enemy.tscn::PackedScene::8476457242702701396::1704018385::0::1::::<><>::res://Enemy/enemy.gd<>uid://bodu31a5r328a::::res://Textures/Enemy/Skeleton Walk.png<>uid://c8g0evxfmu8xq::::res://Textures/Enemy/Skeleton Dead.png<>uid://c3p0e8l8amscb::::res://Utility/hurt_box.tscn<>uid://b1l2qb0u8xev8::::res://Utility/hit_box.tscn<>uid://ck284t22nqm3g::::res://Textures/Enemy/Skeleton Hit.png<>uid://cputoipngm21g::::res://Audio/SoundEffect/enemy_hit.ogg
-explosion.tscn::PackedScene::4591721342071399840::1704018385::0::1::::<><>::uid://cpe53ukwm3vud::::res://Textures/Enemy/explosion_pixelfied.png<>uid://byiytrw1fpg66::::res://Audio/SoundEffect/enemy_death.ogg<>res://Enemy/explosion.gd
+::res://Enemy/::1704126844
+enemy.gd::GDScript::-1::1704018750::0::1::::<>CharacterBody2D<>::
+enemy.tscn::PackedScene::8476457242702701396::1704126844::0::1::::<><>::res://Enemy/enemy.gd<>uid://bodu31a5r328a::::res://Textures/Enemy/Skeleton Walk.png<>uid://c8g0evxfmu8xq::::res://Textures/Enemy/Skeleton Dead.png<>uid://c3p0e8l8amscb::::res://Utility/hurt_box.tscn<>uid://b1l2qb0u8xev8::::res://Utility/hit_box.tscn<>uid://ck284t22nqm3g::::res://Textures/Enemy/Skeleton Hit.png<>uid://ccn0se28frcv8::::res://Audio/SoundEffect/TOMAHAWK HITMARKER.mp3
+explosion.tscn::PackedScene::4591721342071399840::1704018900::0::1::::<><>::uid://cpe53ukwm3vud::::res://Textures/Enemy/explosion_pixelfied.png<>uid://byiytrw1fpg66::::res://Audio/SoundEffect/enemy_death.ogg<>res://Enemy/explosion.gd
 explosion.gd::GDScript::-1::1703959134::0::1::::<>Sprite2D<>::
 ::res://Font/::1703657421
 tenderness.otf::FontFile::304657974914629605::1667010171::1703657421::1::::<><>::
-::res://Player/::1704018385
-player.gd::GDScript::-1::1704018385::0::1::::<>CharacterBody2D<>::
-player.tscn::PackedScene::6991235051510363693::1704018385::0::1::::<><>::res://Player/player.gd<>uid://c3p0e8l8amscb::::res://Utility/hurt_box.tscn<>uid://hjakswftn2d6::::res://Textures/B_witch_idle.png<>uid://cu7sdjuwmkgk0::::res://Textures/B_witch_run.png
-::res://Player/Attack/::1704018385
-ice_spear.gd::GDScript::-1::1703957084::0::1::::<>Area2D<>::
-ice_spear.tscn::PackedScene::4001176596181508970::1704018385::0::1::::<><>::res://Player/Attack/ice_spear.gd<>uid://dwtb0vkkn3w45::::res://Textures/Items/Weapons/ice_spear.png<>uid://c87teh3eell61::::res://Audio/SoundEffect/ice.wav
-tornado.gd::GDScript::-1::1704018385::0::1::::<>Area2D<>::
-tornado.tscn::PackedScene::7485299318290147990::1704018385::0::1::::<><>::res://Player/Attack/tornado.gd<>uid://danv7b5p1vv3w::::res://Textures/Items/Weapons/tornado.png<>uid://clptr2mvv4p83::::res://Audio/SoundEffect/tornado.ogg
+::res://Player/::1704126844
+player.gd::GDScript::-1::1704124683::0::1::::<>CharacterBody2D<>::
+player.tscn::PackedScene::6991235051510363693::1704126844::0::1::::<><>::res://Player/player.gd<>uid://c3p0e8l8amscb::::res://Utility/hurt_box.tscn<>uid://hjakswftn2d6::::res://Textures/B_witch_idle.png<>uid://cu7sdjuwmkgk0::::res://Textures/B_witch_run.png
+::res://Player/Attack/::1704126844
+ice_spear.gd::GDScript::-1::1704126844::0::1::::<>Area2D<>::
+ice_spear.tscn::PackedScene::4001176596181508970::1704126844::0::1::::<><>::res://Player/Attack/ice_spear.gd<>uid://du2kb7ydj2mj3::::res://Textures/Items/Weapons/IceVFX 1 Repeatable.png<>uid://c87teh3eell61::::res://Audio/SoundEffect/ice.wav
+tornado.gd::GDScript::-1::1704124683::0::1::::<>Area2D<>::
+tornado.tscn::PackedScene::7485299318290147990::1704126844::0::1::::<><>::res://Player/Attack/tornado.gd<>uid://danv7b5p1vv3w::::res://Textures/Items/Weapons/tornado.png<>uid://clptr2mvv4p83::::res://Audio/SoundEffect/tornado.ogg
 ::res://Textures/::1703929585
 B_witch_idle.png::CompressedTexture2D::509920142850923177::1610904782::1703842720::1::::<><>::
 B_witch_run.png::CompressedTexture2D::6243777096150528981::1610904930::1703842899::1::::<><>::
@@ -58,7 +58,7 @@ exp_background.png::CompressedTexture2D::1733843429184228771::1667010171::170365
 exp_progress.png::CompressedTexture2D::2659042672652472512::1667010171::1703657421::1::::<><>::
 health.png::CompressedTexture2D::2266236434410006986::1667010171::1703657421::1::::<><>::
 healthbar.png::CompressedTexture2D::8523898572659191899::1667010171::1703657421::1::::<><>::
-::res://Textures/Items/::1667010171
+::res://Textures/Items/::1704126954
 ::res://Textures/Items/Gems/::1703657421
 Gem_blue.png::CompressedTexture2D::8268100034611111039::1667010171::1703657421::1::::<><>::
 Gem_green.png::CompressedTexture2D::2159600915317103379::1667010171::1703657421::1::::<><>::
@@ -71,7 +71,9 @@ low_boots.png::CompressedTexture2D::4394268271656913223::1667010171::1703657421:
 scroll_old.png::CompressedTexture2D::1646204802908167450::1667010171::1703657421::1::::<><>::
 thick_new.png::CompressedTexture2D::7510013515027722344::1667010171::1703657421::1::::<><>::
 urand_mage.png::CompressedTexture2D::96442784143080529::1667010171::1703657421::1::::<><>::
-::res://Textures/Items/Weapons/::1703657421
+::res://Textures/Items/Weapons/::1704126954
+Ice VFX 1 Hit.png::CompressedTexture2D::6447822771053401479::1634066485::1704126955::1::::<><>::
+IceVFX 1 Repeatable.png::CompressedTexture2D::8619387796893053638::1704126453::1704126454::1::::<><>::
 ice_spear.png::CompressedTexture2D::8742746269194790976::1667010171::1703657421::1::::<><>::
 javelin_3_new.png::CompressedTexture2D::6519643082966671943::1667010171::1703657421::1::::<><>::
 javelin_3_new_attack.png::CompressedTexture2D::7302819515716930866::1667010171::1703657421::1::::<><>::
@@ -79,12 +81,12 @@ sword.png::CompressedTexture2D::6548236924306225605::1667010171::1703657421::1::
 tornado.png::CompressedTexture2D::7187431263719742026::1667010171::1703657421::1::::<><>::
 ::res://Textures/Player/::1703657421
 player_sprite.png::CompressedTexture2D::270011337954220353::1667010171::1703657421::1::::<><>::
-::res://Utility/::1704018385
+::res://Utility/::1704126844
 enemy_spawner.tscn::PackedScene::2603039440878529294::1703951980::0::1::::<><>::res://EnemySpawner.gd
 hit_box.gd::GDScript::-1::1703737577::0::1::::<>Area2D<>::
-hit_box.tscn::PackedScene::4235706797180950915::1704018385::0::1::::<><>::res://Utility/hit_box.gd
+hit_box.tscn::PackedScene::4235706797180950915::1704126844::0::1::::<><>::res://Utility/hit_box.gd
 hurt_box.gd::GDScript::-1::1703957084::0::1::::<>Area2D<>::
-hurt_box.tscn::PackedScene::6770621475320051533::1704018385::0::1::::<><>::res://Utility/hurt_box.gd
+hurt_box.tscn::PackedScene::6770621475320051533::1704126844::0::1::::<><>::res://Utility/hurt_box.gd
 spawn_info.gd::GDScript::-1::1703932922::0::1::::Spawn_info<>Resource<>::
-::res://World/::1704018385
-world.tscn::PackedScene::5425394350037699307::1704018385::0::1::::<><>::uid://cv5dyyv664lsv::::res://Textures/Grass square.png<>uid://c6uuvcthpociv::::res://Player/player.tscn<>uid://ds1caoj3877wy::::res://Enemy/enemy.tscn<>uid://bdc6xdiruauvu::::res://Utility/enemy_spawner.tscn<>res://Utility/spawn_info.gd
+::res://World/::1704126844
+world.tscn::PackedScene::5425394350037699307::1704126844::0::1::::<><>::uid://cv5dyyv664lsv::::res://Textures/Grass square.png<>uid://c6uuvcthpociv::::res://Player/player.tscn<>uid://ds1caoj3877wy::::res://Enemy/enemy.tscn<>uid://bdc6xdiruauvu::::res://Utility/enemy_spawner.tscn<>res://Utility/spawn_info.gd
