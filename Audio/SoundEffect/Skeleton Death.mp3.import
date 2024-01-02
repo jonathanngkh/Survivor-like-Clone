@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://su2jvbviorka"
+path="res://.godot/imported/Skeleton Death.mp3-a4ec6b38e525d8e7a6e6bb83471d6aea.mp3str"
+
+[deps]
+
+source_file="res://Audio/SoundEffect/Skeleton Death.mp3"
+dest_files=["res://.godot/imported/Skeleton Death.mp3-a4ec6b38e525d8e7a6e6bb83471d6aea.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

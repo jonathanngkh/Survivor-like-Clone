@@ -8,6 +8,8 @@ var knockback = Vector2.ZERO
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var animator = $AnimationPlayer
 @onready var sound_hit = $sound_hit
+@onready var sound_die = $sound_die
+
 
 var death_explosion = preload("res://Enemy/explosion.tscn")
 
@@ -19,7 +21,9 @@ func _ready():
 func _physics_process(_delta):
 	if hp > 0:
 		knockback = knockback.move_toward(Vector2.ZERO, knockback_recovery)
-		var direction = global_position.direction_to(player.global_position)
+		var direction = Vector2(1,1)
+		if player:
+			direction = global_position.direction_to(player.global_position)
 		#var direction = (player.position - position).normalized()
 		velocity = direction * movement_speed
 		velocity += knockback
@@ -33,12 +37,13 @@ func _physics_process(_delta):
 
 func death():
 	sound_hit.play()
+	sound_die.play()
 	$HurtBox/CollisionShape2D.set_deferred("disabled", true)
 	emit_signal("remove_from_array", self)
-	var enemy_death = death_explosion.instantiate()
-	enemy_death.scale = sprite.scale
-	enemy_death.global_position = global_position
-	get_parent().call_deferred("add_child", enemy_death)
+	#var enemy_death = death_explosion.instantiate()
+	#enemy_death.scale = sprite.scale
+	#enemy_death.global_position = global_position
+	#get_parent().call_deferred("add_child", enemy_death)
 	animator.stop()
 	animator.queue("skeleton_die")
 	await animator.animation_finished

@@ -15,6 +15,7 @@ var reset_pos = Vector2.ZERO
 var spr_jav_reg = preload("res://Textures/Items/Weapons/javelin_3_new.png")
 var spr_jav_attack = preload("res://Textures/Items/Weapons/javelin_3_new_attack.png")
 
+
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var sprite = $Sprite2D
 @onready var collision = $CollisionShape2D
@@ -34,12 +35,12 @@ func update_javelin():
 	match level:
 		1:
 			hp = 9999
-			speed = 200.0
+			speed = 300.0
 			damage = 10
 			knockback_amount = 100
 			paths = 3
 			attack_size = 1.0
-			attack_speed = 2.0
+			attack_speed = 2.5
 	scale = Vector2(1.0,1.0) * attack_size
 	attackTimer.wait_time = attack_speed
 	
@@ -49,9 +50,9 @@ func _physics_process(delta):
 	else:
 		var player_angle = global_position.direction_to(reset_pos)
 		var distance_diff = global_position - player.global_position
-		var return_speed = 20
+		var return_speed = 150
 		if abs(distance_diff.x) > 500 or abs(distance_diff.y) > 500:
-			return_speed = 100
+			return_speed = 300
 		position += player_angle * return_speed * delta
 		rotation = global_position.direction_to(player.global_position).angle() + deg_to_rad(135)
 		
@@ -68,7 +69,7 @@ func add_paths():
 		var new_path = player.get_random_target()
 		target_array.append(new_path)
 		counter += 1
-		enable_attack(true)
+	enable_attack(true)
 	target = target_array[0]
 	process_path()
 	
@@ -89,6 +90,8 @@ func _on_change_direction_timeout():
 			sound_attack.play()
 			emit_signal("remove_from_array", self)
 		else:
+			changeDirectionTimer.stop()
+			attackTimer.start()
 			enable_attack(false)
 	else:
 		changeDirectionTimer.stop()
