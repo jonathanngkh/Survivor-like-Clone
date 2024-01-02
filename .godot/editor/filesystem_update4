@@ -15,3 +15,5 @@ res://Enemy/explosion.gd
 res://Enemy/explosion.tscn
 res://Player/Attack/tornado.gd
 res://Player/Attack/tornado.tscn
+res://Player/Attack/javelin.gd
+res://Player/Attack/javelin.tscn
