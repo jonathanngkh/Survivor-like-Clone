@@ -4,6 +4,10 @@ extends CharacterBody2D
 @export var hp = 80
 var last_movement = Vector2.UP
 
+var experience = 0
+var experience_level = 1
+var collected_experience = 0
+
 #Attacks
 var iceSpear = preload("res://Player/Attack/ice_spear.tscn")
 var tornado = preload("res://Player/Attack/tornado.tscn")
@@ -16,30 +20,34 @@ var javelin = preload("res://Player/Attack/javelin.tscn")
 @onready var tornadoAttackTimer = $Attack/TornadoTimer/TornadoAttackTimer
 @onready var javelinBase = $Attack/JavelinBase
 
-@onready var animator = $AnimationPlayer
-
 #IceSpear
 var icespear_ammo = 0
-var icespear_baseammo = 0
-var icespear_attackspeed = 1.5
+var icespear_baseammo = 1
+var icespear_attackspeed = 2
 var icespear_level = 1
 
 #Tornado
 var tornado_ammo = 0
-var tornado_baseammo = 0 #1
+var tornado_baseammo = 1 #1
 var tornado_attackspeed = 2.5
 var tornado_level = 1
 
 #Javelin
-var javelin_ammo = 3
+var javelin_ammo = 2
 var javelin_level = 1
 
 #Enemy-Related
 var enemy_close = []
 
+@onready var animator = $AnimationPlayer
+@onready var experience_bar = $GUILayer/GUI/ExperienceBar
+@onready var label_level = $GUILayer/GUI/ExperienceBar/label_level
+
+
 func _ready():
 	#animator.play("witch_idle")
 	attack()
+	set_experience_bar(experience, calculate_experience_cap())
 	
 func _process(delta):
 	choose_animation()
@@ -169,3 +177,45 @@ func _on_enemy_detection_area_body_entered(body):
 func _on_enemy_detection_area_body_exited(body):
 	if enemy_close.has(body):
 		enemy_close.erase(body)
+
+
+func _on_grab_area_area_entered(area):
+	if area.is_in_group("loot"):
+		area.target = self
+
+
+func _on_collect_area_area_entered(area):
+	if area.is_in_group("loot"):
+		var gem_experience = area.collect()
+		calculate_experience(gem_experience)
+		
+func calculate_experience(gem_xp):
+	var experience_required = calculate_experience_cap()
+	collected_experience += gem_xp
+	if experience + collected_experience >= experience_required: # level up
+		collected_experience -= experience_required - experience
+		experience_level += 1
+		label_level.text = str("Level: ", experience_level)
+		experience = 0
+		experience_required = calculate_experience_cap()
+		calculate_experience(0) # recursion baby (on the xp remainder)
+	else:
+		experience += collected_experience
+		collected_experience = 0
+	
+	set_experience_bar(experience, experience_required)
+	
+func calculate_experience_cap():
+	var experience_cap = experience_level
+	if experience_level < 20:
+		experience_cap = experience_level * 5
+	elif experience_level < 40:
+		experience_cap = 95 + (experience_level - 19) * 8
+	else:
+		experience_cap = 255 + (experience_level - 39) * 12
+	
+	return experience_cap
+
+func set_experience_bar(set_value = 1, set_max_value = 100):
+	experience_bar.value = set_value
+	experience_bar.max_value = set_max_value
