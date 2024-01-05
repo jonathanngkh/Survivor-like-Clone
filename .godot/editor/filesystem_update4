@@ -16,3 +16,6 @@ res://Utility/item_option.tscn
 res://Enemy/explosion.gd
 res://Utility/upgrade_db.gd
 res://Utility/upgrade_db.tscn
+res://Player/Attack/ice_spear.gd
+res://Player/Attack/javelin.gd
+res://Player/Attack/tornado.gd

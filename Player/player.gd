@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var movement_speed = 400.0
 @export var hp = 80
+var max_hp = 80
 var last_movement = Vector2.UP
 
 var experience = 0
@@ -61,7 +62,7 @@ var additional_attacks = 0
 
 
 func _ready():
-	#animator.play("witch_idle")
+	upgrade_character("icespear1")
 	attack()
 	set_experience_bar(experience, calculate_experience_cap())
 	
@@ -83,11 +84,11 @@ func _physics_process(_delta):
 	
 func attack():
 	if icespear_level > 0:
-		iceSpearTimer.wait_time = icespear_attackspeed
+		iceSpearTimer.wait_time = icespear_attackspeed * (1 - spell_cooldown)
 		if iceSpearTimer.is_stopped():
 			iceSpearTimer.start()
 	if tornado_level > 0:
-		tornadoTimer.wait_time = tornado_attackspeed
+		tornadoTimer.wait_time = tornado_attackspeed * (1 - spell_cooldown)
 		if tornadoTimer.is_stopped():
 			tornadoTimer.start()
 	if javelin_level > 0:
@@ -114,12 +115,12 @@ func choose_animation():
 
 
 func _on_hurt_box_hurt(damage, _angle, _knockback):
-	hp -= damage
+	hp -= clamp(damage - armor, 1, 999.0)
 	print(hp)
 
 
 func _on_ice_spear_timer_timeout(): #reloading
-	icespear_ammo += icespear_baseammo
+	icespear_ammo += icespear_baseammo + additional_attacks
 	iceSpearAttackTimer.start()
 
 
@@ -138,7 +139,7 @@ func _on_ice_spear_attack_timer_timeout(): #shooting
 			iceSpearAttackTimer.stop()
 			
 func _on_tornado_timer_timeout():
-	tornado_ammo += tornado_baseammo
+	tornado_ammo += tornado_baseammo + additional_attacks
 	tornadoAttackTimer.start()
 			
 func _on_tornado_attack_timer_timeout():
@@ -157,13 +158,16 @@ func _on_tornado_attack_timer_timeout():
 			
 func spawn_javelin():
 	var get_javelin_total = javelinBase.get_child_count()
-	var calc_spawns = javelin_ammo - get_javelin_total
+	var calc_spawns = javelin_ammo + additional_attacks - get_javelin_total
 	while calc_spawns > 0:
 		var javelin_spawn = javelin.instantiate()
 		javelin_spawn.global_position = global_position
 		javelinBase.add_child(javelin_spawn)
 		calc_spawns -= 1
-
+	# Update Javelin
+	var get_javelins = javelinBase.get_children()
+	for javelin in get_javelins:
+		javelin.update_javelin()
 		
 func get_random_target():
 	if enemy_close.size() > 0:
@@ -252,6 +256,54 @@ func level_up():
 	get_tree().paused = true
 
 func upgrade_character(upgrade):
+	match upgrade:
+		"icespear1":
+			icespear_level = 1
+			icespear_baseammo += 1
+		"icespear2":
+			icespear_level = 2
+			icespear_baseammo += 1
+		"icespear3":
+			icespear_level = 3
+		"icespear4":
+			icespear_level = 4
+			icespear_baseammo += 2
+		"tornado1":
+			tornado_level = 1
+			tornado_baseammo += 1
+		"tornado2":
+			tornado_level = 2
+			tornado_baseammo += 1
+		"tornado3":
+			tornado_level = 3
+			tornado_attackspeed -= 0.5
+		"tornado4":
+			tornado_level = 4
+			tornado_baseammo += 1
+		"javelin1":
+			javelin_level = 1
+			javelin_ammo = 1
+		"javelin2":
+			javelin_level = 2
+		"javelin3":
+			javelin_level = 3
+		"javelin4":
+			javelin_level = 4
+		"armor1","armor2","armor3","armor4":
+			armor += 1
+		"speed1","speed2","speed3","speed4":
+			movement_speed += 20.0
+		"tome1","tome2","tome3","tome4":
+			spell_size += 0.10
+		"scroll1","scroll2","scroll3","scroll4":
+			spell_cooldown += 0.05
+		"ring1","ring2":
+			additional_attacks += 1
+		"food":
+			hp += 20
+			hp = clamp(hp,0,max_hp)
+			
+	attack()
 	var option_children = upgrade_options.get_children()
 	for option in option_children:
 		option.queue_free()
@@ -272,13 +324,13 @@ func get_random_item():
 		elif UpgradeDb.UPGRADES[upgrade]["type"] == "item":
 			pass # skip if it's food
 		elif UpgradeDb.UPGRADES[upgrade]["prerequisite"].size() > 0:
+			var to_add = true
 			for prerequisite in UpgradeDb.UPGRADES[upgrade]["prerequisite"]:
 				if not prerequisite in collected_upgrades:
-					# skip if prereq not owned
-					pass
-				else:
-					# finally offer upgrade
-					dblist.append(upgrade)
+					to_add = false
+			if to_add == true:
+				# finally offer upgrade
+				dblist.append(upgrade)
 		else:
 			dblist.append(upgrade)
 	if dblist.size() > 0:

@@ -21,10 +21,28 @@ func _ready():
 	match level:
 		1:
 			hp = 1 #piercing
-			speed = 200
+			speed = 100
 			damage = 5
-			knockback_amount = 150
-			attack_size = 1.0
+			knockback_amount = 100
+			attack_size = 1.0 * (1 + player.spell_size)
+		2:
+			hp = 1 #piercing
+			speed = 100
+			damage = 5
+			knockback_amount = 100
+			attack_size = 1.0 * (1 + player.spell_size)
+		3:
+			hp = 2 #piercing
+			speed = 100
+			damage = 8
+			knockback_amount = 100
+			attack_size = 1.0 * (1 + player.spell_size)
+		4:
+			hp = 1 #piercing
+			speed = 100
+			damage = 5
+			knockback_amount = 100
+			attack_size = 1.0 * (1 + player.spell_size)
 	var tween = create_tween()
 	#var tween = create_tween().set_parallel(true) #runs at the same time
 	#sine=light_ease.cubic=medium_ease.quint=heavy_ease

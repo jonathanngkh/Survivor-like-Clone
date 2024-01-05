@@ -20,7 +20,7 @@ script = ExtResource("5_kyr6r")
 time_start = 5
 time_end = 60
 enemy = ExtResource("3_4kpfq")
-enemy_num = 0
+enemy_num = 3
 enemy_spawn_delay = 1
 
 [node name="World" type="Node2D"]
@@ -44,4 +44,4 @@ position = Vector2(74, -27)
 
 [node name="ExperienceGem2" parent="Loot" instance=ExtResource("6_31j10")]
 position = Vector2(123, -88)
-experience = 10
+experience = 300
