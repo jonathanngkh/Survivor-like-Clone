@@ -22,22 +22,31 @@ var javelin = preload("res://Player/Attack/javelin.tscn")
 
 # IceSpear
 var icespear_ammo = 0
-var icespear_baseammo = 1
-var icespear_attackspeed = 2
-var icespear_level = 1
+var icespear_baseammo = 0
+var icespear_attackspeed = 1.5
+var icespear_level = 0
 
 # Tornado
 var tornado_ammo = 0
-var tornado_baseammo = 1 #1
-var tornado_attackspeed = 2.5
-var tornado_level = 1
+var tornado_baseammo = 0
+var tornado_attackspeed = 3
+var tornado_level = 0
 
 # Javelin
-var javelin_ammo = 2
-var javelin_level = 1
+var javelin_ammo = 0
+var javelin_level = 0
 
 # Enemy
 var enemy_close = []
+
+# Upgrades
+var collected_upgrades = []
+var upgrade_options_array = []
+var armor = 0
+var speed = 0
+var spell_cooldown = 0
+var spell_size = 0
+var additional_attacks = 0
 
 @onready var animator = $AnimationPlayer
 
@@ -237,15 +246,45 @@ func level_up():
 	var options_max = 3
 	while options < options_max:
 		var option_choice = item_options.instantiate()
+		option_choice.item = get_random_item()
 		upgrade_options.add_child(option_choice)
 		options += 1
 	get_tree().paused = true
 
 func upgrade_character(upgrade):
 	var option_children = upgrade_options.get_children()
-	for i in option_children:
-		i.queue_free()
+	for option in option_children:
+		option.queue_free()
+	upgrade_options_array.clear()
+	collected_upgrades.append(upgrade)
 	panel_levelup.visible = false
 	panel_levelup.position = Vector2(800,50)
 	get_tree().paused = false
 	calculate_experience(0)
+
+func get_random_item():
+	var dblist = []
+	for upgrade in UpgradeDb.UPGRADES:
+		if upgrade in collected_upgrades:
+			pass # skip if already collected
+		elif upgrade in upgrade_options_array:
+			pass # skip if already an option
+		elif UpgradeDb.UPGRADES[upgrade]["type"] == "item":
+			pass # skip if it's food
+		elif UpgradeDb.UPGRADES[upgrade]["prerequisite"].size() > 0:
+			for prerequisite in UpgradeDb.UPGRADES[upgrade]["prerequisite"]:
+				if not prerequisite in collected_upgrades:
+					# skip if prereq not owned
+					pass
+				else:
+					# finally offer upgrade
+					dblist.append(upgrade)
+		else:
+			dblist.append(upgrade)
+	if dblist.size() > 0:
+		var random_item = dblist.pick_random()
+		upgrade_options_array.append(random_item)
+		return random_item
+	else:
+		return null # defaults to food if no upgrades apply
+		

@@ -14,3 +14,5 @@ res://Enemy/enemy.gd
 res://ItemOption.gd
 res://Utility/item_option.tscn
 res://Enemy/explosion.gd
+res://Utility/upgrade_db.gd
+res://Utility/upgrade_db.tscn
