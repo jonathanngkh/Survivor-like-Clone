@@ -7,41 +7,48 @@ var last_movement = Vector2.UP
 var experience = 0
 var experience_level = 1
 var collected_experience = 0
-
-#Attacks
+ 
+# Attacks
 var iceSpear = preload("res://Player/Attack/ice_spear.tscn")
 var tornado = preload("res://Player/Attack/tornado.tscn")
 var javelin = preload("res://Player/Attack/javelin.tscn")
 
-#AttackNodes
+# AttackNodes
 @onready var iceSpearTimer = $Attack/IceSpearTimer
 @onready var iceSpearAttackTimer = $Attack/IceSpearTimer/IceSpearAttackTimer
 @onready var tornadoTimer = $Attack/TornadoTimer
 @onready var tornadoAttackTimer = $Attack/TornadoTimer/TornadoAttackTimer
 @onready var javelinBase = $Attack/JavelinBase
 
-#IceSpear
+# IceSpear
 var icespear_ammo = 0
 var icespear_baseammo = 1
 var icespear_attackspeed = 2
 var icespear_level = 1
 
-#Tornado
+# Tornado
 var tornado_ammo = 0
 var tornado_baseammo = 1 #1
 var tornado_attackspeed = 2.5
 var tornado_level = 1
 
-#Javelin
+# Javelin
 var javelin_ammo = 2
 var javelin_level = 1
 
-#Enemy-Related
+# Enemy
 var enemy_close = []
 
 @onready var animator = $AnimationPlayer
+
+# GUI
 @onready var experience_bar = $GUILayer/GUI/ExperienceBar
 @onready var label_level = $GUILayer/GUI/ExperienceBar/label_level
+@onready var panel_levelup = $GUILayer/GUI/panel_LevelUp
+@onready var label_levelup = $GUILayer/GUI/panel_LevelUp/label_levelup
+@onready var upgrade_options = $GUILayer/GUI/panel_LevelUp/UpgradeOptions
+@onready var sound_levelup = $GUILayer/GUI/panel_LevelUp/sound_levelup
+@onready var item_options = preload("res://Utility/item_option.tscn")
 
 
 func _ready():
@@ -195,10 +202,9 @@ func calculate_experience(gem_xp):
 	if experience + collected_experience >= experience_required: # level up
 		collected_experience -= experience_required - experience
 		experience_level += 1
-		label_level.text = str("Level: ", experience_level)
 		experience = 0
 		experience_required = calculate_experience_cap()
-		calculate_experience(0) # recursion baby (on the xp remainder)
+		level_up()
 	else:
 		experience += collected_experience
 		collected_experience = 0
@@ -219,3 +225,27 @@ func calculate_experience_cap():
 func set_experience_bar(set_value = 1, set_max_value = 100):
 	experience_bar.value = set_value
 	experience_bar.max_value = set_max_value
+
+func level_up():
+	sound_levelup.play()
+	label_level.text = str("Level: ", experience_level)
+	var tween = panel_levelup.create_tween()
+	tween.tween_property(panel_levelup, "position", Vector2(880, 200), 0.2).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN)
+	tween.play()
+	panel_levelup.visible = true
+	var options = 0
+	var options_max = 3
+	while options < options_max:
+		var option_choice = item_options.instantiate()
+		upgrade_options.add_child(option_choice)
+		options += 1
+	get_tree().paused = true
+
+func upgrade_character(upgrade):
+	var option_children = upgrade_options.get_children()
+	for i in option_children:
+		i.queue_free()
+	panel_levelup.visible = false
+	panel_levelup.position = Vector2(800,50)
+	get_tree().paused = false
+	calculate_experience(0)

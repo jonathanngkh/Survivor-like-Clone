@@ -11,3 +11,6 @@ res://Player/Attack/tornado.tscn
 res://Player/Attack/javelin.tscn
 res://Objects/experience_gem.tscn
 res://Enemy/enemy.gd
+res://ItemOption.gd
+res://Utility/item_option.tscn
+res://Enemy/explosion.gd

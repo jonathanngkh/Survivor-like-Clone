@@ -52,9 +52,8 @@ func death():
 	var new_gem = experience_gem.instantiate()
 	new_gem.global_position = global_position
 	new_gem.experience = experience
-	loot_base.add_child(new_gem)
+	loot_base.call_deferred("add_child", new_gem)
 	await animator.animation_finished
-	#loot_base.call_deferred("add_child", new_gem)
 	queue_free()
 
 func _on_hurt_box_hurt(damage, angle, knockback_amount):

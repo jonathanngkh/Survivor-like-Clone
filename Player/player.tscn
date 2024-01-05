@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c6uuvcthpociv"]
+[gd_scene load_steps=18 format=3 uid="uid://c6uuvcthpociv"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_6neil"]
 [ext_resource type="PackedScene" uid="uid://c3p0e8l8amscb" path="res://Utility/hurt_box.tscn" id="3_5rw0d"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://yx5fbbptmi7t" path="res://Textures/GUI/exp_background.png" id="5_vid1r"]
 [ext_resource type="Texture2D" uid="uid://bd5cbriis3pd5" path="res://Textures/GUI/exp_progress.png" id="6_yvm8b"]
 [ext_resource type="FontFile" uid="uid://eltw4hqqgcsj" path="res://Font/tenderness.otf" id="7_inp14"]
+[ext_resource type="AudioStream" uid="uid://cplhbr5ulpehv" path="res://Audio/SoundEffect/levelup.ogg" id="8_06ysp"]
 
 [sub_resource type="Animation" id="Animation_wv3ay"]
 length = 0.001
@@ -290,6 +291,36 @@ theme_override_font_sizes/font_size = 16
 text = "Level: 1"
 horizontal_alignment = 1
 vertical_alignment = 2
+
+[node name="panel_LevelUp" type="Panel" parent="GUILayer/GUI"]
+process_mode = 2
+visible = false
+layout_mode = 0
+offset_left = 3520.0
+offset_top = 200.0
+offset_right = 3720.0
+offset_bottom = 450.0
+scale = Vector2(4, 4)
+
+[node name="label_levelup" type="Label" parent="GUILayer/GUI/panel_LevelUp"]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 50.0
+theme_override_fonts/font = ExtResource("7_inp14")
+text = "Level Up!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UpgradeOptions" type="VBoxContainer" parent="GUILayer/GUI/panel_LevelUp"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 50.0
+offset_right = 190.0
+offset_bottom = 100.0
+
+[node name="sound_levelup" type="AudioStreamPlayer" parent="GUILayer/GUI/panel_LevelUp"]
+stream = ExtResource("8_06ysp")
+volume_db = -10.0
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 [connection signal="timeout" from="Attack/IceSpearTimer" to="." method="_on_ice_spear_timer_timeout"]

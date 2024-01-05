@@ -2,9 +2,6 @@ extends Sprite2D
 
 func _ready():
 	$AnimationPlayer.play("explode")
-
-func _on_animation_player_animation_finished(anim_name):
-	
 	var tween = create_tween()
 	#var tween = create_tween().set_parallel(true) #runs at the same time
 	#sine=light_ease.cubic=medium_ease.quint=heavy_ease
