@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var hp = 80
 var max_hp = 80
 var last_movement = Vector2.UP
+var time = 0
 
 var experience = 0
 var experience_level = 1
@@ -59,12 +60,20 @@ var additional_attacks = 0
 @onready var upgrade_options = $GUILayer/GUI/panel_LevelUp/UpgradeOptions
 @onready var sound_levelup = $GUILayer/GUI/panel_LevelUp/sound_levelup
 @onready var item_options = preload("res://Utility/item_option.tscn")
+@onready var health_bar = $GUILayer/GUI/HealthBar
+@onready var label_timer = $GUILayer/GUI/label_timer
+@onready var collected_weapons_container = $GUILayer/GUI/CollectedWeapons
+@onready var collected_upgrades_container = $GUILayer/GUI/CollectedUpgrades
+@onready var item_container = preload("res://Player/GUI/item_container.tscn")
+
+
 
 
 func _ready():
 	upgrade_character("icespear1")
 	attack()
 	set_experience_bar(experience, calculate_experience_cap())
+	_on_hurt_box_hurt(0, 0, 0)
 	
 func _process(delta):
 	choose_animation()
@@ -116,7 +125,8 @@ func choose_animation():
 
 func _on_hurt_box_hurt(damage, _angle, _knockback):
 	hp -= clamp(damage - armor, 1, 999.0)
-	print(hp)
+	health_bar.max_value = max_hp
+	health_bar.value = hp
 
 
 func _on_ice_spear_timer_timeout(): #reloading
@@ -302,7 +312,7 @@ func upgrade_character(upgrade):
 		"food":
 			hp += 20
 			hp = clamp(hp,0,max_hp)
-			
+	adjust_gui_collection(upgrade)
 	attack()
 	var option_children = upgrade_options.get_children()
 	for option in option_children:
@@ -340,3 +350,28 @@ func get_random_item():
 	else:
 		return null # defaults to food if no upgrades apply
 		
+func change_time(argtime = 0):
+	time = argtime
+	var get_minutes = int(time/60.0)
+	var get_seconds = time % 60
+	if get_minutes < 10: # single digit
+		get_minutes = str(0, get_minutes)
+	if get_seconds < 10:
+		get_seconds = str(0, get_seconds)
+	label_timer.text = str(get_minutes, ":", get_seconds)
+
+func adjust_gui_collection(upgrade):
+	var get_upgraded_displayname = UpgradeDb.UPGRADES[upgrade]["displayname"]
+	var get_type = UpgradeDb.UPGRADES[upgrade]["type"]
+	if not get_type == "item":
+		var get_collected_displaynames = []
+		for collected_upgrade in collected_upgrades:
+			get_collected_displaynames.append(UpgradeDb.UPGRADES[collected_upgrade]["displayname"])
+		if not get_upgraded_displayname in get_collected_displaynames:
+			var new_item = item_container.instantiate()
+			new_item.upgrade = upgrade
+			match get_type:
+				"weapon":
+					collected_weapons_container.add_child(new_item)
+				"upgrade":
+					collected_upgrades_container.add_child(new_item)

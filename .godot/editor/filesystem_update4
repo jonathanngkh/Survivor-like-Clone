@@ -19,3 +19,6 @@ res://Utility/upgrade_db.tscn
 res://Player/Attack/ice_spear.gd
 res://Player/Attack/javelin.gd
 res://Player/Attack/tornado.gd
+res://EnemySpawner.gd
+res://Player/GUI/item_container.gd
+res://Player/GUI/item_container.tscn

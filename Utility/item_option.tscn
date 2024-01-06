@@ -5,7 +5,7 @@
 [ext_resource type="FontFile" uid="uid://eltw4hqqgcsj" path="res://Font/tenderness.otf" id="3_7ni2l"]
 
 [node name="ItemOption" type="ColorRect"]
-custom_minimum_size = Vector2(180, 50)
+custom_minimum_size = Vector2(720, 200)
 anchors_preset = -1
 anchor_right = 0.07
 anchor_bottom = 0.035
@@ -17,26 +17,26 @@ script = ExtResource("1_6gtvl")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 26.0
-offset_bottom = 26.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 104.0
+offset_bottom = 104.0
 color = Color(0, 0, 0, 1)
 
 [node name="ItemIcon" type="TextureRect" parent="ColorRect"]
 layout_mode = 0
-offset_right = 32.0
-offset_bottom = 32.0
-scale = Vector2(0.75, 0.75)
+offset_right = 96.0
+offset_bottom = 96.0
 texture = ExtResource("2_jnnu2")
 
 [node name="label_name" type="Label" parent="."]
 layout_mode = 0
-offset_left = 39.0
-offset_top = 2.0
-offset_right = 79.0
-offset_bottom = 25.0
+offset_left = 156.0
+offset_top = 8.0
+offset_right = 236.0
+offset_bottom = 100.0
 theme_override_fonts/font = ExtResource("3_7ni2l")
+theme_override_font_sizes/font_size = 64
 text = "Name
 "
 horizontal_alignment = 1
@@ -44,28 +44,28 @@ horizontal_alignment = 1
 [node name="label_description" type="Label" parent="."]
 texture_filter = 3
 layout_mode = 0
-offset_left = 4.0
-offset_top = 27.0
-offset_right = 166.0
-offset_bottom = 48.0
+offset_left = 16.0
+offset_top = 108.0
+offset_right = 664.0
+offset_bottom = 192.0
 theme_override_fonts/font = ExtResource("3_7ni2l")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 32
 text = "Description of Item"
 autowrap_mode = 3
 
 [node name="label_level" type="Label" parent="."]
 layout_mode = 0
-offset_left = 130.0
-offset_top = 3.0
-offset_right = 170.0
-offset_bottom = 26.0
+offset_left = 520.0
+offset_top = 12.0
+offset_right = 680.0
+offset_bottom = 104.0
 theme_override_fonts/font = ExtResource("3_7ni2l")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 48
 text = "Level: 1"
 
 [node name="TextureButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_right = 180.0
-offset_bottom = 50.0
+offset_right = 720.0
+offset_bottom = 200.0
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
