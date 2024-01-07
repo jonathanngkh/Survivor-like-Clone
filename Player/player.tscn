@@ -193,7 +193,7 @@ radius = 50.0
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 motion_mode = 1
 script = ExtResource("1_6neil")
-movement_speed = 150.0
+movement_speed = 40.0
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

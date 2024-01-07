@@ -124,9 +124,15 @@ func choose_animation():
 
 
 func _on_hurt_box_hurt(damage, _angle, _knockback):
+	sprite_flash()
 	hp -= clamp(damage - armor, 1, 999.0)
 	health_bar.max_value = max_hp
 	health_bar.value = hp
+	
+func sprite_flash() -> void:
+	var tween: Tween = create_tween()
+	tween.tween_property($Sprite2D, "modulate:v", 1, 0.25).from(15)
+	tween.play()
 
 
 func _on_ice_spear_timer_timeout(): #reloading
