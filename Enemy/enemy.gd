@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var hp = 10
 @export var knockback_recovery = 3.5
 @export var experience = 1
+@export var enemy_damage = 1
 
 var knockback = Vector2.ZERO
 @onready var sprite = $Sprite2D
@@ -12,6 +13,8 @@ var knockback = Vector2.ZERO
 @onready var sound_hit = $sound_hit
 @onready var sound_die = $sound_die
 @onready var loot_base = get_tree().get_first_node_in_group("loot")
+@onready var hit_box = $HitBox
+
 
 var death_explosion = preload("res://Enemy/explosion.tscn")
 var experience_gem = preload("res://Objects/experience_gem.tscn")
@@ -20,6 +23,7 @@ signal remove_from_array(object)
 
 func _ready():
 	animator.play("skeleton_walk")
+	hit_box.damage = enemy_damage
 
 func _physics_process(_delta):
 	if hp > 0:

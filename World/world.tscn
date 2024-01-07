@@ -1,27 +1,84 @@
-[gd_scene load_steps=9 format=3 uid="uid://cjkdpm3u3wqut"]
+[gd_scene load_steps=18 format=3 uid="uid://cjkdpm3u3wqut"]
 
 [ext_resource type="Texture2D" uid="uid://cv5dyyv664lsv" path="res://Textures/Grass square.png" id="1_yaypj"]
 [ext_resource type="PackedScene" uid="uid://c6uuvcthpociv" path="res://Player/player.tscn" id="2_rlem7"]
-[ext_resource type="PackedScene" uid="uid://ds1caoj3877wy" path="res://Enemy/enemy.tscn" id="3_4kpfq"]
+[ext_resource type="PackedScene" uid="uid://ds1caoj3877wy" path="res://Enemy/enemy_skeleton.tscn" id="3_4kpfq"]
 [ext_resource type="PackedScene" uid="uid://bdc6xdiruauvu" path="res://Utility/enemy_spawner.tscn" id="3_gdiqe"]
+[ext_resource type="PackedScene" uid="uid://bahwa3aqr7t01" path="res://Enemy/enemy_demon.tscn" id="4_t7mob"]
 [ext_resource type="Script" path="res://Utility/spawn_info.gd" id="5_kyr6r"]
-[ext_resource type="PackedScene" uid="uid://4a1v2lndn8qi" path="res://Objects/experience_gem.tscn" id="6_31j10"]
+[ext_resource type="PackedScene" uid="uid://bbge5wi6ymxj0" path="res://Enemy/enemy_skull.tscn" id="6_gcdm1"]
+[ext_resource type="PackedScene" uid="uid://dparb0oln5dfh" path="res://Enemy/enemy_nightmare.tscn" id="7_xwnl7"]
 
 [sub_resource type="Resource" id="Resource_rxj4u"]
 script = ExtResource("5_kyr6r")
 time_start = 0
-time_end = 5
+time_end = 30
 enemy = ExtResource("3_4kpfq")
 enemy_num = 1
 enemy_spawn_delay = 0
 
 [sub_resource type="Resource" id="Resource_0ghsp"]
 script = ExtResource("5_kyr6r")
-time_start = 5
-time_end = 60
+time_start = 30
+time_end = 210
 enemy = ExtResource("3_4kpfq")
 enemy_num = 3
 enemy_spawn_delay = 1
+
+[sub_resource type="Resource" id="Resource_ixasv"]
+script = ExtResource("5_kyr6r")
+time_start = 60
+time_end = 180
+enemy = ExtResource("6_gcdm1")
+enemy_num = 1
+enemy_spawn_delay = 1
+
+[sub_resource type="Resource" id="Resource_y4opa"]
+script = ExtResource("5_kyr6r")
+time_start = 180
+time_end = 210
+enemy = ExtResource("7_xwnl7")
+enemy_num = 1
+enemy_spawn_delay = 2
+
+[sub_resource type="Resource" id="Resource_tol0s"]
+script = ExtResource("5_kyr6r")
+time_start = 210
+time_end = 240
+enemy = ExtResource("6_gcdm1")
+enemy_num = 2
+enemy_spawn_delay = 0
+
+[sub_resource type="Resource" id="Resource_h3dng"]
+script = ExtResource("5_kyr6r")
+time_start = 240
+time_end = 270
+enemy = ExtResource("7_xwnl7")
+enemy_num = 1
+enemy_spawn_delay = 0
+
+[sub_resource type="Resource" id="Resource_tvmlh"]
+script = ExtResource("5_kyr6r")
+time_start = 240
+time_end = 240
+enemy = ExtResource("4_t7mob")
+enemy_num = 1
+enemy_spawn_delay = 0
+
+[sub_resource type="Resource" id="Resource_x21cl"]
+script = ExtResource("5_kyr6r")
+time_start = 270
+time_end = 300
+enemy = ExtResource("6_gcdm1")
+enemy_num = 4
+enemy_spawn_delay = 0
+
+[sub_resource type="Resource" id="Resource_cc6wm"]
+script = ExtResource("5_kyr6r")
+time_start = 300
+time_end = 300
+enemy_num = 1
+enemy_spawn_delay = 0
 
 [node name="World" type="Node2D"]
 
@@ -35,13 +92,6 @@ region_rect = Rect2(-4000, -4000, 4000, 4000)
 [node name="Player" parent="." instance=ExtResource("2_rlem7")]
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_gdiqe")]
-spawns = Array[ExtResource("5_kyr6r")]([SubResource("Resource_rxj4u"), SubResource("Resource_0ghsp")])
+spawns = Array[ExtResource("5_kyr6r")]([SubResource("Resource_rxj4u"), SubResource("Resource_0ghsp"), SubResource("Resource_ixasv"), SubResource("Resource_y4opa"), SubResource("Resource_tol0s"), SubResource("Resource_h3dng"), SubResource("Resource_tvmlh"), SubResource("Resource_x21cl"), SubResource("Resource_cc6wm")])
 
 [node name="Loot" type="Node2D" parent="." groups=["loot"]]
-
-[node name="ExperienceGem" parent="Loot" instance=ExtResource("6_31j10")]
-position = Vector2(74, -27)
-
-[node name="ExperienceGem2" parent="Loot" instance=ExtResource("6_31j10")]
-position = Vector2(123, -88)
-experience = 300

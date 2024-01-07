@@ -7,3 +7,8 @@ res://Player/Attack/tornado.tscn
 res://Enemy/explosion.tscn
 res://Enemy/enemy.tscn
 res://Player/player.gd
+res://Enemy/enemy.gd
+res://Enemy/enemy_skeleton.tscn
+res://Enemy/enemy_demon.tscn
+res://Enemy/enemy_nightmare.tscn
+res://Enemy/enemy_skull.tscn
