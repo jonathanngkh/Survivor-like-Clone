@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://dparb0oln5dfh"]
 
-[ext_resource type="Script" path="res://Enemy/enemy.gd" id="1_1yrqj"]
+[ext_resource type="Script" path="res://Enemy/enemy_nightmare.gd" id="1_vv5e4"]
 [ext_resource type="Texture2D" uid="uid://c8g0evxfmu8xq" path="res://Textures/Enemy/Skeleton Dead.png" id="2_eqkl2"]
 [ext_resource type="PackedScene" uid="uid://c3p0e8l8amscb" path="res://Utility/hurt_box.tscn" id="3_3w2lf"]
 [ext_resource type="PackedScene" uid="uid://b1l2qb0u8xev8" path="res://Utility/hit_box.tscn" id="4_dsdwg"]
@@ -339,11 +339,12 @@ position = Vector2(11, 9)
 collision_layer = 5
 collision_mask = 5
 motion_mode = 1
-script = ExtResource("1_1yrqj")
-movement_speed = 50.0
+script = ExtResource("1_vv5e4")
+movement_speed = 40
 hp = 50
 knockback_recovery = 10.0
-experience = 5
+experience = 10
+enemy_damage = 5
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

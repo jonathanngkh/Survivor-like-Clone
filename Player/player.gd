@@ -67,8 +67,6 @@ var additional_attacks = 0
 @onready var item_container = preload("res://Player/GUI/item_container.tscn")
 
 
-
-
 func _ready():
 	upgrade_character("icespear1")
 	attack()
@@ -121,7 +119,6 @@ func choose_animation():
 		animator.play("witch_walk")
 	else:
 		animator.play("witch_idle")
-
 
 func _on_hurt_box_hurt(damage, _angle, _knockback):
 	sprite_flash()
@@ -182,8 +179,8 @@ func spawn_javelin():
 		calc_spawns -= 1
 	# Update Javelin
 	var get_javelins = javelinBase.get_children()
-	for javelin in get_javelins:
-		javelin.update_javelin()
+	for javs in get_javelins:
+		javs.update_javelin()
 		
 func get_random_target():
 	if enemy_close.size() > 0:

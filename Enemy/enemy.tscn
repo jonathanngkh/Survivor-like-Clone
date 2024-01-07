@@ -1,24 +1,23 @@
-[gd_scene load_steps=19 format=3 uid="uid://bahwa3aqr7t01"]
+[gd_scene load_steps=17 format=3 uid="uid://dxxpc87rdje6w"]
 
-[ext_resource type="Script" path="res://Enemy/enemy_demon.gd" id="1_7bmqk"]
-[ext_resource type="Texture2D" uid="uid://c8g0evxfmu8xq" path="res://Textures/Enemy/Skeleton Dead.png" id="2_6mgyg"]
-[ext_resource type="PackedScene" uid="uid://c3p0e8l8amscb" path="res://Utility/hurt_box.tscn" id="3_ppa78"]
-[ext_resource type="PackedScene" uid="uid://b1l2qb0u8xev8" path="res://Utility/hit_box.tscn" id="4_v74oh"]
-[ext_resource type="Texture2D" uid="uid://ck284t22nqm3g" path="res://Textures/Enemy/Skeleton Hit.png" id="5_x5ea3"]
-[ext_resource type="Texture2D" uid="uid://bodu31a5r328a" path="res://Textures/Enemy/Skeleton Walk.png" id="6_o5q1n"]
-[ext_resource type="AudioStream" uid="uid://su2jvbviorka" path="res://Audio/SoundEffect/Skeleton Death.mp3" id="7_hn0em"]
-[ext_resource type="Texture2D" uid="uid://c7vwwp2l32tsq" path="res://Textures/Enemy/demon-idle.png" id="7_po10d"]
-[ext_resource type="AudioStream" uid="uid://ccn0se28frcv8" path="res://Audio/SoundEffect/TOMAHAWK HITMARKER.mp3" id="8_5v1sw"]
+[ext_resource type="Script" path="res://Enemy/enemy.gd" id="1_ir6sr"]
+[ext_resource type="Texture2D" uid="uid://bodu31a5r328a" path="res://Textures/Enemy/Skeleton Walk.png" id="2_d7ndq"]
+[ext_resource type="Texture2D" uid="uid://c8g0evxfmu8xq" path="res://Textures/Enemy/Skeleton Dead.png" id="2_jvdc3"]
+[ext_resource type="PackedScene" uid="uid://c3p0e8l8amscb" path="res://Utility/hurt_box.tscn" id="3_q1cjw"]
+[ext_resource type="PackedScene" uid="uid://b1l2qb0u8xev8" path="res://Utility/hit_box.tscn" id="4_1amhg"]
+[ext_resource type="Texture2D" uid="uid://ck284t22nqm3g" path="res://Textures/Enemy/Skeleton Hit.png" id="5_sutdu"]
+[ext_resource type="AudioStream" uid="uid://ccn0se28frcv8" path="res://Audio/SoundEffect/TOMAHAWK HITMARKER.mp3" id="7_hrt4p"]
+[ext_resource type="AudioStream" uid="uid://su2jvbviorka" path="res://Audio/SoundEffect/Skeleton Death.mp3" id="7_rn1w8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v0ett"]
-radius = 15.0
-height = 50.0
+radius = 3.0
+height = 16.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uwdbd"]
-size = Vector2(47, 76)
+size = Vector2(21, 25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_26x1i"]
-size = Vector2(41, 70)
+size = Vector2(10, 18)
 
 [sub_resource type="Animation" id="Animation_y0gu7"]
 length = 0.001
@@ -68,7 +67,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_6mgyg")]
+"values": [ExtResource("2_jvdc3")]
 }
 
 [sub_resource type="Animation" id="Animation_vx53u"]
@@ -84,7 +83,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_6mgyg")]
+"values": [ExtResource("2_jvdc3")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -137,7 +136,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_x5ea3")]
+"values": [ExtResource("5_sutdu")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -202,7 +201,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_o5q1n")]
+"values": [ExtResource("2_d7ndq")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -229,101 +228,43 @@ tracks/3/keys = {
 "values": [1]
 }
 
-[sub_resource type="Animation" id="Animation_t82xf"]
-resource_name = "demon_walk"
-loop_mode = 1
-step = 0.166667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:hframes")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [6]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:vframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:texture")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("7_po10d")]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0m86m"]
 _data = {
 "RESET": SubResource("Animation_y0gu7"),
-"demon_walk": SubResource("Animation_t82xf"),
 "skeleton_die": SubResource("Animation_vx53u"),
 "skeleton_hit": SubResource("Animation_813kl"),
 "skeleton_walk": SubResource("Animation_eymga")
 }
 
-[node name="enemy_demon" type="CharacterBody2D"]
-position = Vector2(13, 6)
+[node name="enemy" type="CharacterBody2D"]
 collision_layer = 5
 collision_mask = 5
 motion_mode = 1
-script = ExtResource("1_7bmqk")
-movement_speed = 40
-hp = 100
-experience = 100
+script = ExtResource("1_ir6sr")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_6mgyg")
+texture = ExtResource("2_jvdc3")
 hframes = 13
 frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-14, 13)
+position = Vector2(1, 3)
 shape = SubResource("CapsuleShape2D_v0ett")
 
-[node name="HurtBox" parent="." instance=ExtResource("3_ppa78")]
+[node name="HurtBox" parent="." instance=ExtResource("3_q1cjw")]
 collision_mask = 4
 HurtBoxType = 1
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
-position = Vector2(-14.5, 12)
+position = Vector2(2.5, 2.5)
 shape = SubResource("RectangleShape2D_uwdbd")
 
-[node name="HitBox" parent="." instance=ExtResource("4_v74oh")]
+[node name="HitBox" parent="." instance=ExtResource("4_1amhg")]
 collision_layer = 2
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
-position = Vector2(-14.5, 12)
+position = Vector2(1, 3)
 shape = SubResource("RectangleShape2D_26x1i")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -332,11 +273,11 @@ libraries = {
 }
 
 [node name="sound_die" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_hn0em")
+stream = ExtResource("7_rn1w8")
 volume_db = -10.0
 
 [node name="sound_hit" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_5v1sw")
+stream = ExtResource("7_hrt4p")
 volume_db = -10.0
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]

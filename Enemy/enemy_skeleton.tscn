@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://ds1caoj3877wy"]
 
-[ext_resource type="Script" path="res://Enemy/enemy.gd" id="1_ir6sr"]
+[ext_resource type="Script" path="res://Enemy/enemy_skeleton.gd" id="1_a3dfr"]
 [ext_resource type="Texture2D" uid="uid://bodu31a5r328a" path="res://Textures/Enemy/Skeleton Walk.png" id="2_d7ndq"]
 [ext_resource type="Texture2D" uid="uid://c8g0evxfmu8xq" path="res://Textures/Enemy/Skeleton Dead.png" id="2_jvdc3"]
 [ext_resource type="PackedScene" uid="uid://c3p0e8l8amscb" path="res://Utility/hurt_box.tscn" id="3_q1cjw"]
@@ -240,8 +240,7 @@ _data = {
 collision_layer = 5
 collision_mask = 5
 motion_mode = 1
-script = ExtResource("1_ir6sr")
-movement_speed = 20.0
+script = ExtResource("1_a3dfr")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

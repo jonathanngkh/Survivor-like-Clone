@@ -12,3 +12,7 @@ res://Enemy/enemy_skeleton.tscn
 res://Enemy/enemy_demon.tscn
 res://Enemy/enemy_nightmare.tscn
 res://Enemy/enemy_skull.tscn
+res://Enemy/enemy_skeleton.gd
+res://Enemy/enemy_demon.gd
+res://Enemy/enemy_nightmare.gd
+res://Enemy/enemy_skull.gd
