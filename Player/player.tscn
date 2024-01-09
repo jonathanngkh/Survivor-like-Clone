@@ -363,6 +363,160 @@ offset_right = 832.0
 offset_bottom = 224.0
 columns = 10
 
+[node name="label_measure" type="Label" parent="GUILayer/GUI"]
+layout_mode = 0
+offset_left = 1181.0
+offset_top = 834.0
+offset_right = 1383.0
+offset_bottom = 899.0
+theme_override_fonts/font = ExtResource("7_inp14")
+theme_override_font_sizes/font_size = 64
+text = "measure"
+horizontal_alignment = 1
+
+[node name="label_beat" type="Label" parent="GUILayer/GUI"]
+layout_mode = 0
+offset_left = 1182.0
+offset_top = 885.0
+offset_right = 1384.0
+offset_bottom = 950.0
+theme_override_fonts/font = ExtResource("7_inp14")
+theme_override_font_sizes/font_size = 64
+text = "beat
+"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUILayer/GUI"]
+visible = false
+layout_mode = 0
+offset_left = 1183.0
+offset_top = 952.0
+offset_right = 1383.0
+offset_bottom = 992.0
+
+[node name="ColorRect1" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.278431, 0.278431, 0.278431, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.278431, 0.278431, 0.278431, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.278431, 0.278431, 0.278431, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.278431, 0.278431, 0.278431, 1)
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="GUILayer/GUI"]
+layout_mode = 0
+offset_left = 1073.0
+offset_top = 1000.0
+offset_right = 1493.0
+offset_bottom = 1040.0
+
+[node name="ColorRect1" type="ColorRect" parent="GUILayer/GUI/HBoxContainer2"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.278431, 0.278431, 0.278431, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="GUILayer/GUI/HBoxContainer2"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.278431, 0.278431, 0.278431, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="GUILayer/GUI/HBoxContainer2"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.278431, 0.278431, 0.278431, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="GUILayer/GUI/HBoxContainer2"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.278431, 0.278431, 0.278431, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="GUILayer/GUI/HBoxContainer2"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.278431, 0.278431, 0.278431, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="GUILayer/GUI/HBoxContainer2"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.278431, 0.278431, 0.278431, 1)
+
+[node name="ColorRect7" type="ColorRect" parent="GUILayer/GUI/HBoxContainer2"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.278431, 0.278431, 0.278431, 1)
+
+[node name="ColorRect8" type="ColorRect" parent="GUILayer/GUI/HBoxContainer2"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.278431, 0.278431, 0.278431, 1)
+
+[node name="ColorRect9" type="ColorRect" parent="GUILayer/GUI/HBoxContainer2"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.278431, 0.278431, 0.278431, 1)
+
+[node name="ColorRect10" type="ColorRect" parent="GUILayer/GUI/HBoxContainer2"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.278431, 0.278431, 0.278431, 1)
+
+[node name="ColorRect11" type="ColorRect" parent="GUILayer/GUI/HBoxContainer2"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.278431, 0.278431, 0.278431, 1)
+
+[node name="ColorRect12" type="ColorRect" parent="GUILayer/GUI/HBoxContainer2"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.278431, 0.278431, 0.278431, 1)
+
+[node name="ColorRect13" type="ColorRect" parent="GUILayer/GUI/HBoxContainer2"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.278431, 0.278431, 0.278431, 1)
+
+[node name="ColorRect14" type="ColorRect" parent="GUILayer/GUI/HBoxContainer2"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.278431, 0.278431, 0.278431, 1)
+
+[node name="ColorRect15" type="ColorRect" parent="GUILayer/GUI/HBoxContainer2"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.278431, 0.278431, 0.278431, 1)
+
+[node name="ColorRect16" type="ColorRect" parent="GUILayer/GUI/HBoxContainer2"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.278431, 0.278431, 0.278431, 1)
+
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 [connection signal="timeout" from="Attack/IceSpearTimer" to="." method="_on_ice_spear_timer_timeout"]
 [connection signal="timeout" from="Attack/IceSpearTimer/IceSpearAttackTimer" to="." method="_on_ice_spear_attack_timer_timeout"]

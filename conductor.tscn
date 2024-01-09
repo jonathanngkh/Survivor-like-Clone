@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://by2h2cbjqpp3g"]
+
+[ext_resource type="AudioStream" uid="uid://bm2b4htnnhsf4" path="res://Audio/Music/180 xDeviruchi - Decisive Battle.wav" id="1_kb13t"]
+[ext_resource type="Script" path="res://Conductor.gd" id="2_yvi5o"]
+
+[node name="Conductor" type="AudioStreamPlayer" groups=["conductor"]]
+stream = ExtResource("1_kb13t")
+script = ExtResource("2_yvi5o")
+
+[node name="StartTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]

@@ -65,6 +65,7 @@ var additional_attacks = 0
 @onready var collected_weapons_container = $GUILayer/GUI/CollectedWeapons
 @onready var collected_upgrades_container = $GUILayer/GUI/CollectedUpgrades
 @onready var item_container = preload("res://Player/GUI/item_container.tscn")
+@onready var conductor_node = get_tree().get_first_node_in_group("conductor")
 
 
 func _ready():
@@ -72,6 +73,45 @@ func _ready():
 	attack()
 	set_experience_bar(experience, calculate_experience_cap())
 	_on_hurt_box_hurt(0, 0, 0)
+	OS.open_midi_inputs() #
+	print(OS.get_connected_midi_inputs()) #
+
+func _input(input_event): #
+	if input_event is InputEventMIDI:
+		_print_midi_info(input_event)
+		if input_event.message == 9: #noteOn
+			if input_event.pitch == 60: #C
+				#Input.action_press("move_left")
+				icespear_ammo += 1
+			if input_event.pitch == 63: #Dsharp
+				Input.action_press("move_up")
+				Input.action_press("move_right")
+			if input_event.pitch == 64: #E
+				Input.action_press("move_down")
+		if input_event.message == 8: #noteOff
+			if input_event.pitch == 60: #C
+				Input.action_release("move_left")
+			if input_event.pitch == 63: #Dsharp
+				Input.action_release("move_up")
+			if input_event.pitch == 65: #F
+				Input.action_release("move_right")
+			if input_event.pitch == 64: #E
+				Input.action_release("move_down")
+
+func _print_midi_info(midi_event: InputEventMIDI): #
+	#msg 9 is note on. msg 8 is note off. pitch 0 is idle msg
+	if (midi_event.pitch != 0 && midi_event.message == 9):
+		print(midi_event)
+	#print("Channel " + str(midi_event.channel))
+	#print("Message " + str(midi_event.message))
+	#print("Pitch " + str(midi_event.pitch))
+	#print("Velocity " + str(midi_event.velocity))
+	#print("Instrument " + str(midi_event.instrument))
+	#print("Pressure " + str(midi_event.pressure))
+	#print("Controller number: " + str(midi_event.controller_number))
+	#print("Controller value: " + str(midi_event.controller_value))
+
+	
 	
 func _process(delta):
 	choose_animation()
@@ -88,6 +128,12 @@ func _process(delta):
 
 func _physics_process(_delta):
 	movement()
+	
+#func shoot_icespear():
+	#if iceSpearTimer.is_stopped():
+		#iceSpearTimer.start()
+	#if icespear_level > 0:
+		#iceSpearTimer.wait_time = icespear_attackspeed * (1 - spell_cooldown)
 	
 func attack():
 	if icespear_level > 0:
@@ -131,12 +177,6 @@ func sprite_flash() -> void:
 	tween.tween_property($Sprite2D, "modulate:v", 1, 0.25).from(15)
 	tween.play()
 
-
-func _on_ice_spear_timer_timeout(): #reloading
-	icespear_ammo += icespear_baseammo + additional_attacks
-	iceSpearAttackTimer.start()
-
-
 func _on_ice_spear_attack_timer_timeout(): #shooting
 	if icespear_ammo > 0:
 		var icespear_attack = iceSpear.instantiate()
@@ -150,11 +190,12 @@ func _on_ice_spear_attack_timer_timeout(): #shooting
 			iceSpearAttackTimer.start()
 		else:
 			iceSpearAttackTimer.stop()
+
+func _on_ice_spear_timer_timeout(): #reloading
+	icespear_ammo += icespear_baseammo + additional_attacks
+	iceSpearAttackTimer.start()
 			
-func _on_tornado_timer_timeout():
-	tornado_ammo += tornado_baseammo + additional_attacks
-	tornadoAttackTimer.start()
-			
+
 func _on_tornado_attack_timer_timeout():
 	if tornado_ammo > 0:
 		var tornado_attack = tornado.instantiate()
@@ -168,6 +209,10 @@ func _on_tornado_attack_timer_timeout():
 			tornadoAttackTimer.start()
 		else:
 			tornadoAttackTimer.stop()
+
+func _on_tornado_timer_timeout():
+	tornado_ammo += tornado_baseammo + additional_attacks
+	tornadoAttackTimer.start()
 			
 func spawn_javelin():
 	var get_javelin_total = javelinBase.get_child_count()
@@ -316,7 +361,7 @@ func upgrade_character(upgrade):
 			hp += 20
 			hp = clamp(hp,0,max_hp)
 	adjust_gui_collection(upgrade)
-	attack()
+	#attack()
 	var option_children = upgrade_options.get_children()
 	for option in option_children:
 		option.queue_free()
@@ -378,3 +423,85 @@ func adjust_gui_collection(upgrade):
 					collected_weapons_container.add_child(new_item)
 				"upgrade":
 					collected_upgrades_container.add_child(new_item)
+
+
+
+	
+	
+func flash(rect) -> void:
+	var tween: Tween = create_tween()
+	tween.tween_property(rect, "modulate:v", 1, 0.1).from(15)
+	tween.play()
+
+func _on_conductor_signal_measure(position):
+	$GUILayer/GUI/label_measure.text = str(conductor_node.get_measure())
+	$GUILayer/GUI/label_beat.text = str(conductor_node.get_song_position_in_beats())
+	#if position == 1:
+		#var rect1 = $GUILayer/GUI/HBoxContainer/ColorRect1
+		#flash(rect1)
+	#if position == 2:
+		#var rect2 = $GUILayer/GUI/HBoxContainer/ColorRect2
+		#flash(rect2)
+	#if position == 3:
+		#var rect3 = $GUILayer/GUI/HBoxContainer/ColorRect3
+		#flash(rect3)
+	#if position == 4:
+		#var rect4 = $GUILayer/GUI/HBoxContainer/ColorRect4
+		#flash(rect4)
+		
+	if position == 1:
+		var rect1 = $GUILayer/GUI/HBoxContainer2/ColorRect1
+		flash(rect1)
+	if position == 2:
+		var rect2 = $GUILayer/GUI/HBoxContainer2/ColorRect2
+		flash(rect2)
+	if position == 3:
+		var rect3 = $GUILayer/GUI/HBoxContainer2/ColorRect3
+		flash(rect3)
+	if position == 4:
+		var rect4 = $GUILayer/GUI/HBoxContainer2/ColorRect4
+		flash(rect4)
+	if position == 5:
+		var rect5 = $GUILayer/GUI/HBoxContainer2/ColorRect5
+		flash(rect5)
+	if position == 6:
+		var rect6 = $GUILayer/GUI/HBoxContainer2/ColorRect6
+		flash(rect6)
+	if position == 7:
+		var rect7 = $GUILayer/GUI/HBoxContainer2/ColorRect7
+		flash(rect7)
+	if position == 8:
+		var rect8 = $GUILayer/GUI/HBoxContainer2/ColorRect8
+		flash(rect8)
+	if position == 9:
+		var rect9 = $GUILayer/GUI/HBoxContainer2/ColorRect9
+		flash(rect9)
+	if position == 10:
+		var rect10 = $GUILayer/GUI/HBoxContainer2/ColorRect10
+		flash(rect10)
+	if position == 11:
+		var rect11 = $GUILayer/GUI/HBoxContainer2/ColorRect11
+		flash(rect11)
+	if position == 12:
+		var rect12 = $GUILayer/GUI/HBoxContainer2/ColorRect12
+		flash(rect12)
+	if position == 13:
+		var rect13 = $GUILayer/GUI/HBoxContainer2/ColorRect13
+		flash(rect13)
+	if position == 14:
+		var rect14 = $GUILayer/GUI/HBoxContainer2/ColorRect14
+		flash(rect14)
+	if position == 15:
+		var rect15 = $GUILayer/GUI/HBoxContainer2/ColorRect15
+		flash(rect15)
+	if position == 16:
+		var rect16 = $GUILayer/GUI/HBoxContainer2/ColorRect16
+		flash(rect16)
+
+
+func _on_conductor_number_of_measures(measures):
+	var counter = 0
+	while counter < measures:
+		$GUILayer/GUI/HBoxContainer2.get_children()[counter].visible = true
+		counter += 1
+		
