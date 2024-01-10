@@ -1,6 +1,6 @@
 extends AudioStreamPlayer
 
-@export var bpm := 360 #crotchets per minute
+@export var bpm := 110 #crotchets per minute
 @export var measures := 4
 
 # 1 x bpm, 4 meausures = 44 time, or counting in 4 crochets
@@ -22,6 +22,9 @@ var time_off_beat = 0.0
 signal beat(position)
 signal signal_measure(position)
 signal number_of_measures(measures)
+
+func get_number_of_measures():
+	return measures
 
 func get_measure():
 	#if current_measure > measures:
@@ -49,12 +52,12 @@ func _report_beat():
 	if last_reported_beat < song_position_in_beats:
 		#emit_signal("beat", song_position_in_beats)
 		#emit_signal("signal_measure", current_measure)
+		emit_signal("beat", song_position_in_beats)
+		emit_signal("signal_measure", current_measure)
 		last_reported_beat = song_position_in_beats
 		current_measure += 1
 		if current_measure > measures:
 			current_measure = 1
-		emit_signal("beat", song_position_in_beats)
-		emit_signal("signal_measure", current_measure)
 
 func play_with_beat_offset(num):
 	beats_before_start = num

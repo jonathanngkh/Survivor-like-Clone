@@ -21,6 +21,8 @@ var javelin = preload("res://Player/Attack/javelin.tscn")
 @onready var tornadoTimer = $Attack/TornadoTimer
 @onready var tornadoAttackTimer = $Attack/TornadoTimer/TornadoAttackTimer
 @onready var javelinBase = $Attack/JavelinBase
+@onready var debug_label = $GUILayer/GUI/debug_label
+@onready var debug_label2 = $GUILayer/GUI/debug_label2
 
 # IceSpear
 var icespear_ammo = 0
@@ -70,26 +72,40 @@ var additional_attacks = 0
 
 func _ready():
 	upgrade_character("icespear1")
-	attack()
+	#attack()
 	set_experience_bar(experience, calculate_experience_cap())
 	_on_hurt_box_hurt(0, 0, 0)
 	OS.open_midi_inputs() #
 	print(OS.get_connected_midi_inputs()) #
+	
+var notes_pressed = []
+
+func convert_beat_to_measure(beat):
+	if int(beat) % conductor_node.get_number_of_measures() == 0:
+		return conductor_node.get_number_of_measures()
+	else:
+		return int(beat) % conductor_node.get_number_of_measures()
 
 func _input(input_event): #
 	if input_event is InputEventMIDI:
 		_print_midi_info(input_event)
 		if input_event.message == 9: #noteOn
-			if input_event.pitch == 60: #C
-				#Input.action_press("move_left")
-				icespear_ammo += 1
+			debug_label.text = "closest measure: " + str(convert_beat_to_measure(conductor_node.closest_beat(conductor_node.get_song_position_in_beats()).x))
+			debug_label2.text = "time off: " + str(conductor_node.closest_beat(conductor_node.get_song_position_in_beats()).y)
+			if input_event.pitch == 60:
+				notes_pressed.append(Vector2(60, conductor_node.get_measure()))
 			if input_event.pitch == 63: #Dsharp
-				Input.action_press("move_up")
-				Input.action_press("move_right")
+				pass
+			if input_event.pitch == 65: #F
+				pass
 			if input_event.pitch == 64: #E
-				Input.action_press("move_down")
+				notes_pressed.append(Vector2(64, conductor_node.get_measure()))
 		if input_event.message == 8: #noteOff
 			if input_event.pitch == 60: #C
+				for note in notes_pressed:
+					if note.x == 60:
+						notes_pressed.erase(note)
+				print("notes pressed: ", notes_pressed)
 				Input.action_release("move_left")
 			if input_event.pitch == 63: #Dsharp
 				Input.action_release("move_up")
@@ -97,6 +113,10 @@ func _input(input_event): #
 				Input.action_release("move_right")
 			if input_event.pitch == 64: #E
 				Input.action_release("move_down")
+				for note in notes_pressed:
+					if note.x == 64:
+						notes_pressed.erase(note)
+				#notes_pressed.erase(Vector2(64, conductor_node.get_measure()))
 
 func _print_midi_info(midi_event: InputEventMIDI): #
 	#msg 9 is note on. msg 8 is note off. pitch 0 is idle msg
@@ -111,7 +131,6 @@ func _print_midi_info(midi_event: InputEventMIDI): #
 	#print("Controller number: " + str(midi_event.controller_number))
 	#print("Controller value: " + str(midi_event.controller_value))
 
-	
 	
 func _process(delta):
 	choose_animation()
@@ -128,12 +147,29 @@ func _process(delta):
 
 func _physics_process(_delta):
 	movement()
-	
-#func shoot_icespear():
-	#if iceSpearTimer.is_stopped():
-		#iceSpearTimer.start()
-	#if icespear_level > 0:
-		#iceSpearTimer.wait_time = icespear_attackspeed * (1 - spell_cooldown)
+	while (notes_pressed.has(Vector2(60, 1)) and notes_pressed.has(Vector2(64,1))) == true:
+		print("while loop true")
+		shoot_icespear()
+		notes_pressed.erase(Vector2(60, 1))
+		notes_pressed.erase(Vector2(64, 1))
+		#pass
+		
+func shoot_icespear():
+	icespear_ammo += 1
+	#if icespear_ammo > 0:
+	var icespear_attack = iceSpear.instantiate()
+	icespear_attack.position = position
+	#icespear_attack.target = get_random_target()
+	icespear_attack.target = get_closest_target()
+	icespear_attack.level = icespear_level
+	add_child(icespear_attack)
+	icespear_ammo -= 1
+	#if icespear_ammo > 0:
+		#iceSpearAttackTimer.start()
+	#else:
+		#iceSpearAttackTimer.stop()
+	#icespear_ammo += icespear_baseammo + additional_attacks
+	#iceSpearAttackTimer.start()
 	
 func attack():
 	if icespear_level > 0:
@@ -171,11 +207,14 @@ func _on_hurt_box_hurt(damage, _angle, _knockback):
 	hp -= clamp(damage - armor, 1, 999.0)
 	health_bar.max_value = max_hp
 	health_bar.value = hp
+	#if hp <= 0: # break the game on death for sais kids lol
+		#get_tree().pause()
 	
 func sprite_flash() -> void:
 	var tween: Tween = create_tween()
 	tween.tween_property($Sprite2D, "modulate:v", 1, 0.25).from(15)
 	tween.play()
+
 
 func _on_ice_spear_attack_timer_timeout(): #shooting
 	if icespear_ammo > 0:

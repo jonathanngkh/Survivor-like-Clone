@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c6uuvcthpociv"]
+[gd_scene load_steps=21 format=3 uid="uid://c6uuvcthpociv"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_6neil"]
 [ext_resource type="PackedScene" uid="uid://c3p0e8l8amscb" path="res://Utility/hurt_box.tscn" id="3_5rw0d"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://cplhbr5ulpehv" path="res://Audio/SoundEffect/levelup.ogg" id="8_06ysp"]
 [ext_resource type="Texture2D" uid="uid://dtpbmm67c0u4j" path="res://Textures/GUI/healthbar.png" id="9_3x2jh"]
 [ext_resource type="Texture2D" uid="uid://7j1t26gnx2vm" path="res://Textures/GUI/health.png" id="10_1ttgu"]
+[ext_resource type="FontFile" uid="uid://dejderl1lu6q2" path="res://Font/monogram.ttf" id="11_3sg46"]
 
 [sub_resource type="Animation" id="Animation_wv3ay"]
 length = 0.001
@@ -395,21 +396,25 @@ offset_right = 1383.0
 offset_bottom = 992.0
 
 [node name="ColorRect1" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.278431, 0.278431, 0.278431, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.278431, 0.278431, 0.278431, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.278431, 0.278431, 0.278431, 1)
 
 [node name="ColorRect4" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.278431, 0.278431, 0.278431, 1)
@@ -516,6 +521,26 @@ visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.278431, 0.278431, 0.278431, 1)
+
+[node name="debug_label" type="Label" parent="GUILayer/GUI"]
+layout_mode = 0
+offset_left = 1218.0
+offset_top = 1025.0
+offset_right = 1338.0
+offset_bottom = 1076.0
+theme_override_fonts/font = ExtResource("11_3sg46")
+theme_override_font_sizes/font_size = 64
+text = "debug"
+
+[node name="debug_label2" type="Label" parent="GUILayer/GUI"]
+layout_mode = 0
+offset_left = 1218.0
+offset_top = 1099.0
+offset_right = 1338.0
+offset_bottom = 1150.0
+theme_override_fonts/font = ExtResource("11_3sg46")
+theme_override_font_sizes/font_size = 64
+text = "debug2"
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 [connection signal="timeout" from="Attack/IceSpearTimer" to="." method="_on_ice_spear_timer_timeout"]

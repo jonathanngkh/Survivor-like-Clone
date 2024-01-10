@@ -1,6 +1,6 @@
+Label
 ColorRect
 HBoxContainer
-Label
 Timer
 AudioStreamPlayer
 GridContainer

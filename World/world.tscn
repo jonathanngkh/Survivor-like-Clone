@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cjkdpm3u3wqut"]
+[gd_scene load_steps=20 format=3 uid="uid://cjkdpm3u3wqut"]
 
 [ext_resource type="Texture2D" uid="uid://cv5dyyv664lsv" path="res://Textures/Grass square.png" id="1_yaypj"]
 [ext_resource type="PackedScene" uid="uid://c6uuvcthpociv" path="res://Player/player.tscn" id="2_rlem7"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bbge5wi6ymxj0" path="res://Enemy/enemy_skull.tscn" id="6_gcdm1"]
 [ext_resource type="PackedScene" uid="uid://dparb0oln5dfh" path="res://Enemy/enemy_nightmare.tscn" id="7_xwnl7"]
 [ext_resource type="PackedScene" uid="uid://by2h2cbjqpp3g" path="res://conductor.tscn" id="9_mdibg"]
+[ext_resource type="AudioStream" uid="uid://cp1cdtl28ruoy" path="res://Audio/Music/110 Battle 1.wav" id="10_i1u04"]
 
 [sub_resource type="Resource" id="Resource_rxj4u"]
 script = ExtResource("5_kyr6r")
@@ -100,7 +101,8 @@ spawns = Array[ExtResource("5_kyr6r")]([SubResource("Resource_rxj4u"), SubResour
 [node name="Loot" type="Node2D" parent="." groups=["loot"]]
 
 [node name="Conductor" parent="." instance=ExtResource("9_mdibg")]
-volume_db = -20.0
+stream = ExtResource("10_i1u04")
+volume_db = -15.0
 autoplay = true
 
 [connection signal="beat" from="Conductor" to="Player" method="_on_conductor_beat"]
