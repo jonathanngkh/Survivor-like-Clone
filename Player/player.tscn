@@ -1,16 +1,127 @@
-[gd_scene load_steps=21 format=3 uid="uid://c6uuvcthpociv"]
+[gd_scene load_steps=48 format=3 uid="uid://c6uuvcthpociv"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_6neil"]
 [ext_resource type="PackedScene" uid="uid://c3p0e8l8amscb" path="res://Utility/hurt_box.tscn" id="3_5rw0d"]
+[ext_resource type="Texture2D" uid="uid://daxpl1oeht4bu" path="res://Textures/Player/Eleanore/e_idle/Idle1.png" id="3_k85mk"]
 [ext_resource type="Texture2D" uid="uid://hjakswftn2d6" path="res://Textures/B_witch_idle.png" id="3_l6p72"]
+[ext_resource type="Texture2D" uid="uid://mufcr6utf2uc" path="res://Textures/Player/Eleanore/e_idle/Idle2.png" id="4_806ul"]
 [ext_resource type="Texture2D" uid="uid://cu7sdjuwmkgk0" path="res://Textures/B_witch_run.png" id="4_yew47"]
+[ext_resource type="Texture2D" uid="uid://dk585cnn17iqg" path="res://Textures/Player/Eleanore/e_idle/Idle3.png" id="5_kx57d"]
 [ext_resource type="Texture2D" uid="uid://yx5fbbptmi7t" path="res://Textures/GUI/exp_background.png" id="5_vid1r"]
+[ext_resource type="Texture2D" uid="uid://cx7ed1smpbh6a" path="res://Textures/Player/Eleanore/e_idle/Idle4.png" id="6_3w8dt"]
 [ext_resource type="Texture2D" uid="uid://bd5cbriis3pd5" path="res://Textures/GUI/exp_progress.png" id="6_yvm8b"]
+[ext_resource type="Texture2D" uid="uid://bidqra8knpe7e" path="res://Textures/Player/Eleanore/e_idle/Idle5.png" id="7_1grm5"]
 [ext_resource type="FontFile" uid="uid://eltw4hqqgcsj" path="res://Font/tenderness.otf" id="7_inp14"]
 [ext_resource type="AudioStream" uid="uid://cplhbr5ulpehv" path="res://Audio/SoundEffect/levelup.ogg" id="8_06ysp"]
+[ext_resource type="Texture2D" uid="uid://cacpycqnnff5s" path="res://Textures/Player/Eleanore/e_idle/Idle6.png" id="8_il7uq"]
 [ext_resource type="Texture2D" uid="uid://dtpbmm67c0u4j" path="res://Textures/GUI/healthbar.png" id="9_3x2jh"]
+[ext_resource type="Texture2D" uid="uid://caixfhvywocwi" path="res://Textures/Player/Eleanore/e_idle/Idle7.png" id="9_gaagm"]
 [ext_resource type="Texture2D" uid="uid://7j1t26gnx2vm" path="res://Textures/GUI/health.png" id="10_1ttgu"]
+[ext_resource type="Texture2D" uid="uid://bsagdcylbfnkn" path="res://Textures/Player/Eleanore/e_idle/Idle8.png" id="10_k0hsn"]
 [ext_resource type="FontFile" uid="uid://dejderl1lu6q2" path="res://Font/monogram.ttf" id="11_3sg46"]
+[ext_resource type="Texture2D" uid="uid://dw3xfqn31fgp0" path="res://Textures/Player/Eleanore/e_idle/Idle9.png" id="11_ay0nw"]
+[ext_resource type="Texture2D" uid="uid://c07ajhcpdll0u" path="res://Textures/Player/Eleanore/e_walk/Moving1.png" id="12_3ow2d"]
+[ext_resource type="Texture2D" uid="uid://d37kqqnhsu6is" path="res://Textures/Player/Eleanore/e_walk/Moving2.png" id="13_trr7d"]
+[ext_resource type="Texture2D" uid="uid://dvyvgnb2qmkfo" path="res://Textures/Player/Eleanore/e_walk/Moving3.png" id="14_v30yg"]
+[ext_resource type="Texture2D" uid="uid://xe3magivjate" path="res://Textures/Player/Eleanore/e_walk/Moving4.png" id="15_76yid"]
+[ext_resource type="Texture2D" uid="uid://c0n10s8akn4u5" path="res://Textures/Player/Eleanore/e_walk/Moving5.png" id="16_ns0i4"]
+[ext_resource type="Texture2D" uid="uid://b0qb6cv6lx2dn" path="res://Textures/Player/Eleanore/e_walk/Moving6.png" id="17_8kdyr"]
+[ext_resource type="Texture2D" uid="uid://dqxy7ucsdpbrp" path="res://Textures/Player/Eleanore/e_walk/Moving7.png" id="18_ged6q"]
+[ext_resource type="Texture2D" uid="uid://jh1jsj6ve7h4" path="res://Textures/Player/Eleanore/e_walk/Moving8.png" id="19_16yne"]
+[ext_resource type="Texture2D" uid="uid://bcar7ehi7dvae" path="res://Textures/Player/Eleanore/e_walk_start/Move1.png" id="20_kxkyw"]
+[ext_resource type="Texture2D" uid="uid://d2fqr80ib3hjo" path="res://Textures/Player/Eleanore/e_walk_start/Move2.png" id="21_ov86l"]
+[ext_resource type="Texture2D" uid="uid://6uc1h8ayya1i" path="res://Textures/Player/Eleanore/e_walk_stop/Move11.png" id="22_c25la"]
+[ext_resource type="Texture2D" uid="uid://cowyg1wd1ams0" path="res://Textures/Player/Eleanore/e_walk_stop/Move12.png" id="23_nm4lr"]
+[ext_resource type="Texture2D" uid="uid://dmuhb8qmpwrdn" path="res://Textures/Player/Eleanore/e_walk_stop/Move13.png" id="24_o8anp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e63hs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_k85mk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_806ul")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_kx57d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_3w8dt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_1grm5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_il7uq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_gaagm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_k0hsn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ay0nw")
+}],
+"loop": true,
+"name": &"eleanore_idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_3ow2d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_trr7d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_v30yg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_76yid")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ns0i4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_8kdyr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_ged6q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_16yne")
+}],
+"loop": true,
+"name": &"eleanore_walk",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_kxkyw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_ov86l")
+}],
+"loop": false,
+"name": &"eleanore_walk_start",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_c25la")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_nm4lr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_o8anp")
+}],
+"loop": true,
+"name": &"eleanore_walk_stop",
+"speed": 10.0
+}]
 
 [sub_resource type="Animation" id="Animation_wv3ay"]
 length = 0.001
@@ -57,6 +168,42 @@ tracks/3/path = NodePath("Sprite2D:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimatedSprite2D:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"eleanore_idle"]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimatedSprite2D:sprite_frames")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("SpriteFrames_e63hs")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AnimatedSprite2D:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -169,9 +316,173 @@ tracks/3/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 
+[sub_resource type="Animation" id="Animation_6ury1"]
+resource_name = "eleanore_idle"
+length = 0.90001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"eleanore_idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:sprite_frames")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("SpriteFrames_e63hs")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_bh72x"]
+resource_name = "eleanore_walk"
+length = 0.80001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:sprite_frames")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("SpriteFrames_e63hs")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"eleanore_walk"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_w0f60"]
+resource_name = "eleanore_walk_start"
+length = 0.20001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:sprite_frames")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("SpriteFrames_e63hs")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"eleanore_walk_start"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_l7gqm"]
+resource_name = "eleanore_walk_stop"
+length = 0.30001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:sprite_frames")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("SpriteFrames_e63hs")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"eleanore_walk_stop"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lgnag"]
 _data = {
 "RESET": SubResource("Animation_wv3ay"),
+"eleanore_idle": SubResource("Animation_6ury1"),
+"eleanore_walk": SubResource("Animation_bh72x"),
+"eleanore_walk_start": SubResource("Animation_w0f60"),
+"eleanore_walk_stop": SubResource("Animation_l7gqm"),
 "witch_idle": SubResource("Animation_suoi2"),
 "witch_walk": SubResource("Animation_v4n5j")
 }
@@ -198,6 +509,7 @@ movement_speed = 40.0
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("3_l6p72")
 vframes = 6
 
@@ -205,6 +517,10 @@ vframes = 6
 libraries = {
 "": SubResource("AnimationLibrary_lgnag")
 }
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_e63hs")
+animation = &"eleanore_idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
@@ -244,6 +560,7 @@ wait_time = 0.2
 [node name="JavelinBase" type="Node2D" parent="Attack"]
 
 [node name="EnemyDetectionArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 4
 collision_mask = 4
 monitorable = false
@@ -252,6 +569,7 @@ monitorable = false
 shape = SubResource("CircleShape2D_knu3q")
 
 [node name="GrabArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 8
 
@@ -259,6 +577,7 @@ collision_mask = 8
 shape = SubResource("CircleShape2D_lnbf2")
 
 [node name="CollectArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 8
 
@@ -266,6 +585,7 @@ collision_mask = 8
 shape = SubResource("CircleShape2D_435xq")
 
 [node name="GUILayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="GUI" type="Control" parent="GUILayer"]
 custom_minimum_size = Vector2(2560, 1440)

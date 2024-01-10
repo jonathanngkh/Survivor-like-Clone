@@ -71,6 +71,7 @@ var additional_attacks = 0
 
 
 func _ready():
+	animator.queue("eleanore_idle")
 	upgrade_character("icespear1")
 	#attack()
 	set_experience_bar(experience, calculate_experience_cap())
@@ -183,24 +184,53 @@ func attack():
 	if javelin_level > 0:
 		spawn_javelin()
 	
+var last_velocity = 0	
+
 func movement():
-	#get_action_strength is a boolean. 1 or 0
+	# get_action_strength is a boolean. 1 or 0
 	var x_mov = Input.get_action_strength("right") - Input.get_action_strength("left")
 	var y_mov = Input.get_action_strength("down") - Input.get_action_strength("up")
 	var mov = Vector2(x_mov, y_mov)
-	if not mov == Vector2.ZERO:
-		$Sprite2D.flip_h = mov.x < 0
+	#$AnimatedSprite2D.flip_h = mov.x < 0
+	if mov.x < 0:
+		$AnimatedSprite2D.flip_h = true
+	elif mov.x > 0:
+		$AnimatedSprite2D.flip_h = false
+		
+	if not mov == Vector2.ZERO: # moving
 		last_movement = mov
-	else:
-		pass
+		
+	last_velocity = velocity
 	velocity = mov.normalized() * movement_speed
 	move_and_slide()
 	
 func choose_animation():
-	if velocity.x != 0 or velocity.y !=0:
-		animator.play("witch_walk")
+	#if velocity.x != 0 or velocity.y != 0:
+	if velocity != Vector2(0, 0): # moving
+		if last_velocity == Vector2(0, 0): # previously not moving
+			if animator.get_current_animation() != "eleanore_walk" and not animator.get_queue().has("eleanore_walk"):
+				print("hi")
+				animator.stop()
+				animator.queue("eleanore_walk_start")
+				animator.queue("eleanore_walk")
+		else:
+			if animator.get_current_animation() != "eleanore_walk" and not animator.get_queue().has("eleanore_walk"):
+				animator.stop()
+				animator.queue("eleanore_walk")
+		#animator.stop()
 	else:
-		animator.play("witch_idle")
+		# not moving
+		if not last_velocity.x == 0 or not last_velocity.y == 0:
+			# previously moving
+			if animator.get_current_animation() != "eleanore_idle" and not animator.get_queue().has("eleanore_idle"):
+				print('bye')
+				animator.stop()
+				animator.queue("eleanore_walk_stop")
+				animator.queue("eleanore_idle")
+		else:
+			if animator.get_current_animation() != "eleanore_idle" and not animator.get_queue().has("eleanore_idle"):
+				animator.stop()
+				animator.queue("eleanore_idle")
 
 func _on_hurt_box_hurt(damage, _angle, _knockback):
 	sprite_flash()
@@ -212,7 +242,7 @@ func _on_hurt_box_hurt(damage, _angle, _knockback):
 	
 func sprite_flash() -> void:
 	var tween: Tween = create_tween()
-	tween.tween_property($Sprite2D, "modulate:v", 1, 0.25).from(15)
+	tween.tween_property($AnimatedSprite2D, "modulate:v", 1, 0.25).from(15)
 	tween.play()
 
 

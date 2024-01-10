@@ -1,7 +1,7 @@
-res://conductor.tscn
-res://Utility/spawn_info.gd
-res://Player/player.gd
 res://World/world.tscn
+res://Utility/spawn_info.gd
 res://Player/player.tscn
-res://Conductor.gd
+res://conductor.tscn
 res://Player/Attack/ice_spear.tscn
+res://Player/player.gd
+res://Enemy/enemy.tscn
