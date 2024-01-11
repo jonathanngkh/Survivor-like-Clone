@@ -123,7 +123,7 @@ func _input(input_event): #
 						notes_pressed.erase(note)
 				#notes_pressed.erase(Vector2(64, conductor_node.get_measure()))
 
-func _print_midi_info(midi_event: InputEventMIDI): #
+func _print_midi_info(midi_event: InputEventMIDI):
 	#msg 9 is note on. msg 8 is note off. pitch 0 is idle msg
 	if (midi_event.pitch != 0 && midi_event.message == 9):
 		print(midi_event)
@@ -210,16 +210,72 @@ func movement():
 	last_velocity = velocity
 	velocity = mov.normalized() * movement_speed
 	move_and_slide()
+	
+func _on_animation_tree_animation_finished(anim_name):
+	if anim_name == "eleanore_attack_1" and current_state == "attack2":
+		# combo2 triggered but still on anim1
+		pass
+	elif anim_name == "eleanore_attack_2" and current_state == "attack3":
+		# combo3 triggered but still on anim2
+		pass
+	elif anim_name == "eleanore_attack_2":
+		current_state = "idle"
+		is_attacking = false
+		can_input = false
+	elif anim_name == "eleanore_attack_3":
+		current_state = "idle"
+		is_attacking = false
+		can_input = false
+	else:
+		current_state = "idle"
+		is_attacking = false
+		can_input = false
 
+func ready_for_input():
+	can_input = true
+	
+var can_input = false
+var states = ["attack1", "attack2", "attack3", "idle", "moving"]
+var current_state = "idle"
+var is_attacking = false
 
 func update_animation_parameters():
-	if Input.is_action_just_pressed("p1_attack"): # attacking
-		state_machine.travel("eleanore_attack_1")
-	else: # not attacking
-		if velocity == Vector2.ZERO: # stationary
+	if is_attacking == true:
+		if Input.is_action_just_pressed("p1_attack"):
+			if current_state == "attack1" and can_input == true:
+				state_machine.travel("eleanore_attack_2")
+				current_state = "attack2"
+				is_attacking = true
+			elif current_state == "attack2" and can_input == true:
+				state_machine.travel("eleanore_attack_3")
+				current_state = "attack3"
+				is_attacking = true
+	else: # is_attacking == false:
+		if Input.is_action_just_pressed("p1_attack"):
+			state_machine.travel("eleanore_attack_1")
+			current_state = "attack1"
+			is_attacking = true
+		elif velocity == Vector2.ZERO: # stationary
 			state_machine.travel("eleanore_idle")
+			is_attacking = false
 		else: # moving
 			state_machine.travel("eleanore_walk")
+			is_attacking = false
+			
+	#if Input.is_action_just_pressed("p1_attack"): # attacking
+		#if current_state == "idle":
+			#state_machine.travel("eleanore_attack_1")
+			#current_state = "attack1"
+			#is_attacking = true
+		#elif current_state == "attack1":
+			#state_machine.travel("eleanore_attack_2")
+			#current_state = "attack2"
+			#print("atk2")
+	#else: # not attacking
+		#if velocity == Vector2.ZERO: # stationary
+			#state_machine.travel("eleanore_idle")
+		#else: # moving
+			#state_machine.travel("eleanore_walk")
 
 func _on_hurt_box_hurt(damage, _angle, _knockback):
 	sprite_flash()
@@ -557,3 +613,6 @@ func _on_conductor_number_of_measures(measures):
 	while counter < measures:
 		$GUILayer/GUI/HBoxContainer2.get_children()[counter].visible = true
 		counter += 1
+
+
+
