@@ -1,3 +1,4 @@
+AnimationTree
 AnimatedSprite2D
 Label
 ColorRect
@@ -12,4 +13,3 @@ TextureButton
 VBoxContainer
 Panel
 Control
-CanvasLayer

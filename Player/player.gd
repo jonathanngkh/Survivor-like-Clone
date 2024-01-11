@@ -53,6 +53,8 @@ var spell_size = 0
 var additional_attacks = 0
 
 @onready var animator = $AnimationPlayer
+@onready var animation_tree = $AnimationTree
+@onready var state_machine = animation_tree["parameters/playback"]
 
 # GUI
 @onready var experience_bar = $GUILayer/GUI/ExperienceBar
@@ -71,7 +73,8 @@ var additional_attacks = 0
 
 
 func _ready():
-	animator.queue("eleanore_idle")
+	animation_tree.active = true
+	#animator.queue("eleanore_idle")
 	upgrade_character("icespear1")
 	#attack()
 	set_experience_bar(experience, calculate_experience_cap())
@@ -87,6 +90,7 @@ func convert_beat_to_measure(beat):
 	else:
 		return int(beat) % conductor_node.get_number_of_measures()
 
+#region Midi Stuff
 func _input(input_event): #
 	if input_event is InputEventMIDI:
 		_print_midi_info(input_event)
@@ -131,10 +135,13 @@ func _print_midi_info(midi_event: InputEventMIDI): #
 	#print("Pressure " + str(midi_event.pressure))
 	#print("Controller number: " + str(midi_event.controller_number))
 	#print("Controller value: " + str(midi_event.controller_value))
+#endregion
 
 	
 func _process(delta):
-	choose_animation()
+	#attack_combo()
+	#choose_animation()
+	update_animation_parameters()
 #region camera zooming
 	var max_zoom = 1
 	if Input.is_action_just_released("zoom_in"):
@@ -154,7 +161,7 @@ func _physics_process(_delta):
 		notes_pressed.erase(Vector2(60, 1))
 		notes_pressed.erase(Vector2(64, 1))
 		#pass
-		
+
 func shoot_icespear():
 	icespear_ammo += 1
 	#if icespear_ammo > 0:
@@ -184,7 +191,7 @@ func attack():
 	if javelin_level > 0:
 		spawn_javelin()
 	
-var last_velocity = 0	
+var last_velocity = 0
 
 func movement():
 	# get_action_strength is a boolean. 1 or 0
@@ -203,34 +210,16 @@ func movement():
 	last_velocity = velocity
 	velocity = mov.normalized() * movement_speed
 	move_and_slide()
-	
-func choose_animation():
-	#if velocity.x != 0 or velocity.y != 0:
-	if velocity != Vector2(0, 0): # moving
-		if last_velocity == Vector2(0, 0): # previously not moving
-			if animator.get_current_animation() != "eleanore_walk" and not animator.get_queue().has("eleanore_walk"):
-				print("hi")
-				animator.stop()
-				animator.queue("eleanore_walk_start")
-				animator.queue("eleanore_walk")
-		else:
-			if animator.get_current_animation() != "eleanore_walk" and not animator.get_queue().has("eleanore_walk"):
-				animator.stop()
-				animator.queue("eleanore_walk")
-		#animator.stop()
-	else:
-		# not moving
-		if not last_velocity.x == 0 or not last_velocity.y == 0:
-			# previously moving
-			if animator.get_current_animation() != "eleanore_idle" and not animator.get_queue().has("eleanore_idle"):
-				print('bye')
-				animator.stop()
-				animator.queue("eleanore_walk_stop")
-				animator.queue("eleanore_idle")
-		else:
-			if animator.get_current_animation() != "eleanore_idle" and not animator.get_queue().has("eleanore_idle"):
-				animator.stop()
-				animator.queue("eleanore_idle")
+
+
+func update_animation_parameters():
+	if Input.is_action_just_pressed("p1_attack"): # attacking
+		state_machine.travel("eleanore_attack_1")
+	else: # not attacking
+		if velocity == Vector2.ZERO: # stationary
+			state_machine.travel("eleanore_idle")
+		else: # moving
+			state_machine.travel("eleanore_walk")
 
 func _on_hurt_box_hurt(damage, _angle, _knockback):
 	sprite_flash()
@@ -315,21 +304,18 @@ func get_closest_target() -> Vector2: #static typing
 	else:
 		return Vector2.UP
 
-
 func _on_enemy_detection_area_body_entered(body):
 	if not enemy_close.has(body):
 		enemy_close.append(body)
-
 
 func _on_enemy_detection_area_body_exited(body):
 	if enemy_close.has(body):
 		enemy_close.erase(body)
 
-
+#region Experience and Level Up
 func _on_grab_area_area_entered(area):
 	if area.is_in_group("loot"):
 		area.target = self
-
 
 func _on_collect_area_area_entered(area):
 	if area.is_in_group("loot"):
@@ -466,6 +452,7 @@ func get_random_item():
 		return random_item
 	else:
 		return null # defaults to food if no upgrades apply
+#endregion
 		
 func change_time(argtime = 0):
 	time = argtime
@@ -494,9 +481,6 @@ func adjust_gui_collection(upgrade):
 					collected_upgrades_container.add_child(new_item)
 
 
-
-	
-	
 func flash(rect) -> void:
 	var tween: Tween = create_tween()
 	tween.tween_property(rect, "modulate:v", 1, 0.1).from(15)
@@ -573,4 +557,3 @@ func _on_conductor_number_of_measures(measures):
 	while counter < measures:
 		$GUILayer/GUI/HBoxContainer2.get_children()[counter].visible = true
 		counter += 1
-		
