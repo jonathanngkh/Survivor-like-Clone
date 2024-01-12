@@ -1,6 +1,5 @@
-[gd_scene load_steps=25 format=3 uid="uid://cjkdpm3u3wqut"]
+[gd_scene load_steps=24 format=3 uid="uid://cjkdpm3u3wqut"]
 
-[ext_resource type="Texture2D" uid="uid://cv5dyyv664lsv" path="res://Textures/Grass square.png" id="1_yaypj"]
 [ext_resource type="Texture2D" uid="uid://b6t8hgeek4kfh" path="res://Textures/wol huge air map.png" id="2_6ka0j"]
 [ext_resource type="PackedScene" uid="uid://c6uuvcthpociv" path="res://Player/player.tscn" id="2_rlem7"]
 [ext_resource type="PackedScene" uid="uid://ds1caoj3877wy" path="res://Enemy/enemy_skeleton.tscn" id="3_4kpfq"]
@@ -12,9 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://dparb0oln5dfh" path="res://Enemy/enemy_nightmare.tscn" id="7_xwnl7"]
 [ext_resource type="PackedScene" uid="uid://by2h2cbjqpp3g" path="res://conductor.tscn" id="9_mdibg"]
 [ext_resource type="AudioStream" uid="uid://cp1cdtl28ruoy" path="res://Audio/Music/110 Battle 1.wav" id="10_i1u04"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_10ttd"]
-size = Vector2(66, 62)
 
 [sub_resource type="Resource" id="Resource_rxj4u"]
 script = ExtResource("5_kyr6r")
@@ -94,25 +90,12 @@ size = Vector2(5896.25, 378.125)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gkxae"]
 size = Vector2(66.25, 1940)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_10ttd"]
+size = Vector2(66, 62)
+
 [node name="World" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [-474.0, 490.0]
 metadata/_edit_vertical_guides_ = [-1310.0, 1310.0]
-
-[node name="Background" type="Sprite2D" parent="."]
-visible = false
-texture_filter = 3
-texture_repeat = 2
-texture = ExtResource("1_yaypj")
-region_enabled = true
-region_rect = Rect2(-4000, -4000, 4000, 4000)
-
-[node name="Background2" type="Sprite2D" parent="."]
-visible = false
-texture_filter = 3
-texture_repeat = 2
-texture = ExtResource("1_yaypj")
-region_enabled = true
-region_rect = Rect2(-4000, -4000, 4000, 4000)
 
 [node name="WolBackGround" type="Sprite2D" parent="."]
 position = Vector2(-76, -423)
@@ -121,112 +104,6 @@ texture = ExtResource("2_6ka0j")
 offset = Vector2(150.5, 1028.5)
 
 [node name="Player" parent="." instance=ExtResource("2_rlem7")]
-
-[node name="Statue" type="CharacterBody2D" parent="."]
-position = Vector2(349, -180)
-
-[node name="Sprite2D" type="Sprite2D" parent="Statue"]
-position = Vector2(-0.999999, 26)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("4_rvfn6")
-offset = Vector2(-10, -12.5)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Statue"]
-position = Vector2(-9, 44)
-shape = SubResource("RectangleShape2D_10ttd")
-
-[node name="Statue5" type="CharacterBody2D" parent="."]
-position = Vector2(-388, -180)
-
-[node name="Sprite2D" type="Sprite2D" parent="Statue5"]
-position = Vector2(-0.999999, 26)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("4_rvfn6")
-offset = Vector2(-10, -12.5)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Statue5"]
-position = Vector2(-9, 44)
-shape = SubResource("RectangleShape2D_10ttd")
-
-[node name="Statue6" type="CharacterBody2D" parent="."]
-position = Vector2(-388, 40)
-
-[node name="Sprite2D" type="Sprite2D" parent="Statue6"]
-position = Vector2(-0.999999, 26)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("4_rvfn6")
-offset = Vector2(-10, -12.5)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Statue6"]
-position = Vector2(-9, 44)
-shape = SubResource("RectangleShape2D_10ttd")
-
-[node name="Statue7" type="CharacterBody2D" parent="."]
-position = Vector2(-1106, 40)
-
-[node name="Sprite2D" type="Sprite2D" parent="Statue7"]
-position = Vector2(-0.999999, 26)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("4_rvfn6")
-offset = Vector2(-10, -12.5)
-flip_h = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Statue7"]
-position = Vector2(-1, 44)
-shape = SubResource("RectangleShape2D_10ttd")
-
-[node name="Statue8" type="CharacterBody2D" parent="."]
-position = Vector2(-1107, -180)
-
-[node name="Sprite2D" type="Sprite2D" parent="Statue8"]
-position = Vector2(-0.999999, 26)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("4_rvfn6")
-offset = Vector2(-10, -12.5)
-flip_h = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Statue8"]
-position = Vector2(-1, 44)
-shape = SubResource("RectangleShape2D_10ttd")
-
-[node name="Statue2" type="CharacterBody2D" parent="."]
-position = Vector2(349, 40)
-
-[node name="Sprite2D" type="Sprite2D" parent="Statue2"]
-position = Vector2(-0.999999, 26)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("4_rvfn6")
-offset = Vector2(-10, -12.5)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Statue2"]
-position = Vector2(-9, 44)
-shape = SubResource("RectangleShape2D_10ttd")
-
-[node name="Statue3" type="CharacterBody2D" parent="."]
-position = Vector2(1085, 40)
-
-[node name="Sprite2D" type="Sprite2D" parent="Statue3"]
-position = Vector2(-0.999999, 26)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("4_rvfn6")
-offset = Vector2(-10, -12.5)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Statue3"]
-position = Vector2(-9, 44)
-shape = SubResource("RectangleShape2D_10ttd")
-
-[node name="Statue4" type="CharacterBody2D" parent="."]
-position = Vector2(1085, -180)
-
-[node name="Sprite2D" type="Sprite2D" parent="Statue4"]
-position = Vector2(-0.999999, 26)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("4_rvfn6")
-offset = Vector2(-10, -12.5)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Statue4"]
-position = Vector2(-9, 44)
-shape = SubResource("RectangleShape2D_10ttd")
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_gdiqe")]
 process_mode = 4
@@ -240,6 +117,7 @@ volume_db = -15.0
 autoplay = true
 
 [node name="Borders" type="CharacterBody2D" parent="."]
+visible = false
 
 [node name="TopBorder" type="CollisionShape2D" parent="Borders"]
 position = Vector2(-8, -359)
@@ -260,6 +138,117 @@ shape = SubResource("RectangleShape2D_gkxae")
 position = Vector2(-1165, 9)
 scale = Vector2(0.4, 0.4)
 shape = SubResource("RectangleShape2D_gkxae")
+
+[node name="Statues" type="Node2D" parent="."]
+
+[node name="Statue" type="CharacterBody2D" parent="Statues"]
+position = Vector2(349, -180)
+
+[node name="Sprite2D" type="Sprite2D" parent="Statues/Statue"]
+position = Vector2(-0.999999, 26)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_rvfn6")
+offset = Vector2(-10, -12.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Statues/Statue"]
+position = Vector2(-9, 44)
+shape = SubResource("RectangleShape2D_10ttd")
+
+[node name="Statue5" type="CharacterBody2D" parent="Statues"]
+position = Vector2(-388, -180)
+
+[node name="Sprite2D" type="Sprite2D" parent="Statues/Statue5"]
+position = Vector2(-0.999999, 26)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_rvfn6")
+offset = Vector2(-10, -12.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Statues/Statue5"]
+position = Vector2(-9, 44)
+shape = SubResource("RectangleShape2D_10ttd")
+
+[node name="Statue6" type="CharacterBody2D" parent="Statues"]
+position = Vector2(-388, 40)
+
+[node name="Sprite2D" type="Sprite2D" parent="Statues/Statue6"]
+position = Vector2(-0.999999, 26)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_rvfn6")
+offset = Vector2(-10, -12.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Statues/Statue6"]
+position = Vector2(-9, 44)
+shape = SubResource("RectangleShape2D_10ttd")
+
+[node name="Statue7" type="CharacterBody2D" parent="Statues"]
+position = Vector2(-1106, 40)
+
+[node name="Sprite2D" type="Sprite2D" parent="Statues/Statue7"]
+position = Vector2(-0.999999, 26)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_rvfn6")
+offset = Vector2(-10, -12.5)
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Statues/Statue7"]
+position = Vector2(-1, 44)
+shape = SubResource("RectangleShape2D_10ttd")
+
+[node name="Statue8" type="CharacterBody2D" parent="Statues"]
+position = Vector2(-1107, -180)
+
+[node name="Sprite2D" type="Sprite2D" parent="Statues/Statue8"]
+position = Vector2(-0.999999, 26)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_rvfn6")
+offset = Vector2(-10, -12.5)
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Statues/Statue8"]
+position = Vector2(-1, 44)
+shape = SubResource("RectangleShape2D_10ttd")
+
+[node name="Statue2" type="CharacterBody2D" parent="Statues"]
+position = Vector2(349, 40)
+
+[node name="Sprite2D" type="Sprite2D" parent="Statues/Statue2"]
+position = Vector2(-0.999999, 26)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_rvfn6")
+offset = Vector2(-10, -12.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Statues/Statue2"]
+position = Vector2(-9, 44)
+shape = SubResource("RectangleShape2D_10ttd")
+
+[node name="Statue3" type="CharacterBody2D" parent="Statues"]
+position = Vector2(1085, 40)
+
+[node name="Sprite2D" type="Sprite2D" parent="Statues/Statue3"]
+position = Vector2(-0.999999, 26)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_rvfn6")
+offset = Vector2(-10, -12.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Statues/Statue3"]
+position = Vector2(-9, 44)
+shape = SubResource("RectangleShape2D_10ttd")
+
+[node name="Statue4" type="CharacterBody2D" parent="Statues"]
+position = Vector2(1085, -180)
+
+[node name="Sprite2D" type="Sprite2D" parent="Statues/Statue4"]
+position = Vector2(-0.999999, 26)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_rvfn6")
+offset = Vector2(-10, -12.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Statues/Statue4"]
+position = Vector2(-9, 44)
+shape = SubResource("RectangleShape2D_10ttd")
+
+[node name="enemy_skeleton" parent="." instance=ExtResource("3_4kpfq")]
+position = Vector2(137, -2)
 
 [connection signal="beat" from="Conductor" to="Player" method="_on_conductor_beat"]
 [connection signal="number_of_measures" from="Conductor" to="Player" method="_on_conductor_number_of_measures"]

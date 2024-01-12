@@ -10,6 +10,12 @@ signal hurt(damage, angle, knockback)
 var hit_once_array = []
 
 func _on_area_entered(area):
+	#if area.is_in_group("magic_attack"):
+		#var damage = area.damage
+		#var angle = Vector2.ZERO
+		#var knockback
+		#emit_signal("hurt", damage, angle, knockback)
+		#area.enemy_hit(1)
 	if area.is_in_group("attack") and not area.get("damage") == null:
 		match HurtBoxType:
 			0: #CoolDown

@@ -1,7 +1,9 @@
+AudioStreamPlayer
 CollisionShape2D
+Area2D
+Node2D
 Sprite2D
 CharacterBody2D
-Node2D
 RigidBody2D
 AnimationTree
 AnimatedSprite2D
@@ -9,6 +11,4 @@ Label
 ColorRect
 HBoxContainer
 Timer
-AudioStreamPlayer
 GridContainer
-TextureRect

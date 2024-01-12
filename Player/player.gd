@@ -271,6 +271,7 @@ func update_animation_parameters():
 
 func _on_hurt_box_hurt(damage, _angle, _knockback):
 	sprite_flash()
+	$sound_damaged.play()
 	hp -= clamp(damage - armor, 1, 999.0)
 	health_bar.max_value = max_hp
 	health_bar.value = hp

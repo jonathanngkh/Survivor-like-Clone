@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://c6uuvcthpociv"]
+[gd_scene load_steps=118 format=3 uid="uid://c6uuvcthpociv"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_6neil"]
 [ext_resource type="PackedScene" uid="uid://c3p0e8l8amscb" path="res://Utility/hurt_box.tscn" id="3_5rw0d"]
@@ -61,7 +61,13 @@
 [ext_resource type="Texture2D" uid="uid://dqyao56o4ap7v" path="res://Textures/Player/Eleanore/e_attack_3/ComboAtk(FX)26.png" id="29_o634x"]
 [ext_resource type="Texture2D" uid="uid://bh1xmqekosqp1" path="res://Textures/Player/Eleanore/e_attack_3/ComboAtk(FX)27.png" id="30_7fre6"]
 [ext_resource type="Texture2D" uid="uid://jbx4xvyd1hxl" path="res://Textures/Player/Eleanore/e_attack_3/ComboAtk(FX)28.png" id="31_1qko0"]
+[ext_resource type="AudioStream" uid="uid://cw2chbvsrqupx" path="res://Audio/SoundEffect/02_Fire_Hold.wav" id="53_0nosf"]
+[ext_resource type="AudioStream" uid="uid://tgojql1wyvrw" path="res://Audio/SoundEffect/03_Fire_Throw.wav" id="53_k8kgu"]
+[ext_resource type="AudioStream" uid="uid://drrquvalm273c" path="res://Audio/SoundEffect/01_Fire_Cast.wav" id="55_nvtob"]
+[ext_resource type="AudioStream" uid="uid://00m5n8ckuh2p" path="res://Audio/SoundEffect/06_Fire_Shield.wav" id="56_bdaqp"]
+[ext_resource type="AudioStream" uid="uid://b0wl77cxfhs7h" path="res://Audio/SoundEffect/05_Fire_Explosion.wav" id="57_kvhn2"]
 [ext_resource type="Texture2D" uid="uid://by8pdrbjowkpv" path="res://Textures/GUI/stamina.png" id="60_y8d5x"]
+[ext_resource type="AudioStream" uid="uid://do3imwfj06tg5" path="res://Audio/SoundEffect/damaged2.wav" id="68_5tvaa"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e63hs"]
 animations = [{
@@ -251,6 +257,9 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bpdif"]
+size = Vector2(41.6638, 33.6962)
+
 [sub_resource type="Animation" id="Animation_btjq5"]
 resource_name = "eleanore_attack_1"
 length = 0.90001
@@ -316,6 +325,148 @@ tracks/4/keys = {
 "method": &"ready_for_input"
 }]
 }
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("sound_ambient_fire")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [],
+"times": PackedFloat32Array()
+}
+tracks/5/use_blend = true
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("sound_ambient_fire:stream")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("53_0nosf")]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("sound_ambient_fire:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.1, 0.8),
+"transitions": PackedFloat32Array(9.84915, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("sound_ambient_fire:volume_db")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.1, 0.5, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-7.647, -7.647, -18.437]
+}
+tracks/9/type = "audio"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("sound_fire_1")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"clips": [],
+"times": PackedFloat32Array()
+}
+tracks/9/use_blend = true
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("sound_fire_1:stream")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("53_k8kgu")]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("sound_fire_1:playing")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("sound_fire_1:volume_db")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-5.0]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("AttackArea/CollisionShape2D:disabled")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0.4, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("AttackArea/CollisionShape2D:shape")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("RectangleShape2D_bpdif")]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("AttackArea/CollisionShape2D:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(32.8481, 4)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("AttackArea/CollisionShape2D:rotation")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.57079]
+}
 
 [sub_resource type="Animation" id="Animation_2160l"]
 resource_name = "eleanore_attack_2"
@@ -368,6 +519,100 @@ tracks/3/keys = {
 "update": 0,
 "values": [1.0]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sound_ambient_fire")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [],
+"times": PackedFloat32Array()
+}
+tracks/4/use_blend = true
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("sound_fire_2")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [],
+"times": PackedFloat32Array()
+}
+tracks/5/use_blend = true
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("sound_fire_2:stream")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("55_nvtob")]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("sound_fire_2:volume_db")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-7.732]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("sound_fire_2:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("sound_ambient_fire:stream")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("53_0nosf")]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("sound_ambient_fire:volume_db")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-7.647, -35.941]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("sound_ambient_fire:playing")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="Animation" id="Animation_hueqi"]
 resource_name = "eleanore_attack_3"
@@ -419,6 +664,147 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [1.0]
+}
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sound_fire_3")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [],
+"times": PackedFloat32Array()
+}
+tracks/4/use_blend = true
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("sound_ambient_fire")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [],
+"times": PackedFloat32Array()
+}
+tracks/5/use_blend = true
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("sound_ambient_fire:stream")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("56_bdaqp")]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("sound_ambient_fire:volume_db")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-7.647]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("sound_ambient_fire:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("sound_fire_3:stream")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("57_kvhn2")]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("sound_fire_3:volume_db")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-14.0, -23.177]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("sound_fire_3:playing")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/12/type = "audio"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("sound_fire_1")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"clips": [],
+"times": PackedFloat32Array()
+}
+tracks/12/use_blend = true
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("sound_fire_1:stream")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("53_0nosf")]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("sound_fire_1:volume_db")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 1.20001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-5.438, -29.034]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("sound_fire_1:playing")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_6ury1"]
@@ -737,8 +1123,192 @@ tracks/3/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 
+[sub_resource type="Animation" id="Animation_ds8v5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sound_ambient_fire:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sound_ambient_fire:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-7.647]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sound_fire_1:stream")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("53_k8kgu")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sound_fire_1:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sound_fire_2:volume_db")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-7.732]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("sound_fire_2:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("sound_ambient_fire:stream")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("56_bdaqp")]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("sound_fire_3:stream")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("57_kvhn2")]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("sound_fire_3:volume_db")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-14.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("sound_fire_3:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("sound_fire_1:volume_db")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-7.732]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("AttackArea/CollisionShape2D:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("AttackArea/CollisionShape2D:shape")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("RectangleShape2D_bpdif")]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("AttackArea/CollisionShape2D:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(32.8481, 4)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("AttackArea/CollisionShape2D:rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.57079]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lgnag"]
 _data = {
+"RESET": SubResource("Animation_ds8v5"),
 "eleanore_attack_1": SubResource("Animation_btjq5"),
 "eleanore_attack_2": SubResource("Animation_2160l"),
 "eleanore_attack_3": SubResource("Animation_hueqi"),
@@ -750,11 +1320,31 @@ _data = {
 "witch_walk": SubResource("Animation_v4n5j")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6gusu"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wsnjk"]
 animation = &"eleanore_attack_1"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u01cr"]
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_mkrgu"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_28w6g"]
+graph_offset = Vector2(-292.242, 69.8837)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_wsnjk")
+nodes/Animation/position = Vector2(-156.306, 118.302)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_mkrgu")
+nodes/TimeScale/position = Vector2(100, 130)
+node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_04f08"]
 animation = &"eleanore_attack_2"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_v1b2v"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_el1gu"]
+graph_offset = Vector2(-266, 38)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_04f08")
+nodes/Animation/position = Vector2(-130, 120)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_v1b2v")
+nodes/TimeScale/position = Vector2(110, 130)
+node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lo81n"]
 animation = &"eleanore_attack_3"
@@ -769,79 +1359,114 @@ nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_f7kiv")
 nodes/TimeScale/position = Vector2(110, 150)
 node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tyjpb"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w5b2r"]
 animation = &"eleanore_idle"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fougg"]
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_yug7t"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_6vj0i"]
+graph_offset = Vector2(-398, -23)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_w5b2r")
+nodes/Animation/position = Vector2(0, 130)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_yug7t")
+nodes/TimeScale/position = Vector2(150, 130)
+node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tb3dq"]
 animation = &"eleanore_walk"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_273jw"]
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_hy015"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_4hx0i"]
+graph_offset = Vector2(-232.951, -10.5654)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_tb3dq")
+nodes/Animation/position = Vector2(-30, 100)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_hy015")
+nodes/TimeScale/position = Vector2(160, 110)
+node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l6h7r"]
 animation = &"eleanore_walk_start"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qasnt"]
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_8i5l2"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ljbmb"]
+graph_offset = Vector2(-288, 3)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_l6h7r")
+nodes/Animation/position = Vector2(-70, 110)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_8i5l2")
+nodes/TimeScale/position = Vector2(140, 120)
+node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_idq4s"]
 animation = &"eleanore_walk_stop"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d787v"]
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_dsk2y"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_bk4mc"]
+graph_offset = Vector2(-321.612, -36.8925)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_idq4s")
+nodes/Animation/position = Vector2(-170, 110)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_dsk2y")
+nodes/TimeScale/position = Vector2(60, 120)
+node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2pm1g"]
+switch_mode = 2
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m7noi"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cplmr"]
+switch_mode = 2
 advance_mode = 2
-advance_condition = &"is_moving_from_idle"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b0r8s"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i53tr"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_h8ge0"]
+advance_mode = 2
+advance_condition = &"is_idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gc30c"]
 switch_mode = 2
 advance_mode = 2
 advance_condition = &"is_moving"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_obdip"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5ar50"]
 advance_mode = 2
-advance_condition = &"is_stopping_from_walk"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_y50ik"]
-switch_mode = 2
-advance_mode = 2
-advance_condition = &"is_idle"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_861w2"]
-priority = 2
-switch_mode = 2
-advance_mode = 2
-advance_condition = &"is_idle"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_y46d8"]
-priority = 2
-switch_mode = 2
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pwlfb"]
 advance_mode = 2
 advance_condition = &"is_moving"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_h5nc0"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2t5lj"]
 switch_mode = 2
 advance_mode = 2
-advance_condition = &"is_attack_2"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ogv72"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3oscn"]
 switch_mode = 2
 advance_mode = 2
+advance_condition = &"is_idle"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_bpaiu"]
 states/End/position = Vector2(1013.5, 99.9688)
 states/Start/position = Vector2(110.5, 100.438)
-states/eleanore_attack_1/node = SubResource("AnimationNodeAnimation_6gusu")
-states/eleanore_attack_1/position = Vector2(558.485, 41)
-states/eleanore_attack_2/node = SubResource("AnimationNodeAnimation_u01cr")
-states/eleanore_attack_2/position = Vector2(557.972, -50.5)
+states/eleanore_attack_1/node = SubResource("AnimationNodeBlendTree_28w6g")
+states/eleanore_attack_1/position = Vector2(558.337, 63.91)
+states/eleanore_attack_2/node = SubResource("AnimationNodeBlendTree_el1gu")
+states/eleanore_attack_2/position = Vector2(558.664, -49.09)
 states/eleanore_attack_3/node = SubResource("AnimationNodeBlendTree_jm7ra")
 states/eleanore_attack_3/position = Vector2(558.228, -147.21)
-states/eleanore_idle/node = SubResource("AnimationNodeAnimation_tyjpb")
-states/eleanore_idle/position = Vector2(284, 99.9023)
-states/eleanore_walk/node = SubResource("AnimationNodeAnimation_fougg")
-states/eleanore_walk/position = Vector2(866, 100.203)
-states/eleanore_walk_start/node = SubResource("AnimationNodeAnimation_273jw")
-states/eleanore_walk_start/position = Vector2(558.844, 181)
-states/eleanore_walk_stop/node = SubResource("AnimationNodeAnimation_qasnt")
-states/eleanore_walk_stop/position = Vector2(557.75, 274.5)
-transitions = ["Start", "eleanore_idle", SubResource("AnimationNodeStateMachineTransition_d787v"), "eleanore_idle", "eleanore_walk_start", SubResource("AnimationNodeStateMachineTransition_m7noi"), "eleanore_walk_start", "eleanore_walk", SubResource("AnimationNodeStateMachineTransition_b0r8s"), "eleanore_walk", "eleanore_walk_stop", SubResource("AnimationNodeStateMachineTransition_obdip"), "eleanore_walk_stop", "eleanore_idle", SubResource("AnimationNodeStateMachineTransition_y50ik"), "eleanore_attack_1", "eleanore_idle", SubResource("AnimationNodeStateMachineTransition_861w2"), "eleanore_attack_1", "eleanore_walk", SubResource("AnimationNodeStateMachineTransition_y46d8"), "eleanore_attack_1", "eleanore_attack_2", SubResource("AnimationNodeStateMachineTransition_h5nc0"), "eleanore_attack_2", "eleanore_attack_3", SubResource("AnimationNodeStateMachineTransition_ogv72")]
-graph_offset = Vector2(-21.025, -202.09)
+states/eleanore_idle/node = SubResource("AnimationNodeBlendTree_6vj0i")
+states/eleanore_idle/position = Vector2(311.975, 99.4394)
+states/eleanore_walk/node = SubResource("AnimationNodeBlendTree_4hx0i")
+states/eleanore_walk/position = Vector2(849.475, 100.203)
+states/eleanore_walk_start/node = SubResource("AnimationNodeBlendTree_ljbmb")
+states/eleanore_walk_start/position = Vector2(558.501, 153.91)
+states/eleanore_walk_stop/node = SubResource("AnimationNodeBlendTree_bk4mc")
+states/eleanore_walk_stop/position = Vector2(560.005, 248.91)
+transitions = ["eleanore_attack_2", "eleanore_attack_3", SubResource("AnimationNodeStateMachineTransition_2pm1g"), "eleanore_attack_1", "eleanore_attack_2", SubResource("AnimationNodeStateMachineTransition_cplmr"), "eleanore_attack_1", "eleanore_walk", SubResource("AnimationNodeStateMachineTransition_i53tr"), "eleanore_walk", "eleanore_walk_stop", SubResource("AnimationNodeStateMachineTransition_h8ge0"), "eleanore_walk_start", "eleanore_walk", SubResource("AnimationNodeStateMachineTransition_gc30c"), "Start", "eleanore_idle", SubResource("AnimationNodeStateMachineTransition_5ar50"), "eleanore_idle", "eleanore_walk_start", SubResource("AnimationNodeStateMachineTransition_pwlfb"), "eleanore_attack_1", "eleanore_idle", SubResource("AnimationNodeStateMachineTransition_2t5lj"), "eleanore_walk_stop", "eleanore_idle", SubResource("AnimationNodeStateMachineTransition_3oscn")]
+graph_offset = Vector2(122.975, 53.91)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ypqgu"]
 radius = 4.0
@@ -861,6 +1486,7 @@ radius = 50.0
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 motion_mode = 1
 script = ExtResource("1_6neil")
+movement_speed = 40.0
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -875,12 +1501,15 @@ libraries = {
 }
 tree_root = SubResource("AnimationNodeStateMachine_bpaiu")
 anim_player = NodePath("../AnimationPlayer")
-parameters/conditions/is_attack_2 = false
 parameters/conditions/is_idle = false
 parameters/conditions/is_moving = false
-parameters/conditions/is_moving_from_idle = false
-parameters/conditions/is_stopping_from_walk = false
+parameters/eleanore_attack_1/TimeScale/scale = 1.0
+parameters/eleanore_attack_2/TimeScale/scale = 1.0
 parameters/eleanore_attack_3/TimeScale/scale = 1.0
+parameters/eleanore_idle/TimeScale/scale = 1.0
+parameters/eleanore_walk/TimeScale/scale = 1.0
+parameters/eleanore_walk_start/TimeScale/scale = 1.0
+parameters/eleanore_walk_stop/TimeScale/scale = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -890,7 +1519,9 @@ libraries = {
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(2.08165e-12, 2.08165e-12)
 sprite_frames = SubResource("SpriteFrames_e63hs")
-animation = &"eleanore_idle"
+animation = &"eleanore_attack_1"
+frame = 8
+speed_scale = 10.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3.3, 3.3)
@@ -961,6 +1592,7 @@ shape = SubResource("CircleShape2D_435xq")
 [node name="GUILayer" type="CanvasLayer" parent="."]
 
 [node name="GUI" type="Control" parent="GUILayer"]
+visible = false
 custom_minimum_size = Vector2(2560, 1440)
 layout_mode = 3
 anchors_preset = 0
@@ -1248,6 +1880,34 @@ offset_bottom = 1150.0
 theme_override_fonts/font = ExtResource("11_3sg46")
 theme_override_font_sizes/font_size = 64
 text = "debug2"
+
+[node name="sound_ambient_fire" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("56_bdaqp")
+volume_db = -7.647
+
+[node name="sound_fire_1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("53_k8kgu")
+volume_db = -7.732
+
+[node name="sound_fire_2" type="AudioStreamPlayer" parent="."]
+volume_db = -7.732
+
+[node name="sound_fire_3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("57_kvhn2")
+volume_db = -14.0
+
+[node name="AttackArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(32.8481, 4)
+rotation = -1.57079
+shape = SubResource("RectangleShape2D_bpdif")
+
+[node name="sound_damaged" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("68_5tvaa")
+volume_db = -7.0
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
