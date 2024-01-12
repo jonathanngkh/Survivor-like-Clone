@@ -1,4 +1,4 @@
-[gd_scene load_steps=118 format=3 uid="uid://c6uuvcthpociv"]
+[gd_scene load_steps=119 format=3 uid="uid://c6uuvcthpociv"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_6neil"]
 [ext_resource type="PackedScene" uid="uid://c3p0e8l8amscb" path="res://Utility/hurt_box.tscn" id="3_5rw0d"]
@@ -66,6 +66,7 @@
 [ext_resource type="AudioStream" uid="uid://drrquvalm273c" path="res://Audio/SoundEffect/01_Fire_Cast.wav" id="55_nvtob"]
 [ext_resource type="AudioStream" uid="uid://00m5n8ckuh2p" path="res://Audio/SoundEffect/06_Fire_Shield.wav" id="56_bdaqp"]
 [ext_resource type="AudioStream" uid="uid://b0wl77cxfhs7h" path="res://Audio/SoundEffect/05_Fire_Explosion.wav" id="57_kvhn2"]
+[ext_resource type="PackedScene" uid="uid://bxl3b55utmxfo" path="res://Player/Attack/fire_area.tscn" id="60_r5hxe"]
 [ext_resource type="Texture2D" uid="uid://by8pdrbjowkpv" path="res://Textures/GUI/stamina.png" id="60_y8d5x"]
 [ext_resource type="AudioStream" uid="uid://do3imwfj06tg5" path="res://Audio/SoundEffect/damaged2.wav" id="68_5tvaa"]
 
@@ -466,6 +467,18 @@ tracks/16/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [-1.57079]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("FireArea/CollisionShape2D:disabled")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_2160l"]
@@ -1305,6 +1318,18 @@ tracks/14/keys = {
 "update": 0,
 "values": [-1.57079]
 }
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("FireArea/CollisionShape2D:disabled")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lgnag"]
 _data = {
@@ -1548,6 +1573,8 @@ collision_mask = 2
 position = Vector2(2, 3)
 shape = SubResource("RectangleShape2D_e4lsk")
 
+[node name="FireArea" parent="." instance=ExtResource("60_r5hxe")]
+
 [node name="Attack" type="Node2D" parent="."]
 
 [node name="IceSpearTimer" type="Timer" parent="Attack"]
@@ -1592,7 +1619,6 @@ shape = SubResource("CircleShape2D_435xq")
 [node name="GUILayer" type="CanvasLayer" parent="."]
 
 [node name="GUI" type="Control" parent="GUILayer"]
-visible = false
 custom_minimum_size = Vector2(2560, 1440)
 layout_mode = 3
 anchors_preset = 0
@@ -1921,3 +1947,4 @@ volume_db = -7.0
 [connection signal="area_entered" from="CollectArea" to="." method="_on_collect_area_area_entered"]
 
 [editable path="HurtBox"]
+[editable path="FireArea"]

@@ -106,7 +106,6 @@ offset = Vector2(150.5, 1028.5)
 [node name="Player" parent="." instance=ExtResource("2_rlem7")]
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_gdiqe")]
-process_mode = 4
 spawns = Array[ExtResource("5_kyr6r")]([SubResource("Resource_rxj4u"), SubResource("Resource_0ghsp"), SubResource("Resource_ixasv"), SubResource("Resource_y4opa"), SubResource("Resource_tol0s"), SubResource("Resource_h3dng"), SubResource("Resource_tvmlh"), SubResource("Resource_x21cl"), SubResource("Resource_cc6wm")])
 
 [node name="Loot" type="Node2D" parent="." groups=["loot"]]

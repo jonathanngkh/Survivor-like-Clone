@@ -98,6 +98,8 @@ func convert_beat_to_measure(beat):
 
 #region Midi Stuff
 func _input(input_event): #
+	debug_label.text = "closest measure: " + str(convert_beat_to_measure(conductor_node.closest_beat(conductor_node.get_song_position_in_beats()).x))
+	debug_label2.text = "time off: " + str(conductor_node.closest_beat(conductor_node.get_song_position_in_beats()).y)
 	if input_event is InputEventMIDI:
 		_print_midi_info(input_event)
 		if input_event.message == 9: #noteOn

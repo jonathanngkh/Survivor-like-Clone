@@ -145,7 +145,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_detan"]
-size = Vector2(9.00001, 31)
+size = Vector2(42.4999, 34.5003)
 
 [node name="FireArea" type="Area2D" groups=["attack"]]
 top_level = true
@@ -154,6 +154,7 @@ collision_mask = 0
 script = ExtResource("1_l5u2h")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = SubResource("SpriteFrames_pqpde")
 animation = &"ice_bolt"
 
@@ -166,7 +167,6 @@ shape = SubResource("RectangleShape2D_detan")
 [node name="sound_play" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_52jij")
 volume_db = -10.0
-autoplay = true
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
