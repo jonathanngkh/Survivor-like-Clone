@@ -1,11 +1,7 @@
 extends AudioStreamPlayer
 
-@export var bpm := 110 #crotchets per minute
+@export var bpm := 100
 @export var measures := 4
-
-# 1 x bpm, 4 meausures = 44 time, or counting in 4 crochets
-# 2 x bpm, 8 measures = 88 time, or counting in 8 quavers
-# 4 x bpm, 16 measures = 16 16 time, or counting in 16 semi quavers
 
 # Tracking the beat and song position
 var song_position = 0.0
@@ -13,31 +9,17 @@ var song_position_in_beats = 1
 var sec_per_beat = 60.0 / bpm
 var last_reported_beat = 0
 var beats_before_start = 0
-var current_measure = 1
+var measure = 1
 
 # Determining how close to the beat an event is
 var closest = 0
 var time_off_beat = 0.0
 
 signal beat(position)
-signal signal_measure(position)
-signal number_of_measures(measures)
-
-func get_number_of_measures():
-	return measures
-
-func get_measure():
-	#if current_measure > measures:
-			#current_measure = 1
-	return current_measure
-	
-func get_song_position_in_beats():
-	return song_position_in_beats
-
+signal working_measure(position)
 
 func _ready():
 	sec_per_beat = 60.0 / bpm
-	emit_signal ("number_of_measures", measures)
 
 
 func _physics_process(_delta):
@@ -50,14 +32,13 @@ func _physics_process(_delta):
 
 func _report_beat():
 	if last_reported_beat < song_position_in_beats:
-		#emit_signal("beat", song_position_in_beats)
-		#emit_signal("signal_measure", current_measure)
+		if measure > measures:
+			measure = 1
 		emit_signal("beat", song_position_in_beats)
-		emit_signal("signal_measure", current_measure)
+		emit_signal("measure", measure)
 		last_reported_beat = song_position_in_beats
-		current_measure += 1
-		if current_measure > measures:
-			current_measure = 1
+		measure += 1
+
 
 func play_with_beat_offset(num):
 	beats_before_start = num
@@ -71,18 +52,20 @@ func closest_beat(nth):
 	return Vector2(closest, time_off_beat)
 
 
-func play_from_beat(from_beat, offset):
+func play_from_beat(beat, offset):
 	play()
-	seek(from_beat * sec_per_beat)
+	seek(beat * sec_per_beat)
 	beats_before_start = offset
-	current_measure = from_beat % measures
+	measure = beat % measures
 
-func _on_start_timer_timeout():
+
+func _on_StartTimer_timeout():
 	song_position_in_beats += 1
 	if song_position_in_beats < beats_before_start - 1:
 		$StartTimer.start()
 	elif song_position_in_beats == beats_before_start - 1:
-		$StartTimer.wait_time = $StartTimer.wait_time - (AudioServer.get_time_to_next_mix() + AudioServer.get_output_latency())
+		$StartTimer.wait_time = $StartTimer.wait_time - (AudioServer.get_time_to_next_mix() +
+														AudioServer.get_output_latency())
 		$StartTimer.start()
 	else:
 		play()

@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bbge5wi6ymxj0" path="res://Enemy/enemy_skull.tscn" id="6_gcdm1"]
 [ext_resource type="PackedScene" uid="uid://dparb0oln5dfh" path="res://Enemy/enemy_nightmare.tscn" id="7_xwnl7"]
 [ext_resource type="PackedScene" uid="uid://by2h2cbjqpp3g" path="res://conductor.tscn" id="9_mdibg"]
-[ext_resource type="AudioStream" uid="uid://cp1cdtl28ruoy" path="res://Audio/Music/110 Battle 1.wav" id="10_i1u04"]
+[ext_resource type="AudioStream" uid="uid://djhqo7kroibgp" path="res://Audio/Music/Battle 1_Idle Phase_110bpm.wav" id="10_cpu25"]
 
 [sub_resource type="Resource" id="Resource_rxj4u"]
 script = ExtResource("5_kyr6r")
@@ -111,8 +111,7 @@ spawns = Array[ExtResource("5_kyr6r")]([SubResource("Resource_rxj4u"), SubResour
 [node name="Loot" type="Node2D" parent="." groups=["loot"]]
 
 [node name="Conductor" parent="." instance=ExtResource("9_mdibg")]
-stream = ExtResource("10_i1u04")
-volume_db = -15.0
+stream = ExtResource("10_cpu25")
 autoplay = true
 
 [node name="Borders" type="CharacterBody2D" parent="."]
@@ -250,5 +249,3 @@ shape = SubResource("RectangleShape2D_10ttd")
 position = Vector2(137, -2)
 
 [connection signal="beat" from="Conductor" to="Player" method="_on_conductor_beat"]
-[connection signal="number_of_measures" from="Conductor" to="Player" method="_on_conductor_number_of_measures"]
-[connection signal="signal_measure" from="Conductor" to="Player" method="_on_conductor_signal_measure"]

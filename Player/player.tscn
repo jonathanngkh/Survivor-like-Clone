@@ -1,4 +1,4 @@
-[gd_scene load_steps=119 format=3 uid="uid://c6uuvcthpociv"]
+[gd_scene load_steps=118 format=3 uid="uid://c6uuvcthpociv"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_6neil"]
 [ext_resource type="PackedScene" uid="uid://c3p0e8l8amscb" path="res://Utility/hurt_box.tscn" id="3_5rw0d"]
@@ -27,7 +27,6 @@
 [ext_resource type="Texture2D" uid="uid://dm3x801qwqf2r" path="res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)8.png" id="10_aulk6"]
 [ext_resource type="Texture2D" uid="uid://bsagdcylbfnkn" path="res://Textures/Player/Eleanore/e_idle/Idle8.png" id="10_k0hsn"]
 [ext_resource type="Texture2D" uid="uid://eggfepa4mr2x" path="res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)9.png" id="11_1pj1o"]
-[ext_resource type="FontFile" uid="uid://dejderl1lu6q2" path="res://Font/monogram.ttf" id="11_3sg46"]
 [ext_resource type="Texture2D" uid="uid://dw3xfqn31fgp0" path="res://Textures/Player/Eleanore/e_idle/Idle9.png" id="11_ay0nw"]
 [ext_resource type="Texture2D" uid="uid://c07ajhcpdll0u" path="res://Textures/Player/Eleanore/e_walk/Moving1.png" id="12_3ow2d"]
 [ext_resource type="Texture2D" uid="uid://ddn6fblgofiow" path="res://Textures/Player/Eleanore/e_attack_2/ComboAtk(FX)10.png" id="12_uqgjd"]
@@ -69,6 +68,204 @@
 [ext_resource type="PackedScene" uid="uid://bxl3b55utmxfo" path="res://Player/Attack/fire_area.tscn" id="60_r5hxe"]
 [ext_resource type="Texture2D" uid="uid://by8pdrbjowkpv" path="res://Textures/GUI/stamina.png" id="60_y8d5x"]
 [ext_resource type="AudioStream" uid="uid://do3imwfj06tg5" path="res://Audio/SoundEffect/damaged2.wav" id="68_5tvaa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bpdif"]
+size = Vector2(41.6638, 33.6962)
+
+[sub_resource type="Animation" id="Animation_ds8v5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sound_ambient_fire:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sound_ambient_fire:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-7.647]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sound_fire_1:stream")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("53_k8kgu")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sound_fire_1:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sound_fire_2:volume_db")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-7.732]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("sound_fire_2:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("sound_ambient_fire:stream")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("56_bdaqp")]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("sound_fire_3:stream")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("57_kvhn2")]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("sound_fire_3:volume_db")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-14.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("sound_fire_3:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("sound_fire_1:volume_db")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-7.732]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("AttackArea/CollisionShape2D:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("AttackArea/CollisionShape2D:shape")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("RectangleShape2D_bpdif")]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("AttackArea/CollisionShape2D:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(32.8481, 4)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("AttackArea/CollisionShape2D:rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.57079]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("FireArea/CollisionShape2D:disabled")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e63hs"]
 animations = [{
@@ -257,9 +454,6 @@ animations = [{
 "name": &"eleanore_walk_stop",
 "speed": 10.0
 }]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bpdif"]
-size = Vector2(41.6638, 33.6962)
 
 [sub_resource type="Animation" id="Animation_btjq5"]
 resource_name = "eleanore_attack_1"
@@ -1136,201 +1330,6 @@ tracks/3/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 
-[sub_resource type="Animation" id="Animation_ds8v5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("sound_ambient_fire:playing")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("sound_ambient_fire:volume_db")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-7.647]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("sound_fire_1:stream")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("53_k8kgu")]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("sound_fire_1:playing")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("sound_fire_2:volume_db")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-7.732]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("sound_fire_2:playing")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("sound_ambient_fire:stream")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("56_bdaqp")]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("sound_fire_3:stream")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("57_kvhn2")]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("sound_fire_3:volume_db")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-14.0]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("sound_fire_3:playing")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("sound_fire_1:volume_db")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-7.732]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("AttackArea/CollisionShape2D:disabled")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("AttackArea/CollisionShape2D:shape")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [SubResource("RectangleShape2D_bpdif")]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("AttackArea/CollisionShape2D:position")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(32.8481, 4)]
-}
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("AttackArea/CollisionShape2D:rotation")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-1.57079]
-}
-tracks/15/type = "value"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("FireArea/CollisionShape2D:disabled")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lgnag"]
 _data = {
 "RESET": SubResource("Animation_ds8v5"),
@@ -1728,184 +1727,6 @@ offset_top = 160.0
 offset_right = 832.0
 offset_bottom = 224.0
 columns = 10
-
-[node name="label_measure" type="Label" parent="GUILayer/GUI"]
-layout_mode = 0
-offset_left = 1180.0
-offset_top = 863.0
-offset_right = 1382.0
-offset_bottom = 928.0
-theme_override_fonts/font = ExtResource("7_inp14")
-theme_override_font_sizes/font_size = 64
-text = "measure"
-horizontal_alignment = 1
-
-[node name="label_beat" type="Label" parent="GUILayer/GUI"]
-layout_mode = 0
-offset_left = 1181.0
-offset_top = 914.0
-offset_right = 1383.0
-offset_bottom = 979.0
-theme_override_fonts/font = ExtResource("7_inp14")
-theme_override_font_sizes/font_size = 64
-text = "beat
-"
-horizontal_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="GUILayer/GUI"]
-visible = false
-layout_mode = 0
-offset_left = 1183.0
-offset_top = 952.0
-offset_right = 1383.0
-offset_bottom = 992.0
-
-[node name="ColorRect1" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(0.278431, 0.278431, 0.278431, 1)
-
-[node name="ColorRect2" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(0.278431, 0.278431, 0.278431, 1)
-
-[node name="ColorRect3" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(0.278431, 0.278431, 0.278431, 1)
-
-[node name="ColorRect4" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(0.278431, 0.278431, 0.278431, 1)
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="GUILayer/GUI"]
-layout_mode = 0
-offset_left = 1073.0
-offset_top = 1000.0
-offset_right = 1493.0
-offset_bottom = 1040.0
-
-[node name="ColorRect1" type="ColorRect" parent="GUILayer/GUI/HBoxContainer2"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(0.278431, 0.278431, 0.278431, 1)
-
-[node name="ColorRect2" type="ColorRect" parent="GUILayer/GUI/HBoxContainer2"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(0.278431, 0.278431, 0.278431, 1)
-
-[node name="ColorRect3" type="ColorRect" parent="GUILayer/GUI/HBoxContainer2"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(0.278431, 0.278431, 0.278431, 1)
-
-[node name="ColorRect4" type="ColorRect" parent="GUILayer/GUI/HBoxContainer2"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(0.278431, 0.278431, 0.278431, 1)
-
-[node name="ColorRect5" type="ColorRect" parent="GUILayer/GUI/HBoxContainer2"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(0.278431, 0.278431, 0.278431, 1)
-
-[node name="ColorRect6" type="ColorRect" parent="GUILayer/GUI/HBoxContainer2"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(0.278431, 0.278431, 0.278431, 1)
-
-[node name="ColorRect7" type="ColorRect" parent="GUILayer/GUI/HBoxContainer2"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(0.278431, 0.278431, 0.278431, 1)
-
-[node name="ColorRect8" type="ColorRect" parent="GUILayer/GUI/HBoxContainer2"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(0.278431, 0.278431, 0.278431, 1)
-
-[node name="ColorRect9" type="ColorRect" parent="GUILayer/GUI/HBoxContainer2"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(0.278431, 0.278431, 0.278431, 1)
-
-[node name="ColorRect10" type="ColorRect" parent="GUILayer/GUI/HBoxContainer2"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(0.278431, 0.278431, 0.278431, 1)
-
-[node name="ColorRect11" type="ColorRect" parent="GUILayer/GUI/HBoxContainer2"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(0.278431, 0.278431, 0.278431, 1)
-
-[node name="ColorRect12" type="ColorRect" parent="GUILayer/GUI/HBoxContainer2"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(0.278431, 0.278431, 0.278431, 1)
-
-[node name="ColorRect13" type="ColorRect" parent="GUILayer/GUI/HBoxContainer2"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(0.278431, 0.278431, 0.278431, 1)
-
-[node name="ColorRect14" type="ColorRect" parent="GUILayer/GUI/HBoxContainer2"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(0.278431, 0.278431, 0.278431, 1)
-
-[node name="ColorRect15" type="ColorRect" parent="GUILayer/GUI/HBoxContainer2"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(0.278431, 0.278431, 0.278431, 1)
-
-[node name="ColorRect16" type="ColorRect" parent="GUILayer/GUI/HBoxContainer2"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(0.278431, 0.278431, 0.278431, 1)
-
-[node name="debug_label" type="Label" parent="GUILayer/GUI"]
-layout_mode = 0
-offset_left = 1218.0
-offset_top = 1025.0
-offset_right = 1338.0
-offset_bottom = 1076.0
-theme_override_fonts/font = ExtResource("11_3sg46")
-theme_override_font_sizes/font_size = 64
-text = "debug"
-
-[node name="debug_label2" type="Label" parent="GUILayer/GUI"]
-layout_mode = 0
-offset_left = 1218.0
-offset_top = 1099.0
-offset_right = 1338.0
-offset_bottom = 1150.0
-theme_override_fonts/font = ExtResource("11_3sg46")
-theme_override_font_sizes/font_size = 64
-text = "debug2"
 
 [node name="sound_ambient_fire" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("56_bdaqp")

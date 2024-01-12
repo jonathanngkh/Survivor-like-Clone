@@ -1,14 +1,6 @@
 res://World/world.tscn
 res://Utility/spawn_info.gd
-res://Player/player.tscn
 res://conductor.tscn
-res://Player/Attack/ice_spear.tscn
-res://Enemy/enemy.tscn
+res://Conductor.gd
+res://Player/player.tscn
 res://Player/player.gd
-res://Utility/hit_box.tscn
-res://Player/Attack/javelin.tscn
-res://Utility/hurt_box.gd
-res://Utility/hurt_box.tscn
-res://Player/Attack/ice_spear.gd
-res://Player/Attack/fire_area.gd
-res://Player/Attack/fire_area.tscn

@@ -90,29 +90,19 @@ func _ready():
 	
 var notes_pressed = []
 
-func convert_beat_to_measure(beat):
-	if int(beat) % conductor_node.get_number_of_measures() == 0:
-		return conductor_node.get_number_of_measures()
-	else:
-		return int(beat) % conductor_node.get_number_of_measures()
-
 #region Midi Stuff
 func _input(input_event): #
-	debug_label.text = "closest measure: " + str(convert_beat_to_measure(conductor_node.closest_beat(conductor_node.get_song_position_in_beats()).x))
-	debug_label2.text = "time off: " + str(conductor_node.closest_beat(conductor_node.get_song_position_in_beats()).y)
 	if input_event is InputEventMIDI:
 		_print_midi_info(input_event)
 		if input_event.message == 9: #noteOn
-			debug_label.text = "closest measure: " + str(convert_beat_to_measure(conductor_node.closest_beat(conductor_node.get_song_position_in_beats()).x))
-			debug_label2.text = "time off: " + str(conductor_node.closest_beat(conductor_node.get_song_position_in_beats()).y)
 			if input_event.pitch == 60:
-				notes_pressed.append(Vector2(60, conductor_node.get_measure()))
+				pass
 			if input_event.pitch == 63: #Dsharp
 				pass
 			if input_event.pitch == 65: #F
 				pass
 			if input_event.pitch == 64: #E
-				notes_pressed.append(Vector2(64, conductor_node.get_measure()))
+				pass
 		if input_event.message == 8: #noteOff
 			if input_event.pitch == 60: #C
 				for note in notes_pressed:
@@ -129,7 +119,6 @@ func _input(input_event): #
 				for note in notes_pressed:
 					if note.x == 64:
 						notes_pressed.erase(note)
-				#notes_pressed.erase(Vector2(64, conductor_node.get_measure()))
 
 func _print_midi_info(midi_event: InputEventMIDI):
 	#msg 9 is note on. msg 8 is note off. pitch 0 is idle msg
@@ -536,78 +525,3 @@ func flash(rect) -> void:
 	var tween: Tween = create_tween()
 	tween.tween_property(rect, "modulate:v", 1, 0.1).from(15)
 	tween.play()
-
-func _on_conductor_signal_measure(position):
-	$GUILayer/GUI/label_measure.text = str(conductor_node.get_measure())
-	$GUILayer/GUI/label_beat.text = str(conductor_node.get_song_position_in_beats())
-	#if position == 1:
-		#var rect1 = $GUILayer/GUI/HBoxContainer/ColorRect1
-		#flash(rect1)
-	#if position == 2:
-		#var rect2 = $GUILayer/GUI/HBoxContainer/ColorRect2
-		#flash(rect2)
-	#if position == 3:
-		#var rect3 = $GUILayer/GUI/HBoxContainer/ColorRect3
-		#flash(rect3)
-	#if position == 4:
-		#var rect4 = $GUILayer/GUI/HBoxContainer/ColorRect4
-		#flash(rect4)
-		
-	if position == 1:
-		var rect1 = $GUILayer/GUI/HBoxContainer2/ColorRect1
-		flash(rect1)
-	if position == 2:
-		var rect2 = $GUILayer/GUI/HBoxContainer2/ColorRect2
-		flash(rect2)
-	if position == 3:
-		var rect3 = $GUILayer/GUI/HBoxContainer2/ColorRect3
-		flash(rect3)
-	if position == 4:
-		var rect4 = $GUILayer/GUI/HBoxContainer2/ColorRect4
-		flash(rect4)
-	if position == 5:
-		var rect5 = $GUILayer/GUI/HBoxContainer2/ColorRect5
-		flash(rect5)
-	if position == 6:
-		var rect6 = $GUILayer/GUI/HBoxContainer2/ColorRect6
-		flash(rect6)
-	if position == 7:
-		var rect7 = $GUILayer/GUI/HBoxContainer2/ColorRect7
-		flash(rect7)
-	if position == 8:
-		var rect8 = $GUILayer/GUI/HBoxContainer2/ColorRect8
-		flash(rect8)
-	if position == 9:
-		var rect9 = $GUILayer/GUI/HBoxContainer2/ColorRect9
-		flash(rect9)
-	if position == 10:
-		var rect10 = $GUILayer/GUI/HBoxContainer2/ColorRect10
-		flash(rect10)
-	if position == 11:
-		var rect11 = $GUILayer/GUI/HBoxContainer2/ColorRect11
-		flash(rect11)
-	if position == 12:
-		var rect12 = $GUILayer/GUI/HBoxContainer2/ColorRect12
-		flash(rect12)
-	if position == 13:
-		var rect13 = $GUILayer/GUI/HBoxContainer2/ColorRect13
-		flash(rect13)
-	if position == 14:
-		var rect14 = $GUILayer/GUI/HBoxContainer2/ColorRect14
-		flash(rect14)
-	if position == 15:
-		var rect15 = $GUILayer/GUI/HBoxContainer2/ColorRect15
-		flash(rect15)
-	if position == 16:
-		var rect16 = $GUILayer/GUI/HBoxContainer2/ColorRect16
-		flash(rect16)
-
-
-func _on_conductor_number_of_measures(measures):
-	var counter = 0
-	while counter < measures:
-		$GUILayer/GUI/HBoxContainer2.get_children()[counter].call_deferred("set_visible", true)
-		counter += 1
-
-
-
