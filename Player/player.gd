@@ -154,18 +154,13 @@ func _process(delta):
 func update_song():
 	if Input.is_action_just_pressed("p1_attack"):
 		conductor_node.play_from_beat(1, 0)
-	#else:
-		#if conductor_node.get_last_reported_beat() == (conductor_node.get_beats_per_bar() * 4):
-			#pass
-			#conductor_node.call_deferred("play_from_beat", 1, 0)
+	else:
+		if conductor_node.get_last_reported_beat() == (conductor_node.get_beats_per_bar() * 4):
+			pass
+			conductor_node.call_deferred("play_from_beat", 1, 0)
 
 func _physics_process(_delta):
 	update_song()
-	if Input.is_action_just_pressed("p1_attack"):
-		conductor_node.play_from_beat(1, 0)
-	else:
-		if conductor_node.get_last_reported_beat() == conductor_node.get_beats_per_bar():
-			conductor_node.call_deferred("play_from_beat", 1, 0)
 	debug_label_1.text = str(conductor_node.get_beat_in_bar())
 	movement()
 	while (notes_pressed.has(Vector2(60, 1)) and notes_pressed.has(Vector2(64,1))) == true:

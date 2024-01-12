@@ -1,6 +1,5 @@
 res://World/world.tscn
 res://Utility/spawn_info.gd
-res://conductor.tscn
-res://Conductor.gd
 res://Player/player.tscn
+res://conductor.tscn
 res://Player/player.gd
