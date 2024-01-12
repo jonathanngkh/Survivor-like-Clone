@@ -1,3 +1,8 @@
+CharacterBody2D
+CollisionShape2D
+Node2D
+RigidBody2D
+Sprite2D
 AnimationTree
 AnimatedSprite2D
 Label
@@ -8,8 +13,3 @@ AudioStreamPlayer
 GridContainer
 TextureRect
 TextureProgressBar
-Node
-TextureButton
-VBoxContainer
-Panel
-Control

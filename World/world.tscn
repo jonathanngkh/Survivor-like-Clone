@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://cjkdpm3u3wqut"]
+[gd_scene load_steps=23 format=3 uid="uid://cjkdpm3u3wqut"]
 
 [ext_resource type="Texture2D" uid="uid://cv5dyyv664lsv" path="res://Textures/Grass square.png" id="1_yaypj"]
+[ext_resource type="Texture2D" uid="uid://b6t8hgeek4kfh" path="res://Textures/wol huge air map.png" id="2_6ka0j"]
 [ext_resource type="PackedScene" uid="uid://c6uuvcthpociv" path="res://Player/player.tscn" id="2_rlem7"]
 [ext_resource type="PackedScene" uid="uid://ds1caoj3877wy" path="res://Enemy/enemy_skeleton.tscn" id="3_4kpfq"]
 [ext_resource type="PackedScene" uid="uid://bdc6xdiruauvu" path="res://Utility/enemy_spawner.tscn" id="3_gdiqe"]
@@ -83,14 +84,37 @@ enemy = ExtResource("4_t7mob")
 enemy_num = 1
 enemy_spawn_delay = 0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a5op5"]
+size = Vector2(5896.25, 378.125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gkxae"]
+size = Vector2(66.25, 1940)
+
 [node name="World" type="Node2D"]
+metadata/_edit_horizontal_guides_ = [-474.0, 490.0]
+metadata/_edit_vertical_guides_ = [-1310.0, 1310.0]
 
 [node name="Background" type="Sprite2D" parent="."]
+visible = false
 texture_filter = 3
 texture_repeat = 2
 texture = ExtResource("1_yaypj")
 region_enabled = true
 region_rect = Rect2(-4000, -4000, 4000, 4000)
+
+[node name="Background2" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 3
+texture_repeat = 2
+texture = ExtResource("1_yaypj")
+region_enabled = true
+region_rect = Rect2(-4000, -4000, 4000, 4000)
+
+[node name="WolBackGround" type="Sprite2D" parent="."]
+position = Vector2(-61, -404)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_6ka0j")
+offset = Vector2(150.5, 1028.5)
 
 [node name="Player" parent="." instance=ExtResource("2_rlem7")]
 
@@ -104,6 +128,28 @@ spawns = Array[ExtResource("5_kyr6r")]([SubResource("Resource_rxj4u"), SubResour
 stream = ExtResource("10_i1u04")
 volume_db = -15.0
 autoplay = true
+
+[node name="Borders" type="CharacterBody2D" parent="."]
+
+[node name="TopBorder" type="CollisionShape2D" parent="Borders"]
+position = Vector2(-8, -359)
+scale = Vector2(0.4, 0.4)
+shape = SubResource("RectangleShape2D_a5op5")
+
+[node name="BottomBorder" type="CollisionShape2D" parent="Borders"]
+position = Vector2(-9.00001, 309)
+scale = Vector2(0.4, 0.4)
+shape = SubResource("RectangleShape2D_a5op5")
+
+[node name="RightBorder" type="CollisionShape2D" parent="Borders"]
+position = Vector2(1168, 9)
+scale = Vector2(0.4, 0.4)
+shape = SubResource("RectangleShape2D_gkxae")
+
+[node name="LeftBorder" type="CollisionShape2D" parent="Borders"]
+position = Vector2(-1165, 9)
+scale = Vector2(0.4, 0.4)
+shape = SubResource("RectangleShape2D_gkxae")
 
 [connection signal="beat" from="Conductor" to="Player" method="_on_conductor_beat"]
 [connection signal="number_of_measures" from="Conductor" to="Player" method="_on_conductor_number_of_measures"]

@@ -3,5 +3,5 @@ res://Utility/spawn_info.gd
 res://Player/player.tscn
 res://conductor.tscn
 res://Player/Attack/ice_spear.tscn
-res://Player/player.gd
 res://Enemy/enemy.tscn
+res://Player/player.gd

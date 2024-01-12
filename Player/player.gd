@@ -3,6 +3,8 @@ extends CharacterBody2D
 @export var movement_speed = 400.0
 @export var hp = 80
 var max_hp = 80
+var max_stamina = 100
+var stamina = 100
 var last_movement = Vector2.UP
 var time = 0
 
@@ -65,6 +67,7 @@ var additional_attacks = 0
 @onready var sound_levelup = $GUILayer/GUI/panel_LevelUp/sound_levelup
 @onready var item_options = preload("res://Utility/item_option.tscn")
 @onready var health_bar = $GUILayer/GUI/HealthBar
+@onready var stamina_bar = $GUILayer/GUI/StaminaBar
 @onready var label_timer = $GUILayer/GUI/label_timer
 @onready var collected_weapons_container = $GUILayer/GUI/CollectedWeapons
 @onready var collected_upgrades_container = $GUILayer/GUI/CollectedUpgrades
@@ -73,12 +76,15 @@ var additional_attacks = 0
 
 
 func _ready():
+	health_bar.max_value = max_hp
+	health_bar.value = hp
+	stamina_bar.max_value = max_stamina
+	stamina_bar.value = stamina
 	animation_tree.active = true
 	#animator.queue("eleanore_idle")
 	upgrade_character("icespear1")
 	#attack()
 	set_experience_bar(experience, calculate_experience_cap())
-	_on_hurt_box_hurt(0, 0, 0)
 	OS.open_midi_inputs() #
 	print(OS.get_connected_midi_inputs()) #
 	
@@ -143,7 +149,7 @@ func _process(delta):
 	#choose_animation()
 	update_animation_parameters()
 #region camera zooming
-	var max_zoom = 1
+	var max_zoom = 2.1
 	if Input.is_action_just_released("zoom_in"):
 		$Camera2D.zoom *= 1.2
 		#print($Camera2D.zoom)
@@ -151,6 +157,7 @@ func _process(delta):
 		 #and $Camera2D.zoom >= Vector2D(1,1)
 		#print($Camera2D.zoom)
 		$Camera2D.zoom /= 1.2
+		print($Camera2D.zoom)
 #endregion
 
 func _physics_process(_delta):
@@ -261,21 +268,6 @@ func update_animation_parameters():
 		else: # moving
 			state_machine.travel("eleanore_walk")
 			is_attacking = false
-			
-	#if Input.is_action_just_pressed("p1_attack"): # attacking
-		#if current_state == "idle":
-			#state_machine.travel("eleanore_attack_1")
-			#current_state = "attack1"
-			#is_attacking = true
-		#elif current_state == "attack1":
-			#state_machine.travel("eleanore_attack_2")
-			#current_state = "attack2"
-			#print("atk2")
-	#else: # not attacking
-		#if velocity == Vector2.ZERO: # stationary
-			#state_machine.travel("eleanore_idle")
-		#else: # moving
-			#state_machine.travel("eleanore_walk")
 
 func _on_hurt_box_hurt(damage, _angle, _knockback):
 	sprite_flash()
@@ -414,7 +406,7 @@ func level_up():
 	var tween = panel_levelup.create_tween()
 	tween.tween_property(panel_levelup, "position", Vector2(880, 200), 0.2).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN)
 	tween.play()
-	panel_levelup.visible = true
+	panel_levelup.call_deferred("set_visible", true)
 	var options = 0
 	var options_max = 3
 	while options < options_max:
@@ -478,7 +470,7 @@ func upgrade_character(upgrade):
 		option.queue_free()
 	upgrade_options_array.clear()
 	collected_upgrades.append(upgrade)
-	panel_levelup.visible = false
+	panel_levelup.call_deferred("set_visible", false)
 	panel_levelup.position = Vector2(800,50)
 	get_tree().paused = false
 	calculate_experience(0)
@@ -611,7 +603,7 @@ func _on_conductor_signal_measure(position):
 func _on_conductor_number_of_measures(measures):
 	var counter = 0
 	while counter < measures:
-		$GUILayer/GUI/HBoxContainer2.get_children()[counter].visible = true
+		$GUILayer/GUI/HBoxContainer2.get_children()[counter].call_deferred("set_visible", true)
 		counter += 1
 
 
