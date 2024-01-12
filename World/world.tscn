@@ -247,5 +247,3 @@ shape = SubResource("RectangleShape2D_10ttd")
 
 [node name="enemy_skeleton" parent="." instance=ExtResource("3_4kpfq")]
 position = Vector2(137, -2)
-
-[connection signal="beat" from="Conductor" to="Player" method="_on_conductor_beat"]
