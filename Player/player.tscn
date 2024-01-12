@@ -1,4 +1,4 @@
-[gd_scene load_steps=118 format=3 uid="uid://c6uuvcthpociv"]
+[gd_scene load_steps=119 format=3 uid="uid://c6uuvcthpociv"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_6neil"]
 [ext_resource type="PackedScene" uid="uid://c3p0e8l8amscb" path="res://Utility/hurt_box.tscn" id="3_5rw0d"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://dm3x801qwqf2r" path="res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)8.png" id="10_aulk6"]
 [ext_resource type="Texture2D" uid="uid://bsagdcylbfnkn" path="res://Textures/Player/Eleanore/e_idle/Idle8.png" id="10_k0hsn"]
 [ext_resource type="Texture2D" uid="uid://eggfepa4mr2x" path="res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)9.png" id="11_1pj1o"]
+[ext_resource type="FontFile" uid="uid://dejderl1lu6q2" path="res://Font/monogram.ttf" id="11_3sg46"]
 [ext_resource type="Texture2D" uid="uid://dw3xfqn31fgp0" path="res://Textures/Player/Eleanore/e_idle/Idle9.png" id="11_ay0nw"]
 [ext_resource type="Texture2D" uid="uid://c07ajhcpdll0u" path="res://Textures/Player/Eleanore/e_walk/Moving1.png" id="12_3ow2d"]
 [ext_resource type="Texture2D" uid="uid://ddn6fblgofiow" path="res://Textures/Player/Eleanore/e_attack_2/ComboAtk(FX)10.png" id="12_uqgjd"]
@@ -1727,6 +1728,17 @@ offset_top = 160.0
 offset_right = 832.0
 offset_bottom = 224.0
 columns = 10
+
+[node name="debug_label1" type="Label" parent="GUILayer/GUI"]
+layout_mode = 0
+offset_left = 1199.0
+offset_top = 879.0
+offset_right = 1367.0
+offset_bottom = 930.0
+theme_override_fonts/font = ExtResource("11_3sg46")
+theme_override_font_sizes/font_size = 64
+text = "debug_1"
+horizontal_alignment = 1
 
 [node name="sound_ambient_fire" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("56_bdaqp")

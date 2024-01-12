@@ -23,8 +23,6 @@ var javelin = preload("res://Player/Attack/javelin.tscn")
 @onready var tornadoTimer = $Attack/TornadoTimer
 @onready var tornadoAttackTimer = $Attack/TornadoTimer/TornadoAttackTimer
 @onready var javelinBase = $Attack/JavelinBase
-@onready var debug_label = $GUILayer/GUI/debug_label
-@onready var debug_label2 = $GUILayer/GUI/debug_label2
 
 # IceSpear
 var icespear_ammo = 0
@@ -73,6 +71,7 @@ var additional_attacks = 0
 @onready var collected_upgrades_container = $GUILayer/GUI/CollectedUpgrades
 @onready var item_container = preload("res://Player/GUI/item_container.tscn")
 @onready var conductor_node = get_tree().get_first_node_in_group("conductor")
+@onready var debug_label_1 = $GUILayer/GUI/debug_label1
 
 
 func _ready():
@@ -136,6 +135,7 @@ func _print_midi_info(midi_event: InputEventMIDI):
 
 	
 func _process(delta):
+	
 	#attack_combo()
 	#choose_animation()
 	update_animation_parameters()
@@ -151,7 +151,22 @@ func _process(delta):
 		print($Camera2D.zoom)
 #endregion
 
+func update_song():
+	if Input.is_action_just_pressed("p1_attack"):
+		conductor_node.play_from_beat(1, 0)
+	#else:
+		#if conductor_node.get_last_reported_beat() == (conductor_node.get_beats_per_bar() * 4):
+			#pass
+			#conductor_node.call_deferred("play_from_beat", 1, 0)
+
 func _physics_process(_delta):
+	update_song()
+	if Input.is_action_just_pressed("p1_attack"):
+		conductor_node.play_from_beat(1, 0)
+	else:
+		if conductor_node.get_last_reported_beat() == conductor_node.get_beats_per_bar():
+			conductor_node.call_deferred("play_from_beat", 1, 0)
+	debug_label_1.text = str(conductor_node.get_beat_in_bar())
 	movement()
 	while (notes_pressed.has(Vector2(60, 1)) and notes_pressed.has(Vector2(64,1))) == true:
 		print("while loop true")
@@ -525,3 +540,7 @@ func flash(rect) -> void:
 	var tween: Tween = create_tween()
 	tween.tween_property(rect, "modulate:v", 1, 0.1).from(15)
 	tween.play()
+
+
+#func _on_conductor_signal_beat_in_bar(beat_in_bar):
+	#debug_label_1.text = str(beat_in_bar)

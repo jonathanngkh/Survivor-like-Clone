@@ -9,7 +9,19 @@ var song_position_in_beats = 1
 var sec_per_beat = 60.0 / bpm
 var last_reported_beat = 0
 var beats_before_start = 0
-var beat_in_bar = 1
+var beat_in_bar = 0
+
+func get_beats_per_bar():
+	return beats_per_bar
+
+func get_beat_in_bar():
+	return beat_in_bar
+	
+func get_song_position_in_beats():
+	return song_position_in_beats
+	
+func get_last_reported_beat():
+	return last_reported_beat
 
 # Determining how close to the beat an event is
 var closest = 0
@@ -31,12 +43,12 @@ func _physics_process(_delta):
 
 func _report_beat():
 	if last_reported_beat < song_position_in_beats:
+		last_reported_beat = song_position_in_beats
+		beat_in_bar += 1
 		if beat_in_bar > beats_per_bar:
 			beat_in_bar = 1
 		emit_signal("signal_song_position_in_beats", song_position_in_beats)
 		emit_signal("signal_beat_in_bar", beat_in_bar)
-		last_reported_beat = song_position_in_beats
-		beat_in_bar += 1
 
 
 func play_with_beat_offset(num):
@@ -52,14 +64,15 @@ func closest_beat_in_song(nth):
 
 
 func play_from_beat(beat, offset):
+	last_reported_beat = beat - 1
+	beat_in_bar = beat
 	play()
-	seek(beat * sec_per_beat)
+	seek((beat * sec_per_beat) - sec_per_beat)
 	beats_before_start = offset
-	if beat_in_bar % beats_per_bar == 0:
-		return beats_per_bar
-	else:
-		return beat_in_bar % beats_per_bar
-	#beat_in_bar = song_position_in_beats % beats_per_bar WRONG
+	#if beat_in_bar % beats_per_bar == 0:
+		#beat_in_bar = beats_per_bar 
+	#else:
+		#beat_in_bar = beat_in_bar % beats_per_bar
 
 func _on_start_timer_timeout():
 	song_position_in_beats += 1
