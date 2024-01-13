@@ -97,6 +97,7 @@ func add_to_notes_played(note_played):
 	notes_played.append([note_played, conductor_node.get_beat_in_bar])
 	$GUILayer/GUI/debug_label6.text = "beat played on: " +  str(conductor_node.closest_beat_in_song(conductor_node.get_song_position_in_seconds()).x)
 	$GUILayer/GUI/debug_label7.text = "time off beat: " +  str(conductor_node.closest_beat_in_song(conductor_node.get_song_position_in_seconds()).y)
+	$GUILayer/GUI/debug_label8.text = "beat_in_bar_played_on: " +  str(conductor_node.closest_beat_in_bar(conductor_node.get_song_position_in_seconds()).x)
 
 #region Midi Stuff
 func _input(input_event): #

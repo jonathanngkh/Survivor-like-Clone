@@ -1763,9 +1763,9 @@ text = "last_reported_beat:"
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 1003.0
-offset_top = 1215.0
+offset_top = 1225.0
 offset_right = 1555.0
-offset_bottom = 1266.0
+offset_bottom = 1276.0
 theme_override_fonts/font = ExtResource("11_3sg46")
 theme_override_font_sizes/font_size = 64
 text = "perfect_beat_played_on:"
@@ -1796,12 +1796,23 @@ text = "beat_played_on:"
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 1194.0
-offset_top = 1126.0
+offset_top = 1163.0
 offset_right = 1650.0
-offset_bottom = 1177.0
+offset_bottom = 1214.0
 theme_override_fonts/font = ExtResource("11_3sg46")
 theme_override_font_sizes/font_size = 64
 text = "time_off_beat:"
+
+[node name="debug_label8" type="Label" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1027.0
+offset_top = 1111.0
+offset_right = 1555.0
+offset_bottom = 1162.0
+theme_override_fonts/font = ExtResource("11_3sg46")
+theme_override_font_sizes/font_size = 64
+text = "beat_in_bar_played_on:"
 
 [node name="sound_ambient_fire" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("56_bdaqp")
