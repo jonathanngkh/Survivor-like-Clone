@@ -1,12 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://by2h2cbjqpp3g"]
+[gd_scene load_steps=4 format=3 uid="uid://by2h2cbjqpp3g"]
 
 [ext_resource type="AudioStream" uid="uid://bm2b4htnnhsf4" path="res://Audio/Music/180 xDeviruchi - Decisive Battle.wav" id="1_kb13t"]
 [ext_resource type="Script" path="res://Conductor.gd" id="2_yvi5o"]
+[ext_resource type="AudioStream" uid="uid://wavl3v5ijpfd" path="res://Audio/MFX/008_Percussion_Taiko Hits(Rim)_2.5secs.wav" id="3_mfmb7"]
 
 [node name="Conductor" type="AudioStreamPlayer" groups=["conductor"]]
 stream = ExtResource("1_kb13t")
+autoplay = true
 script = ExtResource("2_yvi5o")
 
 [node name="StartTimer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_mfmb7")
+volume_db = -10.0
 
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]

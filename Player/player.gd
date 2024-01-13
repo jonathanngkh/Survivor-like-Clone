@@ -75,6 +75,7 @@ var additional_attacks = 0
 
 
 func _ready():
+	conductor_node.call_deferred("play_from_beat", 1, 0)
 	health_bar.max_value = max_hp
 	health_bar.value = hp
 	stamina_bar.max_value = max_stamina
@@ -89,32 +90,41 @@ func _ready():
 	
 var notes_pressed = []
 
+var notes_played = []
+
+func add_to_notes_played(note_played):
+	#notes_played.append([note_played, conductor_node.closest_beat_in_bar(conductor_node.get_song_position_in_beats()).x])
+	notes_played.append([note_played, conductor_node.get_beat_in_bar])
+	$GUILayer/GUI/debug_label4.text = "beat played on: " +  str(conductor_node.get_beat_in_bar())
+	#$GUILayer/GUI/debug_label5.text = "time off beat: " +  str(conductor_node.closest_beat_in_bar(conductor_node.get_song_position_in_beats()).y)
+
 #region Midi Stuff
 func _input(input_event): #
 	if input_event is InputEventMIDI:
 		_print_midi_info(input_event)
 		if input_event.message == 9: #noteOn
-			if input_event.pitch == 60:
+			if input_event.pitch == 60: # C
+				add_to_notes_played(input_event.pitch)
+				#notes_played.append([input_event.pitch, conductor_node.get_beat_in_bar()])
+				print("notes_played: ", notes_played)
+			if input_event.pitch == 62: # D
 				pass
-			if input_event.pitch == 63: #Dsharp
+			if input_event.pitch == 64: # E
 				pass
-			if input_event.pitch == 65: #F
-				pass
-			if input_event.pitch == 64: #E
+			if input_event.pitch == 65: # F
 				pass
 		if input_event.message == 8: #noteOff
 			if input_event.pitch == 60: #C
-				for note in notes_pressed:
-					if note.x == 60:
-						notes_pressed.erase(note)
+				pass
+				#for note in notes_pressed:
+					#if note.x == 60:
+						#notes_pressed.erase(note)
 				print("notes pressed: ", notes_pressed)
-				Input.action_release("move_left")
-			if input_event.pitch == 63: #Dsharp
-				Input.action_release("move_up")
+			if input_event.pitch == 62: # D
+				pass
 			if input_event.pitch == 65: #F
-				Input.action_release("move_right")
+				pass
 			if input_event.pitch == 64: #E
-				Input.action_release("move_down")
 				for note in notes_pressed:
 					if note.x == 64:
 						notes_pressed.erase(note)
@@ -135,7 +145,6 @@ func _print_midi_info(midi_event: InputEventMIDI):
 
 	
 func _process(delta):
-	
 	#attack_combo()
 	#choose_animation()
 	update_animation_parameters()
@@ -151,17 +160,19 @@ func _process(delta):
 		print($Camera2D.zoom)
 #endregion
 
+
 func update_song():
-	if Input.is_action_just_pressed("p1_attack"):
+	# loop to start of idle track if player does nothing at end of bar
+	if conductor_node.get_last_reported_beat() == conductor_node.get_beats_per_bar():
 		conductor_node.play_from_beat(1, 0)
-	else:
-		if conductor_node.get_last_reported_beat() == (conductor_node.get_beats_per_bar() * 4):
-			pass
-			conductor_node.call_deferred("play_from_beat", 1, 0)
+		#conductor_node.call_deferred("play_from_beat", 1, 0)
+	
 
 func _physics_process(_delta):
 	update_song()
-	debug_label_1.text = str(conductor_node.get_beat_in_bar())
+	debug_label_1.text = "beat in bar: " + str(conductor_node.get_beat_in_bar())
+	$GUILayer/GUI/debug_label2.text = "song position in beats: " + str(conductor_node.get_song_position_in_beats())
+	$GUILayer/GUI/debug_label3.text = "last reported beat: " + str(conductor_node.get_last_reported_beat())
 	movement()
 	while (notes_pressed.has(Vector2(60, 1)) and notes_pressed.has(Vector2(64,1))) == true:
 		print("while loop true")
@@ -539,3 +550,8 @@ func flash(rect) -> void:
 
 #func _on_conductor_signal_beat_in_bar(beat_in_bar):
 	#debug_label_1.text = str(beat_in_bar)
+
+
+func _on_start_timer_timeout():
+	print('pls')
+	$AudioStreamPlayer.play()

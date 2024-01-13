@@ -1737,8 +1737,47 @@ offset_right = 1367.0
 offset_bottom = 930.0
 theme_override_fonts/font = ExtResource("11_3sg46")
 theme_override_font_sizes/font_size = 64
-text = "debug_1"
-horizontal_alignment = 1
+text = "beat_in_bar:"
+
+[node name="debug_label2" type="Label" parent="GUILayer/GUI"]
+layout_mode = 0
+offset_left = 1200.0
+offset_top = 938.0
+offset_right = 1368.0
+offset_bottom = 989.0
+theme_override_fonts/font = ExtResource("11_3sg46")
+theme_override_font_sizes/font_size = 64
+text = "song_position_in_beats:"
+
+[node name="debug_label3" type="Label" parent="GUILayer/GUI"]
+layout_mode = 0
+offset_left = 1197.0
+offset_top = 1004.0
+offset_right = 1365.0
+offset_bottom = 1055.0
+theme_override_fonts/font = ExtResource("11_3sg46")
+theme_override_font_sizes/font_size = 64
+text = "last_reported_beat:"
+
+[node name="debug_label4" type="Label" parent="GUILayer/GUI"]
+layout_mode = 0
+offset_left = 1197.0
+offset_top = 1067.0
+offset_right = 1653.0
+offset_bottom = 1118.0
+theme_override_fonts/font = ExtResource("11_3sg46")
+theme_override_font_sizes/font_size = 64
+text = "beat_played_on:"
+
+[node name="debug_label5" type="Label" parent="GUILayer/GUI"]
+layout_mode = 0
+offset_left = 1197.0
+offset_top = 1129.0
+offset_right = 1653.0
+offset_bottom = 1180.0
+theme_override_fonts/font = ExtResource("11_3sg46")
+theme_override_font_sizes/font_size = 64
+text = "spare_debug_label_5"
 
 [node name="sound_ambient_fire" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("56_bdaqp")
