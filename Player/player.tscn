@@ -1760,24 +1760,48 @@ theme_override_font_sizes/font_size = 64
 text = "last_reported_beat:"
 
 [node name="debug_label4" type="Label" parent="GUILayer/GUI"]
+unique_name_in_owner = true
 layout_mode = 0
-offset_left = 1197.0
-offset_top = 1067.0
-offset_right = 1653.0
-offset_bottom = 1118.0
+offset_left = 1003.0
+offset_top = 1215.0
+offset_right = 1555.0
+offset_bottom = 1266.0
+theme_override_fonts/font = ExtResource("11_3sg46")
+theme_override_font_sizes/font_size = 64
+text = "perfect_beat_played_on:"
+
+[node name="debug_label5" type="Label" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1003.0
+offset_top = 1277.0
+offset_right = 1531.0
+offset_bottom = 1328.0
+theme_override_fonts/font = ExtResource("11_3sg46")
+theme_override_font_sizes/font_size = 64
+text = "perfect_time_off_beat:"
+
+[node name="debug_label6" type="Label" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1194.0
+offset_top = 1064.0
+offset_right = 1650.0
+offset_bottom = 1115.0
 theme_override_fonts/font = ExtResource("11_3sg46")
 theme_override_font_sizes/font_size = 64
 text = "beat_played_on:"
 
-[node name="debug_label5" type="Label" parent="GUILayer/GUI"]
+[node name="debug_label7" type="Label" parent="GUILayer/GUI"]
+unique_name_in_owner = true
 layout_mode = 0
-offset_left = 1197.0
-offset_top = 1129.0
-offset_right = 1653.0
-offset_bottom = 1180.0
+offset_left = 1194.0
+offset_top = 1126.0
+offset_right = 1650.0
+offset_bottom = 1177.0
 theme_override_fonts/font = ExtResource("11_3sg46")
 theme_override_font_sizes/font_size = 64
-text = "spare_debug_label_5"
+text = "time_off_beat:"
 
 [node name="sound_ambient_fire" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("56_bdaqp")

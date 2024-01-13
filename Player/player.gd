@@ -95,8 +95,8 @@ var notes_played = []
 func add_to_notes_played(note_played):
 	#notes_played.append([note_played, conductor_node.closest_beat_in_bar(conductor_node.get_song_position_in_beats()).x])
 	notes_played.append([note_played, conductor_node.get_beat_in_bar])
-	$GUILayer/GUI/debug_label4.text = "beat played on: " +  str(conductor_node.get_beat_in_bar())
-	#$GUILayer/GUI/debug_label5.text = "time off beat: " +  str(conductor_node.closest_beat_in_bar(conductor_node.get_song_position_in_beats()).y)
+	$GUILayer/GUI/debug_label6.text = "beat played on: " +  str(conductor_node.closest_beat_in_song(conductor_node.get_song_position_in_seconds()).x)
+	$GUILayer/GUI/debug_label7.text = "time off beat: " +  str(conductor_node.closest_beat_in_song(conductor_node.get_song_position_in_seconds()).y)
 
 #region Midi Stuff
 func _input(input_event): #
@@ -106,7 +106,6 @@ func _input(input_event): #
 			if input_event.pitch == 60: # C
 				add_to_notes_played(input_event.pitch)
 				#notes_played.append([input_event.pitch, conductor_node.get_beat_in_bar()])
-				print("notes_played: ", notes_played)
 			if input_event.pitch == 62: # D
 				pass
 			if input_event.pitch == 64: # E
@@ -119,7 +118,7 @@ func _input(input_event): #
 				#for note in notes_pressed:
 					#if note.x == 60:
 						#notes_pressed.erase(note)
-				print("notes pressed: ", notes_pressed)
+				#print("notes pressed: ", notes_pressed)
 			if input_event.pitch == 62: # D
 				pass
 			if input_event.pitch == 65: #F
@@ -552,6 +551,4 @@ func flash(rect) -> void:
 	#debug_label_1.text = str(beat_in_bar)
 
 
-func _on_start_timer_timeout():
-	print('pls')
-	$AudioStreamPlayer.play()
+
