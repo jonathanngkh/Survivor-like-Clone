@@ -247,6 +247,7 @@ offset = Vector2(-10, -12.5)
 position = Vector2(-9, 44)
 shape = SubResource("RectangleShape2D_10ttd")
 
+[connection signal="beat_incremented" from="Conductor" to="Player" method="_on_conductor_beat_incremented"]
 [connection signal="timeout" from="Conductor/StartTimer" to="Player" method="_on_start_timer_timeout"]
 
 [editable path="Conductor"]

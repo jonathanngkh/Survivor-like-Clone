@@ -18,12 +18,19 @@ var sec_per_semiquaver = sec_per_beat / 4
 var last_reported_beat = 0
 var beats_before_start = 0
 var beat_in_bar = 0
+var measure = 1
+
+func get_measure():
+	return measure
 
 func get_beats_per_bar():
 	return beats_per_bar
 
 func get_beat_in_bar():
 	return beat_in_bar
+	
+func get_sec_per_beat():
+	return sec_per_beat
 	
 func get_song_position_in_beats():
 	return song_position_in_beats + 1
@@ -50,8 +57,6 @@ func _physics_process(_delta):
 func _report_beat():
 	if last_reported_beat < song_position_in_beats:
 		last_reported_beat = song_position_in_beats
-		#$AudioStreamPlayer.play()
-		#print(closest_beat_in_bar(4).y)
 		beat_in_bar += 1
 		if beat_in_bar > beats_per_bar:
 			beat_in_bar = 1
@@ -65,19 +70,19 @@ func play_with_beat_offset(num):
 	$StartTimer.wait_time = sec_per_beat
 	$StartTimer.start()
 	
-	
-var closest_beat = 0
 var time_of_closest_beat = 0.00
 var time_off_beat = 0.00
+
 func closest_beat_in_song(time_of_note_played):
+	var closest_beat_in_song = 0
 	# when confused, use 60bpm, or 1 sec_per_beat to math
-	closest_beat = round(time_of_note_played / sec_per_beat)
-	time_of_closest_beat = closest_beat * sec_per_beat
+	closest_beat_in_song = round(time_of_note_played / sec_per_beat)
+	time_of_closest_beat = closest_beat_in_song * sec_per_beat
 	time_off_beat = abs(time_of_closest_beat - time_of_note_played)
-	closest_beat += 1 
+	closest_beat_in_song += 1
 	#if closest_beat > beats_per_bar: # only if music is meant to loop for beats_in_bar
 		#closest_beat = 1
-	return Vector2(closest_beat, time_off_beat)
+	return Vector2(closest_beat_in_song, time_off_beat)
 
 func closest_beat_in_bar(time_of_note_played): #doesnt work
 	var closest_beat_in_bar = closest_beat_in_song(time_of_note_played).x
@@ -110,3 +115,8 @@ func _on_start_timer_timeout():
 		play()
 		$StartTimer.stop()
 	_report_beat()
+
+
+func _on_beat_incremented():
+	if beat_in_bar == 1:
+		measure += 1

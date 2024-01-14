@@ -15,4 +15,5 @@ script = ExtResource("2_yvi5o")
 stream = ExtResource("3_mfmb7")
 volume_db = -10.0
 
+[connection signal="beat_incremented" from="." to="." method="_on_beat_incremented"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]

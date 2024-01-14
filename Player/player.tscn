@@ -1,4 +1,4 @@
-[gd_scene load_steps=119 format=3 uid="uid://c6uuvcthpociv"]
+[gd_scene load_steps=120 format=3 uid="uid://c6uuvcthpociv"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_6neil"]
 [ext_resource type="PackedScene" uid="uid://c3p0e8l8amscb" path="res://Utility/hurt_box.tscn" id="3_5rw0d"]
@@ -69,6 +69,7 @@
 [ext_resource type="PackedScene" uid="uid://bxl3b55utmxfo" path="res://Player/Attack/fire_area.tscn" id="60_r5hxe"]
 [ext_resource type="Texture2D" uid="uid://by8pdrbjowkpv" path="res://Textures/GUI/stamina.png" id="60_y8d5x"]
 [ext_resource type="AudioStream" uid="uid://do3imwfj06tg5" path="res://Audio/SoundEffect/damaged2.wav" id="68_5tvaa"]
+[ext_resource type="AudioStream" uid="uid://wavl3v5ijpfd" path="res://Audio/MFX/008_Percussion_Taiko Hits(Rim)_2.5secs.wav" id="70_ore4e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bpdif"]
 size = Vector2(41.6638, 33.6962)
@@ -1814,6 +1815,28 @@ theme_override_fonts/font = ExtResource("11_3sg46")
 theme_override_font_sizes/font_size = 64
 text = "beat_in_bar_played_on:"
 
+[node name="debug_label9" type="Label" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1200.0
+offset_top = 1340.0
+offset_right = 1728.0
+offset_bottom = 1391.0
+theme_override_fonts/font = ExtResource("11_3sg46")
+theme_override_font_sizes/font_size = 64
+text = "notes_played: []"
+
+[node name="debug_label10" type="Label" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1523.0
+offset_top = 823.0
+offset_right = 2051.0
+offset_bottom = 874.0
+theme_override_fonts/font = ExtResource("11_3sg46")
+theme_override_font_sizes/font_size = 64
+text = "measure: "
+
 [node name="sound_ambient_fire" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("56_bdaqp")
 volume_db = -7.647
@@ -1841,6 +1864,10 @@ shape = SubResource("RectangleShape2D_bpdif")
 [node name="sound_damaged" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("68_5tvaa")
 volume_db = -7.0
+
+[node name="success_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("70_ore4e")
+volume_db = -5.0
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]

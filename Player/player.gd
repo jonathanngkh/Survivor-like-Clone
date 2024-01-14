@@ -94,19 +94,19 @@ var notes_played = []
 
 func add_to_notes_played(note_played):
 	#notes_played.append([note_played, conductor_node.closest_beat_in_bar(conductor_node.get_song_position_in_beats()).x])
-	notes_played.append([note_played, conductor_node.get_beat_in_bar])
-	$GUILayer/GUI/debug_label6.text = "beat played on: " +  str(conductor_node.closest_beat_in_song(conductor_node.get_song_position_in_seconds()).x)
+	notes_played.append([note_played, conductor_node.closest_beat_in_bar(conductor_node.get_song_position_in_seconds()).x, conductor_node.get_song_position_in_seconds(), conductor_node.get_measure()])
+	$GUILayer/GUI/debug_label6.text = "closest beat played on: " +  str(conductor_node.closest_beat_in_song(conductor_node.get_song_position_in_seconds()).x)
 	$GUILayer/GUI/debug_label7.text = "time off beat: " +  str(conductor_node.closest_beat_in_song(conductor_node.get_song_position_in_seconds()).y)
 	$GUILayer/GUI/debug_label8.text = "beat_in_bar_played_on: " +  str(conductor_node.closest_beat_in_bar(conductor_node.get_song_position_in_seconds()).x)
 
 #region Midi Stuff
 func _input(input_event): #
 	if input_event is InputEventMIDI:
-		_print_midi_info(input_event)
+		#_print_midi_info(input_event)
 		if input_event.message == 9: #noteOn
+			add_to_notes_played(input_event.pitch)
 			if input_event.pitch == 60: # C
-				add_to_notes_played(input_event.pitch)
-				#notes_played.append([input_event.pitch, conductor_node.get_beat_in_bar()])
+				pass
 			if input_event.pitch == 62: # D
 				pass
 			if input_event.pitch == 64: # E
@@ -125,9 +125,10 @@ func _input(input_event): #
 			if input_event.pitch == 65: #F
 				pass
 			if input_event.pitch == 64: #E
-				for note in notes_pressed:
-					if note.x == 64:
-						notes_pressed.erase(note)
+				pass
+				#for note in notes_pressed:
+					#if note.x == 64:
+						#notes_pressed.erase(note)
 
 func _print_midi_info(midi_event: InputEventMIDI):
 	#msg 9 is note on. msg 8 is note off. pitch 0 is idle msg
@@ -160,16 +161,55 @@ func _process(delta):
 		print($Camera2D.zoom)
 #endregion
 
+func _on_conductor_beat_incremented():
+	if conductor_node.get_beat_in_bar() == 1:
+		pass
+	if conductor_node.get_beat_in_bar() == 2:
+		pass
+	if conductor_node.get_beat_in_bar() == 3:
+		pass
+	if conductor_node.get_beat_in_bar() == 4:
+		pass
+		if judge_CDE() == "correct":
+			$success_sound.play()
+			notes_played = []
 
 func update_song():
 	# loop to start of idle track if player does nothing at end of bar
 	if conductor_node.get_last_reported_beat() == conductor_node.get_beats_per_bar():
 		conductor_node.play_from_beat(1, 0)
-		#conductor_node.call_deferred("play_from_beat", 1, 0)
-	
+		#notes_played = []
+		# clear notes played on idle reset, except for early beat 1 notes 
+		# can refactor and compare closest beat in song, accepting beats on 5 then converting it to beat in bar. meaning if beat is on 5, assume is on 1. then have separate logic after exiting idle loop
+		var notes_to_keep = []
+		for note in notes_played:
+			print(note)
+			if note[1] == 1 and note[2] > conductor_node.get_sec_per_beat() * (conductor_node.get_beats_per_bar() - 0.5):
+				notes_to_keep.append(note)
+		notes_played = []
+		for note in notes_to_keep:
+			if conductor_node.get_measure() - note[3] == 2:
+				pass
+			else:
+				notes_played.append(note)
+		
+var walk_song = [[60, 1], [62, 2], [64, 3]]
+
+func judge_CDE(): #judge_song(song)
+	var correct_notes = 0
+	var notes_to_play = walk_song.size()
+	for note_to_play in walk_song:
+		for note_played in notes_played:
+			if note_played[0] == note_to_play[0] and note_played[1] == note_to_play[1]:
+				correct_notes += 1
+	if correct_notes == notes_to_play and notes_played.size() == notes_to_play:
+		return "correct"
+
 
 func _physics_process(_delta):
 	update_song()
+	$GUILayer/GUI/debug_label10.text = "measure: " +  str(conductor_node.get_measure())
+	$GUILayer/GUI/debug_label9.text = "notes_played: " +  str(notes_played)
 	debug_label_1.text = "beat in bar: " + str(conductor_node.get_beat_in_bar())
 	$GUILayer/GUI/debug_label2.text = "song position in beats: " + str(conductor_node.get_song_position_in_beats())
 	$GUILayer/GUI/debug_label3.text = "last reported beat: " + str(conductor_node.get_last_reported_beat())
@@ -546,10 +586,3 @@ func flash(rect) -> void:
 	var tween: Tween = create_tween()
 	tween.tween_property(rect, "modulate:v", 1, 0.1).from(15)
 	tween.play()
-
-
-#func _on_conductor_signal_beat_in_bar(beat_in_bar):
-	#debug_label_1.text = str(beat_in_bar)
-
-
-
