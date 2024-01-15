@@ -172,6 +172,8 @@ const walk_response_song = preload("res://Audio/Music/Battle 1_Move Forward (Nor
 
 const idle_input_song = preload("res://Audio/Music/Battle 1_Idle Phase_110bpm.wav")
 
+const attack_response_song = preload("res://Audio/Music/Battle 1_Attack (Normal - Variant 1)_110bpm.wav")
+
 var saved_measure = 0
 
 func _on_conductor_beat_incremented():
@@ -193,9 +195,13 @@ func _on_conductor_beat_incremented():
 			music_state = "responding_walk"
 
 		if judge_song(attack_song_in_quavers) == "correct":
+			saved_measure = conductor_node.get_measure()
 			$attack_success_sound.play()
-			shoot_icespear()
 			notes_played = []
+			conductor_node.set_stream(attack_response_song)
+			conductor_node.play_with_beat_offset(8)
+			shoot_icespear()
+			music_state = "responding_attack"
 
 func _on_conductor_measure_incremented():
 	pass
