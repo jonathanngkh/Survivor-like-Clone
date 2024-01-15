@@ -104,31 +104,38 @@ func _input(input_event): #
 	if input_event is InputEventMIDI:
 		#_print_midi_info(input_event)
 		if input_event.message == 9: #noteOn
+			#add_to_notes_held(input_event.pitch)
 			add_to_notes_played(input_event.pitch)
-			if input_event.pitch == 60: # C
-				pass
-			if input_event.pitch == 62: # D
-				pass
-			if input_event.pitch == 64: # E
-				pass
-			if input_event.pitch == 65: # F
-				pass
+			if input_event.pitch == 60: # C4
+				$C4_lute.play()
+			if input_event.pitch == 62: # D4
+				$D4_lute.play()
+			if input_event.pitch == 64: # E4
+				$E4_lute.play()
+			if input_event.pitch == 65: # F4
+				$F4_lute.play()
+			if input_event.pitch == 67: # G4
+				$G4_lute.play()
+			if input_event.pitch == 69: # A4
+				$A4_lute.play()
+			if input_event.pitch == 71: # B4
+				$B4_lute.play()
+			if input_event.pitch == 72: # C5
+				$C5_lute.play()
+			if input_event.pitch == 74: # D5
+				$D5_lute.play()
+			if input_event.pitch == 76: # E5
+				$E5_lute.play()
 		if input_event.message == 8: #noteOff
+			# remove_from_notes_held(input_events.pitch)
 			if input_event.pitch == 60: #C
 				pass
-				#for note in notes_pressed:
-					#if note.x == 60:
-						#notes_pressed.erase(note)
-				#print("notes pressed: ", notes_pressed)
 			if input_event.pitch == 62: # D
 				pass
 			if input_event.pitch == 65: #F
 				pass
 			if input_event.pitch == 64: #E
 				pass
-				#for note in notes_pressed:
-					#if note.x == 64:
-						#notes_pressed.erase(note)
 
 func _print_midi_info(midi_event: InputEventMIDI):
 	#msg 9 is note on. msg 8 is note off. pitch 0 is idle msg
@@ -161,6 +168,12 @@ func _process(delta):
 		print($Camera2D.zoom)
 #endregion
 
+const walk_response_song = preload("res://Audio/Music/Battle 1_Move Forward (Normal - Variant 1)_110bpm.wav")
+
+const idle_input_song = preload("res://Audio/Music/Battle 1_Idle Phase_110bpm.wav")
+
+var saved_measure = 0
+
 func _on_conductor_beat_incremented():
 	if conductor_node.get_beat_in_bar() == 1:
 		pass
@@ -170,35 +183,56 @@ func _on_conductor_beat_incremented():
 		pass
 	if conductor_node.get_beat_in_bar() == 4:
 		pass
-		if judge_CDE() == "correct":
-			$success_sound.play()
+		if judge_song(walk_song) == "correct":
+			saved_measure = conductor_node.get_measure()
+			$walk_success_sound.play()
+			notes_played = []
+			conductor_node.set_stream(walk_response_song)
+			conductor_node.play_with_beat_offset(4)
+			music_state = "responding_walk"
+
+		if judge_song(attack_song) == "correct":
+			$attack_success_sound.play()
 			notes_played = []
 
-func update_song():
-	# loop to start of idle track if player does nothing at end of bar
-	if conductor_node.get_last_reported_beat() == conductor_node.get_beats_per_bar():
+func _on_conductor_measure_incremented():
+	pass
+	if conductor_node.get_measure() == (saved_measure + 2):
+		conductor_node.set_stream(idle_input_song)
 		conductor_node.play_from_beat(1, 0)
-		#notes_played = []
-		# clear notes played on idle reset, except for early beat 1 notes 
-		# can refactor and compare closest beat in song, accepting beats on 5 then converting it to beat in bar. meaning if beat is on 5, assume is on 1. then have separate logic after exiting idle loop
-		var notes_to_keep = []
-		for note in notes_played:
-			print(note)
-			if note[1] == 1 and note[2] > conductor_node.get_sec_per_beat() * (conductor_node.get_beats_per_bar() - 0.5):
-				notes_to_keep.append(note)
-		notes_played = []
-		for note in notes_to_keep:
-			if conductor_node.get_measure() - note[3] == 2:
-				pass
-			else:
-				notes_played.append(note)
-		
-var walk_song = [[60, 1], [62, 2], [64, 3]]
+		music_state = "idle"
 
-func judge_CDE(): #judge_song(song)
+var music_states = ["idle", "walk", "attack", "invalid?", "responding_walk"]
+var music_state = "idle"
+
+func update_song():
+	if music_state == "idle":
+	# loop to start of idle track if player does nothing at end of bar
+		if conductor_node.get_last_reported_beat() == conductor_node.get_beats_per_bar():
+			conductor_node.play_from_beat(1, 0)
+			# clear notes played on idle reset, except for early beat 1 notes 
+			# can refactor and compare closest beat in song, accepting beats on 5 then converting it to beat in bar. meaning if beat is on 5, assume is on 1. then have separate logic after exiting idle loop
+			var notes_to_keep = []
+			for note in notes_played:
+				print(note)
+				if note[1] == 1 and note[2] > conductor_node.get_sec_per_beat() * (conductor_node.get_beats_per_bar() - 0.5):
+					notes_to_keep.append(note)
+			notes_played = []
+			for note in notes_to_keep:
+				if conductor_node.get_measure() - note[3] == 2:
+					pass
+				else:
+					notes_played.append(note)
+	else:
+		pass
+		
+var walk_song = [[60, 1], [62, 2], [64, 3]] # in crotchets
+var attack_song = [[60,1], [60, 2], [60, 2.5]] #in crotchets
+
+func judge_song(song_to_judge):
 	var correct_notes = 0
-	var notes_to_play = walk_song.size()
-	for note_to_play in walk_song:
+	var notes_to_play = song_to_judge.size()
+	for note_to_play in song_to_judge:
 		for note_played in notes_played:
 			if note_played[0] == note_to_play[0] and note_played[1] == note_to_play[1]:
 				correct_notes += 1
@@ -207,6 +241,7 @@ func judge_CDE(): #judge_song(song)
 
 
 func _physics_process(_delta):
+	
 	update_song()
 	$GUILayer/GUI/debug_label10.text = "measure: " +  str(conductor_node.get_measure())
 	$GUILayer/GUI/debug_label9.text = "notes_played: " +  str(notes_played)
@@ -214,6 +249,7 @@ func _physics_process(_delta):
 	$GUILayer/GUI/debug_label2.text = "song position in beats: " + str(conductor_node.get_song_position_in_beats())
 	$GUILayer/GUI/debug_label3.text = "last reported beat: " + str(conductor_node.get_last_reported_beat())
 	movement()
+	
 	while (notes_pressed.has(Vector2(60, 1)) and notes_pressed.has(Vector2(64,1))) == true:
 		print("while loop true")
 		shoot_icespear()
@@ -268,6 +304,8 @@ func movement():
 		
 	last_velocity = velocity
 	velocity = mov.normalized() * movement_speed
+	if music_state == "responding_walk":
+		velocity *= 5
 	move_and_slide()
 	
 func _on_animation_tree_animation_finished(anim_name):

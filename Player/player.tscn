@@ -1,4 +1,4 @@
-[gd_scene load_steps=120 format=3 uid="uid://c6uuvcthpociv"]
+[gd_scene load_steps=131 format=3 uid="uid://c6uuvcthpociv"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_6neil"]
 [ext_resource type="PackedScene" uid="uid://c3p0e8l8amscb" path="res://Utility/hurt_box.tscn" id="3_5rw0d"]
@@ -70,6 +70,17 @@
 [ext_resource type="Texture2D" uid="uid://by8pdrbjowkpv" path="res://Textures/GUI/stamina.png" id="60_y8d5x"]
 [ext_resource type="AudioStream" uid="uid://do3imwfj06tg5" path="res://Audio/SoundEffect/damaged2.wav" id="68_5tvaa"]
 [ext_resource type="AudioStream" uid="uid://wavl3v5ijpfd" path="res://Audio/MFX/008_Percussion_Taiko Hits(Rim)_2.5secs.wav" id="70_ore4e"]
+[ext_resource type="AudioStream" uid="uid://dpblsp3kcahk6" path="res://Audio/MFX/cymbal-crash1_ff_rr2-PB.wav" id="71_j410t"]
+[ext_resource type="AudioStream" uid="uid://bbnuw2sl6qurf" path="res://Audio/MFX/003_Lute_C4_2.5secs.wav" id="72_75irh"]
+[ext_resource type="AudioStream" uid="uid://crk1a6qoh7th2" path="res://Audio/MFX/004_Lute_D4_2.5secs.wav" id="73_g6en0"]
+[ext_resource type="AudioStream" uid="uid://71ooxpqor27t" path="res://Audio/MFX/005_Lute_E4_2.5secs.wav" id="74_q85vi"]
+[ext_resource type="AudioStream" uid="uid://c25gt5kdixf7i" path="res://Audio/MFX/006_Lute_F4_2.5secs.wav" id="75_vjfav"]
+[ext_resource type="AudioStream" uid="uid://4weu406bw5mb" path="res://Audio/MFX/007_Lute_G4_2.5secs.wav" id="76_q37rd"]
+[ext_resource type="AudioStream" uid="uid://ciyak1caaexo1" path="res://Audio/MFX/008_Lute_A4_2.5secs.wav" id="77_mtylx"]
+[ext_resource type="AudioStream" uid="uid://c2xn7ekj5urwv" path="res://Audio/MFX/009_Lute_B4_2.5secs.wav" id="78_l81l8"]
+[ext_resource type="AudioStream" uid="uid://21xra1ujohar" path="res://Audio/MFX/010_Lute_C5_2.5secs.wav" id="79_2nqwy"]
+[ext_resource type="AudioStream" uid="uid://2o0eo04j6rlb" path="res://Audio/MFX/011_Lute_D5_2.5secs.wav" id="80_w5a64"]
+[ext_resource type="AudioStream" uid="uid://8lb2srtq5i44" path="res://Audio/MFX/012_Lute_E5_2.5secs.wav" id="81_dxmne"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bpdif"]
 size = Vector2(41.6638, 33.6962)
@@ -1865,8 +1876,52 @@ shape = SubResource("RectangleShape2D_bpdif")
 stream = ExtResource("68_5tvaa")
 volume_db = -7.0
 
-[node name="success_sound" type="AudioStreamPlayer" parent="."]
+[node name="walk_success_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("70_ore4e")
+volume_db = -5.0
+
+[node name="attack_success_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("71_j410t")
+volume_db = -5.0
+
+[node name="C4_lute" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("72_75irh")
+volume_db = -5.0
+
+[node name="D4_lute" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("73_g6en0")
+volume_db = -5.0
+
+[node name="E4_lute" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("74_q85vi")
+volume_db = -5.0
+
+[node name="F4_lute" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("75_vjfav")
+volume_db = -5.0
+
+[node name="G4_lute" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("76_q37rd")
+volume_db = -5.0
+
+[node name="A4_lute" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("77_mtylx")
+volume_db = -5.0
+
+[node name="B4_lute" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("78_l81l8")
+volume_db = -5.0
+
+[node name="C5_lute" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("79_2nqwy")
+volume_db = -5.0
+
+[node name="D5_lute" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("80_w5a64")
+volume_db = -5.0
+
+[node name="E5_lute" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("81_dxmne")
 volume_db = -5.0
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]

@@ -1,13 +1,13 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1705162594
-Conductor.gd::GDScript::-1::1705162329::0::1::::<>AudioStreamPlayer<>::
-conductor.tscn::PackedScene::4127164472772702418::1705162329::0::1::::<><>::uid://bm2b4htnnhsf4::::res://Audio/Music/180 xDeviruchi - Decisive Battle.wav<>res://Conductor.gd<>uid://wavl3v5ijpfd::::res://Audio/MFX/008_Percussion_Taiko Hits(Rim)_2.5secs.wav
+::res://::1705300447
+Conductor.gd::GDScript::-1::1705246929::0::1::::<>AudioStreamPlayer<>::
+conductor.tscn::PackedScene::4127164472772702418::1705300447::0::1::::<><>::uid://bm2b4htnnhsf4::::res://Audio/Music/180 xDeviruchi - Decisive Battle.wav<>res://Conductor.gd<>uid://wavl3v5ijpfd::::res://Audio/MFX/008_Percussion_Taiko Hits(Rim)_2.5secs.wav
 EnemySpawner.gd::GDScript::-1::1704515689::0::1::::<>Node2D<>::
 icon.svg::CompressedTexture2D::1730451811002220422::1667010171::1703657421::1::::<><>::
 ItemOption.gd::GDScript::-1::1704466979::0::1::::<>ColorRect<>::
 LICENSE.txt::TextFile::-1::1704667845::0::1::::<><>::
 README.md::TextFile::-1::1703771705::0::1::::<><>::
-::res://addons/::1704667845
+::res://addons/::1705297841
 ::res://addons/midi/::1704667846
 ADSR.gd::GDScript::-1::1704667845::0::1::::AudioStreamPlayerADSR<>AudioStreamPlayer<>::
 ADSR.tscn::PackedScene::7561284580308159669::1704667845::0::1::::<><>::res://addons/midi/ADSR.gd
@@ -20,17 +20,56 @@ plugin.cfg::TextFile::-1::1704667846::0::1::::<><>::
 SMF.gd::GDScript::-1::1704667845::0::1::::SMF<>RefCounted<>::
 SoundFont.gd::GDScript::-1::1704667845::0::1::::SoundFont<>RefCounted<>::
 Utility.gd::GDScript::-1::1704667846::0::1::::<>RefCounted<>::
+::res://addons/xsm/::1705300447
+plugin.cfg::TextFile::-1::1687879054::0::1::::<><>::
+state.gd::GDScript::-1::1705300447::0::1::::State<>Node<>res://addons/xsm/icons/state.png::
+state_animation.gd::GDScript::-1::1687879054::0::1::::StateAnimation<>State<>res://addons/xsm/icons/state_animation.png::
+state_loop.gd::GDScript::-1::1687879054::0::1::::StateLoop<>State<>res://addons/xsm/icons/state_loop.png::
+state_rand.gd::GDScript::-1::1687879054::0::1::::StateRand<>State<>res://addons/xsm/icons/state_rand.png::
+state_regions.gd::GDScript::-1::1687879054::0::1::::StateRegions<>State<>res://addons/xsm/icons/state_regions.png::
+state_sound.gd::GDScript::-1::1687879054::0::1::::StateSound<>StateAnimation<>res://addons/xsm/icons/state_sound.png::
+xsm.gd::GDScript::-1::1687879054::0::1::::<>EditorPlugin<>::
+::res://addons/xsm/icons/::1705297837
+state.png::CompressedTexture2D::5106645568192998315::1687879054::1705297837::1::::<><>::
+state_animation.png::CompressedTexture2D::6543393061122986767::1687879054::1705297837::1::::<><>::
+state_loop.png::CompressedTexture2D::2189132576602110386::1687879054::1705297837::1::::<><>::
+state_rand.png::CompressedTexture2D::3335708320158116290::1687879054::1705297837::1::::<><>::
+state_regions.png::CompressedTexture2D::6004566711391977917::1687879054::1705297837::1::::<><>::
+state_sound.png::CompressedTexture2D::7904396289485751334::1687879054::1705297837::1::::<><>::
+::res://addons/xsm/templates/::1687879054
+::res://addons/xsm/templates/State/::1687879054
+empty_state.gd::GDScript::-1::1687879054::0::1::::<>State<>::
+::res://addons/xsm/templates/StateAnimation/::1687879054
+empty_state_animation.gd::GDScript::-1::1687879054::0::1::::<>StateAnimation<>::
+::res://addons/xsm/templates/StateLoop/::1687879054
+empty_state_loop.gd::GDScript::-1::1687879054::0::1::::<>StateLoop<>::
+::res://addons/xsm/templates/StateRand/::1687879054
+empty_state_rand.gd::GDScript::-1::1687879054::0::1::::<>StateRand<>::
+::res://addons/xsm/templates/StateRegions/::1687879054
+empty_state_regions.gd::GDScript::-1::1687879054::0::1::::<>StateRegions<>::
 ::res://Audio/::1705139059
 ::res://Audio/GUI/::1703657421
 click.wav::AudioStreamWAV::8437723427643852166::1667010171::1703657421::1::::<><>::
 hover.wav::AudioStreamWAV::2256631513487760126::1667010171::1703657421::1::::<><>::
-::res://Audio/MFX/::1705139064
+::res://Audio/MFX/::1705290342
+003_Lute_C4_2.5secs.wav::AudioStreamWAV::2484701511933949543::1704034688::1705290220::1::::<><>::
+004_Lute_D4_2.5secs.wav::AudioStreamWAV::5988275782172733829::1704034698::1705290220::1::::<><>::
+005_Lute_E4_2.5secs.wav::AudioStreamWAV::2300593088991485031::1704034706::1705290220::1::::<><>::
+006_Lute_F4_2.5secs.wav::AudioStreamWAV::6730271301572117876::1704034714::1705290313::1::::<><>::
+007_Lute_G4_2.5secs.wav::AudioStreamWAV::2081172923149416817::1704034722::1705290313::1::::<><>::
+008_Lute_A4_2.5secs.wav::AudioStreamWAV::5383916409223841650::1704035066::1705290313::1::::<><>::
 008_Percussion_Taiko Hits(Rim)_2.5secs.wav::AudioStreamWAV::1545450765086583473::1705138996::1705139064::1::::<><>::
-::res://Audio/Music/::1705052919
+009_Lute_B4_2.5secs.wav::AudioStreamWAV::6716267526258632165::1704035076::1705290313::1::::<><>::
+010_Lute_C5_2.5secs.wav::AudioStreamWAV::1950199490248649133::1704035084::1705290313::1::::<><>::
+011_Lute_D5_2.5secs.wav::AudioStreamWAV::1925525910056397603::1704035094::1705290313::1::::<><>::
+012_Lute_E5_2.5secs.wav::AudioStreamWAV::2339049901345746343::1704035104::1705290313::1::::<><>::
+cymbal-crash1_ff_rr2-PB.wav::AudioStreamWAV::8214859946176379119::1476195918::1705289158::1::::<><>::
+::res://Audio/Music/::1705300850
 110 Battle 1.wav::AudioStreamWAV::5879475651137538300::1704701285::1704785636::1::::<><>::
 131 Medieval Vol. 2 6.mp3::AudioStreamMP3::3979062043715123123::1659248438::1704785629::1::::<><>::
 180 xDeviruchi - Decisive Battle.wav::AudioStreamWAV::3284537909348175991::1613993542::1704785684::1::::<><>::
 Battle 1_Idle Phase_110bpm.wav::AudioStreamWAV::7806410458085620511::1705052918::1705052919::1::::<><>::
+Battle 1_Move Forward (Normal - Variant 1)_110bpm.wav::AudioStreamWAV::5675720360421996505::1705044286::1705300853::1::::<><>::
 battleThemeA.mp3::AudioStreamMP3::717128827575845754::1667010171::1703657421::1::::<><>::
 ::res://Audio/SoundEffect/::1705034966
 01_Fire_Cast.wav::AudioStreamWAV::8388575106014509106::1705030400::1705030400::1::::<><>::
@@ -70,9 +109,9 @@ tenderness.otf::FontFile::304657974914629605::1667010171::1703657421::1::::<><>:
 ::res://Objects/::1704440246
 experience_gem.gd::GDScript::-1::1704381991::0::1::::<>Area2D<>::
 experience_gem.tscn::PackedScene::2037094044705391652::1704440246::0::1::::<><>::res://Objects/experience_gem.gd<>uid://51ekufklj1fj::::res://Textures/Items/Gems/Gem_green.png<>uid://b1u8b22j5bvij::::res://Audio/SoundEffect/collectgem.mp3
-::res://Player/::1705162329
-player.gd::GDScript::-1::1705161273::0::1::::<>CharacterBody2D<>::
-player.tscn::PackedScene::6991235051510363693::1705162329::0::1::::<><>::res://Player/player.gd<>uid://c3p0e8l8amscb::::res://Utility/hurt_box.tscn<>uid://daxpl1oeht4bu::::res://Textures/Player/Eleanore/e_idle/Idle1.png<>uid://hjakswftn2d6::::res://Textures/B_witch_idle.png<>uid://bqov4000jvjuf::::res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)1.png<>uid://vr6slqqn7fpa::::res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)2.png<>uid://mufcr6utf2uc::::res://Textures/Player/Eleanore/e_idle/Idle2.png<>uid://cu7sdjuwmkgk0::::res://Textures/B_witch_run.png<>uid://dk585cnn17iqg::::res://Textures/Player/Eleanore/e_idle/Idle3.png<>uid://dnfhuykdcnq3c::::res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)3.png<>uid://yx5fbbptmi7t::::res://Textures/GUI/exp_background.png<>uid://cx7ed1smpbh6a::::res://Textures/Player/Eleanore/e_idle/Idle4.png<>uid://c0ev37uwkekax::::res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)4.png<>uid://bd5cbriis3pd5::::res://Textures/GUI/exp_progress.png<>uid://bidqra8knpe7e::::res://Textures/Player/Eleanore/e_idle/Idle5.png<>uid://uhltf48tybys::::res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)5.png<>uid://eltw4hqqgcsj::::res://Font/tenderness.otf<>uid://cplhbr5ulpehv::::res://Audio/SoundEffect/levelup.ogg<>uid://cacpycqnnff5s::::res://Textures/Player/Eleanore/e_idle/Idle6.png<>uid://ckcpb0hfg77pc::::res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)6.png<>uid://dtpbmm67c0u4j::::res://Textures/GUI/healthbar.png<>uid://caixfhvywocwi::::res://Textures/Player/Eleanore/e_idle/Idle7.png<>uid://c375m5pqbprmj::::res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)7.png<>uid://7j1t26gnx2vm::::res://Textures/GUI/health.png<>uid://dm3x801qwqf2r::::res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)8.png<>uid://bsagdcylbfnkn::::res://Textures/Player/Eleanore/e_idle/Idle8.png<>uid://eggfepa4mr2x::::res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)9.png<>uid://dejderl1lu6q2::::res://Font/monogram.ttf<>uid://dw3xfqn31fgp0::::res://Textures/Player/Eleanore/e_idle/Idle9.png<>uid://c07ajhcpdll0u::::res://Textures/Player/Eleanore/e_walk/Moving1.png<>uid://ddn6fblgofiow::::res://Textures/Player/Eleanore/e_attack_2/ComboAtk(FX)10.png<>uid://14sgk5i7rits::::res://Textures/Player/Eleanore/e_attack_2/ComboAtk(FX)11.png<>uid://d37kqqnhsu6is::::res://Textures/Player/Eleanore/e_walk/Moving2.png<>uid://dvyvgnb2qmkfo::::res://Textures/Player/Eleanore/e_walk/Moving3.png<>uid://cq44cf4fia0bw::::res://Textures/Player/Eleanore/e_attack_2/ComboAtk(FX)12.png<>uid://xe3magivjate::::res://Textures/Player/Eleanore/e_walk/Moving4.png<>uid://dpnm6ubalxxt5::::res://Textures/Player/Eleanore/e_attack_2/ComboAtk(FX)13.png<>uid://c0n10s8akn4u5::::res://Textures/Player/Eleanore/e_walk/Moving5.png<>uid://gdmlsnt53cp6::::res://Textures/Player/Eleanore/e_attack_2/ComboAtk(FX)14.png<>uid://d16ptnwkeu0jh::::res://Textures/Player/Eleanore/e_attack_2/ComboAtk(FX)15.png<>uid://b0qb6cv6lx2dn::::res://Textures/Player/Eleanore/e_walk/Moving6.png<>uid://blt3te8e1rbho::::res://Textures/Player/Eleanore/e_attack_2/ComboAtk(FX)16.png<>uid://dqxy7ucsdpbrp::::res://Textures/Player/Eleanore/e_walk/Moving7.png<>uid://jh1jsj6ve7h4::::res://Textures/Player/Eleanore/e_walk/Moving8.png<>uid://dqlc8bnuno2dk::::res://Textures/Player/Eleanore/e_attack_3/ComboAtk(FX)17.png<>uid://bcar7ehi7dvae::::res://Textures/Player/Eleanore/e_walk_start/Move1.png<>uid://cmspor75nrepe::::res://Textures/Player/Eleanore/e_attack_3/ComboAtk(FX)18.png<>uid://d2fqr80ib3hjo::::res://Textures/Player/Eleanore/e_walk_start/Move2.png<>uid://6uc1h8ayya1i::::res://Textures/Player/Eleanore/e_walk_stop/Move11.png<>uid://cm41wy3cav4fe::::res://Textures/Player/Eleanore/e_attack_3/ComboAtk(FX)19.png<>uid://cowyg1wd1ams0::::res://Textures/Player/Eleanore/e_walk_stop/Move12.png<>uid://q4ft87kddvhv::::res://Textures/Player/Eleanore/e_attack_3/ComboAtk(FX)20.png<>uid://dmuhb8qmpwrdn::::res://Textures/Player/Eleanore/e_walk_stop/Move13.png<>uid://bnwfcslj7uxbp::::res://Textures/Player/Eleanore/e_attack_3/ComboAtk(FX)21.png<>uid://cfyudvxxsrhrk::::res://Textures/Player/Eleanore/e_attack_3/ComboAtk(FX)22.png<>uid://bfsibgxq2ja43::::res://Textures/Player/Eleanore/e_attack_3/ComboAtk(FX)23.png<>uid://qc0pagbyoguk::::res://Textures/Player/Eleanore/e_attack_3/ComboAtk(FX)24.png<>uid://darm3kw5nd8k4::::res://Textures/Player/Eleanore/e_attack_3/ComboAtk(FX)25.png<>uid://dqyao56o4ap7v::::res://Textures/Player/Eleanore/e_attack_3/ComboAtk(FX)26.png<>uid://bh1xmqekosqp1::::res://Textures/Player/Eleanore/e_attack_3/ComboAtk(FX)27.png<>uid://jbx4xvyd1hxl::::res://Textures/Player/Eleanore/e_attack_3/ComboAtk(FX)28.png<>uid://cw2chbvsrqupx::::res://Audio/SoundEffect/02_Fire_Hold.wav<>uid://tgojql1wyvrw::::res://Audio/SoundEffect/03_Fire_Throw.wav<>uid://drrquvalm273c::::res://Audio/SoundEffect/01_Fire_Cast.wav<>uid://00m5n8ckuh2p::::res://Audio/SoundEffect/06_Fire_Shield.wav<>uid://b0wl77cxfhs7h::::res://Audio/SoundEffect/05_Fire_Explosion.wav<>uid://bxl3b55utmxfo::::res://Player/Attack/fire_area.tscn<>uid://by8pdrbjowkpv::::res://Textures/GUI/stamina.png<>uid://do3imwfj06tg5::::res://Audio/SoundEffect/damaged2.wav
+::res://Player/::1705300447
+player.gd::GDScript::-1::1705300447::0::1::::<>CharacterBody2D<>::
+player.tscn::PackedScene::6991235051510363693::1705300447::0::1::::<><>::res://Player/player.gd<>uid://c3p0e8l8amscb::::res://Utility/hurt_box.tscn<>uid://daxpl1oeht4bu::::res://Textures/Player/Eleanore/e_idle/Idle1.png<>uid://hjakswftn2d6::::res://Textures/B_witch_idle.png<>uid://bqov4000jvjuf::::res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)1.png<>uid://vr6slqqn7fpa::::res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)2.png<>uid://mufcr6utf2uc::::res://Textures/Player/Eleanore/e_idle/Idle2.png<>uid://cu7sdjuwmkgk0::::res://Textures/B_witch_run.png<>uid://dk585cnn17iqg::::res://Textures/Player/Eleanore/e_idle/Idle3.png<>uid://dnfhuykdcnq3c::::res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)3.png<>uid://yx5fbbptmi7t::::res://Textures/GUI/exp_background.png<>uid://cx7ed1smpbh6a::::res://Textures/Player/Eleanore/e_idle/Idle4.png<>uid://c0ev37uwkekax::::res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)4.png<>uid://bd5cbriis3pd5::::res://Textures/GUI/exp_progress.png<>uid://bidqra8knpe7e::::res://Textures/Player/Eleanore/e_idle/Idle5.png<>uid://uhltf48tybys::::res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)5.png<>uid://eltw4hqqgcsj::::res://Font/tenderness.otf<>uid://cplhbr5ulpehv::::res://Audio/SoundEffect/levelup.ogg<>uid://cacpycqnnff5s::::res://Textures/Player/Eleanore/e_idle/Idle6.png<>uid://ckcpb0hfg77pc::::res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)6.png<>uid://dtpbmm67c0u4j::::res://Textures/GUI/healthbar.png<>uid://caixfhvywocwi::::res://Textures/Player/Eleanore/e_idle/Idle7.png<>uid://c375m5pqbprmj::::res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)7.png<>uid://7j1t26gnx2vm::::res://Textures/GUI/health.png<>uid://dm3x801qwqf2r::::res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)8.png<>uid://bsagdcylbfnkn::::res://Textures/Player/Eleanore/e_idle/Idle8.png<>uid://eggfepa4mr2x::::res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)9.png<>uid://dejderl1lu6q2::::res://Font/monogram.ttf<>uid://dw3xfqn31fgp0::::res://Textures/Player/Eleanore/e_idle/Idle9.png<>uid://c07ajhcpdll0u::::res://Textures/Player/Eleanore/e_walk/Moving1.png<>uid://ddn6fblgofiow::::res://Textures/Player/Eleanore/e_attack_2/ComboAtk(FX)10.png<>uid://14sgk5i7rits::::res://Textures/Player/Eleanore/e_attack_2/ComboAtk(FX)11.png<>uid://d37kqqnhsu6is::::res://Textures/Player/Eleanore/e_walk/Moving2.png<>uid://dvyvgnb2qmkfo::::res://Textures/Player/Eleanore/e_walk/Moving3.png<>uid://cq44cf4fia0bw::::res://Textures/Player/Eleanore/e_attack_2/ComboAtk(FX)12.png<>uid://xe3magivjate::::res://Textures/Player/Eleanore/e_walk/Moving4.png<>uid://dpnm6ubalxxt5::::res://Textures/Player/Eleanore/e_attack_2/ComboAtk(FX)13.png<>uid://c0n10s8akn4u5::::res://Textures/Player/Eleanore/e_walk/Moving5.png<>uid://gdmlsnt53cp6::::res://Textures/Player/Eleanore/e_attack_2/ComboAtk(FX)14.png<>uid://d16ptnwkeu0jh::::res://Textures/Player/Eleanore/e_attack_2/ComboAtk(FX)15.png<>uid://b0qb6cv6lx2dn::::res://Textures/Player/Eleanore/e_walk/Moving6.png<>uid://blt3te8e1rbho::::res://Textures/Player/Eleanore/e_attack_2/ComboAtk(FX)16.png<>uid://dqxy7ucsdpbrp::::res://Textures/Player/Eleanore/e_walk/Moving7.png<>uid://jh1jsj6ve7h4::::res://Textures/Player/Eleanore/e_walk/Moving8.png<>uid://dqlc8bnuno2dk::::res://Textures/Player/Eleanore/e_attack_3/ComboAtk(FX)17.png<>uid://bcar7ehi7dvae::::res://Textures/Player/Eleanore/e_walk_start/Move1.png<>uid://cmspor75nrepe::::res://Textures/Player/Eleanore/e_attack_3/ComboAtk(FX)18.png<>uid://d2fqr80ib3hjo::::res://Textures/Player/Eleanore/e_walk_start/Move2.png<>uid://6uc1h8ayya1i::::res://Textures/Player/Eleanore/e_walk_stop/Move11.png<>uid://cm41wy3cav4fe::::res://Textures/Player/Eleanore/e_attack_3/ComboAtk(FX)19.png<>uid://cowyg1wd1ams0::::res://Textures/Player/Eleanore/e_walk_stop/Move12.png<>uid://q4ft87kddvhv::::res://Textures/Player/Eleanore/e_attack_3/ComboAtk(FX)20.png<>uid://dmuhb8qmpwrdn::::res://Textures/Player/Eleanore/e_walk_stop/Move13.png<>uid://bnwfcslj7uxbp::::res://Textures/Player/Eleanore/e_attack_3/ComboAtk(FX)21.png<>uid://cfyudvxxsrhrk::::res://Textures/Player/Eleanore/e_attack_3/ComboAtk(FX)22.png<>uid://bfsibgxq2ja43::::res://Textures/Player/Eleanore/e_attack_3/ComboAtk(FX)23.png<>uid://qc0pagbyoguk::::res://Textures/Player/Eleanore/e_attack_3/ComboAtk(FX)24.png<>uid://darm3kw5nd8k4::::res://Textures/Player/Eleanore/e_attack_3/ComboAtk(FX)25.png<>uid://dqyao56o4ap7v::::res://Textures/Player/Eleanore/e_attack_3/ComboAtk(FX)26.png<>uid://bh1xmqekosqp1::::res://Textures/Player/Eleanore/e_attack_3/ComboAtk(FX)27.png<>uid://jbx4xvyd1hxl::::res://Textures/Player/Eleanore/e_attack_3/ComboAtk(FX)28.png<>uid://cw2chbvsrqupx::::res://Audio/SoundEffect/02_Fire_Hold.wav<>uid://tgojql1wyvrw::::res://Audio/SoundEffect/03_Fire_Throw.wav<>uid://drrquvalm273c::::res://Audio/SoundEffect/01_Fire_Cast.wav<>uid://00m5n8ckuh2p::::res://Audio/SoundEffect/06_Fire_Shield.wav<>uid://b0wl77cxfhs7h::::res://Audio/SoundEffect/05_Fire_Explosion.wav<>uid://bxl3b55utmxfo::::res://Player/Attack/fire_area.tscn<>uid://by8pdrbjowkpv::::res://Textures/GUI/stamina.png<>uid://do3imwfj06tg5::::res://Audio/SoundEffect/damaged2.wav<>uid://wavl3v5ijpfd::::res://Audio/MFX/008_Percussion_Taiko Hits(Rim)_2.5secs.wav<>uid://dpblsp3kcahk6::::res://Audio/MFX/cymbal-crash1_ff_rr2-PB.wav<>uid://bbnuw2sl6qurf::::res://Audio/MFX/003_Lute_C4_2.5secs.wav<>uid://crk1a6qoh7th2::::res://Audio/MFX/004_Lute_D4_2.5secs.wav<>uid://71ooxpqor27t::::res://Audio/MFX/005_Lute_E4_2.5secs.wav<>uid://c25gt5kdixf7i::::res://Audio/MFX/006_Lute_F4_2.5secs.wav<>uid://4weu406bw5mb::::res://Audio/MFX/007_Lute_G4_2.5secs.wav<>uid://ciyak1caaexo1::::res://Audio/MFX/008_Lute_A4_2.5secs.wav<>uid://c2xn7ekj5urwv::::res://Audio/MFX/009_Lute_B4_2.5secs.wav<>uid://21xra1ujohar::::res://Audio/MFX/010_Lute_C5_2.5secs.wav<>uid://2o0eo04j6rlb::::res://Audio/MFX/011_Lute_D5_2.5secs.wav<>uid://8lb2srtq5i44::::res://Audio/MFX/012_Lute_E5_2.5secs.wav
 ::res://Player/Attack/::1705055245
 fire_area.gd::GDScript::-1::1705055007::0::1::::<>Area2D<>::
 fire_area.tscn::PackedScene::4025175727233103396::1705055245::0::1::::<><>::res://Player/Attack/fire_area.gd<>uid://du2kb7ydj2mj3::::res://Textures/Items/Weapons/IceVFX 1 Repeatable.png<>uid://cx4mx1brure3x::::res://Textures/Items/Weapons/Ice VFX 1 Hit.png<>uid://c87teh3eell61::::res://Audio/SoundEffect/ice.wav
@@ -200,15 +239,15 @@ Move2.png::CompressedTexture2D::9065686320713716876::1704898166::1704898223::1::
 Move11.png::CompressedTexture2D::2217309991162272636::1704898204::1704898204::1::::<><>::
 Move12.png::CompressedTexture2D::5802370811261661485::1704898204::1704898204::1::::<><>::
 Move13.png::CompressedTexture2D::8043244293113737431::1704898204::1704898204::1::::<><>::
-::res://Utility/::1705068873
+::res://Utility/::1705162631
 enemy_spawner.tscn::PackedScene::2603039440878529294::1703951980::0::1::::<><>::res://EnemySpawner.gd
 hit_box.gd::GDScript::-1::1703737577::0::1::::<>Area2D<>::
 hit_box.tscn::PackedScene::4235706797180950915::1705055245::0::1::::<><>::res://Utility/hit_box.gd
 hurt_box.gd::GDScript::-1::1705043789::0::1::::<>Area2D<>::
 hurt_box.tscn::PackedScene::6770621475320051533::1705055245::0::1::::<><>::res://Utility/hurt_box.gd
 item_option.tscn::PackedScene::5207518196480245542::1704613307::0::1::::<><>::res://ItemOption.gd<>uid://c0kargjttf278::::res://Textures/Items/Weapons/sword.png<>uid://eltw4hqqgcsj::::res://Font/tenderness.otf
-spawn_info.gd::GDScript::-1::1705068873::0::1::::Spawn_info<>Resource<>::
+spawn_info.gd::GDScript::-1::1705162631::0::1::::Spawn_info<>Resource<>::
 upgrade_db.gd::GDScript::-1::1704469332::0::1::::<>Node<>::
 upgrade_db.tscn::PackedScene::4409262119425827727::1704516956::0::1::::<><>::res://Utility/upgrade_db.gd
-::res://World/::1705162329
-world.tscn::PackedScene::5425394350037699307::1705162329::0::1::::<><>::uid://b6t8hgeek4kfh::::res://Textures/wol huge air map.png<>uid://c6uuvcthpociv::::res://Player/player.tscn<>uid://ds1caoj3877wy::::res://Enemy/enemy_skeleton.tscn<>uid://bdc6xdiruauvu::::res://Utility/enemy_spawner.tscn<>uid://cgga8fyah246l::::res://Textures/statue2.png<>uid://bahwa3aqr7t01::::res://Enemy/enemy_demon.tscn<>res://Utility/spawn_info.gd<>uid://bbge5wi6ymxj0::::res://Enemy/enemy_skull.tscn<>uid://dparb0oln5dfh::::res://Enemy/enemy_nightmare.tscn<>uid://by2h2cbjqpp3g::::res://conductor.tscn<>uid://djhqo7kroibgp::::res://Audio/Music/Battle 1_Idle Phase_110bpm.wav
+::res://World/::1705300447
+world.tscn::PackedScene::5425394350037699307::1705300447::0::1::::<><>::uid://b6t8hgeek4kfh::::res://Textures/wol huge air map.png<>uid://c6uuvcthpociv::::res://Player/player.tscn<>uid://ds1caoj3877wy::::res://Enemy/enemy_skeleton.tscn<>uid://bdc6xdiruauvu::::res://Utility/enemy_spawner.tscn<>uid://cgga8fyah246l::::res://Textures/statue2.png<>uid://bahwa3aqr7t01::::res://Enemy/enemy_demon.tscn<>res://Utility/spawn_info.gd<>uid://bbge5wi6ymxj0::::res://Enemy/enemy_skull.tscn<>uid://dparb0oln5dfh::::res://Enemy/enemy_nightmare.tscn<>uid://by2h2cbjqpp3g::::res://conductor.tscn<>uid://djhqo7kroibgp::::res://Audio/Music/Battle 1_Idle Phase_110bpm.wav
