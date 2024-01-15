@@ -27,6 +27,12 @@ window/size/window_width_override=2560
 window/size/window_height_override=1440
 window/stretch/mode="canvas_items"
 
+[importer_defaults]
+
+animation_library={
+"animation/fps": 60.0
+}
+
 [input]
 
 up={

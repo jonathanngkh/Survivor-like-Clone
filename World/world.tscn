@@ -114,7 +114,8 @@ spawns = Array[ExtResource("5_kyr6r")]([SubResource("Resource_rxj4u"), SubResour
 [node name="Conductor" parent="." instance=ExtResource("9_mdibg")]
 stream = ExtResource("10_8avhi")
 autoplay = false
-bpm = 110
+bpm = 220
+beats_per_bar = 8
 
 [node name="Borders" type="CharacterBody2D" parent="."]
 visible = false

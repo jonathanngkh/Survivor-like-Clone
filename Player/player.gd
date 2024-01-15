@@ -92,7 +92,7 @@ var notes_pressed = []
 
 var notes_played = []
 
-func add_to_notes_played(note_played):
+func add_to_notes_played(note_played): # TESTING WITH CLOSET QUAVER
 	#notes_played.append([note_played, conductor_node.closest_beat_in_bar(conductor_node.get_song_position_in_beats()).x])
 	notes_played.append([note_played, conductor_node.closest_beat_in_bar(conductor_node.get_song_position_in_seconds()).x, conductor_node.get_song_position_in_seconds(), conductor_node.get_measure()])
 	$GUILayer/GUI/debug_label6.text = "closest beat played on: " +  str(conductor_node.closest_beat_in_song(conductor_node.get_song_position_in_seconds()).x)
@@ -181,18 +181,20 @@ func _on_conductor_beat_incremented():
 		pass
 	if conductor_node.get_beat_in_bar() == 3:
 		pass
-	if conductor_node.get_beat_in_bar() == 4:
+	if conductor_node.get_beat_in_bar() == 7:
 		pass
-		if judge_song(walk_song) == "correct":
+		if judge_song(walk_song_in_quavers) == "correct":
 			saved_measure = conductor_node.get_measure()
 			$walk_success_sound.play()
+			# ADD SPEED BUFF ANIMATION AND SOUND ON BEAT 4
 			notes_played = []
 			conductor_node.set_stream(walk_response_song)
-			conductor_node.play_with_beat_offset(4)
+			conductor_node.play_with_beat_offset(8)
 			music_state = "responding_walk"
 
-		if judge_song(attack_song) == "correct":
+		if judge_song(attack_song_in_quavers) == "correct":
 			$attack_success_sound.play()
+			shoot_icespear()
 			notes_played = []
 
 func _on_conductor_measure_incremented():
@@ -216,6 +218,7 @@ func update_song():
 			for note in notes_played:
 				print(note)
 				if note[1] == 1 and note[2] > conductor_node.get_sec_per_beat() * (conductor_node.get_beats_per_bar() - 0.5):
+					print('fast enough?')
 					notes_to_keep.append(note)
 			notes_played = []
 			for note in notes_to_keep:
@@ -227,7 +230,9 @@ func update_song():
 		pass
 		
 var walk_song = [[60, 1], [62, 2], [64, 3]] # in crotchets
-var attack_song = [[60,1], [60, 2], [60, 2.5]] #in crotchets
+var attack_song = [[64,1], [64, 2], [64, 2.5]] #in crotchets
+var attack_song_in_quavers = [[64, 1], [64, 3], [64, 4]]
+var walk_song_in_quavers = [[60, 1], [62, 3], [64, 5]]
 
 func judge_song(song_to_judge):
 	var correct_notes = 0
