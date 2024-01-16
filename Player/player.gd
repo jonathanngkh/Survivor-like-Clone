@@ -54,7 +54,7 @@ var additional_attacks = 0
 
 @onready var animator = $AnimationPlayer
 @onready var animation_tree = $AnimationTree
-@onready var state_machine = animation_tree["parameters/playback"]
+@onready var anim_state_machine = animation_tree["parameters/playback"]
 
 # GUI
 @onready var experience_bar = $GUILayer/GUI/ExperienceBar
@@ -103,7 +103,7 @@ func add_to_notes_played(note_played): # TESTING WITH CLOSET QUAVER
 func _input(input_event): #
 	if input_event is InputEventMIDI:
 		#_print_midi_info(input_event)
-		if input_event.message == 9: #noteOn
+		if input_event.message == 9 and music_state == "idle": #noteOn
 			#add_to_notes_held(input_event.pitch)
 			add_to_notes_played(input_event.pitch)
 			if input_event.pitch == 60: # C4
@@ -169,12 +169,10 @@ func _process(delta):
 #endregion
 
 const walk_response_song = preload("res://Audio/Music/Battle 1_Move Forward (Normal - Variant 1)_110bpm.wav")
-
 const idle_input_song = preload("res://Audio/Music/Battle 1_Idle Phase_110bpm.wav")
-
 const attack_response_song = preload("res://Audio/Music/Battle 1_Attack (Normal - Variant 1)_110bpm.wav")
 
-var saved_measure = 0
+var saved_measure = 0 # saved_measure being here is what's causing reset to idle issues
 
 func _on_conductor_beat_incremented():
 	if conductor_node.get_beat_in_bar() == 1:
@@ -185,14 +183,22 @@ func _on_conductor_beat_incremented():
 		pass
 	if conductor_node.get_beat_in_bar() == 7:
 		pass
-		if judge_song(walk_song_in_quavers) == "correct":
+		if judge_song(walk_song_in_quavers_thirds) == "correct":
 			saved_measure = conductor_node.get_measure()
 			$walk_success_sound.play()
-			# ADD SPEED BUFF ANIMATION AND SOUND ON BEAT 4
 			notes_played = []
 			conductor_node.set_stream(walk_response_song)
 			conductor_node.play_with_beat_offset(8)
 			music_state = "responding_walk"
+			
+		#if judge_song(walk_song_in_quavers) == "correct":
+			#saved_measure = conductor_node.get_measure()
+			#$walk_success_sound.play()
+			## ADD SPEED BUFF ANIMATION AND SOUND ON BEAT 4
+			#notes_played = []
+			#conductor_node.set_stream(walk_response_song)
+			#conductor_node.play_with_beat_offset(8)
+			#music_state = "responding_walk"
 
 		if judge_song(attack_song_in_quavers) == "correct":
 			saved_measure = conductor_node.get_measure()
@@ -239,6 +245,11 @@ var walk_song = [[60, 1], [62, 2], [64, 3]] # in crotchets
 var attack_song = [[64,1], [64, 2], [64, 2.5]] #in crotchets
 var attack_song_in_quavers = [[64, 1], [64, 3], [64, 4]]
 var walk_song_in_quavers = [[60, 1], [62, 3], [64, 5]]
+var walk_song_in_quavers_thirds = [
+	[60, 1], [64, 1],
+	[62, 3], [65, 3],
+	[64, 5], [67, 5]
+	]
 
 func judge_song(song_to_judge):
 	var correct_notes = 0
@@ -351,23 +362,23 @@ func update_animation_parameters():
 	if is_attacking == true:
 		if Input.is_action_just_pressed("p1_attack"):
 			if current_state == "attack1" and can_input == true:
-				state_machine.travel("eleanore_attack_2")
+				anim_state_machine.travel("eleanore_attack_2")
 				current_state = "attack2"
 				is_attacking = true
 			elif current_state == "attack2" and can_input == true:
-				state_machine.travel("eleanore_attack_3")
+				anim_state_machine.travel("eleanore_attack_3")
 				current_state = "attack3"
 				is_attacking = true
 	else: # is_attacking == false:
 		if Input.is_action_just_pressed("p1_attack"):
-			state_machine.travel("eleanore_attack_1")
+			anim_state_machine.travel("eleanore_attack_1")
 			current_state = "attack1"
 			is_attacking = true
 		elif velocity == Vector2.ZERO: # stationary
-			state_machine.travel("eleanore_idle")
+			anim_state_machine.travel("eleanore_idle")
 			is_attacking = false
 		else: # moving
-			state_machine.travel("eleanore_walk")
+			anim_state_machine.travel("eleanore_walk")
 			is_attacking = false
 
 func _on_hurt_box_hurt(damage, _angle, _knockback):
