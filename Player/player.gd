@@ -176,12 +176,26 @@ const attack_response_song = preload("res://Audio/Music/Battle 1_Attack (Normal 
 
 var saved_measure = 0 # saved_measure being here is what's causing reset to idle issues
 
+@onready var rhythm_bar = $GUILayer/GUI/HBoxContainer
+
 func _on_conductor_beat_incremented():
+	if conductor_node.get_beat_in_bar() % 2 == 0:
+		rhythm_bar.get_children()[conductor_node.get_beat_in_bar()-1].color = Color(1, 1, 1)
+	else:
+		rhythm_bar.get_children()[conductor_node.get_beat_in_bar()-1].color = Color(.88, 0, 0)
+	rhythm_bar.get_children()[conductor_node.get_beat_in_bar()-2].color = Color(.16, .16, .16)
+	
 	if conductor_node.get_beat_in_bar() == 1:
 		pass
 	if conductor_node.get_beat_in_bar() == 2:
 		pass
 	if conductor_node.get_beat_in_bar() == 3:
+		pass
+	if conductor_node.get_beat_in_bar() == 4:
+		pass
+	if conductor_node.get_beat_in_bar() == 5:
+		pass
+	if conductor_node.get_beat_in_bar() == 6:
 		pass
 	if conductor_node.get_beat_in_bar() == 7:
 		pass
@@ -210,6 +224,8 @@ func _on_conductor_beat_incremented():
 			conductor_node.play_with_beat_offset(8)
 			shoot_icespear()
 			music_state = "responding_attack"
+	if conductor_node.get_beat_in_bar() == 8:
+		pass
 
 func _on_conductor_measure_incremented():
 	pass
@@ -648,3 +664,7 @@ func flash(rect) -> void:
 	var tween: Tween = create_tween()
 	tween.tween_property(rect, "modulate:v", 1, 0.1).from(15)
 	tween.play()
+	
+	
+	
+
