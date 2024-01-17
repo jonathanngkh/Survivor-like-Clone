@@ -1503,7 +1503,7 @@ states/eleanore_walk_start/position = Vector2(558.501, 153.91)
 states/eleanore_walk_stop/node = SubResource("AnimationNodeBlendTree_bk4mc")
 states/eleanore_walk_stop/position = Vector2(560.005, 248.91)
 transitions = ["eleanore_attack_2", "eleanore_attack_3", SubResource("AnimationNodeStateMachineTransition_2pm1g"), "eleanore_attack_1", "eleanore_attack_2", SubResource("AnimationNodeStateMachineTransition_cplmr"), "eleanore_attack_1", "eleanore_walk", SubResource("AnimationNodeStateMachineTransition_i53tr"), "eleanore_walk", "eleanore_walk_stop", SubResource("AnimationNodeStateMachineTransition_h8ge0"), "eleanore_walk_start", "eleanore_walk", SubResource("AnimationNodeStateMachineTransition_gc30c"), "Start", "eleanore_idle", SubResource("AnimationNodeStateMachineTransition_5ar50"), "eleanore_idle", "eleanore_walk_start", SubResource("AnimationNodeStateMachineTransition_pwlfb"), "eleanore_attack_1", "eleanore_idle", SubResource("AnimationNodeStateMachineTransition_2t5lj"), "eleanore_walk_stop", "eleanore_idle", SubResource("AnimationNodeStateMachineTransition_3oscn")]
-graph_offset = Vector2(122.975, 53.91)
+graph_offset = Vector2(88.975, -306.09)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ypqgu"]
 radius = 4.0
@@ -1521,6 +1521,7 @@ radius = 50.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_435xq"]
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+position = Vector2(19, 3)
 motion_mode = 1
 script = ExtResource("1_6neil")
 movement_speed = 40.0
@@ -1743,9 +1744,9 @@ columns = 10
 
 [node name="debug_label1" type="Label" parent="GUILayer/GUI"]
 layout_mode = 0
-offset_left = 1199.0
+offset_left = 217.0
 offset_top = 879.0
-offset_right = 1367.0
+offset_right = 505.0
 offset_bottom = 930.0
 theme_override_fonts/font = ExtResource("11_3sg46")
 theme_override_font_sizes/font_size = 64
@@ -1753,9 +1754,9 @@ text = "beat_in_bar:"
 
 [node name="debug_label2" type="Label" parent="GUILayer/GUI"]
 layout_mode = 0
-offset_left = 1200.0
+offset_left = 218.0
 offset_top = 938.0
-offset_right = 1368.0
+offset_right = 770.0
 offset_bottom = 989.0
 theme_override_fonts/font = ExtResource("11_3sg46")
 theme_override_font_sizes/font_size = 64
@@ -1763,9 +1764,9 @@ text = "song_position_in_beats:"
 
 [node name="debug_label3" type="Label" parent="GUILayer/GUI"]
 layout_mode = 0
-offset_left = 1197.0
+offset_left = 215.0
 offset_top = 1004.0
-offset_right = 1365.0
+offset_right = 671.0
 offset_bottom = 1055.0
 theme_override_fonts/font = ExtResource("11_3sg46")
 theme_override_font_sizes/font_size = 64
@@ -1774,9 +1775,9 @@ text = "last_reported_beat:"
 [node name="debug_label4" type="Label" parent="GUILayer/GUI"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 1003.0
+offset_left = 21.0
 offset_top = 1225.0
-offset_right = 1555.0
+offset_right = 573.0
 offset_bottom = 1276.0
 theme_override_fonts/font = ExtResource("11_3sg46")
 theme_override_font_sizes/font_size = 64
@@ -1785,9 +1786,9 @@ text = "perfect_beat_played_on:"
 [node name="debug_label5" type="Label" parent="GUILayer/GUI"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 1003.0
+offset_left = 21.0
 offset_top = 1277.0
-offset_right = 1531.0
+offset_right = 549.0
 offset_bottom = 1328.0
 theme_override_fonts/font = ExtResource("11_3sg46")
 theme_override_font_sizes/font_size = 64
@@ -1796,9 +1797,9 @@ text = "perfect_time_off_beat:"
 [node name="debug_label6" type="Label" parent="GUILayer/GUI"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 1194.0
+offset_left = 212.0
 offset_top = 1064.0
-offset_right = 1650.0
+offset_right = 668.0
 offset_bottom = 1115.0
 theme_override_fonts/font = ExtResource("11_3sg46")
 theme_override_font_sizes/font_size = 64
@@ -1807,9 +1808,9 @@ text = "beat_played_on:"
 [node name="debug_label7" type="Label" parent="GUILayer/GUI"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 1194.0
+offset_left = 212.0
 offset_top = 1163.0
-offset_right = 1650.0
+offset_right = 668.0
 offset_bottom = 1214.0
 theme_override_fonts/font = ExtResource("11_3sg46")
 theme_override_font_sizes/font_size = 64
@@ -1818,9 +1819,9 @@ text = "time_off_beat:"
 [node name="debug_label8" type="Label" parent="GUILayer/GUI"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 1027.0
+offset_left = 45.0
 offset_top = 1111.0
-offset_right = 1555.0
+offset_right = 573.0
 offset_bottom = 1162.0
 theme_override_fonts/font = ExtResource("11_3sg46")
 theme_override_font_sizes/font_size = 64
@@ -1829,9 +1830,9 @@ text = "beat_in_bar_played_on:"
 [node name="debug_label9" type="Label" parent="GUILayer/GUI"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 1200.0
+offset_left = 218.0
 offset_top = 1340.0
-offset_right = 1728.0
+offset_right = 746.0
 offset_bottom = 1391.0
 theme_override_fonts/font = ExtResource("11_3sg46")
 theme_override_font_sizes/font_size = 64
@@ -1840,13 +1841,35 @@ text = "notes_played: []"
 [node name="debug_label10" type="Label" parent="GUILayer/GUI"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 1523.0
+offset_left = 216.0
 offset_top = 823.0
-offset_right = 2051.0
+offset_right = 744.0
 offset_bottom = 874.0
 theme_override_fonts/font = ExtResource("11_3sg46")
 theme_override_font_sizes/font_size = 64
 text = "measure: "
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUILayer/GUI"]
+layout_mode = 0
+offset_left = 997.0
+offset_top = 869.0
+offset_right = 1565.0
+offset_bottom = 909.0
+
+[node name="ColorRect" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
+layout_mode = 2
+
+[node name="ColorRect3" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
+layout_mode = 2
+
+[node name="ColorRect4" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
+layout_mode = 2
+
+[node name="ColorRect5" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
+layout_mode = 2
 
 [node name="sound_ambient_fire" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("56_bdaqp")

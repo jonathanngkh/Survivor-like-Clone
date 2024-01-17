@@ -103,7 +103,9 @@ func add_to_notes_played(note_played): # TESTING WITH CLOSET QUAVER
 func _input(input_event): #
 	if input_event is InputEventMIDI:
 		#_print_midi_info(input_event)
-		if input_event.message == 9 and music_state == "idle": #noteOn
+		if input_event.message == 9: #noteOn
+		# this works to prevent notes during response phase, but issue with early 1 beats applies. 
+		#if input_event.message == 9 and music_state == "idle": #noteOn
 			#add_to_notes_held(input_event.pitch)
 			add_to_notes_played(input_event.pitch)
 			if input_event.pitch == 60: # C4
