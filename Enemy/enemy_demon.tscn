@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bahwa3aqr7t01"]
+[gd_scene load_steps=18 format=3 uid="uid://bahwa3aqr7t01"]
 
 [ext_resource type="Script" path="res://Enemy/enemy_demon.gd" id="1_7bmqk"]
 [ext_resource type="Texture2D" uid="uid://c8g0evxfmu8xq" path="res://Textures/Enemy/Skeleton Dead.png" id="2_6mgyg"]
@@ -19,57 +19,6 @@ size = Vector2(47, 76)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_26x1i"]
 size = Vector2(41, 70)
-
-[sub_resource type="Animation" id="Animation_y0gu7"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [13]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:texture")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_6mgyg")]
-}
 
 [sub_resource type="Animation" id="Animation_t82xf"]
 resource_name = "demon_walk"
@@ -284,7 +233,6 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0m86m"]
 _data = {
-"RESET": SubResource("Animation_y0gu7"),
 "demon_walk": SubResource("Animation_t82xf"),
 "skeleton_die": SubResource("Animation_vx53u"),
 "skeleton_hit": SubResource("Animation_813kl"),
@@ -303,9 +251,8 @@ experience = 100
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_6mgyg")
-hframes = 13
-frame = 1
+texture = ExtResource("7_po10d")
+hframes = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-14, 13)

@@ -1522,9 +1522,12 @@ radius = 50.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(19, 3)
+collision_layer = 3
+collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_6neil")
-movement_speed = 40.0
+movement_speed = 30.0
+hp = 40
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -1743,6 +1746,7 @@ offset_bottom = 224.0
 columns = 10
 
 [node name="debug_label1" type="Label" parent="GUILayer/GUI"]
+visible = false
 layout_mode = 0
 offset_left = 217.0
 offset_top = 879.0
@@ -1753,6 +1757,7 @@ theme_override_font_sizes/font_size = 64
 text = "beat_in_bar:"
 
 [node name="debug_label2" type="Label" parent="GUILayer/GUI"]
+visible = false
 layout_mode = 0
 offset_left = 218.0
 offset_top = 938.0
@@ -1763,6 +1768,7 @@ theme_override_font_sizes/font_size = 64
 text = "song_position_in_beats:"
 
 [node name="debug_label3" type="Label" parent="GUILayer/GUI"]
+visible = false
 layout_mode = 0
 offset_left = 215.0
 offset_top = 1004.0
@@ -1774,6 +1780,7 @@ text = "last_reported_beat:"
 
 [node name="debug_label4" type="Label" parent="GUILayer/GUI"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 21.0
 offset_top = 1225.0
@@ -1785,6 +1792,7 @@ text = "perfect_beat_played_on:"
 
 [node name="debug_label5" type="Label" parent="GUILayer/GUI"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 21.0
 offset_top = 1277.0
@@ -1796,6 +1804,7 @@ text = "perfect_time_off_beat:"
 
 [node name="debug_label6" type="Label" parent="GUILayer/GUI"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 212.0
 offset_top = 1064.0
@@ -1807,6 +1816,7 @@ text = "beat_played_on:"
 
 [node name="debug_label7" type="Label" parent="GUILayer/GUI"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 212.0
 offset_top = 1163.0
@@ -1818,6 +1828,7 @@ text = "time_off_beat:"
 
 [node name="debug_label8" type="Label" parent="GUILayer/GUI"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 45.0
 offset_top = 1111.0
@@ -1829,6 +1840,7 @@ text = "beat_in_bar_played_on:"
 
 [node name="debug_label9" type="Label" parent="GUILayer/GUI"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 218.0
 offset_top = 1340.0
@@ -1840,6 +1852,7 @@ text = "notes_played: []"
 
 [node name="debug_label10" type="Label" parent="GUILayer/GUI"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 216.0
 offset_top = 823.0
@@ -1850,6 +1863,7 @@ theme_override_font_sizes/font_size = 64
 text = "measure: "
 
 [node name="HBoxContainer" type="HBoxContainer" parent="GUILayer/GUI"]
+z_index = -1
 layout_mode = 0
 offset_left = 997.0
 offset_top = 869.0
@@ -1860,6 +1874,11 @@ offset_bottom = 909.0
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.882353, 0, 0, 1)
+
+[node name="ProgressBar" type="ProgressBar" parent="GUILayer/GUI/HBoxContainer/ColorRect"]
+layout_mode = 0
+offset_right = 67.0
+offset_bottom = 41.0
 
 [node name="ColorRect2" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
 layout_mode = 2

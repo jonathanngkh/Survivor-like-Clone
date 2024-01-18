@@ -1,3 +1,5 @@
+ProgressBar
+HSlider
 ColorRect
 HBoxContainer
 State
@@ -11,4 +13,3 @@ CharacterBody2D
 RigidBody2D
 AnimationTree
 AnimatedSprite2D
-Timer

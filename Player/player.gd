@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var movement_speed = 400.0
 @export var hp = 80
-var max_hp = 80
+var max_hp = 40
 var max_stamina = 100
 var stamina = 100
 var last_movement = Vector2.UP
@@ -83,7 +83,7 @@ func _ready():
 	animation_tree.active = true
 	#animator.queue("eleanore_idle")
 	upgrade_character("icespear1")
-	#attack()
+	attack()
 	set_experience_bar(experience, calculate_experience_cap())
 	OS.open_midi_inputs() #
 	print(OS.get_connected_midi_inputs()) #
@@ -155,6 +155,8 @@ func _print_midi_info(midi_event: InputEventMIDI):
 
 	
 func _process(delta):
+	if hp <= 0:
+		get_tree().pause()
 	#attack_combo()
 	#choose_animation()
 	update_animation_parameters()
@@ -205,16 +207,16 @@ func _on_conductor_beat_incremented():
 			notes_played = []
 			conductor_node.set_stream(walk_response_song)
 			conductor_node.play_with_beat_offset(8)
-			music_state = "responding_walk"
+			music_state = "responding_walk_thirds"
 			
-		#if judge_song(walk_song_in_quavers) == "correct":
-			#saved_measure = conductor_node.get_measure()
-			#$walk_success_sound.play()
-			## ADD SPEED BUFF ANIMATION AND SOUND ON BEAT 4
-			#notes_played = []
-			#conductor_node.set_stream(walk_response_song)
-			#conductor_node.play_with_beat_offset(8)
-			#music_state = "responding_walk"
+		if judge_song(walk_song_in_quavers) == "correct":
+			saved_measure = conductor_node.get_measure()
+			$walk_success_sound.play()
+			# ADD SPEED BUFF ANIMATION AND SOUND ON BEAT 4
+			notes_played = []
+			conductor_node.set_stream(walk_response_song)
+			conductor_node.play_with_beat_offset(8)
+			music_state = "responding_walk"
 
 		if judge_song(attack_song_in_quavers) == "correct":
 			saved_measure = conductor_node.get_measure()
@@ -222,7 +224,26 @@ func _on_conductor_beat_incremented():
 			notes_played = []
 			conductor_node.set_stream(attack_response_song)
 			conductor_node.play_with_beat_offset(8)
-			shoot_icespear()
+			shoot_tornado()
+			shoot_tornado()
+			music_state = "responding_attack"
+			
+		if judge_song(attack_song_in_thirds) == "correct":
+			saved_measure = conductor_node.get_measure()
+			$attack_success_sound.play()
+			notes_played = []
+			conductor_node.set_stream(attack_response_song)
+			conductor_node.play_with_beat_offset(8)
+			shoot_tornado()
+			shoot_tornado()
+			shoot_tornado()
+			shoot_tornado()
+			shoot_tornado()
+			shoot_tornado()
+			shoot_tornado()
+			shoot_tornado()
+			shoot_tornado()
+			shoot_tornado()
 			music_state = "responding_attack"
 	if conductor_node.get_beat_in_bar() == 8:
 		pass
@@ -268,6 +289,11 @@ var walk_song_in_quavers_thirds = [
 	[62, 3], [65, 3],
 	[64, 5], [67, 5]
 	]
+var attack_song_in_thirds = [
+	[64, 1], [67, 1],
+	[64, 3], [67, 3],
+	[64, 4], [67, 4]
+	]
 
 func judge_song(song_to_judge):
 	var correct_notes = 0
@@ -281,7 +307,6 @@ func judge_song(song_to_judge):
 
 
 func _physics_process(_delta):
-	
 	update_song()
 	$GUILayer/GUI/debug_label10.text = "measure: " +  str(conductor_node.get_measure())
 	$GUILayer/GUI/debug_label9.text = "notes_played: " +  str(notes_played)
@@ -296,6 +321,17 @@ func _physics_process(_delta):
 		notes_pressed.erase(Vector2(60, 1))
 		notes_pressed.erase(Vector2(64, 1))
 		#pass
+		
+func shoot_tornado():
+	tornado_ammo += 1
+	#if icespear_ammo > 0:
+	var tornado_attack = tornado.instantiate()
+	tornado_attack.position = position
+	#icespear_attack.target = get_random_target()
+	tornado_attack.last_movement = last_movement
+	tornado_attack.level = tornado_level
+	add_child(tornado_attack)
+	tornado_ammo -= 1
 
 func shoot_icespear():
 	icespear_ammo += 1
@@ -346,6 +382,8 @@ func movement():
 	velocity = mov.normalized() * movement_speed
 	if music_state == "responding_walk":
 		velocity *= 5
+	if music_state == "responding_walk_thirds":
+		velocity *= 10
 	move_and_slide()
 	
 func _on_animation_tree_animation_finished(anim_name):
@@ -595,7 +633,7 @@ func upgrade_character(upgrade):
 			hp += 20
 			hp = clamp(hp,0,max_hp)
 	adjust_gui_collection(upgrade)
-	#attack()
+	attack()
 	var option_children = upgrade_options.get_children()
 	for option in option_children:
 		option.queue_free()

@@ -5,3 +5,9 @@ res://Player/player.tscn
 res://conductor.tscn
 res://Player/player.gd
 res://addons/xsm/state.gd
+res://Enemy/enemy_skeleton.tscn
+res://Enemy/enemy.tscn
+res://EnemySpawner.gd
+res://Enemy/enemy_nightmare.tscn
+res://Enemy/enemy_skull.tscn
+res://Enemy/enemy_demon.tscn

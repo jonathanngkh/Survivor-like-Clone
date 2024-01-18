@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cjkdpm3u3wqut"]
+[gd_scene load_steps=25 format=3 uid="uid://cjkdpm3u3wqut"]
 
 [ext_resource type="Texture2D" uid="uid://b6t8hgeek4kfh" path="res://Textures/wol huge air map.png" id="2_6ka0j"]
 [ext_resource type="PackedScene" uid="uid://c6uuvcthpociv" path="res://Player/player.tscn" id="2_rlem7"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dparb0oln5dfh" path="res://Enemy/enemy_nightmare.tscn" id="7_xwnl7"]
 [ext_resource type="PackedScene" uid="uid://by2h2cbjqpp3g" path="res://conductor.tscn" id="9_mdibg"]
 [ext_resource type="AudioStream" uid="uid://djhqo7kroibgp" path="res://Audio/Music/Battle 1_Idle Phase_110bpm.wav" id="10_8avhi"]
+[ext_resource type="PackedScene" uid="uid://4a1v2lndn8qi" path="res://Objects/experience_gem.tscn" id="12_pk5wr"]
 
 [sub_resource type="Resource" id="Resource_rxj4u"]
 script = ExtResource("5_kyr6r")
@@ -106,7 +107,6 @@ offset = Vector2(150.5, 1028.5)
 [node name="Player" parent="." instance=ExtResource("2_rlem7")]
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_gdiqe")]
-process_mode = 4
 spawns = Array[ExtResource("5_kyr6r")]([SubResource("Resource_rxj4u"), SubResource("Resource_0ghsp"), SubResource("Resource_ixasv"), SubResource("Resource_y4opa"), SubResource("Resource_tol0s"), SubResource("Resource_h3dng"), SubResource("Resource_tvmlh"), SubResource("Resource_x21cl"), SubResource("Resource_cc6wm")])
 
 [node name="Loot" type="Node2D" parent="." groups=["loot"]]
@@ -119,6 +119,8 @@ beats_per_bar = 8
 
 [node name="Borders" type="CharacterBody2D" parent="."]
 visible = false
+collision_layer = 2
+collision_mask = 2
 
 [node name="TopBorder" type="CollisionShape2D" parent="Borders"]
 position = Vector2(-8, -359)
@@ -247,6 +249,18 @@ offset = Vector2(-10, -12.5)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Statues/Statue4"]
 position = Vector2(-9, 44)
 shape = SubResource("RectangleShape2D_10ttd")
+
+[node name="GameoverSprite" type="Sprite2D" parent="." groups=["gameover"]]
+visible = false
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-76, -423)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_6ka0j")
+offset = Vector2(150.5, 1028.5)
+
+[node name="ExperienceGem" parent="." instance=ExtResource("12_pk5wr")]
+process_mode = 4
+experience = 50
 
 [connection signal="beat_incremented" from="Conductor" to="Player" method="_on_conductor_beat_incremented"]
 [connection signal="measure_incremented" from="Conductor" to="Player" method="_on_conductor_measure_incremented"]
