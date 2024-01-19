@@ -180,6 +180,14 @@ var saved_measure = 0
 
 @onready var rhythm_bar = $GUILayer/GUI/HBoxContainer
 
+#GUILayer/GUI/HBoxContainer/ColorRect/ProgressBar
+
+func fill_rhythm_block(block_node):
+	var block_progress_bar = block_node
+	var tween = create_tween()
+	tween.tween_property(block_progress_bar, "value", 100, 0.5454).from(0).set_trans(Tween.TRANS_LINEAR)
+	
+
 func _on_conductor_beat_incremented():
 	if conductor_node.get_beat_in_bar() % 2 == 0:
 		rhythm_bar.get_children()[conductor_node.get_beat_in_bar()-1].color = Color(1, 1, 1)
@@ -189,9 +197,12 @@ func _on_conductor_beat_incremented():
 	
 	if conductor_node.get_beat_in_bar() == 1:
 		pass
+		fill_rhythm_block(get_node("%ProgressBar2"))
+		#$GUILayer/GUI/HBoxContainer/ColorRect/ProgressBar.value = 0
 	if conductor_node.get_beat_in_bar() == 2:
 		pass
 	if conductor_node.get_beat_in_bar() == 3:
+		fill_rhythm_block(get_node("%ProgressBar3"))
 		pass
 	if conductor_node.get_beat_in_bar() == 4:
 		pass
@@ -201,6 +212,7 @@ func _on_conductor_beat_incremented():
 		pass
 	if conductor_node.get_beat_in_bar() == 7:
 		pass
+		fill_rhythm_block(get_node("%ProgressBar"))
 		if judge_song(walk_song_in_quavers_thirds) == "correct":
 			saved_measure = conductor_node.get_measure()
 			$walk_success_sound.play()
@@ -246,6 +258,8 @@ func _on_conductor_beat_incremented():
 			shoot_tornado()
 			music_state = "responding_attack"
 	if conductor_node.get_beat_in_bar() == 8:
+		
+		
 		if conductor_node.get_measure() == (saved_measure + 1):
 			music_state = "idle" # ideally, set to idle on beat 8.5 or 8.75. use this for now.
 
@@ -256,10 +270,8 @@ func _on_conductor_measure_incremented():
 		conductor_node.play_from_beat(1, 0)
 		#music_state = "idle"
 		
-func _on_conductor_meausure_minus_one_beat_incremented():
-	print('8th beat')
-	if conductor_node.get_measure() == (saved_measure + 2):
-		pass
+func _on_conductor_measure_minus_one_beat_incremented():
+	pass
 
 var music_states = ["idle", "walk", "attack", "invalid?", "responding_walk"]
 var music_state = "idle"
@@ -708,5 +720,3 @@ func flash(rect) -> void:
 	var tween: Tween = create_tween()
 	tween.tween_property(rect, "modulate:v", 1, 0.1).from(15)
 	tween.play()
-
-

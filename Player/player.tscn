@@ -1868,7 +1868,7 @@ layout_mode = 0
 offset_left = 997.0
 offset_top = 869.0
 offset_right = 1565.0
-offset_bottom = 909.0
+offset_bottom = 962.0
 
 [node name="ColorRect" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
 layout_mode = 2
@@ -1876,13 +1876,13 @@ size_flags_horizontal = 3
 color = Color(0.882353, 0, 0, 1)
 
 [node name="ProgressBar" type="ProgressBar" parent="GUILayer/GUI/HBoxContainer/ColorRect"]
-visible = false
+unique_name_in_owner = true
 modulate = Color(0, 1, 1, 1)
 layout_mode = 0
 offset_right = 67.0
-offset_bottom = 40.0
-value = 50.0
+offset_bottom = 93.0
 fill_mode = 3
+show_percentage = false
 
 [node name="ColorRect2" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
 layout_mode = 2
@@ -1894,6 +1894,15 @@ layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.160784, 0.160784, 0.160784, 1)
 
+[node name="ProgressBar2" type="ProgressBar" parent="GUILayer/GUI/HBoxContainer/ColorRect3"]
+unique_name_in_owner = true
+modulate = Color(0, 1, 1, 1)
+layout_mode = 0
+offset_right = 67.0
+offset_bottom = 93.0
+fill_mode = 3
+show_percentage = false
+
 [node name="ColorRect4" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1903,6 +1912,15 @@ color = Color(0.160784, 0.160784, 0.160784, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.160784, 0.160784, 0.160784, 1)
+
+[node name="ProgressBar3" type="ProgressBar" parent="GUILayer/GUI/HBoxContainer/ColorRect5"]
+unique_name_in_owner = true
+modulate = Color(0, 1, 1, 1)
+layout_mode = 0
+offset_right = 67.0
+offset_bottom = 93.0
+fill_mode = 3
+show_percentage = false
 
 [node name="ColorRect6" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
 layout_mode = 2

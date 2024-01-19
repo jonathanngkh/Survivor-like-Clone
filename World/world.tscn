@@ -265,6 +265,7 @@ experience = 50
 
 [connection signal="beat_incremented" from="Conductor" to="Player" method="_on_conductor_beat_incremented"]
 [connection signal="measure_incremented" from="Conductor" to="Player" method="_on_conductor_measure_incremented"]
+[connection signal="measure_minus_one_beat_incremented" from="Conductor" to="Player" method="_on_conductor_measure_minus_one_beat_incremented"]
 [connection signal="timeout" from="Conductor/StartTimer" to="Player" method="_on_start_timer_timeout"]
 
 [editable path="Conductor"]
