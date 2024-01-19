@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var movement_speed = 400.0
 @export var hp = 80
-var max_hp = 40
+var max_hp = 100
 var max_stamina = 100
 var stamina = 100
 var last_movement = Vector2.UP
@@ -103,9 +103,9 @@ func add_to_notes_played(note_played): # TESTING WITH CLOSET QUAVER
 func _input(input_event): #
 	if input_event is InputEventMIDI:
 		#_print_midi_info(input_event)
-		if input_event.message == 9: #noteOn
-		# this works to prevent notes during response phase, but issue with early 1 beats applies. 
-		#if input_event.message == 9 and music_state == "idle": #noteOn
+		#if input_event.message == 9: #noteOn
+		# this works to prevent notes during response phase, but issue with early 1 beats applies. SOLVED. set state to idle on last beat if measure == saved measure + 1
+		if input_event.message == 9 and music_state == "idle": #noteOn
 			#add_to_notes_held(input_event.pitch)
 			add_to_notes_played(input_event.pitch)
 			if input_event.pitch == 60: # C4
@@ -156,7 +156,7 @@ func _print_midi_info(midi_event: InputEventMIDI):
 	
 func _process(delta):
 	if hp <= 0:
-		get_tree().pause()
+		get_tree().paused = true
 	#attack_combo()
 	#choose_animation()
 	update_animation_parameters()
@@ -176,7 +176,7 @@ const walk_response_song = preload("res://Audio/Music/Battle 1_Move Forward (Nor
 const idle_input_song = preload("res://Audio/Music/Battle 1_Idle Phase_110bpm.wav")
 const attack_response_song = preload("res://Audio/Music/Battle 1_Attack (Normal - Variant 1)_110bpm.wav")
 
-var saved_measure = 0 # saved_measure being here is what's causing reset to idle issues
+var saved_measure = 0
 
 @onready var rhythm_bar = $GUILayer/GUI/HBoxContainer
 
@@ -246,14 +246,20 @@ func _on_conductor_beat_incremented():
 			shoot_tornado()
 			music_state = "responding_attack"
 	if conductor_node.get_beat_in_bar() == 8:
-		pass
+		if conductor_node.get_measure() == (saved_measure + 1):
+			music_state = "idle" # ideally, set to idle on beat 8.5 or 8.75. use this for now.
 
 func _on_conductor_measure_incremented():
 	pass
 	if conductor_node.get_measure() == (saved_measure + 2):
 		conductor_node.set_stream(idle_input_song)
 		conductor_node.play_from_beat(1, 0)
-		music_state = "idle"
+		#music_state = "idle"
+		
+func _on_conductor_meausure_minus_one_beat_incremented():
+	print('8th beat')
+	if conductor_node.get_measure() == (saved_measure + 2):
+		pass
 
 var music_states = ["idle", "walk", "attack", "invalid?", "responding_walk"]
 var music_state = "idle"
@@ -702,7 +708,5 @@ func flash(rect) -> void:
 	var tween: Tween = create_tween()
 	tween.tween_property(rect, "modulate:v", 1, 0.1).from(15)
 	tween.play()
-	
-	
-	
+
 

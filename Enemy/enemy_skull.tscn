@@ -349,8 +349,8 @@ enemy_damage = 2
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("6_lioav")
-hframes = 13
+texture = ExtResource("8_kb73t")
+hframes = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-7, 15)

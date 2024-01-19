@@ -49,6 +49,7 @@ func get_last_reported_beat():
 
 signal beat_incremented()
 signal measure_incremented()
+signal measure_minus_one_beat_incremented()
 
 func _ready():
 	sec_per_beat = 60.0 / bpm
@@ -151,3 +152,6 @@ func _on_beat_incremented():
 	if beat_in_bar == 1:
 		measure += 1
 		emit_signal("measure_incremented")
+		
+	if beat_in_bar == 8:
+		emit_signal("measure_minus_one_beat_incremented")

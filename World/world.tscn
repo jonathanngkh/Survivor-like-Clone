@@ -260,6 +260,7 @@ offset = Vector2(150.5, 1028.5)
 
 [node name="ExperienceGem" parent="." instance=ExtResource("12_pk5wr")]
 process_mode = 4
+visible = false
 experience = 50
 
 [connection signal="beat_incremented" from="Conductor" to="Player" method="_on_conductor_beat_incremented"]
