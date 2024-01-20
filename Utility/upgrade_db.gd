@@ -134,7 +134,8 @@ const UPGRADES = {
 	"speed1": {
 		"icon": ICON_PATH + "boots_4_green.png",
 		"displayname": "Speed",
-		"details": "Movement Speed Increased by 50% of base speed",
+		"details": "Movement Speed Increased by 20% of base speed",
+		#"details": "Movement Speed Increased by 50% of base speed",
 		"level": "Level: 1",
 		"prerequisite": [],
 		"type": "upgrade"
@@ -142,7 +143,8 @@ const UPGRADES = {
 	"speed2": {
 		"icon": ICON_PATH + "boots_4_green.png",
 		"displayname": "Speed",
-		"details": "Movement Speed Increased by an additional 50% of base speed",
+		"details": "Movement Speed Increased by an additional 20% of base speed",
+		#"details": "Movement Speed Increased by an additional 50% of base speed",
 		"level": "Level: 2",
 		"prerequisite": ["speed1"],
 		"type": "upgrade"
@@ -150,7 +152,8 @@ const UPGRADES = {
 	"speed3": {
 		"icon": ICON_PATH + "boots_4_green.png",
 		"displayname": "Speed",
-		"details": "Movement Speed Increased by an additional 50% of base speed",
+		"details": "Movement Speed Increased by an additional 20% of base speed",
+		#"details": "Movement Speed Increased by an additional 50% of base speed",
 		"level": "Level: 3",
 		"prerequisite": ["speed2"],
 		"type": "upgrade"
@@ -158,7 +161,8 @@ const UPGRADES = {
 	"speed4": {
 		"icon": ICON_PATH + "boots_4_green.png",
 		"displayname": "Speed",
-		"details": "Movement Speed Increased an additional 50% of base speed",
+		"details": "Movement Speed Increased an additional 20% of base speed",
+		#"details": "Movement Speed Increased by an additional 50% of base speed",
 		"level": "Level: 4",
 		"prerequisite": ["speed3"],
 		"type": "upgrade"

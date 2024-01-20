@@ -91,6 +91,11 @@ func _ready():
 var notes_pressed = []
 
 var notes_played = []
+func get_notes_played():
+	return notes_played
+	
+func reset_notes_played():
+	notes_played = []
 
 func add_to_notes_played(note_played): # TESTING WITH CLOSET QUAVER
 	#notes_played.append([note_played, conductor_node.closest_beat_in_bar(conductor_node.get_song_position_in_beats()).x])
@@ -175,6 +180,7 @@ func _process(delta):
 const walk_response_song = preload("res://Audio/Music/Battle 1_Move Forward (Normal - Variant 1)_110bpm.wav")
 const idle_input_song = preload("res://Audio/Music/Battle 1_Idle Phase_110bpm.wav")
 const attack_response_song = preload("res://Audio/Music/Battle 1_Attack (Normal - Variant 1)_110bpm.wav")
+const heal_response_song = preload("res://Audio/Music/Battle 1_Player Input Phase (High - Variant 1)_110bpm.wav")
 
 var saved_measure = 0
 
@@ -187,6 +193,10 @@ func fill_rhythm_block(block_node):
 	var tween = create_tween()
 	tween.tween_property(block_progress_bar, "value", 100, 0.5454).from(0).set_trans(Tween.TRANS_LINEAR)
 	
+func fill_rhythm_block_fast(block_node):
+	var block_progress_bar = block_node
+	var tween = create_tween()
+	tween.tween_property(block_progress_bar, "value", 100, 0.2727).from(0).set_trans(Tween.TRANS_LINEAR)
 
 func _on_conductor_beat_incremented():
 	if conductor_node.get_beat_in_bar() % 2 == 0:
@@ -198,14 +208,30 @@ func _on_conductor_beat_incremented():
 	if conductor_node.get_beat_in_bar() == 1:
 		pass
 		fill_rhythm_block(get_node("%ProgressBar2"))
+		
+		fill_rhythm_block(get_node("%ProgressBar8"))
+		fill_rhythm_block(get_node("%ProgressBar10"))
 		#$GUILayer/GUI/HBoxContainer/ColorRect/ProgressBar.value = 0
 	if conductor_node.get_beat_in_bar() == 2:
+		fill_rhythm_block_fast(get_node("%ProgressBar6"))
+		
+		fill_rhythm_block_fast(get_node("%ProgressBar14"))
+		fill_rhythm_block_fast(get_node("%ProgressBar15"))
 		pass
 	if conductor_node.get_beat_in_bar() == 3:
+		fill_rhythm_block_fast(get_node("%ProgressBar6"))
+		
+		fill_rhythm_block_fast(get_node("%ProgressBar14"))
+		fill_rhythm_block_fast(get_node("%ProgressBar15"))
+		
 		fill_rhythm_block(get_node("%ProgressBar3"))
+		
+		fill_rhythm_block(get_node("%ProgressBar9"))
+		fill_rhythm_block(get_node("%ProgressBar11"))
 		pass
 	if conductor_node.get_beat_in_bar() == 4:
 		pass
+		#get_node("%ProgressBar3").value = 0
 	if conductor_node.get_beat_in_bar() == 5:
 		pass
 	if conductor_node.get_beat_in_bar() == 6:
@@ -213,6 +239,9 @@ func _on_conductor_beat_incremented():
 	if conductor_node.get_beat_in_bar() == 7:
 		pass
 		fill_rhythm_block(get_node("%ProgressBar"))
+		
+		fill_rhythm_block(get_node("%ProgressBar7"))
+		fill_rhythm_block(get_node("%ProgressBar9"))
 		if judge_song(walk_song_in_quavers_thirds) == "correct":
 			saved_measure = conductor_node.get_measure()
 			$walk_success_sound.play()
@@ -220,6 +249,17 @@ func _on_conductor_beat_incremented():
 			conductor_node.set_stream(walk_response_song)
 			conductor_node.play_with_beat_offset(8)
 			music_state = "responding_walk_thirds"
+			
+		if judge_song(heal_song) == "correct":
+			saved_measure = conductor_node.get_measure()
+			$walk_success_sound.play()
+			notes_played = []
+			conductor_node.set_stream(heal_response_song)
+			conductor_node.play_with_beat_offset(8)
+			hp += 10
+			hp = clamp(hp,0,max_hp)
+			health_bar.value = hp
+			music_state = "responding_heal"
 			
 		if judge_song(walk_song_in_quavers) == "correct":
 			saved_measure = conductor_node.get_measure()
@@ -258,7 +298,10 @@ func _on_conductor_beat_incremented():
 			shoot_tornado()
 			music_state = "responding_attack"
 	if conductor_node.get_beat_in_bar() == 8:
+		fill_rhythm_block_fast(get_node("%ProgressBar6"))
 		
+		fill_rhythm_block_fast(get_node("%ProgressBar14"))
+		fill_rhythm_block_fast(get_node("%ProgressBar15"))
 		
 		if conductor_node.get_measure() == (saved_measure + 1):
 			music_state = "idle" # ideally, set to idle on beat 8.5 or 8.75. use this for now.
@@ -275,6 +318,8 @@ func _on_conductor_measure_minus_one_beat_incremented():
 
 var music_states = ["idle", "walk", "attack", "invalid?", "responding_walk"]
 var music_state = "idle"
+func get_music_state():
+	return music_state
 
 func update_song():
 	if music_state == "idle":
@@ -282,7 +327,6 @@ func update_song():
 		if conductor_node.get_last_reported_beat() == conductor_node.get_beats_per_bar():
 			conductor_node.play_from_beat(1, 0)
 			# clear notes played on idle reset, except for early beat 1 notes 
-			# can refactor and compare closest beat in song, accepting beats on 5 then converting it to beat in bar. meaning if beat is on 5, assume is on 1. then have separate logic after exiting idle loop
 			var notes_to_keep = []
 			for note in notes_played:
 				print(note)
@@ -297,7 +341,9 @@ func update_song():
 					notes_played.append(note)
 	else:
 		pass
-		
+
+
+var heal_song = [[64, 1], [62, 2], [60,3], [60, 5]]
 var walk_song = [[60, 1], [62, 2], [64, 3]] # in crotchets
 var attack_song = [[64,1], [64, 2], [64, 2.5]] #in crotchets
 var attack_song_in_quavers = [[64, 1], [64, 3], [64, 4]]
@@ -587,6 +633,11 @@ func set_experience_bar(set_value = 1, set_max_value = 100):
 	experience_bar.value = set_value
 	experience_bar.max_value = set_max_value
 
+var leveling_state = false
+
+func get_leveling_state():
+	return leveling_state
+
 func level_up():
 	sound_levelup.play()
 	label_level.text = str("Level: ", experience_level)
@@ -602,6 +653,8 @@ func level_up():
 		upgrade_options.add_child(option_choice)
 		options += 1
 	get_tree().paused = true
+	leveling_state = true
+	#get_tree().get_first_node_in_group("conductor").paused = false
 
 func upgrade_character(upgrade):
 	match upgrade:
@@ -640,7 +693,8 @@ func upgrade_character(upgrade):
 		"armor1","armor2","armor3","armor4":
 			armor += 1
 		"speed1","speed2","speed3","speed4":
-			movement_speed += 20.0
+			movement_speed += 6.0
+			#movement_speed += 20.0 # original
 		"tome1","tome2","tome3","tome4":
 			spell_size += 0.10
 		"scroll1","scroll2","scroll3","scroll4":
@@ -660,6 +714,7 @@ func upgrade_character(upgrade):
 	panel_levelup.call_deferred("set_visible", false)
 	panel_levelup.position = Vector2(800,50)
 	get_tree().paused = false
+	leveling_state = false
 	calculate_experience(0)
 
 func get_random_item():

@@ -9,3 +9,6 @@ res://Enemy/enemy_skull.tscn
 res://Enemy/enemy_demon.tscn
 res://Player/player.gd
 res://Conductor.gd
+res://Enemy/enemy.gd
+res://Utility/upgrade_db.gd
+res://Utility/upgrade_db.tscn

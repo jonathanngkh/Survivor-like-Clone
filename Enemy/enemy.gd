@@ -66,6 +66,7 @@ func _physics_process(_delta):
 func death():
 	sound_die.play()
 	$HurtBox/CollisionShape2D.set_deferred("disabled", true)
+	$HitBox/CollisionShape2D.set_deferred("disabled", true)
 	emit_signal("remove_from_array", self)
 	#var enemy_death = death_explosion.instantiate()
 	#enemy_death.scale = sprite.scale

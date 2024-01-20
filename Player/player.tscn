@@ -1,4 +1,4 @@
-[gd_scene load_steps=131 format=3 uid="uid://c6uuvcthpociv"]
+[gd_scene load_steps=132 format=3 uid="uid://c6uuvcthpociv"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_6neil"]
 [ext_resource type="PackedScene" uid="uid://c3p0e8l8amscb" path="res://Utility/hurt_box.tscn" id="3_5rw0d"]
@@ -68,6 +68,7 @@
 [ext_resource type="AudioStream" uid="uid://b0wl77cxfhs7h" path="res://Audio/SoundEffect/05_Fire_Explosion.wav" id="57_kvhn2"]
 [ext_resource type="PackedScene" uid="uid://bxl3b55utmxfo" path="res://Player/Attack/fire_area.tscn" id="60_r5hxe"]
 [ext_resource type="Texture2D" uid="uid://by8pdrbjowkpv" path="res://Textures/GUI/stamina.png" id="60_y8d5x"]
+[ext_resource type="Texture2D" uid="uid://cqfiixa0dm6y1" path="res://Textures/PianoB1.png" id="67_dgf1o"]
 [ext_resource type="AudioStream" uid="uid://do3imwfj06tg5" path="res://Audio/SoundEffect/damaged2.wav" id="68_5tvaa"]
 [ext_resource type="AudioStream" uid="uid://wavl3v5ijpfd" path="res://Audio/MFX/008_Percussion_Taiko Hits(Rim)_2.5secs.wav" id="70_ore4e"]
 [ext_resource type="AudioStream" uid="uid://dpblsp3kcahk6" path="res://Audio/MFX/cymbal-crash1_ff_rr2-PB.wav" id="71_j410t"]
@@ -1641,6 +1642,52 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="Speed Buff" type="Label" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 18.0
+offset_top = 1200.0
+offset_right = 546.0
+offset_bottom = 1251.0
+theme_override_fonts/font = ExtResource("11_3sg46")
+theme_override_font_sizes/font_size = 64
+text = "Speed Buff
+"
+
+[node name="Speed Buff2" type="Label" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 442.0
+offset_top = 1200.0
+offset_right = 970.0
+offset_bottom = 1251.0
+theme_override_fonts/font = ExtResource("11_3sg46")
+theme_override_font_sizes/font_size = 64
+text = "Speed Buff 2
+"
+
+[node name="Tornado Wave" type="Label" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 871.0
+offset_top = 1200.0
+offset_right = 1399.0
+offset_bottom = 1251.0
+theme_override_fonts/font = ExtResource("11_3sg46")
+theme_override_font_sizes/font_size = 64
+text = "Tornadoes"
+
+[node name="Tornado Wave2" type="Label" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1305.0
+offset_top = 1200.0
+offset_right = 1833.0
+offset_bottom = 1251.0
+theme_override_fonts/font = ExtResource("11_3sg46")
+theme_override_font_sizes/font_size = 64
+text = "Tornadoes 2"
+
 [node name="ExperienceBar" type="TextureProgressBar" parent="GUILayer/GUI"]
 texture_filter = 3
 layout_mode = 0
@@ -1676,6 +1723,7 @@ texture_over = ExtResource("9_3x2jh")
 texture_progress = ExtResource("10_1ttgu")
 
 [node name="StaminaBar" type="TextureProgressBar" parent="GUILayer/GUI"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.392157)
 layout_mode = 0
 offset_left = 1216.0
@@ -1687,6 +1735,194 @@ value = 50.0
 texture_over = ExtResource("9_3x2jh")
 texture_progress = ExtResource("60_y8d5x")
 tint_progress = Color(0, 1, 1, 1)
+
+[node name="Pianos" type="Control" parent="GUILayer/GUI"]
+modulate = Color(1, 1, 1, 0.784314)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PianoSprite" type="Sprite2D" parent="GUILayer/GUI/Pianos"]
+modulate = Color(1, 1, 1, 0.784314)
+position = Vector2(205.293, 1322)
+scale = Vector2(7.64462, 4.75862)
+texture = ExtResource("67_dgf1o")
+
+[node name="ProgressBar" type="ProgressBar" parent="GUILayer/GUI/Pianos"]
+unique_name_in_owner = true
+modulate = Color(0.960784, 0, 0.341176, 1)
+offset_left = 18.2931
+offset_top = 1263.0
+offset_right = 48.2931
+offset_bottom = 1376.0
+fill_mode = 2
+show_percentage = false
+
+[node name="ProgressBar2" type="ProgressBar" parent="GUILayer/GUI/Pianos"]
+unique_name_in_owner = true
+modulate = Color(0.839216, 0.352941, 0, 1)
+offset_left = 56.2931
+offset_top = 1263.0
+offset_right = 86.2931
+offset_bottom = 1376.0
+fill_mode = 2
+show_percentage = false
+
+[node name="ProgressBar3" type="ProgressBar" parent="GUILayer/GUI/Pianos"]
+unique_name_in_owner = true
+modulate = Color(0.972549, 0.717647, 0, 1)
+offset_left = 95.2931
+offset_top = 1263.0
+offset_right = 125.293
+offset_bottom = 1376.0
+fill_mode = 2
+show_percentage = false
+
+[node name="PianoSprite2" type="Sprite2D" parent="GUILayer/GUI/Pianos"]
+modulate = Color(1, 1, 1, 0.784314)
+position = Vector2(1058.29, 1322)
+scale = Vector2(7.64462, 4.75862)
+texture = ExtResource("67_dgf1o")
+
+[node name="ProgressBar6" type="ProgressBar" parent="GUILayer/GUI/Pianos"]
+unique_name_in_owner = true
+modulate = Color(0.972549, 0.717647, 0, 1)
+offset_left = 948.293
+offset_top = 1263.0
+offset_right = 978.293
+offset_bottom = 1376.0
+fill_mode = 2
+show_percentage = false
+
+[node name="PianoSprite4" type="Sprite2D" parent="GUILayer/GUI/Pianos"]
+modulate = Color(1, 1, 1, 0.784314)
+position = Vector2(1492.29, 1322)
+scale = Vector2(7.64462, 4.75862)
+texture = ExtResource("67_dgf1o")
+
+[node name="ProgressBar14" type="ProgressBar" parent="GUILayer/GUI/Pianos"]
+unique_name_in_owner = true
+modulate = Color(0.972549, 0.717647, 0, 1)
+offset_left = 1382.29
+offset_top = 1263.0
+offset_right = 1412.29
+offset_bottom = 1376.0
+fill_mode = 2
+show_percentage = false
+
+[node name="ProgressBar15" type="ProgressBar" parent="GUILayer/GUI/Pianos"]
+unique_name_in_owner = true
+modulate = Color(0, 0.552941, 0.843137, 1)
+offset_left = 1458.0
+offset_top = 1263.0
+offset_right = 1488.0
+offset_bottom = 1376.0
+fill_mode = 2
+show_percentage = false
+
+[node name="PianoSprite3" type="Sprite2D" parent="GUILayer/GUI/Pianos"]
+modulate = Color(1, 1, 1, 0.784314)
+position = Vector2(629.293, 1322)
+scale = Vector2(7.64462, 4.75862)
+texture = ExtResource("67_dgf1o")
+
+[node name="ProgressBar7" type="ProgressBar" parent="GUILayer/GUI/Pianos"]
+unique_name_in_owner = true
+modulate = Color(0.960784, 0, 0.341176, 1)
+offset_left = 442.293
+offset_top = 1262.0
+offset_right = 472.293
+offset_bottom = 1375.0
+fill_mode = 2
+show_percentage = false
+
+[node name="ProgressBar8" type="ProgressBar" parent="GUILayer/GUI/Pianos"]
+unique_name_in_owner = true
+modulate = Color(0.839216, 0.352941, 0, 1)
+offset_left = 480.293
+offset_top = 1262.0
+offset_right = 510.293
+offset_bottom = 1375.0
+fill_mode = 2
+show_percentage = false
+
+[node name="ProgressBar9" type="ProgressBar" parent="GUILayer/GUI/Pianos"]
+unique_name_in_owner = true
+modulate = Color(0.972549, 0.717647, 0, 1)
+offset_left = 519.293
+offset_top = 1262.0
+offset_right = 549.293
+offset_bottom = 1375.0
+fill_mode = 2
+show_percentage = false
+
+[node name="ProgressBar10" type="ProgressBar" parent="GUILayer/GUI/Pianos"]
+unique_name_in_owner = true
+modulate = Color(0, 0.631373, 0.207843, 1)
+offset_left = 556.293
+offset_top = 1262.0
+offset_right = 586.293
+offset_bottom = 1375.0
+fill_mode = 2
+show_percentage = false
+
+[node name="ProgressBar11" type="ProgressBar" parent="GUILayer/GUI/Pianos"]
+unique_name_in_owner = true
+modulate = Color(0, 0.552941, 0.843137, 1)
+offset_left = 594.293
+offset_top = 1262.0
+offset_right = 624.293
+offset_bottom = 1375.0
+fill_mode = 2
+show_percentage = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUILayer/GUI"]
+modulate = Color(1, 1, 1, 0.678431)
+layout_mode = 0
+offset_left = 18.0
+offset_top = 1408.0
+offset_right = 2544.0
+offset_bottom = 1432.0
+
+[node name="ColorRect" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.882353, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.160784, 0.160784, 0.160784, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.160784, 0.160784, 0.160784, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.160784, 0.160784, 0.160784, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.160784, 0.160784, 0.160784, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.160784, 0.160784, 0.160784, 1)
+
+[node name="ColorRect7" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.160784, 0.160784, 0.160784, 1)
+
+[node name="ColorRect8" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.160784, 0.160784, 0.160784, 1)
 
 [node name="panel_LevelUp" type="Panel" parent="GUILayer/GUI"]
 process_mode = 2
@@ -1861,81 +2097,6 @@ offset_bottom = 874.0
 theme_override_fonts/font = ExtResource("11_3sg46")
 theme_override_font_sizes/font_size = 64
 text = "measure: "
-
-[node name="HBoxContainer" type="HBoxContainer" parent="GUILayer/GUI"]
-z_index = -1
-layout_mode = 0
-offset_left = 997.0
-offset_top = 869.0
-offset_right = 1565.0
-offset_bottom = 962.0
-
-[node name="ColorRect" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(0.882353, 0, 0, 1)
-
-[node name="ProgressBar" type="ProgressBar" parent="GUILayer/GUI/HBoxContainer/ColorRect"]
-unique_name_in_owner = true
-modulate = Color(0, 1, 1, 1)
-layout_mode = 0
-offset_right = 67.0
-offset_bottom = 93.0
-fill_mode = 3
-show_percentage = false
-
-[node name="ColorRect2" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(0.160784, 0.160784, 0.160784, 1)
-
-[node name="ColorRect3" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(0.160784, 0.160784, 0.160784, 1)
-
-[node name="ProgressBar2" type="ProgressBar" parent="GUILayer/GUI/HBoxContainer/ColorRect3"]
-unique_name_in_owner = true
-modulate = Color(0, 1, 1, 1)
-layout_mode = 0
-offset_right = 67.0
-offset_bottom = 93.0
-fill_mode = 3
-show_percentage = false
-
-[node name="ColorRect4" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(0.160784, 0.160784, 0.160784, 1)
-
-[node name="ColorRect5" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(0.160784, 0.160784, 0.160784, 1)
-
-[node name="ProgressBar3" type="ProgressBar" parent="GUILayer/GUI/HBoxContainer/ColorRect5"]
-unique_name_in_owner = true
-modulate = Color(0, 1, 1, 1)
-layout_mode = 0
-offset_right = 67.0
-offset_bottom = 93.0
-fill_mode = 3
-show_percentage = false
-
-[node name="ColorRect6" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(0.160784, 0.160784, 0.160784, 1)
-
-[node name="ColorRect7" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(0.160784, 0.160784, 0.160784, 1)
-
-[node name="ColorRect8" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(0.160784, 0.160784, 0.160784, 1)
 
 [node name="sound_ambient_fire" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("56_bdaqp")

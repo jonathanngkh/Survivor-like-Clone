@@ -112,6 +112,7 @@ spawns = Array[ExtResource("5_kyr6r")]([SubResource("Resource_rxj4u"), SubResour
 [node name="Loot" type="Node2D" parent="." groups=["loot"]]
 
 [node name="Conductor" parent="." instance=ExtResource("9_mdibg")]
+process_mode = 3
 stream = ExtResource("10_8avhi")
 autoplay = false
 bpm = 220
