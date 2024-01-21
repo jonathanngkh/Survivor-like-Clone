@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var movement_speed = 400.0
 @export var hp = 80
-var max_hp = 100
+@export var max_hp = 200
 var max_stamina = 100
 var stamina = 100
 var last_movement = Vector2.UP
@@ -161,6 +161,8 @@ func _print_midi_info(midi_event: InputEventMIDI):
 	
 func _process(delta):
 	if hp <= 0:
+		get_tree().get_first_node_in_group("gameover").visible = true
+		get_tree().get_first_node_in_group("you are dead").visible = true
 		get_tree().paused = true
 	#attack_combo()
 	#choose_animation()
@@ -178,9 +180,12 @@ func _process(delta):
 #endregion
 
 const walk_response_song = preload("res://Audio/Music/Battle 1_Move Forward (Normal - Variant 1)_110bpm.wav")
+const walk_response_song_thirds = preload("res://Audio/Music/Battle 1_Move Forward in Thirds (Normal - Variant 2)_110bpm.wav")
 const idle_input_song = preload("res://Audio/Music/Battle 1_Idle Phase_110bpm.wav")
 const attack_response_song = preload("res://Audio/Music/Battle 1_Attack (Normal - Variant 1)_110bpm.wav")
-const heal_response_song = preload("res://Audio/Music/Battle 1_Player Input Phase (High - Variant 1)_110bpm.wav")
+const attack_response_song_thirds = preload("res://Audio/Music/Battle 1_Attack in Thirds (Normal - Variant 2)_110bpm.wav")
+const heal_response_song = preload("res://Audio/Music/Battle 1_Heal (Normal - Variant 2)_110bpm.wav")
+const heal_response_song_thirds = preload("res://Audio/Music/Battle 1_Heal in Thirds (Normal - Variant 1)_110bpm.wav")
 
 var saved_measure = 0
 
@@ -191,12 +196,12 @@ var saved_measure = 0
 func fill_rhythm_block(block_node):
 	var block_progress_bar = block_node
 	var tween = create_tween()
-	tween.tween_property(block_progress_bar, "value", 100, 0.5454).from(0).set_trans(Tween.TRANS_LINEAR)
+	tween.tween_property(block_progress_bar, "value", 100, 0.5454).from(0).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
 	
 func fill_rhythm_block_fast(block_node):
 	var block_progress_bar = block_node
 	var tween = create_tween()
-	tween.tween_property(block_progress_bar, "value", 100, 0.2727).from(0).set_trans(Tween.TRANS_LINEAR)
+	tween.tween_property(block_progress_bar, "value", 100, 0.2727).from(0).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
 
 func _on_conductor_beat_incremented():
 	if conductor_node.get_beat_in_bar() % 2 == 0:
@@ -211,12 +216,25 @@ func _on_conductor_beat_incremented():
 		
 		fill_rhythm_block(get_node("%ProgressBar8"))
 		fill_rhythm_block(get_node("%ProgressBar10"))
-		#$GUILayer/GUI/HBoxContainer/ColorRect/ProgressBar.value = 0
+		
+		# heal D
+		fill_rhythm_block_fast(get_node("%ProgressBar5"))
+		
+		# heal+ DF
+		fill_rhythm_block_fast(get_node("%ProgressBar16"))
+		fill_rhythm_block_fast(get_node("%ProgressBar18"))
 	if conductor_node.get_beat_in_bar() == 2:
 		fill_rhythm_block_fast(get_node("%ProgressBar6"))
 		
 		fill_rhythm_block_fast(get_node("%ProgressBar14"))
 		fill_rhythm_block_fast(get_node("%ProgressBar15"))
+		
+		# heal C
+		fill_rhythm_block_fast(get_node("%ProgressBar4"))
+		
+		# heal+ CE
+		fill_rhythm_block_fast(get_node("%ProgressBar13"))
+		fill_rhythm_block_fast(get_node("%ProgressBar17"))
 		pass
 	if conductor_node.get_beat_in_bar() == 3:
 		fill_rhythm_block_fast(get_node("%ProgressBar6"))
@@ -228,6 +246,13 @@ func _on_conductor_beat_incremented():
 		
 		fill_rhythm_block(get_node("%ProgressBar9"))
 		fill_rhythm_block(get_node("%ProgressBar11"))
+		
+		# heal C
+		fill_rhythm_block(get_node("%ProgressBar4"))
+		
+		# heal+ CE
+		fill_rhythm_block(get_node("%ProgressBar13"))
+		fill_rhythm_block(get_node("%ProgressBar17"))
 		pass
 	if conductor_node.get_beat_in_bar() == 4:
 		pass
@@ -242,24 +267,39 @@ func _on_conductor_beat_incremented():
 		
 		fill_rhythm_block(get_node("%ProgressBar7"))
 		fill_rhythm_block(get_node("%ProgressBar9"))
+		
+		if judge_song(heal_song) == "correct":
+			saved_measure = conductor_node.get_measure()
+			$walk_success_sound.play()
+			#$HEAL_SOUNDr.play()
+			notes_played = []
+			conductor_node.set_stream(heal_response_song)
+			conductor_node.play_with_beat_offset(8)
+			hp += 40
+			hp = clamp(hp,0,max_hp)
+			health_bar.value = hp
+			music_state = "responding_heal"
+			
+		if judge_song(heal_song_thirds) == "correct":
+			saved_measure = conductor_node.get_measure()
+			$walk_success_sound.play()
+			#$HEAL_SOUNDr.play()
+			notes_played = []
+			conductor_node.set_stream(heal_response_song_thirds)
+			conductor_node.play_with_beat_offset(8)
+			hp += 80
+			hp = clamp(hp,0,max_hp)
+			health_bar.value = hp
+			music_state = "responding_heal"
+			
 		if judge_song(walk_song_in_quavers_thirds) == "correct":
 			saved_measure = conductor_node.get_measure()
 			$walk_success_sound.play()
 			notes_played = []
-			conductor_node.set_stream(walk_response_song)
+			conductor_node.set_stream(walk_response_song_thirds)
 			conductor_node.play_with_beat_offset(8)
 			music_state = "responding_walk_thirds"
 			
-		if judge_song(heal_song) == "correct":
-			saved_measure = conductor_node.get_measure()
-			$walk_success_sound.play()
-			notes_played = []
-			conductor_node.set_stream(heal_response_song)
-			conductor_node.play_with_beat_offset(8)
-			hp += 10
-			hp = clamp(hp,0,max_hp)
-			health_bar.value = hp
-			music_state = "responding_heal"
 			
 		if judge_song(walk_song_in_quavers) == "correct":
 			saved_measure = conductor_node.get_measure()
@@ -284,7 +324,7 @@ func _on_conductor_beat_incremented():
 			saved_measure = conductor_node.get_measure()
 			$attack_success_sound.play()
 			notes_played = []
-			conductor_node.set_stream(attack_response_song)
+			conductor_node.set_stream(attack_response_song_thirds)
 			conductor_node.play_with_beat_offset(8)
 			shoot_tornado()
 			shoot_tornado()
@@ -302,6 +342,13 @@ func _on_conductor_beat_incremented():
 		
 		fill_rhythm_block_fast(get_node("%ProgressBar14"))
 		fill_rhythm_block_fast(get_node("%ProgressBar15"))
+		
+		# heal E
+		fill_rhythm_block_fast(get_node("%ProgressBar12"))
+		
+		# heal+ EG
+		fill_rhythm_block_fast(get_node("%ProgressBar17"))
+		fill_rhythm_block_fast(get_node("%ProgressBar19"))
 		
 		if conductor_node.get_measure() == (saved_measure + 1):
 			music_state = "idle" # ideally, set to idle on beat 8.5 or 8.75. use this for now.
@@ -358,6 +405,12 @@ var attack_song_in_thirds = [
 	[64, 3], [67, 3],
 	[64, 4], [67, 4]
 	]
+var heal_song_thirds = [
+	[64, 1], [67, 1],
+	[62, 2], [65, 2],
+	[60, 3], [64, 3],
+	[60, 5], [64, 5]
+]
 
 func judge_song(song_to_judge):
 	var correct_notes = 0
@@ -753,6 +806,8 @@ func change_time(argtime = 0):
 	if get_seconds < 10:
 		get_seconds = str(0, get_seconds)
 	label_timer.text = str(get_minutes, ":", get_seconds)
+	if label_timer.text == "5:30":
+		get_tree().get_first_node_in_group("survived").visible = true
 
 func adjust_gui_collection(upgrade):
 	var get_upgraded_displayname = UpgradeDb.UPGRADES[upgrade]["displayname"]

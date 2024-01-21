@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cjkdpm3u3wqut"]
+[gd_scene load_steps=26 format=3 uid="uid://cjkdpm3u3wqut"]
 
 [ext_resource type="Texture2D" uid="uid://b6t8hgeek4kfh" path="res://Textures/wol huge air map.png" id="2_6ka0j"]
 [ext_resource type="PackedScene" uid="uid://c6uuvcthpociv" path="res://Player/player.tscn" id="2_rlem7"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://by2h2cbjqpp3g" path="res://conductor.tscn" id="9_mdibg"]
 [ext_resource type="AudioStream" uid="uid://djhqo7kroibgp" path="res://Audio/Music/Battle 1_Idle Phase_110bpm.wav" id="10_8avhi"]
 [ext_resource type="PackedScene" uid="uid://4a1v2lndn8qi" path="res://Objects/experience_gem.tscn" id="12_pk5wr"]
+[ext_resource type="FontFile" uid="uid://eltw4hqqgcsj" path="res://Font/tenderness.otf" id="13_pwion"]
 
 [sub_resource type="Resource" id="Resource_rxj4u"]
 script = ExtResource("5_kyr6r")
@@ -92,7 +93,7 @@ size = Vector2(5896.25, 378.125)
 size = Vector2(66.25, 1940)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_10ttd"]
-size = Vector2(66, 62)
+size = Vector2(42, 42)
 
 [node name="World" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [-474.0, 490.0]
@@ -104,7 +105,35 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_6ka0j")
 offset = Vector2(150.5, 1028.5)
 
+[node name="GameoverSprite" type="Sprite2D" parent="." groups=["gameover"]]
+visible = false
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-76, -423)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_6ka0j")
+offset = Vector2(150.5, 1028.5)
+
 [node name="Player" parent="." instance=ExtResource("2_rlem7")]
+
+[node name="YouAreDeadLabel" type="Label" parent="Player" groups=["you are dead"]]
+visible = false
+offset_left = -175.0
+offset_top = -32.0
+offset_right = 193.0
+offset_bottom = 33.0
+theme_override_fonts/font = ExtResource("13_pwion")
+theme_override_font_sizes/font_size = 64
+text = "You Are Dead..."
+
+[node name="You SurvivedLabel" type="Label" parent="Player" groups=["survived"]]
+visible = false
+offset_left = -175.0
+offset_top = -32.0
+offset_right = 193.0
+offset_bottom = 33.0
+theme_override_fonts/font = ExtResource("13_pwion")
+theme_override_font_sizes/font_size = 64
+text = "You Survived!"
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_gdiqe")]
 spawns = Array[ExtResource("5_kyr6r")]([SubResource("Resource_rxj4u"), SubResource("Resource_0ghsp"), SubResource("Resource_ixasv"), SubResource("Resource_y4opa"), SubResource("Resource_tol0s"), SubResource("Resource_h3dng"), SubResource("Resource_tvmlh"), SubResource("Resource_x21cl"), SubResource("Resource_cc6wm")])
@@ -147,6 +176,8 @@ shape = SubResource("RectangleShape2D_gkxae")
 
 [node name="Statue" type="CharacterBody2D" parent="Statues"]
 position = Vector2(349, -180)
+collision_layer = 2
+collision_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Statues/Statue"]
 position = Vector2(-0.999999, 26)
@@ -160,6 +191,8 @@ shape = SubResource("RectangleShape2D_10ttd")
 
 [node name="Statue5" type="CharacterBody2D" parent="Statues"]
 position = Vector2(-388, -180)
+collision_layer = 2
+collision_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Statues/Statue5"]
 position = Vector2(-0.999999, 26)
@@ -173,6 +206,8 @@ shape = SubResource("RectangleShape2D_10ttd")
 
 [node name="Statue6" type="CharacterBody2D" parent="Statues"]
 position = Vector2(-388, 40)
+collision_layer = 2
+collision_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Statues/Statue6"]
 position = Vector2(-0.999999, 26)
@@ -186,6 +221,8 @@ shape = SubResource("RectangleShape2D_10ttd")
 
 [node name="Statue7" type="CharacterBody2D" parent="Statues"]
 position = Vector2(-1106, 40)
+collision_layer = 2
+collision_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Statues/Statue7"]
 position = Vector2(-0.999999, 26)
@@ -200,6 +237,8 @@ shape = SubResource("RectangleShape2D_10ttd")
 
 [node name="Statue8" type="CharacterBody2D" parent="Statues"]
 position = Vector2(-1107, -180)
+collision_layer = 2
+collision_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Statues/Statue8"]
 position = Vector2(-0.999999, 26)
@@ -214,6 +253,8 @@ shape = SubResource("RectangleShape2D_10ttd")
 
 [node name="Statue2" type="CharacterBody2D" parent="Statues"]
 position = Vector2(349, 40)
+collision_layer = 2
+collision_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Statues/Statue2"]
 position = Vector2(-0.999999, 26)
@@ -227,6 +268,8 @@ shape = SubResource("RectangleShape2D_10ttd")
 
 [node name="Statue3" type="CharacterBody2D" parent="Statues"]
 position = Vector2(1085, 40)
+collision_layer = 2
+collision_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Statues/Statue3"]
 position = Vector2(-0.999999, 26)
@@ -240,6 +283,8 @@ shape = SubResource("RectangleShape2D_10ttd")
 
 [node name="Statue4" type="CharacterBody2D" parent="Statues"]
 position = Vector2(1085, -180)
+collision_layer = 2
+collision_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Statues/Statue4"]
 position = Vector2(-0.999999, 26)
@@ -250,14 +295,6 @@ offset = Vector2(-10, -12.5)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Statues/Statue4"]
 position = Vector2(-9, 44)
 shape = SubResource("RectangleShape2D_10ttd")
-
-[node name="GameoverSprite" type="Sprite2D" parent="." groups=["gameover"]]
-visible = false
-modulate = Color(0, 0, 0, 1)
-position = Vector2(-76, -423)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("2_6ka0j")
-offset = Vector2(150.5, 1028.5)
 
 [node name="ExperienceGem" parent="." instance=ExtResource("12_pk5wr")]
 process_mode = 4

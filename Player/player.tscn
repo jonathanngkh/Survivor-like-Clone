@@ -1528,7 +1528,7 @@ collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_6neil")
 movement_speed = 30.0
-hp = 100
+hp = 200
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -1651,8 +1651,7 @@ offset_right = 546.0
 offset_bottom = 1251.0
 theme_override_fonts/font = ExtResource("11_3sg46")
 theme_override_font_sizes/font_size = 64
-text = "Speed Buff
-"
+text = "Speed"
 
 [node name="Speed Buff2" type="Label" parent="GUILayer/GUI"]
 unique_name_in_owner = true
@@ -1663,8 +1662,7 @@ offset_right = 970.0
 offset_bottom = 1251.0
 theme_override_fonts/font = ExtResource("11_3sg46")
 theme_override_font_sizes/font_size = 64
-text = "Speed Buff 2
-"
+text = "Speed+"
 
 [node name="Tornado Wave" type="Label" parent="GUILayer/GUI"]
 unique_name_in_owner = true
@@ -1686,7 +1684,29 @@ offset_right = 1833.0
 offset_bottom = 1251.0
 theme_override_fonts/font = ExtResource("11_3sg46")
 theme_override_font_sizes/font_size = 64
-text = "Tornadoes 2"
+text = "Tornadoes+"
+
+[node name="HealSong" type="Label" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1740.0
+offset_top = 1200.0
+offset_right = 2268.0
+offset_bottom = 1251.0
+theme_override_fonts/font = ExtResource("11_3sg46")
+theme_override_font_sizes/font_size = 64
+text = "Heal"
+
+[node name="HealSong2" type="Label" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 2173.0
+offset_top = 1200.0
+offset_right = 2701.0
+offset_bottom = 1251.0
+theme_override_fonts/font = ExtResource("11_3sg46")
+theme_override_font_sizes/font_size = 64
+text = "Heal+"
 
 [node name="ExperienceBar" type="TextureProgressBar" parent="GUILayer/GUI"]
 texture_filter = 3
@@ -1737,7 +1757,6 @@ texture_progress = ExtResource("60_y8d5x")
 tint_progress = Color(0, 1, 1, 1)
 
 [node name="Pianos" type="Control" parent="GUILayer/GUI"]
-modulate = Color(1, 1, 1, 0.784314)
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -1872,6 +1891,98 @@ modulate = Color(0, 0.552941, 0.843137, 1)
 offset_left = 594.293
 offset_top = 1262.0
 offset_right = 624.293
+offset_bottom = 1375.0
+fill_mode = 2
+show_percentage = false
+
+[node name="PianoSprite5" type="Sprite2D" parent="GUILayer/GUI/Pianos"]
+modulate = Color(1, 1, 1, 0.784314)
+position = Vector2(1927.29, 1322)
+scale = Vector2(7.64462, 4.75862)
+texture = ExtResource("67_dgf1o")
+
+[node name="ProgressBar4" type="ProgressBar" parent="GUILayer/GUI/Pianos"]
+unique_name_in_owner = true
+modulate = Color(0.960784, 0, 0.341176, 1)
+offset_left = 1740.29
+offset_top = 1263.0
+offset_right = 1770.29
+offset_bottom = 1376.0
+fill_mode = 2
+show_percentage = false
+
+[node name="ProgressBar5" type="ProgressBar" parent="GUILayer/GUI/Pianos"]
+unique_name_in_owner = true
+modulate = Color(0.839216, 0.352941, 0, 1)
+offset_left = 1778.29
+offset_top = 1263.0
+offset_right = 1808.29
+offset_bottom = 1376.0
+fill_mode = 2
+show_percentage = false
+
+[node name="ProgressBar12" type="ProgressBar" parent="GUILayer/GUI/Pianos"]
+unique_name_in_owner = true
+modulate = Color(0.972549, 0.717647, 0, 1)
+offset_left = 1817.29
+offset_top = 1263.0
+offset_right = 1847.29
+offset_bottom = 1376.0
+fill_mode = 2
+show_percentage = false
+
+[node name="PianoSprite6" type="Sprite2D" parent="GUILayer/GUI/Pianos"]
+modulate = Color(1, 1, 1, 0.784314)
+position = Vector2(2360.29, 1322)
+scale = Vector2(7.64462, 4.75862)
+texture = ExtResource("67_dgf1o")
+
+[node name="ProgressBar13" type="ProgressBar" parent="GUILayer/GUI/Pianos"]
+unique_name_in_owner = true
+modulate = Color(0.960784, 0, 0.341176, 1)
+offset_left = 2173.29
+offset_top = 1262.0
+offset_right = 2203.29
+offset_bottom = 1375.0
+fill_mode = 2
+show_percentage = false
+
+[node name="ProgressBar16" type="ProgressBar" parent="GUILayer/GUI/Pianos"]
+unique_name_in_owner = true
+modulate = Color(0.839216, 0.352941, 0, 1)
+offset_left = 2211.29
+offset_top = 1262.0
+offset_right = 2241.29
+offset_bottom = 1375.0
+fill_mode = 2
+show_percentage = false
+
+[node name="ProgressBar17" type="ProgressBar" parent="GUILayer/GUI/Pianos"]
+unique_name_in_owner = true
+modulate = Color(0.972549, 0.717647, 0, 1)
+offset_left = 2250.29
+offset_top = 1262.0
+offset_right = 2280.29
+offset_bottom = 1375.0
+fill_mode = 2
+show_percentage = false
+
+[node name="ProgressBar18" type="ProgressBar" parent="GUILayer/GUI/Pianos"]
+unique_name_in_owner = true
+modulate = Color(0, 0.631373, 0.207843, 1)
+offset_left = 2287.29
+offset_top = 1262.0
+offset_right = 2317.29
+offset_bottom = 1375.0
+fill_mode = 2
+show_percentage = false
+
+[node name="ProgressBar19" type="ProgressBar" parent="GUILayer/GUI/Pianos"]
+unique_name_in_owner = true
+modulate = Color(0, 0.552941, 0.843137, 1)
+offset_left = 2325.29
+offset_top = 1262.0
+offset_right = 2355.29
 offset_bottom = 1375.0
 fill_mode = 2
 show_percentage = false

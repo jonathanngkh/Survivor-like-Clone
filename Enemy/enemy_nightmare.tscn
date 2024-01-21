@@ -11,8 +11,8 @@
 [ext_resource type="AudioStream" uid="uid://ccn0se28frcv8" path="res://Audio/SoundEffect/TOMAHAWK HITMARKER.mp3" id="8_n8058"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v0ett"]
-radius = 10.8368
-height = 38.5453
+radius = 5.94275
+height = 32.1211
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uwdbd"]
 size = Vector2(92, 56)
@@ -288,7 +288,7 @@ collision_layer = 5
 collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_vv5e4")
-movement_speed = 40
+movement_speed = 150
 hp = 50
 knockback_recovery = 10.0
 experience = 10
@@ -300,7 +300,7 @@ texture = ExtResource("7_apxqh")
 hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-19, 12)
+position = Vector2(-20, 14)
 scale = Vector2(2.86063, 0.622643)
 shape = SubResource("CapsuleShape2D_v0ett")
 
