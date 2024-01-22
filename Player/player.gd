@@ -81,10 +81,10 @@ func _ready():
 	stamina_bar.max_value = max_stamina
 	stamina_bar.value = stamina
 	animation_tree.active = true
-	#animator.queue("eleanore_idle")
-	upgrade_character("icespear1")
-	upgrade_character("tornado1")
-	upgrade_character("javelin1")
+	# easy mode
+	#upgrade_character("icespear1")
+	#upgrade_character("tornado1")
+	#upgrade_character("javelin1")
 	attack()
 	set_experience_bar(experience, calculate_experience_cap())
 	OS.open_midi_inputs() #
