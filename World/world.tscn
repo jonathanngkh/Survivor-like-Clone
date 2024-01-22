@@ -136,6 +136,7 @@ theme_override_font_sizes/font_size = 64
 text = "You Survived!"
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_gdiqe")]
+process_mode = 4
 spawns = Array[ExtResource("5_kyr6r")]([SubResource("Resource_rxj4u"), SubResource("Resource_0ghsp"), SubResource("Resource_ixasv"), SubResource("Resource_y4opa"), SubResource("Resource_tol0s"), SubResource("Resource_h3dng"), SubResource("Resource_tvmlh"), SubResource("Resource_x21cl"), SubResource("Resource_cc6wm")])
 
 [node name="Loot" type="Node2D" parent="." groups=["loot"]]
@@ -146,9 +147,6 @@ stream = ExtResource("10_8avhi")
 autoplay = false
 bpm = 220
 beats_per_bar = 8
-
-[node name="AudioStreamPlayer" parent="Conductor" index="1"]
-stream_paused = false
 
 [node name="Borders" type="CharacterBody2D" parent="."]
 visible = false

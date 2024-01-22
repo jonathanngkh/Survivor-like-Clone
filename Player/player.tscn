@@ -1762,229 +1762,273 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="PianoSprite" type="Sprite2D" parent="GUILayer/GUI/Pianos"]
+[node name="Control2" type="Control" parent="GUILayer/GUI/Pianos"]
+anchors_preset = 0
+offset_left = 18.0
+offset_top = 1214.0
+offset_right = 393.0
+offset_bottom = 1391.0
+
+[node name="PianoSprite" type="Sprite2D" parent="GUILayer/GUI/Pianos/Control2"]
 modulate = Color(1, 1, 1, 0.784314)
-position = Vector2(205.293, 1322)
+position = Vector2(187.293, 108)
 scale = Vector2(7.64462, 4.75862)
 texture = ExtResource("67_dgf1o")
 
-[node name="ProgressBar" type="ProgressBar" parent="GUILayer/GUI/Pianos"]
+[node name="ProgressBar" type="ProgressBar" parent="GUILayer/GUI/Pianos/Control2"]
 unique_name_in_owner = true
 modulate = Color(0.960784, 0, 0.341176, 1)
-offset_left = 18.2931
-offset_top = 1263.0
-offset_right = 48.2931
-offset_bottom = 1376.0
+offset_left = 0.293137
+offset_top = 49.0
+offset_right = 30.2931
+offset_bottom = 162.0
 fill_mode = 2
 show_percentage = false
 
-[node name="ProgressBar2" type="ProgressBar" parent="GUILayer/GUI/Pianos"]
+[node name="ProgressBar2" type="ProgressBar" parent="GUILayer/GUI/Pianos/Control2"]
 unique_name_in_owner = true
 modulate = Color(0.839216, 0.352941, 0, 1)
-offset_left = 56.2931
-offset_top = 1263.0
-offset_right = 86.2931
-offset_bottom = 1376.0
+offset_left = 38.2931
+offset_top = 49.0
+offset_right = 68.2931
+offset_bottom = 162.0
 fill_mode = 2
 show_percentage = false
 
-[node name="ProgressBar3" type="ProgressBar" parent="GUILayer/GUI/Pianos"]
+[node name="ProgressBar3" type="ProgressBar" parent="GUILayer/GUI/Pianos/Control2"]
 unique_name_in_owner = true
 modulate = Color(0.972549, 0.717647, 0, 1)
-offset_left = 95.2931
-offset_top = 1263.0
-offset_right = 125.293
-offset_bottom = 1376.0
+offset_left = 77.2931
+offset_top = 49.0
+offset_right = 107.293
+offset_bottom = 162.0
 fill_mode = 2
 show_percentage = false
 
-[node name="PianoSprite2" type="Sprite2D" parent="GUILayer/GUI/Pianos"]
+[node name="Control3" type="Control" parent="GUILayer/GUI/Pianos"]
+anchors_preset = 0
+offset_left = 871.0
+offset_top = 1214.0
+offset_right = 1246.0
+offset_bottom = 1391.0
+
+[node name="PianoSprite2" type="Sprite2D" parent="GUILayer/GUI/Pianos/Control3"]
 modulate = Color(1, 1, 1, 0.784314)
-position = Vector2(1058.29, 1322)
+position = Vector2(187.293, 108)
 scale = Vector2(7.64462, 4.75862)
 texture = ExtResource("67_dgf1o")
 
-[node name="ProgressBar6" type="ProgressBar" parent="GUILayer/GUI/Pianos"]
+[node name="ProgressBar6" type="ProgressBar" parent="GUILayer/GUI/Pianos/Control3"]
 unique_name_in_owner = true
 modulate = Color(0.972549, 0.717647, 0, 1)
-offset_left = 948.293
-offset_top = 1263.0
-offset_right = 978.293
-offset_bottom = 1376.0
+offset_left = 77.2931
+offset_top = 49.0
+offset_right = 107.293
+offset_bottom = 162.0
 fill_mode = 2
 show_percentage = false
 
-[node name="PianoSprite4" type="Sprite2D" parent="GUILayer/GUI/Pianos"]
+[node name="Control" type="Control" parent="GUILayer/GUI/Pianos"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 1305.0
+offset_top = 1214.0
+offset_right = 1680.0
+offset_bottom = 1396.0
+metadata/_edit_use_anchors_ = true
+
+[node name="PianoSprite4" type="Sprite2D" parent="GUILayer/GUI/Pianos/Control"]
 modulate = Color(1, 1, 1, 0.784314)
-position = Vector2(1492.29, 1322)
+position = Vector2(187.293, 113)
 scale = Vector2(7.64462, 4.75862)
 texture = ExtResource("67_dgf1o")
 
-[node name="ProgressBar14" type="ProgressBar" parent="GUILayer/GUI/Pianos"]
+[node name="ProgressBar14" type="ProgressBar" parent="GUILayer/GUI/Pianos/Control"]
 unique_name_in_owner = true
 modulate = Color(0.972549, 0.717647, 0, 1)
-offset_left = 1382.29
-offset_top = 1263.0
-offset_right = 1412.29
-offset_bottom = 1376.0
+offset_left = 77.2931
+offset_top = 54.0
+offset_right = 107.293
+offset_bottom = 167.0
 fill_mode = 2
 show_percentage = false
 
-[node name="ProgressBar15" type="ProgressBar" parent="GUILayer/GUI/Pianos"]
+[node name="ProgressBar15" type="ProgressBar" parent="GUILayer/GUI/Pianos/Control"]
 unique_name_in_owner = true
 modulate = Color(0, 0.552941, 0.843137, 1)
-offset_left = 1458.0
-offset_top = 1263.0
-offset_right = 1488.0
-offset_bottom = 1376.0
+offset_left = 153.0
+offset_top = 54.0
+offset_right = 183.0
+offset_bottom = 167.0
 fill_mode = 2
 show_percentage = false
 
-[node name="PianoSprite3" type="Sprite2D" parent="GUILayer/GUI/Pianos"]
+[node name="Control4" type="Control" parent="GUILayer/GUI/Pianos"]
+anchors_preset = 0
+offset_left = 442.0
+offset_top = 1214.0
+offset_right = 817.0
+offset_bottom = 1391.0
+
+[node name="PianoSprite3" type="Sprite2D" parent="GUILayer/GUI/Pianos/Control4"]
 modulate = Color(1, 1, 1, 0.784314)
-position = Vector2(629.293, 1322)
+position = Vector2(187.293, 108)
 scale = Vector2(7.64462, 4.75862)
 texture = ExtResource("67_dgf1o")
 
-[node name="ProgressBar7" type="ProgressBar" parent="GUILayer/GUI/Pianos"]
+[node name="ProgressBar7" type="ProgressBar" parent="GUILayer/GUI/Pianos/Control4"]
 unique_name_in_owner = true
 modulate = Color(0.960784, 0, 0.341176, 1)
-offset_left = 442.293
-offset_top = 1262.0
-offset_right = 472.293
-offset_bottom = 1375.0
+offset_left = 0.293091
+offset_top = 48.0
+offset_right = 30.2931
+offset_bottom = 161.0
 fill_mode = 2
 show_percentage = false
 
-[node name="ProgressBar8" type="ProgressBar" parent="GUILayer/GUI/Pianos"]
+[node name="ProgressBar8" type="ProgressBar" parent="GUILayer/GUI/Pianos/Control4"]
 unique_name_in_owner = true
 modulate = Color(0.839216, 0.352941, 0, 1)
-offset_left = 480.293
-offset_top = 1262.0
-offset_right = 510.293
-offset_bottom = 1375.0
+offset_left = 38.2931
+offset_top = 48.0
+offset_right = 68.2931
+offset_bottom = 161.0
 fill_mode = 2
 show_percentage = false
 
-[node name="ProgressBar9" type="ProgressBar" parent="GUILayer/GUI/Pianos"]
+[node name="ProgressBar9" type="ProgressBar" parent="GUILayer/GUI/Pianos/Control4"]
 unique_name_in_owner = true
 modulate = Color(0.972549, 0.717647, 0, 1)
-offset_left = 519.293
-offset_top = 1262.0
-offset_right = 549.293
-offset_bottom = 1375.0
+offset_left = 77.2931
+offset_top = 48.0
+offset_right = 107.293
+offset_bottom = 161.0
 fill_mode = 2
 show_percentage = false
 
-[node name="ProgressBar10" type="ProgressBar" parent="GUILayer/GUI/Pianos"]
+[node name="ProgressBar10" type="ProgressBar" parent="GUILayer/GUI/Pianos/Control4"]
 unique_name_in_owner = true
 modulate = Color(0, 0.631373, 0.207843, 1)
-offset_left = 556.293
-offset_top = 1262.0
-offset_right = 586.293
-offset_bottom = 1375.0
+offset_left = 114.293
+offset_top = 48.0
+offset_right = 144.293
+offset_bottom = 161.0
 fill_mode = 2
 show_percentage = false
 
-[node name="ProgressBar11" type="ProgressBar" parent="GUILayer/GUI/Pianos"]
+[node name="ProgressBar11" type="ProgressBar" parent="GUILayer/GUI/Pianos/Control4"]
 unique_name_in_owner = true
 modulate = Color(0, 0.552941, 0.843137, 1)
-offset_left = 594.293
-offset_top = 1262.0
-offset_right = 624.293
-offset_bottom = 1375.0
+offset_left = 152.293
+offset_top = 48.0
+offset_right = 182.293
+offset_bottom = 161.0
 fill_mode = 2
 show_percentage = false
 
-[node name="PianoSprite5" type="Sprite2D" parent="GUILayer/GUI/Pianos"]
+[node name="Control5" type="Control" parent="GUILayer/GUI/Pianos"]
+anchors_preset = 0
+offset_left = 1740.0
+offset_top = 1214.0
+offset_right = 2115.0
+offset_bottom = 1391.0
+
+[node name="PianoSprite5" type="Sprite2D" parent="GUILayer/GUI/Pianos/Control5"]
 modulate = Color(1, 1, 1, 0.784314)
-position = Vector2(1927.29, 1322)
+position = Vector2(187.293, 108)
 scale = Vector2(7.64462, 4.75862)
 texture = ExtResource("67_dgf1o")
 
-[node name="ProgressBar4" type="ProgressBar" parent="GUILayer/GUI/Pianos"]
+[node name="ProgressBar4" type="ProgressBar" parent="GUILayer/GUI/Pianos/Control5"]
 unique_name_in_owner = true
 modulate = Color(0.960784, 0, 0.341176, 1)
-offset_left = 1740.29
-offset_top = 1263.0
-offset_right = 1770.29
-offset_bottom = 1376.0
+offset_left = 0.293091
+offset_top = 49.0
+offset_right = 30.2931
+offset_bottom = 162.0
 fill_mode = 2
 show_percentage = false
 
-[node name="ProgressBar5" type="ProgressBar" parent="GUILayer/GUI/Pianos"]
+[node name="ProgressBar5" type="ProgressBar" parent="GUILayer/GUI/Pianos/Control5"]
 unique_name_in_owner = true
 modulate = Color(0.839216, 0.352941, 0, 1)
-offset_left = 1778.29
-offset_top = 1263.0
-offset_right = 1808.29
-offset_bottom = 1376.0
+offset_left = 38.2931
+offset_top = 49.0
+offset_right = 68.2931
+offset_bottom = 162.0
 fill_mode = 2
 show_percentage = false
 
-[node name="ProgressBar12" type="ProgressBar" parent="GUILayer/GUI/Pianos"]
+[node name="ProgressBar12" type="ProgressBar" parent="GUILayer/GUI/Pianos/Control5"]
 unique_name_in_owner = true
 modulate = Color(0.972549, 0.717647, 0, 1)
-offset_left = 1817.29
-offset_top = 1263.0
-offset_right = 1847.29
-offset_bottom = 1376.0
+offset_left = 77.2931
+offset_top = 49.0
+offset_right = 107.293
+offset_bottom = 162.0
 fill_mode = 2
 show_percentage = false
 
-[node name="PianoSprite6" type="Sprite2D" parent="GUILayer/GUI/Pianos"]
+[node name="Control6" type="Control" parent="GUILayer/GUI/Pianos"]
+anchors_preset = 0
+offset_left = 2173.0
+offset_top = 1214.0
+offset_right = 2548.0
+offset_bottom = 1394.0
+
+[node name="PianoSprite6" type="Sprite2D" parent="GUILayer/GUI/Pianos/Control6"]
 modulate = Color(1, 1, 1, 0.784314)
-position = Vector2(2360.29, 1322)
+position = Vector2(187.293, 108)
 scale = Vector2(7.64462, 4.75862)
 texture = ExtResource("67_dgf1o")
 
-[node name="ProgressBar13" type="ProgressBar" parent="GUILayer/GUI/Pianos"]
+[node name="ProgressBar13" type="ProgressBar" parent="GUILayer/GUI/Pianos/Control6"]
 unique_name_in_owner = true
 modulate = Color(0.960784, 0, 0.341176, 1)
-offset_left = 2173.29
-offset_top = 1262.0
-offset_right = 2203.29
-offset_bottom = 1375.0
+offset_left = 0.293213
+offset_top = 48.0
+offset_right = 30.2932
+offset_bottom = 161.0
 fill_mode = 2
 show_percentage = false
 
-[node name="ProgressBar16" type="ProgressBar" parent="GUILayer/GUI/Pianos"]
+[node name="ProgressBar16" type="ProgressBar" parent="GUILayer/GUI/Pianos/Control6"]
 unique_name_in_owner = true
 modulate = Color(0.839216, 0.352941, 0, 1)
-offset_left = 2211.29
-offset_top = 1262.0
-offset_right = 2241.29
-offset_bottom = 1375.0
+offset_left = 38.2932
+offset_top = 48.0
+offset_right = 68.2932
+offset_bottom = 161.0
 fill_mode = 2
 show_percentage = false
 
-[node name="ProgressBar17" type="ProgressBar" parent="GUILayer/GUI/Pianos"]
+[node name="ProgressBar17" type="ProgressBar" parent="GUILayer/GUI/Pianos/Control6"]
 unique_name_in_owner = true
 modulate = Color(0.972549, 0.717647, 0, 1)
-offset_left = 2250.29
-offset_top = 1262.0
-offset_right = 2280.29
-offset_bottom = 1375.0
+offset_left = 77.2932
+offset_top = 48.0
+offset_right = 107.293
+offset_bottom = 161.0
 fill_mode = 2
 show_percentage = false
 
-[node name="ProgressBar18" type="ProgressBar" parent="GUILayer/GUI/Pianos"]
+[node name="ProgressBar18" type="ProgressBar" parent="GUILayer/GUI/Pianos/Control6"]
 unique_name_in_owner = true
 modulate = Color(0, 0.631373, 0.207843, 1)
-offset_left = 2287.29
-offset_top = 1262.0
-offset_right = 2317.29
-offset_bottom = 1375.0
+offset_left = 114.293
+offset_top = 48.0
+offset_right = 144.293
+offset_bottom = 161.0
 fill_mode = 2
 show_percentage = false
 
-[node name="ProgressBar19" type="ProgressBar" parent="GUILayer/GUI/Pianos"]
+[node name="ProgressBar19" type="ProgressBar" parent="GUILayer/GUI/Pianos/Control6"]
 unique_name_in_owner = true
 modulate = Color(0, 0.552941, 0.843137, 1)
-offset_left = 2325.29
-offset_top = 1262.0
-offset_right = 2355.29
-offset_bottom = 1375.0
+offset_left = 152.293
+offset_top = 48.0
+offset_right = 182.293
+offset_bottom = 161.0
 fill_mode = 2
 show_percentage = false
 
@@ -2210,6 +2254,18 @@ theme_override_fonts/font = ExtResource("11_3sg46")
 theme_override_font_sizes/font_size = 64
 text = "measure: "
 
+[node name="debug_label11" type="Label" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 948.0
+offset_top = 1064.0
+offset_right = 1476.0
+offset_bottom = 1115.0
+theme_override_fonts/font = ExtResource("11_3sg46")
+theme_override_font_sizes/font_size = 64
+text = "play_tornado_song = "
+
 [node name="sound_ambient_fire" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("56_bdaqp")
 volume_db = -7.647
@@ -2300,6 +2356,19 @@ volume_db = -5.0
 [connection signal="body_exited" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_exited"]
 [connection signal="area_entered" from="GrabArea" to="." method="_on_grab_area_area_entered"]
 [connection signal="area_entered" from="CollectArea" to="." method="_on_collect_area_area_entered"]
+[connection signal="mouse_entered" from="GUILayer/GUI/Pianos/Control2" to="." method="_on_control_2_mouse_entered"]
+[connection signal="mouse_exited" from="GUILayer/GUI/Pianos/Control2" to="." method="_on_control_2_mouse_exited"]
+[connection signal="mouse_entered" from="GUILayer/GUI/Pianos/Control3" to="." method="_on_control_3_mouse_entered"]
+[connection signal="mouse_exited" from="GUILayer/GUI/Pianos/Control3" to="." method="_on_control_3_mouse_exited"]
+[connection signal="mouse_entered" from="GUILayer/GUI/Pianos/Control" to="." method="_on_control_mouse_entered"]
+[connection signal="mouse_exited" from="GUILayer/GUI/Pianos/Control" to="." method="_on_control_mouse_exited"]
+[connection signal="mouse_exited" from="GUILayer/GUI/Pianos/Control/ProgressBar15" to="." method="_on_progress_bar_15_mouse_exited"]
+[connection signal="mouse_entered" from="GUILayer/GUI/Pianos/Control4" to="." method="_on_control_4_mouse_entered"]
+[connection signal="mouse_exited" from="GUILayer/GUI/Pianos/Control4" to="." method="_on_control_4_mouse_exited"]
+[connection signal="mouse_entered" from="GUILayer/GUI/Pianos/Control5" to="." method="_on_control_5_mouse_entered"]
+[connection signal="mouse_exited" from="GUILayer/GUI/Pianos/Control5" to="." method="_on_control_5_mouse_exited"]
+[connection signal="mouse_entered" from="GUILayer/GUI/Pianos/Control6" to="." method="_on_control_6_mouse_entered"]
+[connection signal="mouse_exited" from="GUILayer/GUI/Pianos/Control6" to="." method="_on_control_6_mouse_exited"]
 
 [editable path="HurtBox"]
 [editable path="FireArea"]

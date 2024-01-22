@@ -99,8 +99,7 @@ func get_notes_played():
 func reset_notes_played():
 	notes_played = []
 
-func add_to_notes_played(note_played): # TESTING WITH CLOSET QUAVER
-	#notes_played.append([note_played, conductor_node.closest_beat_in_bar(conductor_node.get_song_position_in_beats()).x])
+func add_to_notes_played(note_played):
 	notes_played.append([note_played, conductor_node.closest_beat_in_bar(conductor_node.get_song_position_in_seconds()).x, conductor_node.get_song_position_in_seconds(), conductor_node.get_measure()])
 	$GUILayer/GUI/debug_label6.text = "closest beat played on: " +  str(conductor_node.closest_beat_in_song(conductor_node.get_song_position_in_seconds()).x)
 	$GUILayer/GUI/debug_label7.text = "time off beat: " +  str(conductor_node.closest_beat_in_song(conductor_node.get_song_position_in_seconds()).y)
@@ -213,6 +212,27 @@ func _on_conductor_beat_incremented():
 	rhythm_bar.get_children()[conductor_node.get_beat_in_bar()-2].color = Color(.16, .16, .16)
 	
 	if conductor_node.get_beat_in_bar() == 1:
+		if play_speed_song == true:
+			$C4_lute.play()
+			
+		if play_speed2_song == true:
+			$C4_lute.play()
+			$E4_lute.play()
+			
+		if play_tornado_song == true:
+			$E4_lute.play()
+			
+		if play_tornado2_song == true:
+			$E4_lute.play()
+			$G4_lute.play()
+			
+		if play_heal_song == true:
+			$E4_lute.play()
+			
+		if play_heal2_song == true:
+			$E4_lute.play()
+			$G4_lute.play()
+			
 		if music_state == "idle":
 			beat1guide.play()
 		fill_rhythm_block(get_node("%ProgressBar2"))
@@ -227,6 +247,13 @@ func _on_conductor_beat_incremented():
 		fill_rhythm_block_fast(get_node("%ProgressBar16"))
 		fill_rhythm_block_fast(get_node("%ProgressBar18"))
 	if conductor_node.get_beat_in_bar() == 2:
+		if play_heal_song == true:
+			$D4_lute.play()
+		
+		if play_heal2_song == true:
+			$D4_lute.play()
+			$F4_lute.play()
+		
 		fill_rhythm_block_fast(get_node("%ProgressBar6"))
 		
 		fill_rhythm_block_fast(get_node("%ProgressBar14"))
@@ -240,6 +267,27 @@ func _on_conductor_beat_incremented():
 		fill_rhythm_block_fast(get_node("%ProgressBar17"))
 		pass
 	if conductor_node.get_beat_in_bar() == 3:
+		if play_speed_song == true:
+			$D4_lute.play()
+			
+		if play_speed2_song == true:
+			$D4_lute.play()
+			$F4_lute.play()
+		
+		if play_tornado_song == true:
+			$E4_lute.play()
+			
+		if play_tornado2_song == true:
+			$E4_lute.play()
+			$G4_lute.play()
+			
+		if play_heal_song == true:
+			$C4_lute.play()
+			
+		if play_heal2_song == true:
+			$C4_lute.play()
+			$E4_lute.play()
+			
 		fill_rhythm_block_fast(get_node("%ProgressBar6"))
 		
 		fill_rhythm_block_fast(get_node("%ProgressBar14"))
@@ -258,10 +306,27 @@ func _on_conductor_beat_incremented():
 		fill_rhythm_block(get_node("%ProgressBar17"))
 		pass
 	if conductor_node.get_beat_in_bar() == 4:
-		pass
-		#get_node("%ProgressBar3").value = 0
+		if play_tornado_song == true:
+			$E4_lute.play()
+			
+		if play_tornado2_song == true:
+			$E4_lute.play()
+			$G4_lute.play()
+			
 	if conductor_node.get_beat_in_bar() == 5:
-		pass
+		if play_speed_song == true:
+			$E4_lute.play()
+			
+		if play_speed2_song == true:
+			$E4_lute.play()
+			$G4_lute.play()
+			
+		if play_heal_song == true:
+			$C4_lute.play()
+			
+		if play_heal2_song == true:
+			$C4_lute.play()
+			$E4_lute.play()
 	if conductor_node.get_beat_in_bar() == 6:
 		pass
 	if conductor_node.get_beat_in_bar() == 7:
@@ -427,6 +492,7 @@ func judge_song(song_to_judge):
 
 
 func _physics_process(_delta):
+	$GUILayer/GUI/debug_label1.text = ""
 	update_song()
 	$GUILayer/GUI/debug_label10.text = "measure: " +  str(conductor_node.get_measure())
 	$GUILayer/GUI/debug_label9.text = "notes_played: " +  str(notes_played)
@@ -835,3 +901,107 @@ func flash(rect) -> void:
 	var tween: Tween = create_tween()
 	tween.tween_property(rect, "modulate:v", 1, 0.1).from(15)
 	tween.play()
+
+var play_speed_song = false
+var play_speed2_song = false
+var play_tornado_song = false
+var play_tornado2_song = false
+var play_heal_song = false
+var play_heal2_song = false
+
+func _on_control_2_mouse_entered():
+	play_speed_song = true
+	$GUILayer/GUI/Pianos/Control.modulate = "ffffff18"
+	$GUILayer/GUI/Pianos/Control3.modulate = "ffffff18"
+	$GUILayer/GUI/Pianos/Control4.modulate = "ffffff18"
+	$GUILayer/GUI/Pianos/Control5.modulate = "ffffff18"
+	$GUILayer/GUI/Pianos/Control6.modulate = "ffffff18"
+
+func _on_control_2_mouse_exited():
+	play_speed_song = false
+	$GUILayer/GUI/Pianos/Control.modulate = "ffffff"
+	$GUILayer/GUI/Pianos/Control3.modulate = "ffffff"
+	$GUILayer/GUI/Pianos/Control4.modulate = "ffffff"
+	$GUILayer/GUI/Pianos/Control5.modulate = "ffffff"
+	$GUILayer/GUI/Pianos/Control6.modulate = "ffffff"
+	
+func _on_control_4_mouse_entered():
+	play_speed2_song = true
+	$GUILayer/GUI/Pianos/Control2.modulate = "ffffff18"
+	$GUILayer/GUI/Pianos/Control3.modulate = "ffffff18"
+	$GUILayer/GUI/Pianos/Control.modulate = "ffffff18"
+	$GUILayer/GUI/Pianos/Control5.modulate = "ffffff18"
+	$GUILayer/GUI/Pianos/Control6.modulate = "ffffff18"
+
+func _on_control_4_mouse_exited():
+	play_speed2_song = false
+	$GUILayer/GUI/Pianos/Control2.modulate = "ffffff"
+	$GUILayer/GUI/Pianos/Control3.modulate = "ffffff"
+	$GUILayer/GUI/Pianos/Control.modulate = "ffffff"
+	$GUILayer/GUI/Pianos/Control5.modulate = "ffffff"
+	$GUILayer/GUI/Pianos/Control6.modulate = "ffffff"
+	
+func _on_control_3_mouse_entered():
+	play_tornado_song = true
+	$GUILayer/GUI/Pianos/Control2.modulate = "ffffff18"
+	$GUILayer/GUI/Pianos/Control.modulate = "ffffff18"
+	$GUILayer/GUI/Pianos/Control4.modulate = "ffffff18"
+	$GUILayer/GUI/Pianos/Control5.modulate = "ffffff18"
+	$GUILayer/GUI/Pianos/Control6.modulate = "ffffff18"
+
+func _on_control_3_mouse_exited():
+	play_tornado_song = false
+	$GUILayer/GUI/Pianos/Control2.modulate = "ffffff"
+	$GUILayer/GUI/Pianos/Control.modulate = "ffffff"
+	$GUILayer/GUI/Pianos/Control4.modulate = "ffffff"
+	$GUILayer/GUI/Pianos/Control5.modulate = "ffffff"
+	$GUILayer/GUI/Pianos/Control6.modulate = "ffffff"
+
+func _on_control_mouse_entered():
+	play_tornado2_song = true
+	$GUILayer/GUI/Pianos/Control2.modulate = "ffffff18"
+	$GUILayer/GUI/Pianos/Control3.modulate = "ffffff18"
+	$GUILayer/GUI/Pianos/Control4.modulate = "ffffff18"
+	$GUILayer/GUI/Pianos/Control5.modulate = "ffffff18"
+	$GUILayer/GUI/Pianos/Control6.modulate = "ffffff18"
+
+func _on_control_mouse_exited():
+	play_tornado2_song = false
+	$GUILayer/GUI/Pianos/Control2.modulate = "ffffff"
+	$GUILayer/GUI/Pianos/Control3.modulate = "ffffff"
+	$GUILayer/GUI/Pianos/Control4.modulate = "ffffff"
+	$GUILayer/GUI/Pianos/Control5.modulate = "ffffff"
+	$GUILayer/GUI/Pianos/Control6.modulate = "ffffff"
+
+func _on_control_5_mouse_entered():
+	play_heal_song = true
+	$GUILayer/GUI/Pianos/Control2.modulate = "ffffff18"
+	$GUILayer/GUI/Pianos/Control3.modulate = "ffffff18"
+	$GUILayer/GUI/Pianos/Control4.modulate = "ffffff18"
+	$GUILayer/GUI/Pianos/Control.modulate = "ffffff18"
+	$GUILayer/GUI/Pianos/Control6.modulate = "ffffff18"
+
+func _on_control_5_mouse_exited():
+	play_heal_song = false
+	$GUILayer/GUI/Pianos/Control2.modulate = "ffffff"
+	$GUILayer/GUI/Pianos/Control3.modulate = "ffffff"
+	$GUILayer/GUI/Pianos/Control4.modulate = "ffffff"
+	$GUILayer/GUI/Pianos/Control.modulate = "ffffff"
+	$GUILayer/GUI/Pianos/Control6.modulate = "ffffff"
+
+func _on_control_6_mouse_entered():
+	play_heal2_song = true
+	$GUILayer/GUI/Pianos/Control2.modulate = "ffffff18"
+	$GUILayer/GUI/Pianos/Control3.modulate = "ffffff18"
+	$GUILayer/GUI/Pianos/Control4.modulate = "ffffff18"
+	$GUILayer/GUI/Pianos/Control5.modulate = "ffffff18"
+	$GUILayer/GUI/Pianos/Control.modulate = "ffffff18"
+
+
+func _on_control_6_mouse_exited():
+	play_heal2_song = false
+	$GUILayer/GUI/Pianos/Control2.modulate = "ffffff"
+	$GUILayer/GUI/Pianos/Control3.modulate = "ffffff"
+	$GUILayer/GUI/Pianos/Control4.modulate = "ffffff"
+	$GUILayer/GUI/Pianos/Control5.modulate = "ffffff"
+	$GUILayer/GUI/Pianos/Control.modulate = "ffffff"
