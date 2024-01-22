@@ -105,7 +105,7 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_6ka0j")
 offset = Vector2(150.5, 1028.5)
 
-[node name="GameoverSprite" type="Sprite2D" parent="." groups=["gameover"]]
+[node name="BlackScreen" type="Sprite2D" parent="." groups=["gameover"]]
 visible = false
 modulate = Color(0, 0, 0, 1)
 position = Vector2(-76, -423)
@@ -125,7 +125,7 @@ theme_override_fonts/font = ExtResource("13_pwion")
 theme_override_font_sizes/font_size = 64
 text = "You Are Dead..."
 
-[node name="You SurvivedLabel" type="Label" parent="Player" groups=["survived"]]
+[node name="YouSurvivedLabel" type="Label" parent="Player" groups=["survived"]]
 visible = false
 offset_left = -175.0
 offset_top = -32.0
@@ -146,6 +146,9 @@ stream = ExtResource("10_8avhi")
 autoplay = false
 bpm = 220
 beats_per_bar = 8
+
+[node name="AudioStreamPlayer" parent="Conductor" index="1"]
+stream_paused = false
 
 [node name="Borders" type="CharacterBody2D" parent="."]
 visible = false

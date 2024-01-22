@@ -72,7 +72,7 @@ var additional_attacks = 0
 @onready var item_container = preload("res://Player/GUI/item_container.tscn")
 @onready var conductor_node = get_tree().get_first_node_in_group("conductor")
 @onready var debug_label_1 = $GUILayer/GUI/debug_label1
-
+@onready var beat1guide = $beat1guide
 
 func _ready():
 	conductor_node.call_deferred("play_from_beat", 1, 0)
@@ -83,6 +83,8 @@ func _ready():
 	animation_tree.active = true
 	#animator.queue("eleanore_idle")
 	upgrade_character("icespear1")
+	upgrade_character("tornado1")
+	upgrade_character("javelin1")
 	attack()
 	set_experience_bar(experience, calculate_experience_cap())
 	OS.open_midi_inputs() #
@@ -211,7 +213,8 @@ func _on_conductor_beat_incremented():
 	rhythm_bar.get_children()[conductor_node.get_beat_in_bar()-2].color = Color(.16, .16, .16)
 	
 	if conductor_node.get_beat_in_bar() == 1:
-		pass
+		if music_state == "idle":
+			beat1guide.play()
 		fill_rhythm_block(get_node("%ProgressBar2"))
 		
 		fill_rhythm_block(get_node("%ProgressBar8"))
@@ -806,8 +809,10 @@ func change_time(argtime = 0):
 	if get_seconds < 10:
 		get_seconds = str(0, get_seconds)
 	label_timer.text = str(get_minutes, ":", get_seconds)
-	if label_timer.text == "5:30":
+	if label_timer.text == "05:30":
 		get_tree().get_first_node_in_group("survived").visible = true
+		get_tree().get_first_node_in_group("gameover").visible = true
+		get_tree().paused = true
 
 func adjust_gui_collection(upgrade):
 	var get_upgraded_displayname = UpgradeDb.UPGRADES[upgrade]["displayname"]

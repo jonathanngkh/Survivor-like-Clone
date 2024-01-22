@@ -1,4 +1,4 @@
-[gd_scene load_steps=132 format=3 uid="uid://c6uuvcthpociv"]
+[gd_scene load_steps=133 format=3 uid="uid://c6uuvcthpociv"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_6neil"]
 [ext_resource type="PackedScene" uid="uid://c3p0e8l8amscb" path="res://Utility/hurt_box.tscn" id="3_5rw0d"]
@@ -73,6 +73,7 @@
 [ext_resource type="AudioStream" uid="uid://wavl3v5ijpfd" path="res://Audio/MFX/008_Percussion_Taiko Hits(Rim)_2.5secs.wav" id="70_ore4e"]
 [ext_resource type="AudioStream" uid="uid://dpblsp3kcahk6" path="res://Audio/MFX/cymbal-crash1_ff_rr2-PB.wav" id="71_j410t"]
 [ext_resource type="AudioStream" uid="uid://bbnuw2sl6qurf" path="res://Audio/MFX/003_Lute_C4_2.5secs.wav" id="72_75irh"]
+[ext_resource type="AudioStream" uid="uid://bf8akcxjw106l" path="res://Audio/MFX/bass_drum-p-PB.wav" id="73_ftyw2"]
 [ext_resource type="AudioStream" uid="uid://crk1a6qoh7th2" path="res://Audio/MFX/004_Lute_D4_2.5secs.wav" id="73_g6en0"]
 [ext_resource type="AudioStream" uid="uid://71ooxpqor27t" path="res://Audio/MFX/005_Lute_E4_2.5secs.wav" id="74_q85vi"]
 [ext_resource type="AudioStream" uid="uid://c25gt5kdixf7i" path="res://Audio/MFX/006_Lute_F4_2.5secs.wav" id="75_vjfav"]
@@ -2244,6 +2245,10 @@ volume_db = -5.0
 [node name="attack_success_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("71_j410t")
 volume_db = -5.0
+
+[node name="beat1guide" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("73_ftyw2")
+volume_db = 7.0
 
 [node name="C4_lute" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("72_75irh")

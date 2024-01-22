@@ -14,6 +14,7 @@ script = ExtResource("2_yvi5o")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_mfmb7")
 volume_db = -10.0
+stream_paused = true
 
 [connection signal="beat_incremented" from="." to="." method="_on_beat_incremented"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
