@@ -1778,30 +1778,36 @@ texture = ExtResource("67_dgf1o")
 [node name="ProgressBar" type="ProgressBar" parent="GUILayer/GUI/Pianos/Control2"]
 unique_name_in_owner = true
 modulate = Color(0.960784, 0, 0.341176, 1)
+layout_mode = 0
 offset_left = 0.293137
 offset_top = 49.0
 offset_right = 30.2931
 offset_bottom = 162.0
+mouse_filter = 2
 fill_mode = 2
 show_percentage = false
 
 [node name="ProgressBar2" type="ProgressBar" parent="GUILayer/GUI/Pianos/Control2"]
 unique_name_in_owner = true
 modulate = Color(0.839216, 0.352941, 0, 1)
+layout_mode = 0
 offset_left = 38.2931
 offset_top = 49.0
 offset_right = 68.2931
 offset_bottom = 162.0
+mouse_filter = 2
 fill_mode = 2
 show_percentage = false
 
 [node name="ProgressBar3" type="ProgressBar" parent="GUILayer/GUI/Pianos/Control2"]
 unique_name_in_owner = true
 modulate = Color(0.972549, 0.717647, 0, 1)
+layout_mode = 0
 offset_left = 77.2931
 offset_top = 49.0
 offset_right = 107.293
 offset_bottom = 162.0
+mouse_filter = 2
 fill_mode = 2
 show_percentage = false
 
@@ -1821,10 +1827,12 @@ texture = ExtResource("67_dgf1o")
 [node name="ProgressBar6" type="ProgressBar" parent="GUILayer/GUI/Pianos/Control3"]
 unique_name_in_owner = true
 modulate = Color(0.972549, 0.717647, 0, 1)
+layout_mode = 0
 offset_left = 77.2931
 offset_top = 49.0
 offset_right = 107.293
 offset_bottom = 162.0
+mouse_filter = 2
 fill_mode = 2
 show_percentage = false
 
@@ -1846,20 +1854,24 @@ texture = ExtResource("67_dgf1o")
 [node name="ProgressBar14" type="ProgressBar" parent="GUILayer/GUI/Pianos/Control"]
 unique_name_in_owner = true
 modulate = Color(0.972549, 0.717647, 0, 1)
+layout_mode = 0
 offset_left = 77.2931
 offset_top = 54.0
 offset_right = 107.293
 offset_bottom = 167.0
+mouse_filter = 2
 fill_mode = 2
 show_percentage = false
 
 [node name="ProgressBar15" type="ProgressBar" parent="GUILayer/GUI/Pianos/Control"]
 unique_name_in_owner = true
 modulate = Color(0, 0.552941, 0.843137, 1)
+layout_mode = 0
 offset_left = 153.0
 offset_top = 54.0
 offset_right = 183.0
 offset_bottom = 167.0
+mouse_filter = 2
 fill_mode = 2
 show_percentage = false
 
@@ -1879,50 +1891,60 @@ texture = ExtResource("67_dgf1o")
 [node name="ProgressBar7" type="ProgressBar" parent="GUILayer/GUI/Pianos/Control4"]
 unique_name_in_owner = true
 modulate = Color(0.960784, 0, 0.341176, 1)
+layout_mode = 0
 offset_left = 0.293091
 offset_top = 48.0
 offset_right = 30.2931
 offset_bottom = 161.0
+mouse_filter = 2
 fill_mode = 2
 show_percentage = false
 
 [node name="ProgressBar8" type="ProgressBar" parent="GUILayer/GUI/Pianos/Control4"]
 unique_name_in_owner = true
 modulate = Color(0.839216, 0.352941, 0, 1)
+layout_mode = 0
 offset_left = 38.2931
 offset_top = 48.0
 offset_right = 68.2931
 offset_bottom = 161.0
+mouse_filter = 2
 fill_mode = 2
 show_percentage = false
 
 [node name="ProgressBar9" type="ProgressBar" parent="GUILayer/GUI/Pianos/Control4"]
 unique_name_in_owner = true
 modulate = Color(0.972549, 0.717647, 0, 1)
+layout_mode = 0
 offset_left = 77.2931
 offset_top = 48.0
 offset_right = 107.293
 offset_bottom = 161.0
+mouse_filter = 2
 fill_mode = 2
 show_percentage = false
 
 [node name="ProgressBar10" type="ProgressBar" parent="GUILayer/GUI/Pianos/Control4"]
 unique_name_in_owner = true
 modulate = Color(0, 0.631373, 0.207843, 1)
+layout_mode = 0
 offset_left = 114.293
 offset_top = 48.0
 offset_right = 144.293
 offset_bottom = 161.0
+mouse_filter = 2
 fill_mode = 2
 show_percentage = false
 
 [node name="ProgressBar11" type="ProgressBar" parent="GUILayer/GUI/Pianos/Control4"]
 unique_name_in_owner = true
 modulate = Color(0, 0.552941, 0.843137, 1)
+layout_mode = 0
 offset_left = 152.293
 offset_top = 48.0
 offset_right = 182.293
 offset_bottom = 161.0
+mouse_filter = 2
 fill_mode = 2
 show_percentage = false
 
@@ -1942,30 +1964,36 @@ texture = ExtResource("67_dgf1o")
 [node name="ProgressBar4" type="ProgressBar" parent="GUILayer/GUI/Pianos/Control5"]
 unique_name_in_owner = true
 modulate = Color(0.960784, 0, 0.341176, 1)
+layout_mode = 0
 offset_left = 0.293091
 offset_top = 49.0
 offset_right = 30.2931
 offset_bottom = 162.0
+mouse_filter = 2
 fill_mode = 2
 show_percentage = false
 
 [node name="ProgressBar5" type="ProgressBar" parent="GUILayer/GUI/Pianos/Control5"]
 unique_name_in_owner = true
 modulate = Color(0.839216, 0.352941, 0, 1)
+layout_mode = 0
 offset_left = 38.2931
 offset_top = 49.0
 offset_right = 68.2931
 offset_bottom = 162.0
+mouse_filter = 2
 fill_mode = 2
 show_percentage = false
 
 [node name="ProgressBar12" type="ProgressBar" parent="GUILayer/GUI/Pianos/Control5"]
 unique_name_in_owner = true
 modulate = Color(0.972549, 0.717647, 0, 1)
+layout_mode = 0
 offset_left = 77.2931
 offset_top = 49.0
 offset_right = 107.293
 offset_bottom = 162.0
+mouse_filter = 2
 fill_mode = 2
 show_percentage = false
 
@@ -1985,50 +2013,60 @@ texture = ExtResource("67_dgf1o")
 [node name="ProgressBar13" type="ProgressBar" parent="GUILayer/GUI/Pianos/Control6"]
 unique_name_in_owner = true
 modulate = Color(0.960784, 0, 0.341176, 1)
+layout_mode = 0
 offset_left = 0.293213
 offset_top = 48.0
 offset_right = 30.2932
 offset_bottom = 161.0
+mouse_filter = 2
 fill_mode = 2
 show_percentage = false
 
 [node name="ProgressBar16" type="ProgressBar" parent="GUILayer/GUI/Pianos/Control6"]
 unique_name_in_owner = true
 modulate = Color(0.839216, 0.352941, 0, 1)
+layout_mode = 0
 offset_left = 38.2932
 offset_top = 48.0
 offset_right = 68.2932
 offset_bottom = 161.0
+mouse_filter = 2
 fill_mode = 2
 show_percentage = false
 
 [node name="ProgressBar17" type="ProgressBar" parent="GUILayer/GUI/Pianos/Control6"]
 unique_name_in_owner = true
 modulate = Color(0.972549, 0.717647, 0, 1)
+layout_mode = 0
 offset_left = 77.2932
 offset_top = 48.0
 offset_right = 107.293
 offset_bottom = 161.0
+mouse_filter = 2
 fill_mode = 2
 show_percentage = false
 
 [node name="ProgressBar18" type="ProgressBar" parent="GUILayer/GUI/Pianos/Control6"]
 unique_name_in_owner = true
 modulate = Color(0, 0.631373, 0.207843, 1)
+layout_mode = 0
 offset_left = 114.293
 offset_top = 48.0
 offset_right = 144.293
 offset_bottom = 161.0
+mouse_filter = 2
 fill_mode = 2
 show_percentage = false
 
 [node name="ProgressBar19" type="ProgressBar" parent="GUILayer/GUI/Pianos/Control6"]
 unique_name_in_owner = true
 modulate = Color(0, 0.552941, 0.843137, 1)
+layout_mode = 0
 offset_left = 152.293
 offset_top = 48.0
 offset_right = 182.293
 offset_bottom = 161.0
+mouse_filter = 2
 fill_mode = 2
 show_percentage = false
 

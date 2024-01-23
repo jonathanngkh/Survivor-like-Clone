@@ -3,12 +3,6 @@ res://Utility/spawn_info.gd
 res://Player/player.tscn
 res://conductor.tscn
 res://Enemy/enemy_skeleton.tscn
-res://Enemy/enemy.tscn
-res://Enemy/enemy_nightmare.tscn
 res://Enemy/enemy_skull.tscn
+res://Enemy/enemy_nightmare.tscn
 res://Enemy/enemy_demon.tscn
-res://Player/player.gd
-res://Conductor.gd
-res://Enemy/enemy.gd
-res://Utility/upgrade_db.gd
-res://Utility/upgrade_db.tscn
