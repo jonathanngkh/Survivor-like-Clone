@@ -1,4 +1,4 @@
-[gd_scene load_steps=133 format=3 uid="uid://c6uuvcthpociv"]
+[gd_scene load_steps=144 format=3 uid="uid://c6uuvcthpociv"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_6neil"]
 [ext_resource type="PackedScene" uid="uid://c3p0e8l8amscb" path="res://Utility/hurt_box.tscn" id="3_5rw0d"]
@@ -61,6 +61,11 @@
 [ext_resource type="Texture2D" uid="uid://dqyao56o4ap7v" path="res://Textures/Player/Eleanore/e_attack_3/ComboAtk(FX)26.png" id="29_o634x"]
 [ext_resource type="Texture2D" uid="uid://bh1xmqekosqp1" path="res://Textures/Player/Eleanore/e_attack_3/ComboAtk(FX)27.png" id="30_7fre6"]
 [ext_resource type="Texture2D" uid="uid://jbx4xvyd1hxl" path="res://Textures/Player/Eleanore/e_attack_3/ComboAtk(FX)28.png" id="31_1qko0"]
+[ext_resource type="Texture2D" uid="uid://oujg47pli2fa" path="res://Textures/Player/Eleanore/e_hurt/Hurt1.png" id="31_sa2bg"]
+[ext_resource type="Texture2D" uid="uid://dlq6fsamhjo84" path="res://Textures/Player/Eleanore/e_hurt/Hurt2.png" id="32_ibwq7"]
+[ext_resource type="Texture2D" uid="uid://cc5y86kujo0f2" path="res://Textures/Player/Eleanore/e_hurt/Hurt3.png" id="33_6uwhb"]
+[ext_resource type="Texture2D" uid="uid://pxnksfx5qysl" path="res://Textures/Player/Eleanore/e_hurt/Hurt4.png" id="34_tgypp"]
+[ext_resource type="Texture2D" uid="uid://0php03nq6c13" path="res://Textures/Player/Eleanore/e_hurt/Hurt5.png" id="35_r3ab7"]
 [ext_resource type="AudioStream" uid="uid://cw2chbvsrqupx" path="res://Audio/SoundEffect/02_Fire_Hold.wav" id="53_0nosf"]
 [ext_resource type="AudioStream" uid="uid://tgojql1wyvrw" path="res://Audio/SoundEffect/03_Fire_Throw.wav" id="53_k8kgu"]
 [ext_resource type="AudioStream" uid="uid://drrquvalm273c" path="res://Audio/SoundEffect/01_Fire_Cast.wav" id="55_nvtob"]
@@ -86,6 +91,214 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bpdif"]
 size = Vector2(41.6638, 33.6962)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e63hs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_rcb7v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2aoki")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_occ58")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bp5wu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_a77lu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_umiia")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_uff2x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_aulk6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_1pj1o")
+}],
+"loop": false,
+"name": &"eleanore_attack_1",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_uqgjd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_fkp5j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_vm1mj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ty03e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_t2p5m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_0lpgu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_10wkk")
+}],
+"loop": false,
+"name": &"eleanore_attack_2",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_k3hkr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_6pd3f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_cea1k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_ohge0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_xeaml")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_dm330")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_dgxur")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_ytdpr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_2o882")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_o634x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_7fre6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_1qko0")
+}],
+"loop": false,
+"name": &"eleanore_attack_3",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("31_sa2bg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_ibwq7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_6uwhb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_tgypp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_r3ab7")
+}],
+"loop": false,
+"name": &"eleanore_hurt",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_k85mk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_806ul")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_kx57d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_3w8dt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_1grm5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_il7uq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_gaagm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_k0hsn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ay0nw")
+}],
+"loop": false,
+"name": &"eleanore_idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_3ow2d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_trr7d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_v30yg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_76yid")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ns0i4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_8kdyr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_ged6q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_16yne")
+}],
+"loop": false,
+"name": &"eleanore_walk",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_kxkyw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_ov86l")
+}],
+"loop": false,
+"name": &"eleanore_walk_start",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_c25la")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_nm4lr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_o8anp")
+}],
+"loop": false,
+"name": &"eleanore_walk_stop",
+"speed": 10.0
+}]
 
 [sub_resource type="Animation" id="Animation_ds8v5"]
 length = 0.001
@@ -281,194 +494,54 @@ tracks/15/keys = {
 "update": 1,
 "values": [false]
 }
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_e63hs"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_rcb7v")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_2aoki")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_occ58")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_bp5wu")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_a77lu")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_umiia")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_uff2x")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_aulk6")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_1pj1o")
-}],
-"loop": false,
-"name": &"eleanore_attack_1",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("12_uqgjd")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_fkp5j")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_vm1mj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_ty03e")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_t2p5m")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_0lpgu")
-}, {
-"duration": 1.0,
-"texture": ExtResource("18_10wkk")
-}],
-"loop": false,
-"name": &"eleanore_attack_2",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("20_k3hkr")
-}, {
-"duration": 1.0,
-"texture": ExtResource("21_6pd3f")
-}, {
-"duration": 1.0,
-"texture": ExtResource("22_cea1k")
-}, {
-"duration": 1.0,
-"texture": ExtResource("23_ohge0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("24_xeaml")
-}, {
-"duration": 1.0,
-"texture": ExtResource("25_dm330")
-}, {
-"duration": 1.0,
-"texture": ExtResource("26_dgxur")
-}, {
-"duration": 1.0,
-"texture": ExtResource("27_ytdpr")
-}, {
-"duration": 1.0,
-"texture": ExtResource("28_2o882")
-}, {
-"duration": 1.0,
-"texture": ExtResource("29_o634x")
-}, {
-"duration": 1.0,
-"texture": ExtResource("30_7fre6")
-}, {
-"duration": 1.0,
-"texture": ExtResource("31_1qko0")
-}],
-"loop": false,
-"name": &"eleanore_attack_3",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_k85mk")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_806ul")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_kx57d")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_3w8dt")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_1grm5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_il7uq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_gaagm")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_k0hsn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_ay0nw")
-}],
-"loop": false,
-"name": &"eleanore_idle",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("12_3ow2d")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_trr7d")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_v30yg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_76yid")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_ns0i4")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_8kdyr")
-}, {
-"duration": 1.0,
-"texture": ExtResource("18_ged6q")
-}, {
-"duration": 1.0,
-"texture": ExtResource("19_16yne")
-}],
-"loop": false,
-"name": &"eleanore_walk",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("20_kxkyw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("21_ov86l")
-}],
-"loop": false,
-"name": &"eleanore_walk_start",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("22_c25la")
-}, {
-"duration": 1.0,
-"texture": ExtResource("23_nm4lr")
-}, {
-"duration": 1.0,
-"texture": ExtResource("24_o8anp")
-}],
-"loop": false,
-"name": &"eleanore_walk_stop",
-"speed": 10.0
-}]
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("AnimatedSprite2D:sprite_frames")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("SpriteFrames_e63hs")]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("AnimatedSprite2D:animation")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"eleanore_hurt"]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("AnimatedSprite2D:speed_scale")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("AnimatedSprite2D:frame")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_btjq5"]
 resource_name = "eleanore_attack_1"
@@ -1345,12 +1418,65 @@ tracks/3/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 
+[sub_resource type="Animation" id="Animation_rmf2s"]
+resource_name = "eleanore_hurt"
+length = 0.50001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:sprite_frames")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("SpriteFrames_e63hs")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"eleanore_hurt"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:speed_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lgnag"]
 _data = {
 "RESET": SubResource("Animation_ds8v5"),
 "eleanore_attack_1": SubResource("Animation_btjq5"),
 "eleanore_attack_2": SubResource("Animation_2160l"),
 "eleanore_attack_3": SubResource("Animation_hueqi"),
+"eleanore_hurt": SubResource("Animation_rmf2s"),
 "eleanore_idle": SubResource("Animation_6ury1"),
 "eleanore_walk": SubResource("Animation_bh72x"),
 "eleanore_walk_start": SubResource("Animation_w0f60"),
@@ -1396,6 +1522,19 @@ nodes/Animation/node = SubResource("AnimationNodeAnimation_lo81n")
 nodes/Animation/position = Vector2(-180, 150)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_f7kiv")
 nodes/TimeScale/position = Vector2(110, 150)
+node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0vi3d"]
+animation = &"eleanore_hurt"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_e44nn"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_7vwt6"]
+graph_offset = Vector2(-196.822, 57.8967)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_0vi3d")
+nodes/Animation/position = Vector2(-70, 140)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_e44nn")
+nodes/TimeScale/position = Vector2(160, 140)
 node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w5b2r"]
@@ -1487,6 +1626,14 @@ switch_mode = 2
 advance_mode = 2
 advance_condition = &"is_idle"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t2oeb"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_h3la8"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_bpaiu"]
 states/End/position = Vector2(1013.5, 99.9688)
 states/Start/position = Vector2(110.5, 100.438)
@@ -1496,6 +1643,8 @@ states/eleanore_attack_2/node = SubResource("AnimationNodeBlendTree_el1gu")
 states/eleanore_attack_2/position = Vector2(558.664, -49.09)
 states/eleanore_attack_3/node = SubResource("AnimationNodeBlendTree_jm7ra")
 states/eleanore_attack_3/position = Vector2(558.228, -147.21)
+states/eleanore_hurt/node = SubResource("AnimationNodeBlendTree_7vwt6")
+states/eleanore_hurt/position = Vector2(342.475, -9.09)
 states/eleanore_idle/node = SubResource("AnimationNodeBlendTree_6vj0i")
 states/eleanore_idle/position = Vector2(311.975, 99.4394)
 states/eleanore_walk/node = SubResource("AnimationNodeBlendTree_4hx0i")
@@ -1504,8 +1653,8 @@ states/eleanore_walk_start/node = SubResource("AnimationNodeBlendTree_ljbmb")
 states/eleanore_walk_start/position = Vector2(558.501, 153.91)
 states/eleanore_walk_stop/node = SubResource("AnimationNodeBlendTree_bk4mc")
 states/eleanore_walk_stop/position = Vector2(560.005, 248.91)
-transitions = ["eleanore_attack_2", "eleanore_attack_3", SubResource("AnimationNodeStateMachineTransition_2pm1g"), "eleanore_attack_1", "eleanore_attack_2", SubResource("AnimationNodeStateMachineTransition_cplmr"), "eleanore_attack_1", "eleanore_walk", SubResource("AnimationNodeStateMachineTransition_i53tr"), "eleanore_walk", "eleanore_walk_stop", SubResource("AnimationNodeStateMachineTransition_h8ge0"), "eleanore_walk_start", "eleanore_walk", SubResource("AnimationNodeStateMachineTransition_gc30c"), "Start", "eleanore_idle", SubResource("AnimationNodeStateMachineTransition_5ar50"), "eleanore_idle", "eleanore_walk_start", SubResource("AnimationNodeStateMachineTransition_pwlfb"), "eleanore_attack_1", "eleanore_idle", SubResource("AnimationNodeStateMachineTransition_2t5lj"), "eleanore_walk_stop", "eleanore_idle", SubResource("AnimationNodeStateMachineTransition_3oscn")]
-graph_offset = Vector2(88.975, -306.09)
+transitions = ["eleanore_attack_2", "eleanore_attack_3", SubResource("AnimationNodeStateMachineTransition_2pm1g"), "eleanore_attack_1", "eleanore_attack_2", SubResource("AnimationNodeStateMachineTransition_cplmr"), "eleanore_attack_1", "eleanore_walk", SubResource("AnimationNodeStateMachineTransition_i53tr"), "eleanore_walk", "eleanore_walk_stop", SubResource("AnimationNodeStateMachineTransition_h8ge0"), "eleanore_walk_start", "eleanore_walk", SubResource("AnimationNodeStateMachineTransition_gc30c"), "Start", "eleanore_idle", SubResource("AnimationNodeStateMachineTransition_5ar50"), "eleanore_idle", "eleanore_walk_start", SubResource("AnimationNodeStateMachineTransition_pwlfb"), "eleanore_attack_1", "eleanore_idle", SubResource("AnimationNodeStateMachineTransition_2t5lj"), "eleanore_walk_stop", "eleanore_idle", SubResource("AnimationNodeStateMachineTransition_3oscn"), "eleanore_hurt", "eleanore_idle", SubResource("AnimationNodeStateMachineTransition_t2oeb"), "eleanore_hurt", "eleanore_walk", SubResource("AnimationNodeStateMachineTransition_h3la8")]
+graph_offset = Vector2(196.975, -70.09)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ypqgu"]
 radius = 4.0
@@ -1549,6 +1698,7 @@ parameters/conditions/is_moving = false
 parameters/eleanore_attack_1/TimeScale/scale = 1.0
 parameters/eleanore_attack_2/TimeScale/scale = 1.0
 parameters/eleanore_attack_3/TimeScale/scale = 1.0
+parameters/eleanore_hurt/TimeScale/scale = 1.0
 parameters/eleanore_idle/TimeScale/scale = 1.0
 parameters/eleanore_walk/TimeScale/scale = 1.0
 parameters/eleanore_walk_start/TimeScale/scale = 1.0
@@ -1562,9 +1712,7 @@ libraries = {
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(2.08165e-12, 2.08165e-12)
 sprite_frames = SubResource("SpriteFrames_e63hs")
-animation = &"eleanore_attack_1"
-frame = 8
-speed_scale = 10.0
+animation = &"eleanore_hurt"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3.3, 3.3)

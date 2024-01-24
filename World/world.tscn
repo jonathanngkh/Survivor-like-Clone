@@ -136,7 +136,6 @@ theme_override_font_sizes/font_size = 64
 text = "You Survived!"
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_gdiqe")]
-process_mode = 4
 spawns = Array[ExtResource("5_kyr6r")]([SubResource("Resource_rxj4u"), SubResource("Resource_0ghsp"), SubResource("Resource_ixasv"), SubResource("Resource_y4opa"), SubResource("Resource_tol0s"), SubResource("Resource_h3dng"), SubResource("Resource_tvmlh"), SubResource("Resource_x21cl"), SubResource("Resource_cc6wm")])
 
 [node name="Loot" type="Node2D" parent="." groups=["loot"]]
@@ -173,7 +172,7 @@ position = Vector2(-1165, 9)
 scale = Vector2(0.4, 0.4)
 shape = SubResource("RectangleShape2D_gkxae")
 
-[node name="Statues" type="Node2D" parent="."]
+[node name="Statues" type="Node2D" parent="." groups=["statues"]]
 
 [node name="Statue" type="CharacterBody2D" parent="Statues"]
 position = Vector2(349, -180)
@@ -301,6 +300,9 @@ shape = SubResource("RectangleShape2D_10ttd")
 process_mode = 4
 visible = false
 experience = 50
+
+[node name="enemy_skeleton" parent="." instance=ExtResource("3_4kpfq")]
+position = Vector2(-114, 28)
 
 [connection signal="beat_incremented" from="Conductor" to="Player" method="_on_conductor_beat_incremented"]
 [connection signal="measure_incremented" from="Conductor" to="Player" method="_on_conductor_measure_incremented"]

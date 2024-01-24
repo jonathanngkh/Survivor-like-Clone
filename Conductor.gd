@@ -55,7 +55,8 @@ func _ready():
 	sec_per_beat = 60.0 / bpm
 	
 func _process(_delta):
-	pass
+	if Input.is_action_just_pressed("restart"):
+		player.restart_application()
 	
 	if player.get_leveling_state() == true:
 		if player.get_music_state() == "idle":

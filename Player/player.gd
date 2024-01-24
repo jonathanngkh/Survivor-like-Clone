@@ -164,6 +164,7 @@ func _process(delta):
 	if hp <= 0:
 		get_tree().get_first_node_in_group("gameover").visible = true
 		get_tree().get_first_node_in_group("you are dead").visible = true
+		get_tree().get_first_node_in_group("statues").visible = false
 		get_tree().paused = true
 	#attack_combo()
 	#choose_animation()
@@ -599,31 +600,37 @@ var can_input = false
 var states = ["attack1", "attack2", "attack3", "idle", "moving"]
 var current_state = "idle"
 var is_attacking = false
+var is_hurt = false
 
 func update_animation_parameters():
-	if is_attacking == true:
-		if Input.is_action_just_pressed("p1_attack"):
-			if current_state == "attack1" and can_input == true:
-				anim_state_machine.travel("eleanore_attack_2")
-				current_state = "attack2"
+	if is_hurt == true:
+		anim_state_machine.travel("eleanore_hurt")
+		is_hurt = false
+	else:
+		if is_attacking == true:
+			if Input.is_action_just_pressed("p1_attack"):
+				if current_state == "attack1" and can_input == true:
+					anim_state_machine.travel("eleanore_attack_2")
+					current_state = "attack2"
+					is_attacking = true
+				elif current_state == "attack2" and can_input == true:
+					anim_state_machine.travel("eleanore_attack_3")
+					current_state = "attack3"
+					is_attacking = true
+		else: # is_attacking == false:
+			if Input.is_action_just_pressed("p1_attack"):
+				anim_state_machine.travel("eleanore_attack_1")
+				current_state = "attack1"
 				is_attacking = true
-			elif current_state == "attack2" and can_input == true:
-				anim_state_machine.travel("eleanore_attack_3")
-				current_state = "attack3"
-				is_attacking = true
-	else: # is_attacking == false:
-		if Input.is_action_just_pressed("p1_attack"):
-			anim_state_machine.travel("eleanore_attack_1")
-			current_state = "attack1"
-			is_attacking = true
-		elif velocity == Vector2.ZERO: # stationary
-			anim_state_machine.travel("eleanore_idle")
-			is_attacking = false
-		else: # moving
-			anim_state_machine.travel("eleanore_walk")
-			is_attacking = false
+			elif velocity == Vector2.ZERO: # stationary
+				anim_state_machine.travel("eleanore_idle")
+				is_attacking = false
+			else: # moving
+				anim_state_machine.travel("eleanore_walk")
+				is_attacking = false
 
 func _on_hurt_box_hurt(damage, _angle, _knockback):
+	is_hurt = true
 	sprite_flash()
 	$sound_damaged.play()
 	hp -= clamp(damage - armor, 1, 999.0)
@@ -902,12 +909,14 @@ func flash(rect) -> void:
 	tween.tween_property(rect, "modulate:v", 1, 0.1).from(15)
 	tween.play()
 
+#region Piano Guides
 var play_speed_song = false
 var play_speed2_song = false
 var play_tornado_song = false
 var play_tornado2_song = false
 var play_heal_song = false
 var play_heal2_song = false
+
 
 func _on_control_2_mouse_entered():
 	play_speed_song = true
@@ -1005,3 +1014,10 @@ func _on_control_6_mouse_exited():
 	$GUILayer/GUI/Pianos/Control4.modulate = "ffffff"
 	$GUILayer/GUI/Pianos/Control5.modulate = "ffffff"
 	$GUILayer/GUI/Pianos/Control.modulate = "ffffff"
+#endregion
+	
+func restart_application():
+	#var old_pid = OS.get_process_id()
+	var executable_path = OS.get_executable_path()
+	OS.execute(executable_path, [])
+	#OS.kill(old_pid)
