@@ -22,7 +22,7 @@ var knockback = Vector2.ZERO
 @onready var loot_base = get_tree().get_first_node_in_group("loot")
 @onready var hit_box = $HitBox
 
-var death_explosion = preload("res://Enemy/explosion.tscn")
+#var death_explosion = preload("res://Enemy/explosion.tscn")
 var experience_gem = preload("res://Objects/experience_gem.tscn")
 
 signal remove_from_array(object)

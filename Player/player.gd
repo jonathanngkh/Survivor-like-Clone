@@ -204,6 +204,9 @@ func fill_rhythm_block_fast(block_node):
 	var block_progress_bar = block_node
 	var tween = create_tween()
 	tween.tween_property(block_progress_bar, "value", 100, 0.2727).from(0).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
+	
+var heal_effect = preload("res://Enemy/healeffect.tscn")
+var speed_effect = preload("res://Enemy/speedeffect.tscn")
 
 func _on_conductor_beat_incremented():
 	if conductor_node.get_beat_in_bar() % 2 == 0:
@@ -341,6 +344,9 @@ func _on_conductor_beat_incremented():
 			saved_measure = conductor_node.get_measure()
 			$walk_success_sound.play()
 			#$HEAL_SOUNDr.play()
+			var heal_sprite = heal_effect.instantiate()
+			#heal_sprite.global_position = global_position
+			get_parent().call_deferred("add_child", heal_sprite)
 			notes_played = []
 			conductor_node.set_stream(heal_response_song)
 			conductor_node.play_with_beat_offset(8)
@@ -353,6 +359,10 @@ func _on_conductor_beat_incremented():
 			saved_measure = conductor_node.get_measure()
 			$walk_success_sound.play()
 			#$HEAL_SOUNDr.play()
+			var heal_sprite = heal_effect.instantiate()
+			heal_sprite.scale = Vector2(3, 3)
+			#heal_sprite.global_position = global_position
+			get_parent().call_deferred("add_child", heal_sprite)
 			notes_played = []
 			conductor_node.set_stream(heal_response_song_thirds)
 			conductor_node.play_with_beat_offset(8)
@@ -362,6 +372,9 @@ func _on_conductor_beat_incremented():
 			music_state = "responding_heal"
 			
 		if judge_song(walk_song_in_quavers_thirds) == "correct":
+			var speed_sprite = speed_effect.instantiate()
+			speed_sprite.scale = Vector2(2,2)
+			get_parent().call_deferred("add_child", speed_sprite)
 			saved_measure = conductor_node.get_measure()
 			$walk_success_sound.play()
 			notes_played = []
@@ -371,6 +384,8 @@ func _on_conductor_beat_incremented():
 			
 			
 		if judge_song(walk_song_in_quavers) == "correct":
+			var speed_sprite = speed_effect.instantiate()
+			get_parent().call_deferred("add_child", speed_sprite)
 			saved_measure = conductor_node.get_measure()
 			$walk_success_sound.play()
 			# ADD SPEED BUFF ANIMATION AND SOUND ON BEAT 4
@@ -882,7 +897,7 @@ func change_time(argtime = 0):
 	if get_seconds < 10:
 		get_seconds = str(0, get_seconds)
 	label_timer.text = str(get_minutes, ":", get_seconds)
-	if label_timer.text == "05:30":
+	if label_timer.text == "05:15":
 		get_tree().get_first_node_in_group("survived").visible = true
 		get_tree().get_first_node_in_group("gameover").visible = true
 		get_tree().paused = true

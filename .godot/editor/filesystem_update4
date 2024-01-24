@@ -8,3 +8,11 @@ res://Enemy/enemy_skull.tscn
 res://Enemy/enemy_nightmare.tscn
 res://Enemy/enemy_demon.tscn
 res://Conductor.gd
+res://Enemy/explosion.tscn
+res://Enemy/explosion.gd
+res://Enemy/enemy.tscn
+res://Enemy/speedbuff.tscn
+res://Enemy/enemy.gd
+res://Enemy/heal_effect.gd
+res://Enemy/healeffect.tscn
+res://Enemy/speedeffect.tscn
