@@ -1,3 +1,4 @@
+AudioStreamPlayer
 Control
 Label
 Sprite2D
@@ -6,7 +7,6 @@ HSlider
 ColorRect
 HBoxContainer
 State
-AudioStreamPlayer
 CollisionShape2D
 Area2D
 Node2D

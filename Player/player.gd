@@ -107,6 +107,37 @@ func add_to_notes_played(note_played):
 
 #region Midi Stuff
 func _input(input_event): #
+	if input_event is InputEventKey and input_event.pressed:
+		if input_event.keycode == KEY_1:
+			add_to_notes_played(60)
+			$C4_lute.play()
+		if input_event.keycode == KEY_2:
+			add_to_notes_played(62)
+			$D4_lute.play()
+		if input_event.keycode == KEY_3:
+			add_to_notes_played(64)
+			$E4_lute.play()
+		if input_event.keycode == KEY_4:
+			add_to_notes_played(65)
+			$F4_lute.play()
+		if input_event.keycode == KEY_5:
+			add_to_notes_played(67)
+			$G4_lute.play()
+		if input_event.keycode == KEY_6:
+			add_to_notes_played(69)
+			$A4_lute.play()
+		if input_event.keycode == KEY_7:
+			add_to_notes_played(71)
+			$B4_lute.play()
+		if input_event.keycode == KEY_8:
+			add_to_notes_played(72)
+			$C5_lute.play()
+		if input_event.keycode == KEY_9:
+			add_to_notes_played(74)
+			$D5_lute.play()
+		if input_event.keycode == KEY_0:
+			add_to_notes_played(76)
+			$E5_lute.play()
 	if input_event is InputEventMIDI:
 		#_print_midi_info(input_event)
 		#if input_event.message == 9: #noteOn
@@ -159,12 +190,23 @@ func _print_midi_info(midi_event: InputEventMIDI):
 	#print("Controller value: " + str(midi_event.controller_value))
 #endregion
 
+var defeat_sound_played = false
 	
 func _process(delta):
 	if hp <= 0:
 		get_tree().get_first_node_in_group("gameover").visible = true
 		get_tree().get_first_node_in_group("you are dead").visible = true
 		get_tree().get_first_node_in_group("statues").visible = false
+		for enemy in get_tree().get_nodes_in_group("enemies"):
+			enemy.queue_free()
+		$GUILayer/GUI/Pianos.visible = false
+		anim_state_machine.travel("eleanore_death")
+		conductor_node.stop()
+		if defeat_sound_played == false:
+			$defeat_sound.play()
+			defeat_sound_played = true
+		animator.play("eleanore_death")
+		await animator.animation_finished
 		get_tree().paused = true
 	#attack_combo()
 	#choose_animation()

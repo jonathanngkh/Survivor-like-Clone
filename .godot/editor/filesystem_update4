@@ -16,3 +16,4 @@ res://Enemy/enemy.gd
 res://Enemy/heal_effect.gd
 res://Enemy/healeffect.tscn
 res://Enemy/speedeffect.tscn
+res://Player/Attack/ice_spear.tscn

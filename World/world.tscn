@@ -118,9 +118,9 @@ offset = Vector2(150.5, 1028.5)
 [node name="YouAreDeadLabel" type="Label" parent="Player" groups=["you are dead"]]
 visible = false
 offset_left = -175.0
-offset_top = -32.0
+offset_top = -96.0
 offset_right = 193.0
-offset_bottom = 33.0
+offset_bottom = -31.0
 theme_override_fonts/font = ExtResource("13_pwion")
 theme_override_font_sizes/font_size = 64
 text = "You Are Dead..."
@@ -128,9 +128,9 @@ text = "You Are Dead..."
 [node name="YouSurvivedLabel" type="Label" parent="Player" groups=["survived"]]
 visible = false
 offset_left = -175.0
-offset_top = -32.0
+offset_top = -96.0
 offset_right = 193.0
-offset_bottom = 33.0
+offset_bottom = -31.0
 theme_override_fonts/font = ExtResource("13_pwion")
 theme_override_font_sizes/font_size = 64
 text = "You Survived!"
@@ -302,9 +302,6 @@ visible = false
 experience = 50
 
 [node name="enemy_skeleton" parent="." instance=ExtResource("3_4kpfq")]
-process_mode = 4
-visible = false
-position = Vector2(-114, 28)
 
 [connection signal="beat_incremented" from="Conductor" to="Player" method="_on_conductor_beat_incremented"]
 [connection signal="measure_incremented" from="Conductor" to="Player" method="_on_conductor_measure_incremented"]
