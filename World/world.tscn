@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bbge5wi6ymxj0" path="res://Enemy/enemy_skull.tscn" id="6_gcdm1"]
 [ext_resource type="PackedScene" uid="uid://dparb0oln5dfh" path="res://Enemy/enemy_nightmare.tscn" id="7_xwnl7"]
 [ext_resource type="PackedScene" uid="uid://by2h2cbjqpp3g" path="res://conductor.tscn" id="9_mdibg"]
-[ext_resource type="AudioStream" uid="uid://djhqo7kroibgp" path="res://Audio/Music/Battle 1_Idle Phase_110bpm.wav" id="10_8avhi"]
+[ext_resource type="AudioStream" uid="uid://dqyqti70pitgc" path="res://Audio/Music/intro measure Battle 1_1 bar intro_110bpm.wav" id="11_a6cc8"]
 [ext_resource type="PackedScene" uid="uid://4a1v2lndn8qi" path="res://Objects/experience_gem.tscn" id="12_pk5wr"]
 [ext_resource type="FontFile" uid="uid://eltw4hqqgcsj" path="res://Font/tenderness.otf" id="13_pwion"]
 
@@ -142,7 +142,7 @@ spawns = Array[ExtResource("5_kyr6r")]([SubResource("Resource_rxj4u"), SubResour
 
 [node name="Conductor" parent="." instance=ExtResource("9_mdibg")]
 process_mode = 3
-stream = ExtResource("10_8avhi")
+stream = ExtResource("11_a6cc8")
 autoplay = false
 bpm = 220
 beats_per_bar = 8

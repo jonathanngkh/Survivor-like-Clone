@@ -246,10 +246,10 @@ collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_7bmqk")
 movement_speed = 200
-hp = 300
-knockback_recovery = 40.0
+hp = 250
+knockback_recovery = 30.0
 experience = 100
-enemy_damage = 20
+enemy_damage = 18
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

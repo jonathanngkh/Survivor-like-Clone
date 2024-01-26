@@ -1994,7 +1994,7 @@ states/eleanore_walk_start/position = Vector2(558.501, 153.91)
 states/eleanore_walk_stop/node = SubResource("AnimationNodeBlendTree_bk4mc")
 states/eleanore_walk_stop/position = Vector2(560.005, 248.91)
 transitions = ["eleanore_attack_2", "eleanore_attack_3", SubResource("AnimationNodeStateMachineTransition_2pm1g"), "eleanore_attack_1", "eleanore_attack_2", SubResource("AnimationNodeStateMachineTransition_cplmr"), "eleanore_attack_1", "eleanore_walk", SubResource("AnimationNodeStateMachineTransition_i53tr"), "eleanore_walk", "eleanore_walk_stop", SubResource("AnimationNodeStateMachineTransition_h8ge0"), "eleanore_walk_start", "eleanore_walk", SubResource("AnimationNodeStateMachineTransition_gc30c"), "Start", "eleanore_idle", SubResource("AnimationNodeStateMachineTransition_5ar50"), "eleanore_idle", "eleanore_walk_start", SubResource("AnimationNodeStateMachineTransition_pwlfb"), "eleanore_attack_1", "eleanore_idle", SubResource("AnimationNodeStateMachineTransition_2t5lj"), "eleanore_walk_stop", "eleanore_idle", SubResource("AnimationNodeStateMachineTransition_3oscn"), "eleanore_hurt", "eleanore_idle", SubResource("AnimationNodeStateMachineTransition_t2oeb"), "eleanore_hurt", "eleanore_walk", SubResource("AnimationNodeStateMachineTransition_h3la8")]
-graph_offset = Vector2(292.975, -116.09)
+graph_offset = Vector2(110.975, -220.09)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ypqgu"]
 radius = 4.0
@@ -2181,6 +2181,7 @@ texture_progress = ExtResource("60_y8d5x")
 tint_progress = Color(0, 1, 1, 1)
 
 [node name="Pianos" type="Control" parent="GUILayer/GUI"]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0

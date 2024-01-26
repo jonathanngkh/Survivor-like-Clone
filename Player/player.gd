@@ -265,6 +265,8 @@ func fill_rhythm_block_fast(block_node):
 var heal_effect = preload("res://Enemy/healeffect.tscn")
 var speed_effect = preload("res://Enemy/speedeffect.tscn")
 
+var intro_played = false
+
 func _on_conductor_beat_incremented():
 	if conductor_node.get_beat_in_bar() % 2 == 0:
 		rhythm_bar.get_children()[conductor_node.get_beat_in_bar()-1].color = Color(1, 1, 1)
@@ -273,6 +275,13 @@ func _on_conductor_beat_incremented():
 	rhythm_bar.get_children()[conductor_node.get_beat_in_bar()-2].color = Color(.16, .16, .16)
 	
 	if conductor_node.get_beat_in_bar() == 1:
+		if intro_played == false:
+			conductor_node.set_stream(idle_input_song)
+			conductor_node.play_from_beat(1, 0)
+			intro_played = true
+		if conductor_node.get_measure() == 2:
+			$GUILayer/GUI/Pianos. visible = true
+		
 		if play_speed_song == true:
 			$C4_lute.play()
 			
@@ -643,9 +652,10 @@ func movement():
 		velocity *= 5
 	if music_state == "responding_walk_thirds":
 		velocity *= 10
-		$CollisionShape2D.set_deferred("disabled", true)
-	else:
-		$CollisionShape2D.set_deferred("disabled", false)
+		# allow walk song to walk through mobs. unfortunately, allows player to leave game boundary. need separate code for limiting boundary instead of using collisionshape borders. as in x y coordinates
+		#$CollisionShape2D.set_deferred("disabled", true)
+	#else:
+		#$CollisionShape2D.set_deferred("disabled", false)
 	move_and_slide()
 	
 func _on_animation_tree_animation_finished(anim_name):
@@ -960,7 +970,7 @@ func change_time(argtime = 0):
 	if get_seconds < 10:
 		get_seconds = str(0, get_seconds)
 	label_timer.text = str(get_minutes, ":", get_seconds)
-	if label_timer.text == "00:05":
+	if label_timer.text == "05:15":
 		survived = true
 
 func adjust_gui_collection(upgrade):
