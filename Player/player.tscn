@@ -1872,7 +1872,7 @@ collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_6neil")
 movement_speed = 30.0
-hp = 5
+hp = 200
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
