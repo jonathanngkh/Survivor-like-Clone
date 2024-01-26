@@ -193,6 +193,21 @@ func _print_midi_info(midi_event: InputEventMIDI):
 var defeat_sound_played = false
 	
 func _process(delta):
+	if survived == true:
+		get_tree().get_first_node_in_group("gameover").visible = true
+		get_tree().get_first_node_in_group("survived").visible = true
+		get_tree().get_first_node_in_group("statues").visible = false
+		for enemy in get_tree().get_nodes_in_group("enemies"):
+			enemy.queue_free()
+		$GUILayer/GUI/Pianos.visible = false
+		anim_state_machine.travel("eleanore_spin")
+		#conductor_node.stop()
+		#if defeat_sound_played == false:
+			#$defeat_sound.play()
+			#defeat_sound_played = true
+		animator.play("eleanore_spin")
+		await animator.animation_finished
+		get_tree().paused = true
 	if hp <= 0:
 		get_tree().get_first_node_in_group("gameover").visible = true
 		get_tree().get_first_node_in_group("you are dead").visible = true
@@ -933,6 +948,9 @@ func get_random_item():
 		return null # defaults to food if no upgrades apply
 #endregion
 		
+		
+var survived = false
+
 func change_time(argtime = 0):
 	time = argtime
 	var get_minutes = int(time/60.0)
@@ -942,21 +960,8 @@ func change_time(argtime = 0):
 	if get_seconds < 10:
 		get_seconds = str(0, get_seconds)
 	label_timer.text = str(get_minutes, ":", get_seconds)
-	if label_timer.text == "05:15":
-		get_tree().get_first_node_in_group("gameover").visible = true
-		get_tree().get_first_node_in_group("survived").visible = true
-		get_tree().get_first_node_in_group("statues").visible = false
-		for enemy in get_tree().get_nodes_in_group("enemies"):
-			enemy.queue_free()
-		$GUILayer/GUI/Pianos.visible = false
-		#anim_state_machine.travel("eleanore_death")
-		conductor_node.stop()
-		#if defeat_sound_played == false:
-			#$defeat_sound.play()
-			#defeat_sound_played = true
-		#animator.play("eleanore_death")
-		#await animator.animation_finished
-		get_tree().paused = true
+	if label_timer.text == "00:05":
+		survived = true
 
 func adjust_gui_collection(upgrade):
 	var get_upgraded_displayname = UpgradeDb.UPGRADES[upgrade]["displayname"]
