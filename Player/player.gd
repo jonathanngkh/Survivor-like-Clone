@@ -214,6 +214,9 @@ func _process(delta):
 		get_tree().get_first_node_in_group("statues").visible = false
 		for enemy in get_tree().get_nodes_in_group("enemies"):
 			enemy.queue_free()
+		for gem in get_tree().get_nodes_in_group("loot"):
+			gem.queue_free()
+		$GUILayer/GUI/HealthBar.visible = false
 		$GUILayer/GUI/Pianos.visible = false
 		anim_state_machine.travel("eleanore_death")
 		conductor_node.stop()
@@ -275,6 +278,7 @@ func _on_conductor_beat_incremented():
 	rhythm_bar.get_children()[conductor_node.get_beat_in_bar()-2].color = Color(.16, .16, .16)
 	
 	if conductor_node.get_beat_in_bar() == 1:
+		scale = Vector2(1.3, 1.3)
 		if intro_played == false:
 			conductor_node.set_stream(idle_input_song)
 			conductor_node.play_from_beat(1, 0)
@@ -317,6 +321,7 @@ func _on_conductor_beat_incremented():
 		fill_rhythm_block_fast(get_node("%ProgressBar16"))
 		fill_rhythm_block_fast(get_node("%ProgressBar18"))
 	if conductor_node.get_beat_in_bar() == 2:
+		scale = Vector2(1, 1)
 		if play_heal_song == true:
 			$D4_lute.play()
 		

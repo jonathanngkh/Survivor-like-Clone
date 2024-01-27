@@ -114,6 +114,7 @@ texture = ExtResource("2_6ka0j")
 offset = Vector2(150.5, 1028.5)
 
 [node name="Player" parent="." instance=ExtResource("2_rlem7")]
+position = Vector2(-15, -21)
 
 [node name="YouAreDeadLabel" type="Label" parent="Player" groups=["you are dead"]]
 visible = false
