@@ -1,4 +1,4 @@
-[gd_scene load_steps=201 format=3 uid="uid://c6uuvcthpociv"]
+[gd_scene load_steps=207 format=3 uid="uid://c6uuvcthpociv"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_6neil"]
 [ext_resource type="PackedScene" uid="uid://c3p0e8l8amscb" path="res://Utility/hurt_box.tscn" id="3_5rw0d"]
@@ -137,6 +137,12 @@
 [ext_resource type="Texture2D" uid="uid://c6j86ms0t6ed8" path="res://Textures/Player/Eleanore/e_spin/Spin17.png" id="91_kuykt"]
 [ext_resource type="Texture2D" uid="uid://4wckykke6qsn" path="res://Textures/Player/Eleanore/e_spin/Spin18.png" id="92_ct7bn"]
 [ext_resource type="AudioStream" uid="uid://8ywk8bylpwfc" path="res://Audio/Music/Sad Violin  Sound Effect HD.mp3" id="119_vxu8k"]
+[ext_resource type="AudioStream" uid="uid://msdbh15bbenx" path="res://Audio/MFX/Celesta/003_Celesta_C5_2.5secs.wav" id="137_uwo0j"]
+[ext_resource type="AudioStream" uid="uid://bf4elllpdecix" path="res://Audio/MFX/Celesta/004_Celesta_D5_2.5secs.wav" id="138_g0aop"]
+[ext_resource type="AudioStream" uid="uid://calxsqj8sdt3u" path="res://Audio/MFX/Celesta/005_Celesta_E5_2.5secs.wav" id="139_qn2ie"]
+[ext_resource type="AudioStream" uid="uid://j6lxamplrfpb" path="res://Audio/MFX/Celesta/006_Celesta_F5_2.5secs.wav" id="140_5vdqw"]
+[ext_resource type="AudioStream" uid="uid://da63tvvu135tq" path="res://Audio/MFX/Celesta/007_Celesta_G5_2.5secs.wav" id="141_uv2u5"]
+[ext_resource type="AudioStream" uid="uid://dypx24wc3p2cy" path="res://Audio/MFX/wrong_lute.wav" id="142_pmbrs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bpdif"]
 size = Vector2(41.6638, 33.6962)
@@ -1994,7 +2000,7 @@ states/eleanore_walk_start/position = Vector2(558.501, 153.91)
 states/eleanore_walk_stop/node = SubResource("AnimationNodeBlendTree_bk4mc")
 states/eleanore_walk_stop/position = Vector2(560.005, 248.91)
 transitions = ["eleanore_attack_2", "eleanore_attack_3", SubResource("AnimationNodeStateMachineTransition_2pm1g"), "eleanore_attack_1", "eleanore_attack_2", SubResource("AnimationNodeStateMachineTransition_cplmr"), "eleanore_attack_1", "eleanore_walk", SubResource("AnimationNodeStateMachineTransition_i53tr"), "eleanore_walk", "eleanore_walk_stop", SubResource("AnimationNodeStateMachineTransition_h8ge0"), "eleanore_walk_start", "eleanore_walk", SubResource("AnimationNodeStateMachineTransition_gc30c"), "Start", "eleanore_idle", SubResource("AnimationNodeStateMachineTransition_5ar50"), "eleanore_idle", "eleanore_walk_start", SubResource("AnimationNodeStateMachineTransition_pwlfb"), "eleanore_attack_1", "eleanore_idle", SubResource("AnimationNodeStateMachineTransition_2t5lj"), "eleanore_walk_stop", "eleanore_idle", SubResource("AnimationNodeStateMachineTransition_3oscn"), "eleanore_hurt", "eleanore_idle", SubResource("AnimationNodeStateMachineTransition_t2oeb"), "eleanore_hurt", "eleanore_walk", SubResource("AnimationNodeStateMachineTransition_h3la8")]
-graph_offset = Vector2(110.975, -220.09)
+graph_offset = Vector2(72.275, -220.09)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ypqgu"]
 radius = 4.0
@@ -2826,7 +2832,7 @@ volume_db = -5.0
 
 [node name="beat1guide" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("73_ftyw2")
-volume_db = 7.0
+volume_db = 10.0
 
 [node name="C4_lute" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("72_75irh")
@@ -2867,6 +2873,29 @@ volume_db = -5.0
 [node name="E5_lute" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("81_dxmne")
 volume_db = -5.0
+
+[node name="C5_celesta" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("137_uwo0j")
+volume_db = 5.0
+
+[node name="D5_celesta" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("138_g0aop")
+volume_db = 5.0
+
+[node name="E5_celesta" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("139_qn2ie")
+volume_db = 5.0
+
+[node name="F5_celesta" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("140_5vdqw")
+volume_db = 5.0
+
+[node name="G5_celesta" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("141_uv2u5")
+volume_db = 5.0
+
+[node name="wrong_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("142_pmbrs")
 
 [node name="defeat_sound" type="AudioStreamPlayer" parent="."]
 process_mode = 3

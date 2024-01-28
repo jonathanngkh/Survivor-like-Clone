@@ -105,6 +105,17 @@ func add_to_notes_played(note_played):
 	$GUILayer/GUI/debug_label7.text = "time off beat: " +  str(conductor_node.closest_beat_in_song(conductor_node.get_song_position_in_seconds()).y)
 	$GUILayer/GUI/debug_label8.text = "beat_in_bar_played_on: " +  str(conductor_node.closest_beat_in_bar(conductor_node.get_song_position_in_seconds()).x)
 
+var valid_notes = [[64, 1], [62, 2], [60,3], [60, 5], [64, 3], [64, 4], [60, 1], [62, 3], [64, 5], [65, 3], [67, 5], [67, 1], [67, 3], [67, 4], [65, 2]]
+ 
+func check_note_is_valid(played_note):
+	if valid_notes.has(played_note) == true:
+		print('true')
+		return true
+	else:
+		print(played_note)
+		print('false')
+		return false
+
 #region Midi Stuff
 func _input(input_event): #
 	if input_event is InputEventKey and input_event.pressed:
@@ -143,6 +154,10 @@ func _input(input_event): #
 		#if input_event.message == 9: #noteOn
 		# this works to prevent notes during response phase, but issue with early 1 beats applies. SOLVED. set state to idle on last beat if measure == saved measure + 1
 		if input_event.message == 9 and music_state == "idle": #noteOn
+			#if check_note_is_valid([input_event.pitch, conductor_node.closest_beat_in_bar(conductor_node.get_song_position_in_seconds()).x]) == true:
+				#add_to_notes_played(input_event.pitch)
+			#else: # invalid_note
+				#$wrong_sound.play()
 			#add_to_notes_held(input_event.pitch)
 			add_to_notes_played(input_event.pitch)
 			if input_event.pitch == 60: # C4
@@ -287,25 +302,25 @@ func _on_conductor_beat_incremented():
 			$GUILayer/GUI/Pianos. visible = true
 		
 		if play_speed_song == true:
-			$C4_lute.play()
+			$C5_celesta.play()
 			
 		if play_speed2_song == true:
-			$C4_lute.play()
-			$E4_lute.play()
+			$C5_celesta.play()
+			$E5_celesta.play()
 			
 		if play_tornado_song == true:
-			$E4_lute.play()
+			$E5_celesta.play()
 			
 		if play_tornado2_song == true:
-			$E4_lute.play()
-			$G4_lute.play()
+			$E5_celesta.play()
+			$G5_celesta.play()
 			
 		if play_heal_song == true:
-			$E4_lute.play()
+			$E5_celesta.play()
 			
 		if play_heal2_song == true:
-			$E4_lute.play()
-			$G4_lute.play()
+			$E5_celesta.play()
+			$G5_celesta.play()
 			
 		if music_state == "idle":
 			beat1guide.play()
@@ -323,11 +338,11 @@ func _on_conductor_beat_incremented():
 	if conductor_node.get_beat_in_bar() == 2:
 		scale = Vector2(1, 1)
 		if play_heal_song == true:
-			$D4_lute.play()
+			$D5_celesta.play()
 		
 		if play_heal2_song == true:
-			$D4_lute.play()
-			$F4_lute.play()
+			$D5_celesta.play()
+			$F5_celesta.play()
 		
 		fill_rhythm_block_fast(get_node("%ProgressBar6"))
 		
@@ -343,25 +358,25 @@ func _on_conductor_beat_incremented():
 		pass
 	if conductor_node.get_beat_in_bar() == 3:
 		if play_speed_song == true:
-			$D4_lute.play()
+			$D5_celesta.play()
 			
 		if play_speed2_song == true:
-			$D4_lute.play()
-			$F4_lute.play()
+			$D5_celesta.play()
+			$F5_celesta.play()
 		
 		if play_tornado_song == true:
-			$E4_lute.play()
+			$E5_celesta.play()
 			
 		if play_tornado2_song == true:
-			$E4_lute.play()
-			$G4_lute.play()
+			$E5_celesta.play()
+			$G5_celesta.play()
 			
 		if play_heal_song == true:
-			$C4_lute.play()
+			$C5_celesta.play()
 			
 		if play_heal2_song == true:
-			$C4_lute.play()
-			$E4_lute.play()
+			$C5_celesta.play()
+			$E5_celesta.play()
 			
 		fill_rhythm_block_fast(get_node("%ProgressBar6"))
 		
@@ -382,26 +397,26 @@ func _on_conductor_beat_incremented():
 		pass
 	if conductor_node.get_beat_in_bar() == 4:
 		if play_tornado_song == true:
-			$E4_lute.play()
+			$E5_celesta.play()
 			
 		if play_tornado2_song == true:
-			$E4_lute.play()
-			$G4_lute.play()
+			$E5_celesta.play()
+			$G5_celesta.play()
 			
 	if conductor_node.get_beat_in_bar() == 5:
 		if play_speed_song == true:
-			$E4_lute.play()
+			$E5_celesta.play()
 			
 		if play_speed2_song == true:
-			$E4_lute.play()
-			$G4_lute.play()
+			$E5_celesta.play()
+			$G5_celesta.play()
 			
 		if play_heal_song == true:
-			$C4_lute.play()
+			$C5_celesta.play()
 			
 		if play_heal2_song == true:
-			$C4_lute.play()
-			$E4_lute.play()
+			$C5_celesta.play()
+			$E5_celesta.play()
 	if conductor_node.get_beat_in_bar() == 6:
 		pass
 	if conductor_node.get_beat_in_bar() == 7:
@@ -414,7 +429,7 @@ func _on_conductor_beat_incremented():
 		if judge_song(heal_song) == "correct":
 			saved_measure = conductor_node.get_measure()
 			$walk_success_sound.play()
-			#$HEAL_SOUNDr.play()
+			#$HEAL_SOUND.play()
 			var heal_sprite = heal_effect.instantiate()
 			#heal_sprite.global_position = global_position
 			get_parent().call_deferred("add_child", heal_sprite)
@@ -471,6 +486,8 @@ func _on_conductor_beat_incremented():
 			notes_played = []
 			conductor_node.set_stream(attack_response_song)
 			conductor_node.play_with_beat_offset(8)
+			shoot_tornado()
+			shoot_tornado()
 			shoot_tornado()
 			shoot_tornado()
 			music_state = "responding_attack"
@@ -545,9 +562,10 @@ func update_song():
 		pass
 
 
+#region Songs
+#var walk_song = [[60, 1], [62, 2], [64, 3]] # in crotchets
+#var attack_song = [[64,1], [64, 2], [64, 2.5]] #in crotchets
 var heal_song = [[64, 1], [62, 2], [60,3], [60, 5]]
-var walk_song = [[60, 1], [62, 2], [64, 3]] # in crotchets
-var attack_song = [[64,1], [64, 2], [64, 2.5]] #in crotchets
 var attack_song_in_quavers = [[64, 1], [64, 3], [64, 4]]
 var walk_song_in_quavers = [[60, 1], [62, 3], [64, 5]]
 var walk_song_in_quavers_thirds = [
@@ -566,6 +584,7 @@ var heal_song_thirds = [
 	[60, 3], [64, 3],
 	[60, 5], [64, 5]
 ]
+#endregion
 
 func judge_song(song_to_judge):
 	var correct_notes = 0
