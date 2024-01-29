@@ -109,11 +109,8 @@ var valid_notes = [[64, 1], [62, 2], [60,3], [60, 5], [64, 3], [64, 4], [60, 1],
  
 func check_note_is_valid(played_note):
 	if valid_notes.has(played_note) == true:
-		print('true')
 		return true
 	else:
-		print(played_note)
-		print('false')
 		return false
 
 #region Midi Stuff
@@ -154,32 +151,32 @@ func _input(input_event): #
 		#if input_event.message == 9: #noteOn
 		# this works to prevent notes during response phase, but issue with early 1 beats applies. SOLVED. set state to idle on last beat if measure == saved measure + 1
 		if input_event.message == 9 and music_state == "idle": #noteOn
-			#if check_note_is_valid([input_event.pitch, conductor_node.closest_beat_in_bar(conductor_node.get_song_position_in_seconds()).x]) == true:
-				#add_to_notes_played(input_event.pitch)
-			#else: # invalid_note
-				#$wrong_sound.play()
+			if check_note_is_valid([input_event.pitch, int(conductor_node.closest_beat_in_bar(conductor_node.get_song_position_in_seconds()).x)]) == true:
+				add_to_notes_played(input_event.pitch)
+				if input_event.pitch == 60: # C4
+					$C4_lute.play()
+				if input_event.pitch == 62: # D4
+					$D4_lute.play()
+				if input_event.pitch == 64: # E4
+					$E4_lute.play()
+				if input_event.pitch == 65: # F4
+					$F4_lute.play()
+				if input_event.pitch == 67: # G4
+					$G4_lute.play()
+				if input_event.pitch == 69: # A4
+					$A4_lute.play()
+				if input_event.pitch == 71: # B4
+					$B4_lute.play()
+				if input_event.pitch == 72: # C5
+					$C5_lute.play()
+				if input_event.pitch == 74: # D5
+					$D5_lute.play()
+				if input_event.pitch == 76: # E5
+					$E5_lute.play()
+			else: # invalid_note
+				$wrong_sound.play()
 			#add_to_notes_held(input_event.pitch)
-			add_to_notes_played(input_event.pitch)
-			if input_event.pitch == 60: # C4
-				$C4_lute.play()
-			if input_event.pitch == 62: # D4
-				$D4_lute.play()
-			if input_event.pitch == 64: # E4
-				$E4_lute.play()
-			if input_event.pitch == 65: # F4
-				$F4_lute.play()
-			if input_event.pitch == 67: # G4
-				$G4_lute.play()
-			if input_event.pitch == 69: # A4
-				$A4_lute.play()
-			if input_event.pitch == 71: # B4
-				$B4_lute.play()
-			if input_event.pitch == 72: # C5
-				$C5_lute.play()
-			if input_event.pitch == 74: # D5
-				$D5_lute.play()
-			if input_event.pitch == 76: # E5
-				$E5_lute.play()
+			#add_to_notes_played(input_event.pitch)
 		if input_event.message == 8: #noteOff
 			# remove_from_notes_held(input_events.pitch)
 			if input_event.pitch == 60: #C

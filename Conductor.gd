@@ -123,7 +123,7 @@ func closest_beat_in_bar(time_of_note_played):
 		closest_beat_in_bar = beats_per_bar
 	else:
 		closest_beat_in_bar = int(closest_beat_in_bar) % beats_per_bar
-	return Vector2(closest_beat_in_bar, time_off_beat)
+	return Vector2(int(closest_beat_in_bar), time_off_beat)
 	
 func closest_quaver_in_bar(time_of_note_played): #doesnt work
 	var closest_quaver_in_bar = closest_quaver_in_song(time_of_note_played).x
