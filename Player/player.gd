@@ -581,6 +581,7 @@ var heal_song_thirds = [
 	[60, 3], [64, 3],
 	[60, 5], [64, 5]
 ]
+var lightning_song = []
 #endregion
 
 func judge_song(song_to_judge):
