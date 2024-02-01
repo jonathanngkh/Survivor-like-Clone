@@ -2,6 +2,6 @@ res://World/world.tscn
 res://Utility/spawn_info.gd
 res://Player/player.tscn
 res://conductor.tscn
-res://Enemy/enemy_demon.tscn
-res://Enemy/enemy_skull.tscn
-res://Enemy/enemy_nightmare.tscn
+res://Enemy/lightning_strike_effect.tscn
+res://Enemy/lightning_strike_effect.gd
+res://Enemy/speedeffect.tscn

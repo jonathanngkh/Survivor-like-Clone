@@ -1,4 +1,4 @@
-[gd_scene load_steps=207 format=3 uid="uid://c6uuvcthpociv"]
+[gd_scene load_steps=209 format=3 uid="uid://c6uuvcthpociv"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_6neil"]
 [ext_resource type="PackedScene" uid="uid://c3p0e8l8amscb" path="res://Utility/hurt_box.tscn" id="3_5rw0d"]
@@ -137,6 +137,8 @@
 [ext_resource type="Texture2D" uid="uid://c6j86ms0t6ed8" path="res://Textures/Player/Eleanore/e_spin/Spin17.png" id="91_kuykt"]
 [ext_resource type="Texture2D" uid="uid://4wckykke6qsn" path="res://Textures/Player/Eleanore/e_spin/Spin18.png" id="92_ct7bn"]
 [ext_resource type="AudioStream" uid="uid://8ywk8bylpwfc" path="res://Audio/Music/Sad Violin  Sound Effect HD.mp3" id="119_vxu8k"]
+[ext_resource type="Texture2D" uid="uid://cdgk605rnuio2" path="res://Textures/Notes/pink crotchet.png" id="122_khxc6"]
+[ext_resource type="Texture2D" uid="uid://dlodfxpgaq163" path="res://Textures/Notes/pink quaver.png" id="123_e3ma3"]
 [ext_resource type="AudioStream" uid="uid://msdbh15bbenx" path="res://Audio/MFX/Celesta/003_Celesta_C5_2.5secs.wav" id="137_uwo0j"]
 [ext_resource type="AudioStream" uid="uid://bf4elllpdecix" path="res://Audio/MFX/Celesta/004_Celesta_D5_2.5secs.wav" id="138_g0aop"]
 [ext_resource type="AudioStream" uid="uid://calxsqj8sdt3u" path="res://Audio/MFX/Celesta/005_Celesta_E5_2.5secs.wav" id="139_qn2ie"]
@@ -2024,8 +2026,7 @@ collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_6neil")
 movement_speed = 30.0
-hp = 1000
-max_hp = 1000
+hp = 200
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -2188,7 +2189,6 @@ texture_progress = ExtResource("60_y8d5x")
 tint_progress = Color(0, 1, 1, 1)
 
 [node name="Pianos" type="Control" parent="GUILayer/GUI"]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -2575,10 +2575,20 @@ layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.882353, 0, 0, 1)
 
+[node name="PinkCrotchet" type="Sprite2D" parent="GUILayer/GUI/HBoxContainer/ColorRect"]
+position = Vector2(179, -344)
+scale = Vector2(16.5, 15.7721)
+texture = ExtResource("122_khxc6")
+
 [node name="ColorRect2" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.160784, 0.160784, 0.160784, 1)
+
+[node name="PinkQuaver" type="Sprite2D" parent="GUILayer/GUI/HBoxContainer/ColorRect2"]
+position = Vector2(312, -344)
+scale = Vector2(16.5, 15.7721)
+texture = ExtResource("123_e3ma3")
 
 [node name="ColorRect3" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
 layout_mode = 2

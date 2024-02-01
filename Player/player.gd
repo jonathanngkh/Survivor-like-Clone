@@ -260,6 +260,7 @@ const attack_response_song = preload("res://Audio/Music/Battle 1_Attack (Normal 
 const attack_response_song_thirds = preload("res://Audio/Music/Battle 1_Attack in Thirds (Normal - Variant 2)_110bpm.wav")
 const heal_response_song = preload("res://Audio/Music/Battle 1_Heal (Normal - Variant 2)_110bpm.wav")
 const heal_response_song_thirds = preload("res://Audio/Music/Battle 1_Heal in Thirds (Normal - Variant 1)_110bpm.wav")
+const lightning_response_song = preload("res://Audio/Music/Battle 1_Lightning Bolt (Normal - Variant 3)_110bpm.wav")
 
 var saved_measure = 0
 
@@ -277,8 +278,8 @@ func fill_rhythm_block_fast(block_node):
 	var tween = create_tween()
 	tween.tween_property(block_progress_bar, "value", 100, 0.2727).from(0).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
 	
-var heal_effect = preload("res://Enemy/healeffect.tscn")
-var speed_effect = preload("res://Enemy/speedeffect.tscn")
+const heal_effect = preload("res://Enemy/healeffect.tscn")
+const speed_effect = preload("res://Enemy/speedeffect.tscn")
 
 var intro_played = false
 
@@ -581,7 +582,7 @@ var heal_song_thirds = [
 	[60, 3], [64, 3],
 	[60, 5], [64, 5]
 ]
-var lightning_song = []
+var lightning_song = [[69, 1], [67, 2], [65, 3], [64, 4], [62, 5]]
 #endregion
 
 func judge_song(song_to_judge):

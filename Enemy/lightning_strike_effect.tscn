@@ -1,9 +1,135 @@
-[gd_scene load_steps=10 format=3 uid="uid://dbxhdoaio2meq"]
+[gd_scene load_steps=41 format=3 uid="uid://dbxhdoaio2meq"]
 
+[ext_resource type="Texture2D" uid="uid://t1xpjmh84jx2" path="res://Textures/VFX/lightning strike/lightning aftershock/ThunderStrike(Glow)16.png" id="1_jqoui"]
 [ext_resource type="Texture2D" uid="uid://cplcrcgukr8lq" path="res://Textures/VFX/heal vfx.png" id="1_kaftt"]
-[ext_resource type="Script" path="res://Enemy/speed_effect.gd" id="2_glr82"]
-[ext_resource type="AudioStream" uid="uid://bdbo44nmludef" path="res://Audio/SoundEffect/speed sfx.wav" id="3_r2c20"]
+[ext_resource type="Texture2D" uid="uid://nfloxa7yhx7y" path="res://Textures/VFX/lightning strike/lightning aftershock/ThunderStrike(Glow)17.png" id="2_org5l"]
+[ext_resource type="Texture2D" uid="uid://cnn43uhdou0a5" path="res://Textures/VFX/lightning strike/lightning aftershock/ThunderStrike(Glow)18.png" id="3_xfria"]
+[ext_resource type="Texture2D" uid="uid://dkm3rumer43bs" path="res://Textures/VFX/lightning strike/lightning aftershock/ThunderStrike(Glow)19.png" id="4_401pi"]
 [ext_resource type="Texture2D" uid="uid://hu0iph5nvs43" path="res://Textures/VFX/speed vfx.png" id="4_k2o3w"]
+[ext_resource type="Texture2D" uid="uid://dofdjwnbne2ef" path="res://Textures/VFX/lightning strike/lightning aftershock/ThunderStrike(Glow)20.png" id="5_7jb1b"]
+[ext_resource type="Texture2D" uid="uid://dmw0u48jqmsri" path="res://Textures/VFX/lightning strike/lightning aftershock/ThunderStrike(Glow)21.png" id="6_8g1g4"]
+[ext_resource type="Texture2D" uid="uid://cqngc8vp6hsj1" path="res://Textures/VFX/lightning strike/lightning aftershock/ThunderStrike(Glow)22.png" id="7_cwgoq"]
+[ext_resource type="Texture2D" uid="uid://cryvceymbdik8" path="res://Textures/VFX/lightning strike/lightning aftershock/ThunderStrike(Glow)23.png" id="8_qixq7"]
+[ext_resource type="Texture2D" uid="uid://b7bsf5fkymbi4" path="res://Textures/VFX/lightning strike/lightning aftershock/ThunderStrike(Glow)24.png" id="9_dei8t"]
+[ext_resource type="Texture2D" uid="uid://1fr68qrgkq4" path="res://Textures/VFX/lightning strike/lightning aftershock/ThunderStrike(Glow)25.png" id="10_ehp8t"]
+[ext_resource type="Texture2D" uid="uid://dw2ln34ukj4mw" path="res://Textures/VFX/lightning strike/lightning aftershock/ThunderStrike(Glow)26.png" id="11_y6j4w"]
+[ext_resource type="Texture2D" uid="uid://c61nw7wxvto6k" path="res://Textures/VFX/lightning strike/lightning sparking/ThunderStrike(Glow)1.png" id="12_fkjpj"]
+[ext_resource type="Texture2D" uid="uid://dfno8n4r1k3xg" path="res://Textures/VFX/lightning strike/lightning sparking/ThunderStrike(Glow)2.png" id="13_cne82"]
+[ext_resource type="Texture2D" uid="uid://boh62bmmikse7" path="res://Textures/VFX/lightning strike/lightning sparking/ThunderStrike(Glow)3.png" id="14_lrtkr"]
+[ext_resource type="Texture2D" uid="uid://c3duqel4mj3ub" path="res://Textures/VFX/lightning strike/lightning sparking/ThunderStrike(Glow)4.png" id="15_rnyr4"]
+[ext_resource type="Texture2D" uid="uid://bsav2ginpjhbc" path="res://Textures/VFX/lightning strike/lightning sparking/ThunderStrike(Glow)5.png" id="16_xkldp"]
+[ext_resource type="Texture2D" uid="uid://cj5ae6ge8d6ct" path="res://Textures/VFX/lightning strike/lightning sparking/ThunderStrike(Glow)6.png" id="17_7l3at"]
+[ext_resource type="Texture2D" uid="uid://dkkn15b6naaan" path="res://Textures/VFX/lightning strike/lightning striking/ThunderStrike(Glow)7.png" id="18_5wso1"]
+[ext_resource type="Texture2D" uid="uid://cf7fk1gcng7ay" path="res://Textures/VFX/lightning strike/lightning striking/ThunderStrike(Glow)8.png" id="19_f0dyf"]
+[ext_resource type="Texture2D" uid="uid://cj8evavqnnajw" path="res://Textures/VFX/lightning strike/lightning striking/ThunderStrike(Glow)9.png" id="20_1a7x0"]
+[ext_resource type="Texture2D" uid="uid://badgrs7yy2r2v" path="res://Textures/VFX/lightning strike/lightning striking/ThunderStrike(Glow)10.png" id="21_w2uyd"]
+[ext_resource type="Texture2D" uid="uid://bmj0afqu2v053" path="res://Textures/VFX/lightning strike/lightning striking/ThunderStrike(Glow)11.png" id="22_op0ip"]
+[ext_resource type="Texture2D" uid="uid://ccjjwj8vuvbp3" path="res://Textures/VFX/lightning strike/lightning striking/ThunderStrike(Glow)12.png" id="23_ymtw5"]
+[ext_resource type="Texture2D" uid="uid://dj15s4fc78k87" path="res://Textures/VFX/lightning strike/lightning striking/ThunderStrike(Glow)13.png" id="24_8bo74"]
+[ext_resource type="Texture2D" uid="uid://dkt377jo5nplc" path="res://Textures/VFX/lightning strike/lightning striking/ThunderStrike(Glow)14.png" id="25_edefg"]
+[ext_resource type="Texture2D" uid="uid://eg7o3xum86l1" path="res://Textures/VFX/lightning strike/lightning striking/ThunderStrike(Glow)15.png" id="26_o50rr"]
+[ext_resource type="Texture2D" uid="uid://b8wy8x1ajbam2" path="res://Textures/VFX/lightning strike/lightning striking/ThunderStrike(Glow)BLANK.png" id="27_1lc03"]
+[ext_resource type="Script" path="res://Enemy/lightning_strike_effect.gd" id="28_2in57"]
+[ext_resource type="AudioStream" uid="uid://bebrq1l2ba4lc" path="res://Audio/SoundEffect/LightningStreakSound.mp3" id="29_brmdx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0k6f7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_jqoui")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_org5l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xfria")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_401pi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7jb1b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8g1g4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_cwgoq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qixq7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_dei8t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ehp8t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_y6j4w")
+}],
+"loop": false,
+"name": &"aftershock",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_fkjpj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_cne82")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_lrtkr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_rnyr4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_xkldp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_7l3at")
+}],
+"loop": false,
+"name": &"sparking",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_5wso1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_f0dyf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_1a7x0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_w2uyd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_op0ip")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_ymtw5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_8bo74")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_edefg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_o50rr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_1lc03")
+}],
+"loop": false,
+"name": &"striking",
+"speed": 10.0
+}]
 
 [sub_resource type="Animation" id="Animation_aexhp"]
 length = 0.001
@@ -54,6 +180,93 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [1]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:sprite_frames")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("SpriteFrames_0k6f7")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:animation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"sparking"]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:speed_scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_8eout"]
+resource_name = "aftershock"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:sprite_frames")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("SpriteFrames_0k6f7")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"aftershock"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:speed_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 }
 
 [sub_resource type="Animation" id="Animation_y78u6"]
@@ -125,6 +338,59 @@ tracks/3/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
 }
 
+[sub_resource type="Animation" id="Animation_bgsxi"]
+resource_name = "sparking"
+length = 0.60001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:sprite_frames")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("SpriteFrames_0k6f7")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"sparking"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:speed_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
 [sub_resource type="Animation" id="Animation_vhk3e"]
 resource_name = "speed_buff"
 length = 1.90001
@@ -177,24 +443,78 @@ tracks/3/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
 }
 
+[sub_resource type="Animation" id="Animation_hb5pf"]
+resource_name = "striking"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:sprite_frames")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("SpriteFrames_0k6f7")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"striking"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:speed_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yck5a"]
 _data = {
 "RESET": SubResource("Animation_aexhp"),
+"aftershock": SubResource("Animation_8eout"),
 "explode": SubResource("Animation_y78u6"),
 "heal": SubResource("Animation_vk1tt"),
-"speed_buff": SubResource("Animation_vhk3e")
+"sparking": SubResource("Animation_bgsxi"),
+"speed_buff": SubResource("Animation_vhk3e"),
+"striking": SubResource("Animation_hb5pf")
 }
 
-[node name="SpeedBuff" type="Sprite2D"]
+[node name="LightningStrikeEffect" type="AnimatedSprite2D"]
 z_index = 1
-texture = ExtResource("1_kaftt")
-hframes = 16
+sprite_frames = SubResource("SpriteFrames_0k6f7")
+animation = &"sparking"
 frame = 1
-script = ExtResource("2_glr82")
+script = ExtResource("28_2in57")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_r2c20")
-pitch_scale = 0.7
+stream = ExtResource("29_brmdx")
+volume_db = -3.0
 autoplay = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

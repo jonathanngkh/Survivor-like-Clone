@@ -1,8 +1,8 @@
+Sprite2D
 AnimatedSprite2D
 AudioStreamPlayer
 Control
 Label
-Sprite2D
 ProgressBar
 HSlider
 ColorRect
@@ -12,4 +12,3 @@ CollisionShape2D
 Area2D
 Node2D
 CharacterBody2D
-RigidBody2D
