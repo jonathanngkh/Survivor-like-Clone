@@ -2562,63 +2562,129 @@ mouse_filter = 2
 fill_mode = 2
 show_percentage = false
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GUILayer/GUI"]
+[node name="Control" type="Control" parent="GUILayer/GUI"]
+anchors_preset = 0
+offset_left = 393.0
+offset_top = 864.0
+offset_right = 2169.0
+offset_bottom = 1199.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUILayer/GUI/Control"]
 modulate = Color(1, 1, 1, 0.678431)
 layout_mode = 0
-offset_left = 18.0
-offset_top = 1408.0
-offset_right = 2544.0
-offset_bottom = 1432.0
+offset_top = 299.0
+offset_right = 1776.0
+offset_bottom = 323.0
 
-[node name="ColorRect" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
+[node name="ColorRect" type="ColorRect" parent="GUILayer/GUI/Control/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.882353, 0, 0, 1)
 
-[node name="PinkCrotchet" type="Sprite2D" parent="GUILayer/GUI/HBoxContainer/ColorRect"]
-position = Vector2(179, -344)
-scale = Vector2(16.5, 15.7721)
+[node name="PinkCrotchet" type="Sprite2D" parent="GUILayer/GUI/Control/HBoxContainer/ColorRect"]
+z_index = 1
+position = Vector2(-83.5, -162.051)
+scale = Vector2(13.4375, 12.8447)
 texture = ExtResource("122_khxc6")
 
-[node name="ColorRect2" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
+[node name="ColorRect2" type="ColorRect" parent="GUILayer/GUI/Control/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.160784, 0.160784, 0.160784, 1)
 
-[node name="PinkQuaver" type="Sprite2D" parent="GUILayer/GUI/HBoxContainer/ColorRect2"]
+[node name="PinkQuaver" type="Sprite2D" parent="GUILayer/GUI/Control/HBoxContainer/ColorRect2"]
+visible = false
 position = Vector2(312, -344)
 scale = Vector2(16.5, 15.7721)
 texture = ExtResource("123_e3ma3")
 
-[node name="ColorRect3" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
+[node name="ColorRect3" type="ColorRect" parent="GUILayer/GUI/Control/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.160784, 0.160784, 0.160784, 1)
 
-[node name="ColorRect4" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
+[node name="ColorRect4" type="ColorRect" parent="GUILayer/GUI/Control/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.160784, 0.160784, 0.160784, 1)
 
-[node name="ColorRect5" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
+[node name="ColorRect5" type="ColorRect" parent="GUILayer/GUI/Control/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.160784, 0.160784, 0.160784, 1)
 
-[node name="ColorRect6" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
+[node name="ColorRect6" type="ColorRect" parent="GUILayer/GUI/Control/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.160784, 0.160784, 0.160784, 1)
 
-[node name="ColorRect7" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
+[node name="ColorRect7" type="ColorRect" parent="GUILayer/GUI/Control/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.160784, 0.160784, 0.160784, 1)
 
-[node name="ColorRect8" type="ColorRect" parent="GUILayer/GUI/HBoxContainer"]
+[node name="ColorRect8" type="ColorRect" parent="GUILayer/GUI/Control/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.160784, 0.160784, 0.160784, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUILayer/GUI/Control"]
+layout_mode = 0
+offset_right = 1776.0
+offset_bottom = 299.0
+
+[node name="ColorRect" type="ColorRect" parent="GUILayer/GUI/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ColorRect2" type="ColorRect" parent="GUILayer/GUI/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ColorRect3" type="ColorRect" parent="GUILayer/GUI/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ColorRect4" type="ColorRect" parent="GUILayer/GUI/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ColorRect5" type="ColorRect" parent="GUILayer/GUI/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ColorRect6" type="ColorRect" parent="GUILayer/GUI/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="GUILayer/GUI/Control"]
+layout_mode = 0
+offset_left = -218.0
+offset_bottom = 299.0
+
+[node name="ColorRect" type="ColorRect" parent="GUILayer/GUI/Control/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ColorRect2" type="ColorRect" parent="GUILayer/GUI/Control/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ColorRect3" type="ColorRect" parent="GUILayer/GUI/Control/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ColorRect4" type="ColorRect" parent="GUILayer/GUI/Control/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ColorRect5" type="ColorRect" parent="GUILayer/GUI/Control/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ColorRect6" type="ColorRect" parent="GUILayer/GUI/Control/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
 
 [node name="panel_LevelUp" type="Panel" parent="GUILayer/GUI"]
 process_mode = 2

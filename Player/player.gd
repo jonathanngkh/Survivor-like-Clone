@@ -264,7 +264,7 @@ const lightning_response_song = preload("res://Audio/Music/Battle 1_Lightning Bo
 
 var saved_measure = 0
 
-@onready var rhythm_bar = $GUILayer/GUI/HBoxContainer
+@onready var rhythm_bar = $GUILayer/GUI/Control/HBoxContainer
 
 #GUILayer/GUI/HBoxContainer/ColorRect/ProgressBar
 
