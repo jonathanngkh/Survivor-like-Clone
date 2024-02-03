@@ -119,12 +119,18 @@ func _input(input_event): #
 		if input_event.keycode == KEY_1:
 			add_to_notes_played(60)
 			$C4_lute.play()
+			if conductor_node.closest_beat_in_bar(conductor_node.get_song_position_in_seconds()).x == 1:
+				$GUILayer/GUI/Control/HBoxContainer/ColorRect/PinkCrotchet.visible = true
 		if input_event.keycode == KEY_2:
 			add_to_notes_played(62)
 			$D4_lute.play()
+			if conductor_node.closest_beat_in_bar(conductor_node.get_song_position_in_seconds()).x == 3:
+				$GUILayer/GUI/Control/HBoxContainer/ColorRect3/OrangeCrotchet.visible = true
 		if input_event.keycode == KEY_3:
 			add_to_notes_played(64)
 			$E4_lute.play()
+			if conductor_node.closest_beat_in_bar(conductor_node.get_song_position_in_seconds()).x == 5:
+				$GUILayer/GUI/Control/HBoxContainer/ColorRect5/GreenCrotchet.visible = true
 		if input_event.keycode == KEY_4:
 			add_to_notes_played(65)
 			$F4_lute.play()

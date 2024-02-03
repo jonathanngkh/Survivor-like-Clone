@@ -2572,9 +2572,9 @@ offset_bottom = 1199.0
 [node name="HBoxContainer" type="HBoxContainer" parent="GUILayer/GUI/Control"]
 modulate = Color(1, 1, 1, 0.678431)
 layout_mode = 0
-offset_top = 299.0
+offset_top = -32.0
 offset_right = 1776.0
-offset_bottom = 323.0
+offset_bottom = 335.0
 
 [node name="ColorRect" type="ColorRect" parent="GUILayer/GUI/Control/HBoxContainer"]
 layout_mode = 2
@@ -2582,10 +2582,13 @@ size_flags_horizontal = 3
 color = Color(0.882353, 0, 0, 1)
 
 [node name="PinkCrotchet" type="Sprite2D" parent="GUILayer/GUI/Control/HBoxContainer/ColorRect"]
+visible = false
 z_index = 1
-position = Vector2(-83.5, -162.051)
+position = Vector2(79, 221)
 scale = Vector2(13.4375, 12.8447)
 texture = ExtResource("122_khxc6")
+flip_h = true
+flip_v = true
 
 [node name="ColorRect2" type="ColorRect" parent="GUILayer/GUI/Control/HBoxContainer"]
 layout_mode = 2
@@ -2603,6 +2606,16 @@ layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.160784, 0.160784, 0.160784, 1)
 
+[node name="OrangeCrotchet" type="Sprite2D" parent="GUILayer/GUI/Control/HBoxContainer/ColorRect3"]
+visible = false
+self_modulate = Color(1, 1, 0.054902, 1)
+z_index = 1
+position = Vector2(106, 194)
+scale = Vector2(13.4375, 12.8447)
+texture = ExtResource("122_khxc6")
+flip_h = true
+flip_v = true
+
 [node name="ColorRect4" type="ColorRect" parent="GUILayer/GUI/Control/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -2612,6 +2625,16 @@ color = Color(0.160784, 0.160784, 0.160784, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.160784, 0.160784, 0.160784, 1)
+
+[node name="GreenCrotchet" type="Sprite2D" parent="GUILayer/GUI/Control/HBoxContainer/ColorRect5"]
+visible = false
+self_modulate = Color(0, 1, 0, 1)
+z_index = 1
+position = Vector2(99, 171)
+scale = Vector2(13.4375, 12.8447)
+texture = ExtResource("122_khxc6")
+flip_h = true
+flip_v = true
 
 [node name="ColorRect6" type="ColorRect" parent="GUILayer/GUI/Control/HBoxContainer"]
 layout_mode = 2
