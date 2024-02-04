@@ -1,4 +1,4 @@
-[gd_scene load_steps=209 format=3 uid="uid://c6uuvcthpociv"]
+[gd_scene load_steps=210 format=3 uid="uid://c6uuvcthpociv"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_6neil"]
 [ext_resource type="PackedScene" uid="uid://c3p0e8l8amscb" path="res://Utility/hurt_box.tscn" id="3_5rw0d"]
@@ -139,6 +139,7 @@
 [ext_resource type="AudioStream" uid="uid://8ywk8bylpwfc" path="res://Audio/Music/Sad Violin  Sound Effect HD.mp3" id="119_vxu8k"]
 [ext_resource type="Texture2D" uid="uid://cdgk605rnuio2" path="res://Textures/Notes/pink crotchet.png" id="122_khxc6"]
 [ext_resource type="Texture2D" uid="uid://dlodfxpgaq163" path="res://Textures/Notes/pink quaver.png" id="123_e3ma3"]
+[ext_resource type="Texture2D" uid="uid://rvxtlqvgg7fs" path="res://Textures/Notes/treble clef.png" id="124_l37oc"]
 [ext_resource type="AudioStream" uid="uid://msdbh15bbenx" path="res://Audio/MFX/Celesta/003_Celesta_C5_2.5secs.wav" id="137_uwo0j"]
 [ext_resource type="AudioStream" uid="uid://bf4elllpdecix" path="res://Audio/MFX/Celesta/004_Celesta_D5_2.5secs.wav" id="138_g0aop"]
 [ext_resource type="AudioStream" uid="uid://calxsqj8sdt3u" path="res://Audio/MFX/Celesta/005_Celesta_E5_2.5secs.wav" id="139_qn2ie"]
@@ -2582,7 +2583,6 @@ size_flags_horizontal = 3
 color = Color(0.882353, 0, 0, 1)
 
 [node name="PinkCrotchet" type="Sprite2D" parent="GUILayer/GUI/Control/HBoxContainer/ColorRect"]
-visible = false
 z_index = 1
 position = Vector2(79, 221)
 scale = Vector2(13.4375, 12.8447)
@@ -2607,7 +2607,6 @@ size_flags_horizontal = 3
 color = Color(0.160784, 0.160784, 0.160784, 1)
 
 [node name="OrangeCrotchet" type="Sprite2D" parent="GUILayer/GUI/Control/HBoxContainer/ColorRect3"]
-visible = false
 self_modulate = Color(1, 1, 0.054902, 1)
 z_index = 1
 position = Vector2(106, 194)
@@ -2627,7 +2626,6 @@ size_flags_horizontal = 3
 color = Color(0.160784, 0.160784, 0.160784, 1)
 
 [node name="GreenCrotchet" type="Sprite2D" parent="GUILayer/GUI/Control/HBoxContainer/ColorRect5"]
-visible = false
 self_modulate = Color(0, 1, 0, 1)
 z_index = 1
 position = Vector2(99, 171)
@@ -2708,6 +2706,11 @@ size_flags_vertical = 3
 [node name="ColorRect6" type="ColorRect" parent="GUILayer/GUI/Control/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="GUILayer/GUI/Control/VBoxContainer2/ColorRect6"]
+position = Vector2(72, -95)
+scale = Vector2(12.4, 12.4)
+texture = ExtResource("124_l37oc")
 
 [node name="panel_LevelUp" type="Panel" parent="GUILayer/GUI"]
 process_mode = 2

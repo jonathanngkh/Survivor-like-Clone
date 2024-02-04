@@ -1,8 +1,8 @@
+Sprite2D
 ColorRect
 VBoxContainer
 HBoxContainer
 Control
-Sprite2D
 AnimatedSprite2D
 AudioStreamPlayer
 Label
