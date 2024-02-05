@@ -1,4 +1,4 @@
-[gd_scene load_steps=210 format=3 uid="uid://c6uuvcthpociv"]
+[gd_scene load_steps=212 format=3 uid="uid://c6uuvcthpociv"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_6neil"]
 [ext_resource type="PackedScene" uid="uid://c3p0e8l8amscb" path="res://Utility/hurt_box.tscn" id="3_5rw0d"]
@@ -137,9 +137,11 @@
 [ext_resource type="Texture2D" uid="uid://c6j86ms0t6ed8" path="res://Textures/Player/Eleanore/e_spin/Spin17.png" id="91_kuykt"]
 [ext_resource type="Texture2D" uid="uid://4wckykke6qsn" path="res://Textures/Player/Eleanore/e_spin/Spin18.png" id="92_ct7bn"]
 [ext_resource type="AudioStream" uid="uid://8ywk8bylpwfc" path="res://Audio/Music/Sad Violin  Sound Effect HD.mp3" id="119_vxu8k"]
-[ext_resource type="Texture2D" uid="uid://cdgk605rnuio2" path="res://Textures/Notes/pink crotchet.png" id="122_khxc6"]
+[ext_resource type="Texture2D" uid="uid://d3r5xgyxx0c3n" path="res://Textures/Notes/pink head.png" id="122_yghnl"]
 [ext_resource type="Texture2D" uid="uid://dlodfxpgaq163" path="res://Textures/Notes/pink quaver.png" id="123_e3ma3"]
 [ext_resource type="Texture2D" uid="uid://rvxtlqvgg7fs" path="res://Textures/Notes/treble clef.png" id="124_l37oc"]
+[ext_resource type="Texture2D" uid="uid://dw2ocxtjk33bt" path="res://Textures/Notes/orange head.png" id="124_ymq0i"]
+[ext_resource type="Texture2D" uid="uid://d3y3y2bsv2a27" path="res://Textures/Notes/green head.png" id="125_sa8pk"]
 [ext_resource type="AudioStream" uid="uid://msdbh15bbenx" path="res://Audio/MFX/Celesta/003_Celesta_C5_2.5secs.wav" id="137_uwo0j"]
 [ext_resource type="AudioStream" uid="uid://bf4elllpdecix" path="res://Audio/MFX/Celesta/004_Celesta_D5_2.5secs.wav" id="138_g0aop"]
 [ext_resource type="AudioStream" uid="uid://calxsqj8sdt3u" path="res://Audio/MFX/Celesta/005_Celesta_E5_2.5secs.wav" id="139_qn2ie"]
@@ -2090,6 +2092,7 @@ position = Vector2(2, 3)
 shape = SubResource("RectangleShape2D_e4lsk")
 
 [node name="FireArea" parent="." instance=ExtResource("60_r5hxe")]
+visible = false
 
 [node name="Attack" type="Node2D" parent="."]
 
@@ -2219,7 +2222,7 @@ texture = ExtResource("67_dgf1o")
 
 [node name="ProgressBar" type="ProgressBar" parent="GUILayer/GUI/Pianos/Control2"]
 unique_name_in_owner = true
-modulate = Color(0.960784, 0, 0.341176, 1)
+modulate = Color(0.843137, 0.290196, 0.443137, 1)
 layout_mode = 0
 offset_left = 0.293137
 offset_top = 49.0
@@ -2583,12 +2586,11 @@ size_flags_horizontal = 3
 color = Color(0.882353, 0, 0, 1)
 
 [node name="PinkCrotchet" type="Sprite2D" parent="GUILayer/GUI/Control/HBoxContainer/ColorRect"]
+visible = false
 z_index = 1
-position = Vector2(79, 221)
+position = Vector2(126, 78)
 scale = Vector2(13.4375, 12.8447)
-texture = ExtResource("122_khxc6")
-flip_h = true
-flip_v = true
+texture = ExtResource("122_yghnl")
 
 [node name="ColorRect2" type="ColorRect" parent="GUILayer/GUI/Control/HBoxContainer"]
 layout_mode = 2
@@ -2607,13 +2609,11 @@ size_flags_horizontal = 3
 color = Color(0.160784, 0.160784, 0.160784, 1)
 
 [node name="OrangeCrotchet" type="Sprite2D" parent="GUILayer/GUI/Control/HBoxContainer/ColorRect3"]
-self_modulate = Color(1, 1, 0.054902, 1)
+visible = false
 z_index = 1
-position = Vector2(106, 194)
+position = Vector2(140, 53)
 scale = Vector2(13.4375, 12.8447)
-texture = ExtResource("122_khxc6")
-flip_h = true
-flip_v = true
+texture = ExtResource("124_ymq0i")
 
 [node name="ColorRect4" type="ColorRect" parent="GUILayer/GUI/Control/HBoxContainer"]
 layout_mode = 2
@@ -2626,13 +2626,11 @@ size_flags_horizontal = 3
 color = Color(0.160784, 0.160784, 0.160784, 1)
 
 [node name="GreenCrotchet" type="Sprite2D" parent="GUILayer/GUI/Control/HBoxContainer/ColorRect5"]
-self_modulate = Color(0, 1, 0, 1)
+visible = false
 z_index = 1
-position = Vector2(99, 171)
+position = Vector2(145, 30)
 scale = Vector2(13.4375, 12.8447)
-texture = ExtResource("122_khxc6")
-flip_h = true
-flip_v = true
+texture = ExtResource("125_sa8pk")
 
 [node name="ColorRect6" type="ColorRect" parent="GUILayer/GUI/Control/HBoxContainer"]
 layout_mode = 2
@@ -2707,7 +2705,7 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Sprite2D" type="Sprite2D" parent="GUILayer/GUI/Control/VBoxContainer2/ColorRect6"]
+[node name="TrebleClef" type="Sprite2D" parent="GUILayer/GUI/Control/VBoxContainer2/ColorRect6"]
 position = Vector2(72, -95)
 scale = Vector2(12.4, 12.4)
 texture = ExtResource("124_l37oc")
