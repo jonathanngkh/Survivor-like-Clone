@@ -267,6 +267,8 @@ const attack_response_song_thirds = preload("res://Audio/Music/Battle 1_Attack i
 const heal_response_song = preload("res://Audio/Music/Battle 1_Heal (Normal - Variant 2)_110bpm.wav")
 const heal_response_song_thirds = preload("res://Audio/Music/Battle 1_Heal in Thirds (Normal - Variant 1)_110bpm.wav")
 const lightning_response_song = preload("res://Audio/Music/Battle 1_Lightning Bolt (Normal - Variant 3)_110bpm.wav")
+const black_circle = preload("res://Textures/Notes/Black Circle.png")
+const white_circle = preload("res://Textures/Notes/White Circle.png")
 
 var saved_measure = 0
 
@@ -297,6 +299,13 @@ func _on_conductor_beat_incremented():
 	rhythm_bar.get_children()[conductor_node.get_beat_in_bar()-2].color = Color(.16, .16, .16)
 	
 	if conductor_node.get_beat_in_bar() == 1:
+		if conductor_node.get_measure() % 2 == 0:
+			$GUILayer/GUI/RadialRhythmIndicator.set_under_texture(white_circle)
+			$GUILayer/GUI/RadialRhythmIndicator.set_progress_texture(black_circle)
+		else:
+			$GUILayer/GUI/RadialRhythmIndicator.set_under_texture(black_circle)
+			$GUILayer/GUI/RadialRhythmIndicator.set_progress_texture(white_circle)
+		$GUILayer/GUI/RadialRhythmIndicator.value = 1
 		scale = Vector2(1.3, 1.3)
 		if intro_played == false:
 			conductor_node.set_stream(idle_input_song)
@@ -361,6 +370,7 @@ func _on_conductor_beat_incremented():
 		fill_rhythm_block_fast(get_node("%ProgressBar17"))
 		pass
 	if conductor_node.get_beat_in_bar() == 3:
+		$GUILayer/GUI/RadialRhythmIndicator.value = 2
 		if play_speed_song == true:
 			$D5_celesta.play()
 			
@@ -408,6 +418,7 @@ func _on_conductor_beat_incremented():
 			$G5_celesta.play()
 			
 	if conductor_node.get_beat_in_bar() == 5:
+		$GUILayer/GUI/RadialRhythmIndicator.value = 3
 		if play_speed_song == true:
 			$E5_celesta.play()
 			
@@ -424,6 +435,7 @@ func _on_conductor_beat_incremented():
 	if conductor_node.get_beat_in_bar() == 6:
 		pass
 	if conductor_node.get_beat_in_bar() == 7:
+		$GUILayer/GUI/RadialRhythmIndicator.value = 4
 		pass
 		fill_rhythm_block(get_node("%ProgressBar"))
 		
@@ -514,6 +526,7 @@ func _on_conductor_beat_incremented():
 			shoot_tornado()
 			music_state = "responding_attack"
 	if conductor_node.get_beat_in_bar() == 8:
+		#$GUILayer/GUI/RadialRhythmIndicator.value = 0
 		fill_rhythm_block_fast(get_node("%ProgressBar6"))
 		
 		fill_rhythm_block_fast(get_node("%ProgressBar14"))

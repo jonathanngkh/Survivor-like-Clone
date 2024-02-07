@@ -1,4 +1,4 @@
-[gd_scene load_steps=213 format=3 uid="uid://c6uuvcthpociv"]
+[gd_scene load_steps=215 format=3 uid="uid://c6uuvcthpociv"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_6neil"]
 [ext_resource type="PackedScene" uid="uid://c3p0e8l8amscb" path="res://Utility/hurt_box.tscn" id="3_5rw0d"]
@@ -143,6 +143,8 @@
 [ext_resource type="Texture2D" uid="uid://dw2ocxtjk33bt" path="res://Textures/Notes/orange head.png" id="124_ymq0i"]
 [ext_resource type="Texture2D" uid="uid://d3y3y2bsv2a27" path="res://Textures/Notes/green head.png" id="125_sa8pk"]
 [ext_resource type="Texture2D" uid="uid://cswjyjh4d4ys1" path="res://Textures/Notes/44 time.png" id="127_ipl71"]
+[ext_resource type="Texture2D" uid="uid://dumqikjk82h8p" path="res://Textures/Notes/Black Circle.png" id="129_ukk7g"]
+[ext_resource type="Texture2D" uid="uid://b3uqmxv83pogv" path="res://Textures/Notes/White Circle.png" id="130_5n1k4"]
 [ext_resource type="AudioStream" uid="uid://msdbh15bbenx" path="res://Audio/MFX/Celesta/003_Celesta_C5_2.5secs.wav" id="137_uwo0j"]
 [ext_resource type="AudioStream" uid="uid://bf4elllpdecix" path="res://Audio/MFX/Celesta/004_Celesta_D5_2.5secs.wav" id="138_g0aop"]
 [ext_resource type="AudioStream" uid="uid://calxsqj8sdt3u" path="res://Audio/MFX/Celesta/005_Celesta_E5_2.5secs.wav" id="139_qn2ie"]
@@ -2963,6 +2965,19 @@ offset_bottom = 1115.0
 theme_override_fonts/font = ExtResource("11_3sg46")
 theme_override_font_sizes/font_size = 64
 text = "play_tornado_song = "
+
+[node name="RadialRhythmIndicator" type="TextureProgressBar" parent="GUILayer/GUI"]
+layout_mode = 0
+offset_left = 1197.46
+offset_top = 476.039
+offset_right = 1229.46
+offset_bottom = 508.039
+scale = Vector2(5, 5)
+max_value = 4.0
+value = 4.0
+fill_mode = 4
+texture_under = ExtResource("129_ukk7g")
+texture_progress = ExtResource("130_5n1k4")
 
 [node name="sound_ambient_fire" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("56_bdaqp")
