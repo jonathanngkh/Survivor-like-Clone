@@ -6,3 +6,5 @@ res://Enemy/lightning_strike_effect.tscn
 res://Enemy/lightning_strike_effect.gd
 res://Enemy/speedeffect.tscn
 res://Player/player.gd
+res://note_ui.tscn
+res://note_ui.gd

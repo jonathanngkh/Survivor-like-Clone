@@ -1,6 +1,6 @@
+Sprite2D
 TextureProgressBar
 ProgressBar
-Sprite2D
 ColorRect
 VBoxContainer
 HBoxContainer
@@ -12,4 +12,3 @@ HSlider
 State
 CollisionShape2D
 Area2D
-Node2D

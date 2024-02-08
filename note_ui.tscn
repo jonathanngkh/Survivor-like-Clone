@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://deyykxumxdvy4"]
+
+[ext_resource type="Texture2D" uid="uid://d2wo38lxx8mtl" path="res://Textures/Notes/yellow head.png" id="1_354h7"]
+[ext_resource type="Script" path="res://note_ui.gd" id="1_uqm23"]
+
+[node name="NoteUI" type="Node2D"]
+script = ExtResource("1_uqm23")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_354h7")

@@ -141,7 +141,7 @@
 [ext_resource type="Texture2D" uid="uid://dlodfxpgaq163" path="res://Textures/Notes/pink quaver.png" id="123_e3ma3"]
 [ext_resource type="Texture2D" uid="uid://rvxtlqvgg7fs" path="res://Textures/Notes/treble clef.png" id="124_l37oc"]
 [ext_resource type="Texture2D" uid="uid://dw2ocxtjk33bt" path="res://Textures/Notes/orange head.png" id="124_ymq0i"]
-[ext_resource type="Texture2D" uid="uid://d3y3y2bsv2a27" path="res://Textures/Notes/green head.png" id="125_sa8pk"]
+[ext_resource type="Texture2D" uid="uid://d2wo38lxx8mtl" path="res://Textures/Notes/yellow head.png" id="125_nf7yt"]
 [ext_resource type="Texture2D" uid="uid://cswjyjh4d4ys1" path="res://Textures/Notes/44 time.png" id="127_ipl71"]
 [ext_resource type="Texture2D" uid="uid://dumqikjk82h8p" path="res://Textures/Notes/Black Circle.png" id="129_ukk7g"]
 [ext_resource type="Texture2D" uid="uid://b3uqmxv83pogv" path="res://Textures/Notes/White Circle.png" id="130_5n1k4"]
@@ -2636,7 +2636,7 @@ color = Color(0.160784, 0.160784, 0.160784, 1)
 z_index = 1
 position = Vector2(107, 130)
 scale = Vector2(9, 8.603)
-texture = ExtResource("125_sa8pk")
+texture = ExtResource("125_nf7yt")
 offset = Vector2(2.08792, -5.97839)
 
 [node name="ColorRect6" type="ColorRect" parent="GUILayer/GUI/Control/HBoxContainer"]
