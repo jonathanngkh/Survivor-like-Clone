@@ -2569,92 +2569,80 @@ mouse_filter = 2
 fill_mode = 2
 show_percentage = false
 
-[node name="Control" type="Control" parent="GUILayer/GUI"]
+[node name="StaffControl" type="Control" parent="GUILayer/GUI"]
 anchors_preset = 0
 offset_left = 393.0
 offset_top = 864.0
 offset_right = 2169.0
 offset_bottom = 1199.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GUILayer/GUI/Control"]
+[node name="HBoxContainer" type="HBoxContainer" parent="GUILayer/GUI/StaffControl"]
 modulate = Color(1, 1, 1, 0.678431)
 layout_mode = 0
 offset_top = -32.0
 offset_right = 2111.0
 offset_bottom = 335.0
 
-[node name="ColorRect" type="ColorRect" parent="GUILayer/GUI/Control/HBoxContainer"]
+[node name="ColorRect" type="ColorRect" parent="GUILayer/GUI/StaffControl/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.882353, 0, 0, 1)
 
-[node name="PinkCrotchet" type="Sprite2D" parent="GUILayer/GUI/Control/HBoxContainer/ColorRect"]
-z_index = 1
-position = Vector2(126, 116)
-scale = Vector2(9, 8.603)
-texture = ExtResource("122_yghnl")
-
-[node name="PinkLowC" type="Sprite2D" parent="GUILayer/GUI/Control/HBoxContainer/ColorRect"]
-z_index = 1
-position = Vector2(126, 250)
-scale = Vector2(9, 8.603)
-texture = ExtResource("122_yghnl")
-
-[node name="ColorRect2" type="ColorRect" parent="GUILayer/GUI/Control/HBoxContainer"]
+[node name="ColorRect2" type="ColorRect" parent="GUILayer/GUI/StaffControl/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.160784, 0.160784, 0.160784, 1)
 
-[node name="PinkQuaver" type="Sprite2D" parent="GUILayer/GUI/Control/HBoxContainer/ColorRect2"]
+[node name="PinkQuaver" type="Sprite2D" parent="GUILayer/GUI/StaffControl/HBoxContainer/ColorRect2"]
 visible = false
 position = Vector2(312, -344)
 scale = Vector2(16.5, 15.7721)
 texture = ExtResource("123_e3ma3")
 
-[node name="ColorRect3" type="ColorRect" parent="GUILayer/GUI/Control/HBoxContainer"]
+[node name="ColorRect3" type="ColorRect" parent="GUILayer/GUI/StaffControl/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.160784, 0.160784, 0.160784, 1)
 
-[node name="OrangeCrotchet" type="Sprite2D" parent="GUILayer/GUI/Control/HBoxContainer/ColorRect3"]
+[node name="OrangeCrotchet" type="Sprite2D" parent="GUILayer/GUI/StaffControl/HBoxContainer/ColorRect3"]
 z_index = 1
 position = Vector2(127, 97)
 scale = Vector2(9, 8.603)
 texture = ExtResource("124_ymq0i")
 
-[node name="ColorRect4" type="ColorRect" parent="GUILayer/GUI/Control/HBoxContainer"]
+[node name="ColorRect4" type="ColorRect" parent="GUILayer/GUI/StaffControl/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.160784, 0.160784, 0.160784, 1)
 
-[node name="ColorRect5" type="ColorRect" parent="GUILayer/GUI/Control/HBoxContainer"]
+[node name="ColorRect5" type="ColorRect" parent="GUILayer/GUI/StaffControl/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.160784, 0.160784, 0.160784, 1)
 
-[node name="GreenCrotchet" type="Sprite2D" parent="GUILayer/GUI/Control/HBoxContainer/ColorRect5"]
+[node name="GreenCrotchet" type="Sprite2D" parent="GUILayer/GUI/StaffControl/HBoxContainer/ColorRect5"]
 z_index = 1
 position = Vector2(107, 130)
 scale = Vector2(9, 8.603)
 texture = ExtResource("125_nf7yt")
 offset = Vector2(2.08792, -5.97839)
 
-[node name="ColorRect6" type="ColorRect" parent="GUILayer/GUI/Control/HBoxContainer"]
+[node name="ColorRect6" type="ColorRect" parent="GUILayer/GUI/StaffControl/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.160784, 0.160784, 0.160784, 1)
 
-[node name="ColorRect7" type="ColorRect" parent="GUILayer/GUI/Control/HBoxContainer"]
+[node name="ColorRect7" type="ColorRect" parent="GUILayer/GUI/StaffControl/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.160784, 0.160784, 0.160784, 1)
 
-[node name="ColorRect8" type="ColorRect" parent="GUILayer/GUI/Control/HBoxContainer"]
+[node name="ColorRect8" type="ColorRect" parent="GUILayer/GUI/StaffControl/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.160784, 0.160784, 0.160784, 1)
 
-[node name="WhiteStaffBG" type="ColorRect" parent="GUILayer/GUI/Control"]
+[node name="WhiteStaffBG" type="ColorRect" parent="GUILayer/GUI/StaffControl"]
 layout_mode = 2
 offset_left = -337.0
 offset_top = 10.0
@@ -2662,7 +2650,7 @@ offset_right = 2111.0
 offset_bottom = 299.0
 size_flags_vertical = 3
 
-[node name="StaffLinesBG" type="ColorRect" parent="GUILayer/GUI/Control"]
+[node name="StaffLinesBG" type="ColorRect" parent="GUILayer/GUI/StaffControl"]
 layout_mode = 2
 offset_left = -337.0
 offset_top = 74.0
@@ -2671,114 +2659,123 @@ offset_bottom = 234.0
 size_flags_vertical = 3
 color = Color(0, 0, 0, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GUILayer/GUI/Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GUILayer/GUI/StaffControl"]
 layout_mode = 0
 offset_top = 43.0
 offset_right = 2111.0
 offset_bottom = 269.0
 
-[node name="ColorRect" type="ColorRect" parent="GUILayer/GUI/Control/VBoxContainer"]
+[node name="ColorRect" type="ColorRect" parent="GUILayer/GUI/StaffControl/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ColorRect2" type="ColorRect" parent="GUILayer/GUI/Control/VBoxContainer"]
+[node name="ColorRect2" type="ColorRect" parent="GUILayer/GUI/StaffControl/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ColorRect3" type="ColorRect" parent="GUILayer/GUI/Control/VBoxContainer"]
+[node name="ColorRect3" type="ColorRect" parent="GUILayer/GUI/StaffControl/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ColorRect4" type="ColorRect" parent="GUILayer/GUI/Control/VBoxContainer"]
+[node name="ColorRect4" type="ColorRect" parent="GUILayer/GUI/StaffControl/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ColorRect5" type="ColorRect" parent="GUILayer/GUI/Control/VBoxContainer"]
+[node name="ColorRect5" type="ColorRect" parent="GUILayer/GUI/StaffControl/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ColorRect6" type="ColorRect" parent="GUILayer/GUI/Control/VBoxContainer"]
+[node name="ColorRect6" type="ColorRect" parent="GUILayer/GUI/StaffControl/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="LedgerLine" type="ColorRect" parent="GUILayer/GUI/Control"]
-layout_mode = 2
-offset_left = 73.0
-offset_top = 268.0
-offset_right = 152.0
-offset_bottom = 272.0
-size_flags_vertical = 3
-color = Color(0, 0, 0, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="GUILayer/GUI/Control"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="GUILayer/GUI/StaffControl"]
 layout_mode = 0
 offset_left = -337.0
 offset_top = 43.0
 offset_bottom = 269.0
 
-[node name="ColorRect" type="ColorRect" parent="GUILayer/GUI/Control/VBoxContainer2"]
+[node name="ColorRect" type="ColorRect" parent="GUILayer/GUI/StaffControl/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ColorRect2" type="ColorRect" parent="GUILayer/GUI/Control/VBoxContainer2"]
+[node name="ColorRect2" type="ColorRect" parent="GUILayer/GUI/StaffControl/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ColorRect3" type="ColorRect" parent="GUILayer/GUI/Control/VBoxContainer2"]
+[node name="ColorRect3" type="ColorRect" parent="GUILayer/GUI/StaffControl/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ColorRect4" type="ColorRect" parent="GUILayer/GUI/Control/VBoxContainer2"]
+[node name="ColorRect4" type="ColorRect" parent="GUILayer/GUI/StaffControl/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ColorRect5" type="ColorRect" parent="GUILayer/GUI/Control/VBoxContainer2"]
+[node name="ColorRect5" type="ColorRect" parent="GUILayer/GUI/StaffControl/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ColorRect6" type="ColorRect" parent="GUILayer/GUI/Control/VBoxContainer2"]
+[node name="ColorRect6" type="ColorRect" parent="GUILayer/GUI/StaffControl/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="TrebleClef" type="Sprite2D" parent="GUILayer/GUI/Control/VBoxContainer2/ColorRect6"]
+[node name="TrebleClef" type="Sprite2D" parent="GUILayer/GUI/StaffControl/VBoxContainer2/ColorRect6"]
 position = Vector2(99, -73)
 scale = Vector2(9.39999, 9.39999)
 texture = ExtResource("124_l37oc")
 
-[node name="44TimeSig" type="Sprite2D" parent="GUILayer/GUI/Control/VBoxContainer2/ColorRect6"]
-position = Vector2(448.119, -52.4903)
+[node name="44TimeSig" type="Sprite2D" parent="GUILayer/GUI/StaffControl/VBoxContainer2/ColorRect6"]
+position = Vector2(448.119, -53.4903)
 scale = Vector2(4.68693, 4.73186)
 texture = ExtResource("127_ipl71")
 offset = Vector2(-45.79, -5.39108)
 
-[node name="MeasureLineStart" type="ColorRect" parent="GUILayer/GUI"]
+[node name="MeasureLineStart" type="ColorRect" parent="GUILayer/GUI/StaffControl"]
 layout_mode = 2
-anchor_left = -0.230691
+anchor_left = -0.230856
 anchor_top = -0.483105
-anchor_right = -0.230691
-anchor_bottom = -0.376855
-offset_left = 646.862
-offset_top = 1636.67
-offset_right = 659.862
-offset_bottom = 1640.67
+anchor_right = -0.230856
+anchor_bottom = -0.0383282
+offset_left = 73.0
+offset_top = 238.84
+offset_right = 86.0
+offset_bottom = 242.84
 size_flags_vertical = 3
 color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="MeasureLineEnd" type="ColorRect" parent="GUILayer/GUI"]
+[node name="MeasureLineEnd" type="ColorRect" parent="GUILayer/GUI/StaffControl"]
 layout_mode = 2
-anchor_left = 0.72027
+anchor_left = 0.720409
 anchor_top = -0.483105
-anchor_right = 0.72027
-anchor_bottom = -0.376855
-offset_left = 646.862
-offset_top = 1636.67
-offset_right = 659.862
-offset_bottom = 1640.67
+anchor_right = 0.720409
+anchor_bottom = -0.0383282
+offset_left = 818.553
+offset_top = 238.84
+offset_right = 831.553
+offset_bottom = 242.84
 size_flags_vertical = 3
 color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
+
+[node name="LedgerLine" type="ColorRect" parent="GUILayer/GUI/StaffControl"]
+offset_left = 75.0
+offset_top = 267.0
+offset_right = 150.0
+offset_bottom = 272.0
+color = Color(0, 0, 0, 1)
+
+[node name="PinkLowC" type="Sprite2D" parent="GUILayer/GUI/StaffControl"]
+z_index = 1
+position = Vector2(676, 199)
+scale = Vector2(9, 8.603)
+texture = ExtResource("122_yghnl")
+
+[node name="PinkCrotchet" type="Sprite2D" parent="GUILayer/GUI/StaffControl"]
+z_index = 1
+position = Vector2(126, 217.716)
+scale = Vector2(9, 8.603)
+texture = ExtResource("122_yghnl")
 
 [node name="panel_LevelUp" type="Panel" parent="GUILayer/GUI"]
 process_mode = 2

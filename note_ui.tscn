@@ -3,8 +3,19 @@
 [ext_resource type="Texture2D" uid="uid://d2wo38lxx8mtl" path="res://Textures/Notes/yellow head.png" id="1_354h7"]
 [ext_resource type="Script" path="res://note_ui.gd" id="1_uqm23"]
 
-[node name="NoteUI" type="Node2D"]
+[node name="NoteUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_uqm23")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -53.0
+offset_top = 52.0
+offset_right = 26.0
+offset_bottom = 57.0
+color = Color(0, 0, 0, 1)
+
+[node name="NoteHead" type="Sprite2D" parent="."]
+position = Vector2(0, 0.231758)
+scale = Vector2(9, 9)
 texture = ExtResource("1_354h7")

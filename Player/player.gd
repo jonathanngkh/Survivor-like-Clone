@@ -74,6 +74,7 @@ var additional_attacks = 0
 @onready var debug_label_1 = $GUILayer/GUI/debug_label1
 @onready var beat1guide = $beat1guide
 
+
 func _ready():
 	conductor_node.call_deferred("play_from_beat", 1, 0)
 	health_bar.max_value = max_hp
@@ -272,7 +273,7 @@ const white_circle = preload("res://Textures/Notes/White Circle.png")
 
 var saved_measure = 0
 
-@onready var rhythm_bar = $GUILayer/GUI/Control/HBoxContainer
+@onready var rhythm_bar = $GUILayer/GUI/StaffControl/HBoxContainer
 
 #GUILayer/GUI/HBoxContainer/ColorRect/ProgressBar
 

@@ -8,3 +8,5 @@ res://Enemy/speedeffect.tscn
 res://Player/player.gd
 res://note_ui.tscn
 res://note_ui.gd
+res://Enemy/enemy.tscn
+res://Enemy/enemy_skeleton.tscn

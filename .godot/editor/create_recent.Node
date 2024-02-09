@@ -1,10 +1,10 @@
+Control
+ColorRect
 Sprite2D
 TextureProgressBar
 ProgressBar
-ColorRect
 VBoxContainer
 HBoxContainer
-Control
 AnimatedSprite2D
 AudioStreamPlayer
 Label
