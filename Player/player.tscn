@@ -1,4 +1,4 @@
-[gd_scene load_steps=215 format=3 uid="uid://c6uuvcthpociv"]
+[gd_scene load_steps=216 format=3 uid="uid://c6uuvcthpociv"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_6neil"]
 [ext_resource type="PackedScene" uid="uid://c3p0e8l8amscb" path="res://Utility/hurt_box.tscn" id="3_5rw0d"]
@@ -137,6 +137,7 @@
 [ext_resource type="Texture2D" uid="uid://c6j86ms0t6ed8" path="res://Textures/Player/Eleanore/e_spin/Spin17.png" id="91_kuykt"]
 [ext_resource type="Texture2D" uid="uid://4wckykke6qsn" path="res://Textures/Player/Eleanore/e_spin/Spin18.png" id="92_ct7bn"]
 [ext_resource type="AudioStream" uid="uid://8ywk8bylpwfc" path="res://Audio/Music/Sad Violin  Sound Effect HD.mp3" id="119_vxu8k"]
+[ext_resource type="Script" path="res://Player/staff_control.gd" id="122_xlb7d"]
 [ext_resource type="Texture2D" uid="uid://d3r5xgyxx0c3n" path="res://Textures/Notes/pink head.png" id="122_yghnl"]
 [ext_resource type="Texture2D" uid="uid://dlodfxpgaq163" path="res://Textures/Notes/pink quaver.png" id="123_e3ma3"]
 [ext_resource type="Texture2D" uid="uid://rvxtlqvgg7fs" path="res://Textures/Notes/treble clef.png" id="124_l37oc"]
@@ -2605,6 +2606,7 @@ size_flags_horizontal = 3
 color = Color(0.160784, 0.160784, 0.160784, 1)
 
 [node name="OrangeCrotchet" type="Sprite2D" parent="GUILayer/GUI/StaffControl/HBoxContainer/ColorRect3"]
+visible = false
 z_index = 1
 position = Vector2(127, 97)
 scale = Vector2(9, 8.603)
@@ -2621,6 +2623,7 @@ size_flags_horizontal = 3
 color = Color(0.160784, 0.160784, 0.160784, 1)
 
 [node name="GreenCrotchet" type="Sprite2D" parent="GUILayer/GUI/StaffControl/HBoxContainer/ColorRect5"]
+visible = false
 z_index = 1
 position = Vector2(107, 130)
 scale = Vector2(9, 8.603)
@@ -2759,6 +2762,7 @@ color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="LedgerLine" type="ColorRect" parent="GUILayer/GUI/StaffControl"]
+visible = false
 offset_left = 75.0
 offset_top = 267.0
 offset_right = 150.0
@@ -2766,16 +2770,24 @@ offset_bottom = 272.0
 color = Color(0, 0, 0, 1)
 
 [node name="PinkLowC" type="Sprite2D" parent="GUILayer/GUI/StaffControl"]
+visible = false
 z_index = 1
 position = Vector2(676, 199)
 scale = Vector2(9, 8.603)
 texture = ExtResource("122_yghnl")
 
 [node name="PinkCrotchet" type="Sprite2D" parent="GUILayer/GUI/StaffControl"]
+visible = false
 z_index = 1
 position = Vector2(126, 217.716)
 scale = Vector2(9, 8.603)
 texture = ExtResource("122_yghnl")
+
+[node name="NoteHolder" type="Control" parent="GUILayer/GUI/StaffControl"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("122_xlb7d")
 
 [node name="panel_LevelUp" type="Panel" parent="GUILayer/GUI"]
 process_mode = 2

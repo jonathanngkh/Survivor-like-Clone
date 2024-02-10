@@ -10,3 +10,5 @@ res://note_ui.tscn
 res://note_ui.gd
 res://Enemy/enemy.tscn
 res://Enemy/enemy_skeleton.tscn
+res://Player/staff_control.gd
+res://Utility/enemy_spawner.tscn
