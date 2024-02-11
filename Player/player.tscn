@@ -137,13 +137,13 @@
 [ext_resource type="Texture2D" uid="uid://c6j86ms0t6ed8" path="res://Textures/Player/Eleanore/e_spin/Spin17.png" id="91_kuykt"]
 [ext_resource type="Texture2D" uid="uid://4wckykke6qsn" path="res://Textures/Player/Eleanore/e_spin/Spin18.png" id="92_ct7bn"]
 [ext_resource type="AudioStream" uid="uid://8ywk8bylpwfc" path="res://Audio/Music/Sad Violin  Sound Effect HD.mp3" id="119_vxu8k"]
-[ext_resource type="Script" path="res://Player/staff_control.gd" id="122_xlb7d"]
 [ext_resource type="Texture2D" uid="uid://d3r5xgyxx0c3n" path="res://Textures/Notes/pink head.png" id="122_yghnl"]
 [ext_resource type="Texture2D" uid="uid://dlodfxpgaq163" path="res://Textures/Notes/pink quaver.png" id="123_e3ma3"]
 [ext_resource type="Texture2D" uid="uid://rvxtlqvgg7fs" path="res://Textures/Notes/treble clef.png" id="124_l37oc"]
 [ext_resource type="Texture2D" uid="uid://dw2ocxtjk33bt" path="res://Textures/Notes/orange head.png" id="124_ymq0i"]
 [ext_resource type="Texture2D" uid="uid://d2wo38lxx8mtl" path="res://Textures/Notes/yellow head.png" id="125_nf7yt"]
 [ext_resource type="Texture2D" uid="uid://cswjyjh4d4ys1" path="res://Textures/Notes/44 time.png" id="127_ipl71"]
+[ext_resource type="Script" path="res://Player/note_spawner.gd" id="128_0xrau"]
 [ext_resource type="Texture2D" uid="uid://dumqikjk82h8p" path="res://Textures/Notes/Black Circle.png" id="129_ukk7g"]
 [ext_resource type="Texture2D" uid="uid://b3uqmxv83pogv" path="res://Textures/Notes/White Circle.png" id="130_5n1k4"]
 [ext_resource type="AudioStream" uid="uid://msdbh15bbenx" path="res://Audio/MFX/Celesta/003_Celesta_C5_2.5secs.wav" id="137_uwo0j"]
@@ -2763,6 +2763,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="LedgerLine" type="ColorRect" parent="GUILayer/GUI/StaffControl"]
 visible = false
+layout_mode = 0
 offset_left = 75.0
 offset_top = 267.0
 offset_right = 150.0
@@ -2772,7 +2773,7 @@ color = Color(0, 0, 0, 1)
 [node name="PinkLowC" type="Sprite2D" parent="GUILayer/GUI/StaffControl"]
 visible = false
 z_index = 1
-position = Vector2(676, 199)
+position = Vector2(674.319, 104)
 scale = Vector2(9, 8.603)
 texture = ExtResource("122_yghnl")
 
@@ -2787,7 +2788,7 @@ texture = ExtResource("122_yghnl")
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("122_xlb7d")
+script = ExtResource("128_0xrau")
 
 [node name="panel_LevelUp" type="Panel" parent="GUILayer/GUI"]
 process_mode = 2

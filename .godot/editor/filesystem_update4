@@ -12,3 +12,4 @@ res://Enemy/enemy.tscn
 res://Enemy/enemy_skeleton.tscn
 res://Player/staff_control.gd
 res://Utility/enemy_spawner.tscn
+res://Player/note_spawner.gd
