@@ -94,11 +94,14 @@ func _ready():
 var notes_pressed = []
 
 var notes_played = []
+
 func get_notes_played():
 	return notes_played
 	
 func reset_notes_played():
 	notes_played = []
+	for note_uis in $GUILayer/GUI/StaffControl/NoteHolder.get_children():
+		note_uis.queue_free()
 
 func add_to_notes_played(note_played):
 	notes_played.append([note_played, conductor_node.closest_beat_in_bar(conductor_node.get_song_position_in_seconds()).x, conductor_node.get_song_position_in_seconds(), conductor_node.get_measure()])
@@ -450,7 +453,7 @@ func _on_conductor_beat_incremented():
 			var heal_sprite = heal_effect.instantiate()
 			#heal_sprite.global_position = global_position
 			get_parent().call_deferred("add_child", heal_sprite)
-			notes_played = []
+			reset_notes_played()
 			conductor_node.set_stream(heal_response_song)
 			conductor_node.play_with_beat_offset(8)
 			hp += 40
@@ -466,7 +469,7 @@ func _on_conductor_beat_incremented():
 			heal_sprite.scale = Vector2(3, 3)
 			#heal_sprite.global_position = global_position
 			get_parent().call_deferred("add_child", heal_sprite)
-			notes_played = []
+			reset_notes_played()
 			conductor_node.set_stream(heal_response_song_thirds)
 			conductor_node.play_with_beat_offset(8)
 			hp += 80
@@ -480,7 +483,7 @@ func _on_conductor_beat_incremented():
 			get_parent().call_deferred("add_child", speed_sprite)
 			saved_measure = conductor_node.get_measure()
 			$walk_success_sound.play()
-			notes_played = []
+			reset_notes_played()
 			conductor_node.set_stream(walk_response_song_thirds)
 			conductor_node.play_with_beat_offset(8)
 			music_state = "responding_walk_thirds"
@@ -492,7 +495,7 @@ func _on_conductor_beat_incremented():
 			saved_measure = conductor_node.get_measure()
 			$walk_success_sound.play()
 			# ADD SPEED BUFF ANIMATION AND SOUND ON BEAT 4
-			notes_played = []
+			reset_notes_played()
 			conductor_node.set_stream(walk_response_song)
 			conductor_node.play_with_beat_offset(8)
 			music_state = "responding_walk"
@@ -500,7 +503,7 @@ func _on_conductor_beat_incremented():
 		if judge_song(attack_song_in_quavers) == "correct":
 			saved_measure = conductor_node.get_measure()
 			$attack_success_sound.play()
-			notes_played = []
+			reset_notes_played()
 			conductor_node.set_stream(attack_response_song)
 			conductor_node.play_with_beat_offset(8)
 			shoot_tornado()
@@ -512,7 +515,7 @@ func _on_conductor_beat_incremented():
 		if judge_song(attack_song_in_thirds) == "correct":
 			saved_measure = conductor_node.get_measure()
 			$attack_success_sound.play()
-			notes_played = []
+			reset_notes_played()
 			conductor_node.set_stream(attack_response_song_thirds)
 			conductor_node.play_with_beat_offset(8)
 			shoot_tornado()
@@ -544,6 +547,7 @@ func _on_conductor_beat_incremented():
 			music_state = "idle" # ideally, set to idle on beat 8.5 or 8.75. use this for now.
 
 func _on_conductor_measure_incremented():
+	print("noteholder size: ", $GUILayer/GUI/StaffControl/NoteHolder.get_child_count())
 	for note in $GUILayer/GUI/StaffControl/NoteHolder.get_children():
 		note.queue_free()
 		#pass
@@ -568,11 +572,13 @@ func update_song():
 			# clear notes played on idle reset, except for early beat 1 notes 
 			var notes_to_keep = []
 			for note in notes_played:
-				print(note)
+				print("note_played: ", note[0], ", ", note[1])
+				# note[0] is pitch, note[1] is closest beat in bar, note[2] is time of note played, note[3] is measure of note played
 				if note[1] == 1 and note[2] > conductor_node.get_sec_per_beat() * (conductor_node.get_beats_per_bar() - 0.5):
 					print('fast enough?')
 					notes_to_keep.append(note)
-			notes_played = []
+			reset_notes_played()
+			
 			for note in notes_to_keep:
 				if conductor_node.get_measure() - note[3] == 2:
 					pass

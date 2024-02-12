@@ -81,3 +81,5 @@ func set_x_based_on_beat():
 			position.x = 1501
 		7:
 			position.x = 1776
+		8:
+			position.x = 2051
