@@ -284,6 +284,14 @@ var saved_measure = 0
 
 #GUILayer/GUI/HBoxContainer/ColorRect/ProgressBar
 
+func fill_radial_rhythm_indicator():
+	var tween = create_tween()
+	#tween.tween_property($GUILayer/GUI/RadialRhythmIndicator, "value", 0, 2.1818).from(100).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
+	if conductor_node.get_measure() % 2 == 0:
+		tween.tween_property($GUILayer/GUI/RadialRhythmIndicator, "value", 0, 2.1818).from(100).set_trans(Tween.TRANS_LINEAR)
+	else:
+		tween.tween_property($GUILayer/GUI/RadialRhythmIndicator, "value", 100, 2.1818).from(0).set_trans(Tween.TRANS_LINEAR)
+
 func fill_rhythm_block(block_node):
 	var block_progress_bar = block_node
 	var tween = create_tween()
@@ -293,6 +301,14 @@ func fill_rhythm_block_fast(block_node):
 	var block_progress_bar = block_node
 	var tween = create_tween()
 	tween.tween_property(block_progress_bar, "value", 100, 0.2727).from(0).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
+
+func flip_radial_rhythm_colors_on_alternate_measure():
+	if conductor_node.get_measure() % 2 == 0:
+		$GUILayer/GUI/RadialRhythmIndicator.set_under_texture(white_circle)
+		$GUILayer/GUI/RadialRhythmIndicator.set_progress_texture(black_circle)
+	else:
+		$GUILayer/GUI/RadialRhythmIndicator.set_under_texture(black_circle)
+		$GUILayer/GUI/RadialRhythmIndicator.set_progress_texture(white_circle)
 	
 const heal_effect = preload("res://Enemy/healeffect.tscn")
 const speed_effect = preload("res://Enemy/speedeffect.tscn")
@@ -307,13 +323,9 @@ func _on_conductor_beat_incremented():
 	rhythm_bar.get_children()[conductor_node.get_beat_in_bar()-2].color = Color(.16, .16, .16)
 	
 	if conductor_node.get_beat_in_bar() == 1:
-		if conductor_node.get_measure() % 2 == 0:
-			$GUILayer/GUI/RadialRhythmIndicator.set_under_texture(white_circle)
-			$GUILayer/GUI/RadialRhythmIndicator.set_progress_texture(black_circle)
-		else:
-			$GUILayer/GUI/RadialRhythmIndicator.set_under_texture(black_circle)
-			$GUILayer/GUI/RadialRhythmIndicator.set_progress_texture(white_circle)
-		$GUILayer/GUI/RadialRhythmIndicator.value = 1
+		fill_radial_rhythm_indicator()
+		flip_radial_rhythm_colors_on_alternate_measure()
+		#$GUILayer/GUI/RadialRhythmIndicator.value = 4
 		scale = Vector2(1.3, 1.3)
 		if intro_played == false:
 			conductor_node.set_stream(idle_input_song)
@@ -378,7 +390,7 @@ func _on_conductor_beat_incremented():
 		fill_rhythm_block_fast(get_node("%ProgressBar17"))
 		pass
 	if conductor_node.get_beat_in_bar() == 3:
-		$GUILayer/GUI/RadialRhythmIndicator.value = 2
+		#$GUILayer/GUI/RadialRhythmIndicator.value = 3
 		if play_speed_song == true:
 			$D5_celesta.play()
 			
@@ -426,7 +438,7 @@ func _on_conductor_beat_incremented():
 			$G5_celesta.play()
 			
 	if conductor_node.get_beat_in_bar() == 5:
-		$GUILayer/GUI/RadialRhythmIndicator.value = 3
+		#$GUILayer/GUI/RadialRhythmIndicator.value = 2
 		if play_speed_song == true:
 			$E5_celesta.play()
 			
@@ -443,7 +455,7 @@ func _on_conductor_beat_incremented():
 	if conductor_node.get_beat_in_bar() == 6:
 		pass
 	if conductor_node.get_beat_in_bar() == 7:
-		$GUILayer/GUI/RadialRhythmIndicator.value = 4
+		#$GUILayer/GUI/RadialRhythmIndicator.value = 1
 		pass
 		fill_rhythm_block(get_node("%ProgressBar"))
 		
