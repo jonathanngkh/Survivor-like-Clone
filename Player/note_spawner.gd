@@ -7,18 +7,19 @@ func _ready():
 	pass
 
 func _process(delta):
-	#for note in player.get_notes_played():
-		#var note_spawn = note_ui_scene.instantiate()
-		#note_spawn.set_parameters(note[0], int(note[1]))
-		#add_child(note_spawn)
+	for note in player.get_notes_played():
+		var note_spawn = note_ui_scene.instantiate()
+		note_spawn.set_parameters(note[0], int(note[1]))
+		add_child(note_spawn)
 	pass
 	
 func _input(event):
-	if event is InputEventKey or event is InputEventMIDI:
-		for note in player.get_notes_played():
-			var note_spawn = note_ui_scene.instantiate()
-			note_spawn.set_parameters(note[0], int(note[1]))
-			add_child(note_spawn)
+	pass
+	#if event is InputEventKey or event is InputEventMIDI:
+		#for note in player.get_notes_played():
+			#var note_spawn = note_ui_scene.instantiate()
+			#note_spawn.set_parameters(note[0], int(note[1]))
+			#add_child(note_spawn)
 		#if event.keycode == KEY_1:
 			#var c_note = note_ui_scene.instantiate()
 			#var beat_in_bar = player.conductor_node.get_beat_in_bar()

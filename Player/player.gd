@@ -76,6 +76,7 @@ var additional_attacks = 0
 
 
 func _ready():
+	music_state = "intro_playing"
 	conductor_node.call_deferred("play_from_beat", 1, 0)
 	health_bar.max_value = max_hp
 	health_bar.value = hp
@@ -100,14 +101,15 @@ func get_notes_played():
 	
 func reset_notes_played():
 	notes_played = []
-	for note_uis in $GUILayer/GUI/StaffControl/NoteHolder.get_children():
-		note_uis.queue_free()
+	for note_ui in $GUILayer/GUI/StaffControl/NoteHolder.get_children():
+		note_ui.queue_free()
 
 func add_to_notes_played(note_played):
-	notes_played.append([note_played, conductor_node.closest_beat_in_bar(conductor_node.get_song_position_in_seconds()).x, conductor_node.get_song_position_in_seconds(), conductor_node.get_measure()])
-	$GUILayer/GUI/debug_label6.text = "closest beat played on: " +  str(conductor_node.closest_beat_in_song(conductor_node.get_song_position_in_seconds()).x)
-	$GUILayer/GUI/debug_label7.text = "time off beat: " +  str(conductor_node.closest_beat_in_song(conductor_node.get_song_position_in_seconds()).y)
-	$GUILayer/GUI/debug_label8.text = "beat_in_bar_played_on: " +  str(conductor_node.closest_beat_in_bar(conductor_node.get_song_position_in_seconds()).x)
+	if music_state == "idle":
+		notes_played.append([note_played, conductor_node.closest_beat_in_bar(conductor_node.get_song_position_in_seconds()).x, conductor_node.get_song_position_in_seconds(), conductor_node.get_measure()])
+	#$GUILayer/GUI/debug_label6.text = "closest beat played on: " +  str(conductor_node.closest_beat_in_song(conductor_node.get_song_position_in_seconds()).x)
+	#$GUILayer/GUI/debug_label7.text = "time off beat: " +  str(conductor_node.closest_beat_in_song(conductor_node.get_song_position_in_seconds()).y)
+	#$GUILayer/GUI/debug_label8.text = "beat_in_bar_played_on: " +  str(conductor_node.closest_beat_in_bar(conductor_node.get_song_position_in_seconds()).x)
 
 var valid_notes = [[64, 1], [62, 2], [60,3], [60, 5], [64, 3], [64, 4], [60, 1], [62, 3], [64, 5], [65, 3], [67, 5], [67, 1], [67, 3], [67, 4], [65, 2]]
  
@@ -160,7 +162,8 @@ func _input(input_event): #
 		#_print_midi_info(input_event)
 		#if input_event.message == 9: #noteOn
 		# this works to prevent notes during response phase, but issue with early 1 beats applies. SOLVED. set state to idle on last beat if measure == saved measure + 1
-		if input_event.message == 9 and music_state == "idle": #noteOn
+		if input_event.message == 9:
+		#if input_event.message == 9 and music_state == "idle": #noteOn
 			if check_note_is_valid([input_event.pitch, int(conductor_node.closest_beat_in_bar(conductor_node.get_song_position_in_seconds()).x)]) == true:
 				add_to_notes_played(input_event.pitch)
 				if input_event.pitch == 60: # C4
@@ -184,7 +187,8 @@ func _input(input_event): #
 				if input_event.pitch == 76: # E5
 					$E5_lute.play()
 			else: # invalid_note
-				$wrong_sound.play()
+				#$wrong_sound.play()
+				pass
 			#add_to_notes_held(input_event.pitch)
 			#add_to_notes_played(input_event.pitch)
 		if input_event.message == 8: #noteOff
@@ -625,11 +629,11 @@ func judge_song(song_to_judge):
 
 
 func _physics_process(_delta):
-	$GUILayer/GUI/debug_label1.text = ""
+	$GUILayer/GUI/debug_label1.text = "music_state: " + music_state
 	update_song()
 	$GUILayer/GUI/debug_label10.text = "measure: " +  str(conductor_node.get_measure())
 	$GUILayer/GUI/debug_label9.text = "notes_played: " +  str(notes_played)
-	debug_label_1.text = "beat in bar: " + str(conductor_node.get_beat_in_bar())
+	#debug_label_1.text = "beat in bar: " + str(conductor_node.get_beat_in_bar())
 	$GUILayer/GUI/debug_label2.text = "song position in beats: " + str(conductor_node.get_song_position_in_beats())
 	$GUILayer/GUI/debug_label3.text = "last reported beat: " + str(conductor_node.get_last_reported_beat())
 	movement()
