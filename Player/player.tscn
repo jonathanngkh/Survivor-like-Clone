@@ -1,4 +1,4 @@
-[gd_scene load_steps=216 format=3 uid="uid://c6uuvcthpociv"]
+[gd_scene load_steps=217 format=3 uid="uid://c6uuvcthpociv"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_6neil"]
 [ext_resource type="PackedScene" uid="uid://c3p0e8l8amscb" path="res://Utility/hurt_box.tscn" id="3_5rw0d"]
@@ -152,6 +152,7 @@
 [ext_resource type="AudioStream" uid="uid://j6lxamplrfpb" path="res://Audio/MFX/Celesta/006_Celesta_F5_2.5secs.wav" id="140_5vdqw"]
 [ext_resource type="AudioStream" uid="uid://da63tvvu135tq" path="res://Audio/MFX/Celesta/007_Celesta_G5_2.5secs.wav" id="141_uv2u5"]
 [ext_resource type="AudioStream" uid="uid://dypx24wc3p2cy" path="res://Audio/MFX/wrong_lute.wav" id="142_pmbrs"]
+[ext_resource type="PackedScene" uid="uid://da0qjdjuenqkd" path="res://dash.tscn" id="153_fvua4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bpdif"]
 size = Vector2(41.6638, 33.6962)
@@ -3094,6 +3095,8 @@ stream = ExtResource("142_pmbrs")
 [node name="defeat_sound" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("119_vxu8k")
+
+[node name="Dash" parent="." instance=ExtResource("153_fvua4")]
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]

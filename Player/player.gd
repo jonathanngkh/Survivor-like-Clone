@@ -7,6 +7,8 @@ var max_stamina = 100
 var stamina = 100
 var last_movement = Vector2.UP
 var time = 0
+var dash_duration = 0.1
+var dash_speed_multiplier = 50
 
 var experience = 0
 var experience_level = 1
@@ -23,6 +25,8 @@ var javelin = preload("res://Player/Attack/javelin.tscn")
 @onready var tornadoTimer = $Attack/TornadoTimer
 @onready var tornadoAttackTimer = $Attack/TornadoTimer/TornadoAttackTimer
 @onready var javelinBase = $Attack/JavelinBase
+@onready var dash = $Dash
+
 
 # IceSpear
 var icespear_ammo = 0
@@ -723,6 +727,10 @@ func movement():
 		#$CollisionShape2D.set_deferred("disabled", true)
 	#else:
 		#$CollisionShape2D.set_deferred("disabled", false)
+	if Input.is_action_just_pressed("dash") and !dash.is_dashing():
+		dash.start_dash(dash_duration)
+	
+	velocity *= dash_speed_multiplier if dash.is_dashing() else 1
 	move_and_slide()
 	
 func _on_animation_tree_animation_finished(anim_name):

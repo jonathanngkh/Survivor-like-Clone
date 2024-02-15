@@ -10,6 +10,7 @@ script = ExtResource("1_uqm23")
 
 [node name="LedgerLine" type="ColorRect" parent="."]
 visible = false
+layout_mode = 0
 offset_left = -53.0
 offset_top = 52.0
 offset_right = 26.0
