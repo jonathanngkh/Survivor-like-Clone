@@ -9,3 +9,7 @@ script = ExtResource("1_n3ssw")
 one_shot = true
 
 [node name="DashCooldownTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="DashDurationTimer" to="." method="_on_dash_duration_timer_timeout"]
+[connection signal="timeout" from="DashCooldownTimer" to="." method="_on_dash_cooldown_timer_timeout"]
