@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://da0qjdjuenqkd"]
 
-[ext_resource type="Script" path="res://Dash.gd" id="1_n3ssw"]
+[ext_resource type="Script" path="res://dash.gd" id="1_bxsko"]
 
 [node name="Dash" type="Node2D"]
-script = ExtResource("1_n3ssw")
+script = ExtResource("1_bxsko")
 
 [node name="DashDurationTimer" type="Timer" parent="."]
 one_shot = true
@@ -11,5 +11,9 @@ one_shot = true
 [node name="DashCooldownTimer" type="Timer" parent="."]
 wait_time = 0.5
 
+[node name="GhostSpawnTimer" type="Timer" parent="."]
+wait_time = 0.03
+
 [connection signal="timeout" from="DashDurationTimer" to="." method="_on_dash_duration_timer_timeout"]
 [connection signal="timeout" from="DashCooldownTimer" to="." method="_on_dash_cooldown_timer_timeout"]
+[connection signal="timeout" from="GhostSpawnTimer" to="." method="_on_ghost_spawn_timer_timeout"]

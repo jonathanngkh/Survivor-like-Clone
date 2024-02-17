@@ -728,7 +728,7 @@ func movement():
 	#else:
 		#$CollisionShape2D.set_deferred("disabled", false)
 	if Input.is_action_just_pressed("dash") and !dash.is_dashing() and dash.can_dash:
-		dash.start_dash(dash_duration)
+		dash.start_dash($AnimatedSprite2D, dash_duration)
 	
 	velocity *= dash_speed_multiplier if dash.is_dashing() else 1
 	move_and_slide()

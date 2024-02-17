@@ -9,3 +9,6 @@ res://Enemy/enemy.tscn
 res://Enemy/enemy_skeleton.tscn
 res://Utility/enemy_spawner.tscn
 res://dash.tscn
+res://dash_ghost.tscn
+res://dash_ghost.gd
+res://dash.gd
