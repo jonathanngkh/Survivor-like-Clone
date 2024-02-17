@@ -790,6 +790,8 @@ func update_animation_parameters():
 				is_attacking = false
 
 func _on_hurt_box_hurt(damage, _angle, _knockback):
+	if dash.is_dashing():
+		return
 	is_hurt = true
 	sprite_flash()
 	$sound_damaged.play()

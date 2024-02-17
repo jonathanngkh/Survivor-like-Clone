@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5m6us4lxcts6"]
+
+[ext_resource type="Script" path="res://square_rhythm_UI.gd" id="1_vw04s"]
+
+[sub_resource type="Curve2D" id="Curve2D_5iprk"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 192, 192, 0, 0, 0, 0, 0, 384, 0, 0, 0, 0, -192, 192, 0, 0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_y2s7o"]
+polygon = PackedVector2Array(-28.2843, -28.2843, 28.2843, -28.2843, 28.2843, 28.2843, -28.2843, 28.2843)
+
+[sub_resource type="Gradient" id="Gradient_omqym"]
+interpolation_mode = 2
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vtou4"]
+gradient = SubResource("Gradient_omqym")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="SquareRhythmUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_vw04s")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_5iprk")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(192, 192)
+rotation = 0.785492
+progress = 271.529
+
+[node name="ColorRect" type="ColorRect" parent="Path2D/PathFollow2D"]
+offset_left = -20.0411
+offset_top = -20.0411
+offset_right = 19.9589
+offset_bottom = 19.9589
+color = Color(1, 0.67451, 0.67451, 1)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Path2D/PathFollow2D"]
+occluder = SubResource("OccluderPolygon2D_y2s7o")
+
+[node name="PointLight2D" type="PointLight2D" parent="Path2D/PathFollow2D/LightOccluder2D"]
+color = Color(0, 0.733333, 0.737255, 1)
+energy = 0.7
+texture = SubResource("GradientTexture2D_vtou4")
+texture_scale = 0.5
