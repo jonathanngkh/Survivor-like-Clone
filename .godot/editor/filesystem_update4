@@ -1,11 +1,9 @@
-res://Utility/spawn_info.gd
-res://note_ui.gd
-res://square_rhythm_ui.tscn
-res://square_rhythm_UI.gd
 res://World/world.tscn
+res://Utility/spawn_info.gd
 res://Player/player.tscn
 res://conductor.tscn
 res://note_ui.tscn
 res://Utility/enemy_spawner.tscn
 res://dash.tscn
 res://dash_ghost.tscn
+res://square_rhythm_ui.tscn
