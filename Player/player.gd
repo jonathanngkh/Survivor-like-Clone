@@ -330,7 +330,7 @@ func _on_conductor_beat_incremented():
 		fill_radial_rhythm_indicator()
 		flip_radial_rhythm_colors_on_alternate_measure()
 		#$GUILayer/GUI/RadialRhythmIndicator.value = 4
-		scale = Vector2(1.3, 1.3)
+		#scale = Vector2(1.3, 1.3)
 		if intro_played == false:
 			conductor_node.set_stream(idle_input_song)
 			conductor_node.play_from_beat(1, 0)
@@ -567,7 +567,7 @@ func _on_conductor_beat_incremented():
 			music_state = "idle" # ideally, set to idle on beat 8.5 or 8.75. use this for now.
 
 func _on_conductor_measure_incremented():
-	print("noteholder size: ", $GUILayer/GUI/StaffControl/NoteHolder.get_child_count())
+	#print("noteholder size: ", $GUILayer/GUI/StaffControl/NoteHolder.get_child_count())
 	for note in $GUILayer/GUI/StaffControl/NoteHolder.get_children():
 		note.queue_free()
 		#pass

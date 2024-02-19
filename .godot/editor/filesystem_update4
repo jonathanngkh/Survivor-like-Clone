@@ -7,3 +7,5 @@ res://Utility/enemy_spawner.tscn
 res://dash.tscn
 res://dash_ghost.tscn
 res://square_rhythm_ui.tscn
+res://square_rhythm_UI.gd
+res://Player/player.gd

@@ -312,7 +312,4 @@ visible = false
 [connection signal="measure_minus_one_beat_incremented" from="Conductor" to="Player" method="_on_conductor_measure_minus_one_beat_incremented"]
 [connection signal="timeout" from="Conductor/StartTimer" to="Player" method="_on_start_timer_timeout"]
 
-[editable path="Player"]
-[editable path="Player/HurtBox"]
-[editable path="Player/FireArea"]
 [editable path="Conductor"]
