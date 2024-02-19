@@ -893,7 +893,7 @@ tracks/10/path = NodePath("sound_fire_1:stream")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0.1),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("53_k8kgu")]
@@ -905,7 +905,7 @@ tracks/11/path = NodePath("sound_fire_1:playing")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0.3),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -1818,7 +1818,6 @@ animation = &"eleanore_attack_1"
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_mkrgu"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_28w6g"]
-graph_offset = Vector2(-292.242, 69.8837)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_wsnjk")
 nodes/Animation/position = Vector2(-156.306, 118.302)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_mkrgu")
@@ -2011,7 +2010,7 @@ states/eleanore_walk_start/position = Vector2(558.501, 153.91)
 states/eleanore_walk_stop/node = SubResource("AnimationNodeBlendTree_bk4mc")
 states/eleanore_walk_stop/position = Vector2(560.005, 248.91)
 transitions = ["eleanore_attack_2", "eleanore_attack_3", SubResource("AnimationNodeStateMachineTransition_2pm1g"), "eleanore_attack_1", "eleanore_attack_2", SubResource("AnimationNodeStateMachineTransition_cplmr"), "eleanore_attack_1", "eleanore_walk", SubResource("AnimationNodeStateMachineTransition_i53tr"), "eleanore_walk", "eleanore_walk_stop", SubResource("AnimationNodeStateMachineTransition_h8ge0"), "eleanore_walk_start", "eleanore_walk", SubResource("AnimationNodeStateMachineTransition_gc30c"), "Start", "eleanore_idle", SubResource("AnimationNodeStateMachineTransition_5ar50"), "eleanore_idle", "eleanore_walk_start", SubResource("AnimationNodeStateMachineTransition_pwlfb"), "eleanore_attack_1", "eleanore_idle", SubResource("AnimationNodeStateMachineTransition_2t5lj"), "eleanore_walk_stop", "eleanore_idle", SubResource("AnimationNodeStateMachineTransition_3oscn"), "eleanore_hurt", "eleanore_idle", SubResource("AnimationNodeStateMachineTransition_t2oeb"), "eleanore_hurt", "eleanore_walk", SubResource("AnimationNodeStateMachineTransition_h3la8")]
-graph_offset = Vector2(168.275, -100.09)
+graph_offset = Vector2(240.612, -299.5)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ypqgu"]
 radius = 4.0
@@ -2059,9 +2058,9 @@ tree_root = SubResource("AnimationNodeStateMachine_bpaiu")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/is_idle = false
 parameters/conditions/is_moving = false
-parameters/eleanore_attack_1/TimeScale/scale = 1.0
-parameters/eleanore_attack_2/TimeScale/scale = 1.0
-parameters/eleanore_attack_3/TimeScale/scale = 1.0
+parameters/eleanore_attack_1/TimeScale/scale = 1.5
+parameters/eleanore_attack_2/TimeScale/scale = 1.5
+parameters/eleanore_attack_3/TimeScale/scale = 1.5
 parameters/eleanore_death/TimeScale/scale = 1.0
 parameters/eleanore_hurt/TimeScale/scale = 1.0
 parameters/eleanore_idle/TimeScale/scale = 1.0
