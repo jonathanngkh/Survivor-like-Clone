@@ -2581,10 +2581,11 @@ show_percentage = false
 
 [node name="StaffControl" type="Control" parent="GUILayer/GUI"]
 anchors_preset = 0
-offset_left = 393.0
-offset_top = 864.0
-offset_right = 2169.0
-offset_bottom = 1199.0
+offset_left = 86.2931
+offset_top = 1138.61
+offset_right = 1862.29
+offset_bottom = 1473.61
+scale = Vector2(0.2, 0.2)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="GUILayer/GUI/StaffControl"]
 modulate = Color(1, 1, 1, 0.678431)
@@ -2857,6 +2858,7 @@ offset_bottom = 224.0
 columns = 10
 
 [node name="debug_label1" type="Label" parent="GUILayer/GUI"]
+visible = false
 layout_mode = 0
 offset_left = 218.0
 offset_top = 738.159

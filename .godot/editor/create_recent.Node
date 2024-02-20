@@ -1,3 +1,4 @@
+Timer
 WorldEnvironment
 Sprite2D
 ColorRect
@@ -6,7 +7,6 @@ LightOccluder2D
 PathFollow2D
 Path2D
 Control
-Timer
 AnimatedSprite2D
 TextureProgressBar
 ProgressBar

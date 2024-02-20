@@ -125,6 +125,9 @@ func check_note_is_valid(played_note):
 
 #region Midi Stuff
 func _input(input_event): #
+	if Input.is_action_just_pressed("pause"):
+		get_tree().paused = true
+		pass
 	if input_event is InputEventKey and input_event.pressed:
 		if input_event.keycode == KEY_1:
 			add_to_notes_played(60)
@@ -316,6 +319,7 @@ func flip_radial_rhythm_colors_on_alternate_measure():
 	
 const heal_effect = preload("res://Enemy/healeffect.tscn")
 const speed_effect = preload("res://Enemy/speedeffect.tscn")
+const lightning_effect = preload("res://Enemy/lightning_strike_effect.tscn")
 
 var intro_played = false
 
@@ -465,6 +469,21 @@ func _on_conductor_beat_incremented():
 		
 		fill_rhythm_block(get_node("%ProgressBar7"))
 		fill_rhythm_block(get_node("%ProgressBar9"))
+		
+		if judge_song(lightning_song) == "correct":
+			saved_measure = conductor_node.get_measure()
+			$walk_success_sound.play()
+			#$HEAL_SOUND.play()
+			#heal_sprite.global_position = global_position
+			for enemy in enemy_close:
+				
+				enemy.call_deferred("add_child", lightning_effect.instantiate())
+				#lightning_sprite.position = enemy.global_position
+			#get_parent().call_deferred("add_child", lightning_sprite)
+			reset_notes_played()
+			conductor_node.set_stream(lightning_response_song)
+			conductor_node.play_with_beat_offset(8)
+			music_state = "responding_lightning"
 		
 		if judge_song(heal_song) == "correct":
 			saved_measure = conductor_node.get_measure()

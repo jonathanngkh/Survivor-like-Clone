@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dbxhdoaio2meq"]
+[gd_scene load_steps=43 format=3 uid="uid://dbxhdoaio2meq"]
 
 [ext_resource type="Texture2D" uid="uid://t1xpjmh84jx2" path="res://Textures/VFX/lightning strike/lightning aftershock/ThunderStrike(Glow)16.png" id="1_jqoui"]
 [ext_resource type="Texture2D" uid="uid://cplcrcgukr8lq" path="res://Textures/VFX/heal vfx.png" id="1_kaftt"]
@@ -31,6 +31,8 @@
 [ext_resource type="Texture2D" uid="uid://b8wy8x1ajbam2" path="res://Textures/VFX/lightning strike/lightning striking/ThunderStrike(Glow)BLANK.png" id="27_1lc03"]
 [ext_resource type="Script" path="res://Enemy/lightning_strike_effect.gd" id="28_2in57"]
 [ext_resource type="AudioStream" uid="uid://bebrq1l2ba4lc" path="res://Audio/SoundEffect/LightningStreakSound.mp3" id="29_brmdx"]
+[ext_resource type="AudioStream" uid="uid://xteq15aqbkbg" path="res://Audio/SoundEffect/Sparking.mp3" id="30_6r8pv"]
+[ext_resource type="AudioStream" uid="uid://m4ccpr2qbt8t" path="res://Audio/SoundEffect/Thunder Rumbling mp3.mp3" id="31_t1cmu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0k6f7"]
 animations = [{
@@ -509,17 +511,26 @@ _data = {
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_0k6f7")
 animation = &"sparking"
-frame = 1
 script = ExtResource("28_2in57")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="StrikingSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("29_brmdx")
-volume_db = -3.0
-autoplay = true
+volume_db = -5.0
+
+[node name="SparkingSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("30_6r8pv")
+volume_db = -5.0
+
+[node name="RumblingSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("31_t1cmu")
+volume_db = -5.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_yck5a")
 }
 
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="finished" from="RumblingSound" to="." method="_on_rumbling_sound_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

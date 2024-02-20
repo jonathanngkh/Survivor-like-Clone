@@ -50,13 +50,15 @@ func get_last_reported_beat():
 signal beat_incremented()
 signal measure_incremented()
 signal measure_minus_one_beat_incremented()
+signal beat_in_bar_signal(beat_in_bar)
+signal current_measure_signal(measure)
 
 func _ready():
 	sec_per_beat = 60.0 / bpm
 	
 func _process(_delta):
-	if Input.is_action_just_pressed("restart"):
-		player.restart_application()
+	#if Input.is_action_just_pressed("restart"):
+		#player.restart_application()
 	
 	if player.get_leveling_state() == true:
 		if player.get_music_state() == "idle":
@@ -81,6 +83,7 @@ func _report_beat():
 		if beat_in_bar > beats_per_bar:
 			beat_in_bar = 1
 		emit_signal("beat_incremented")
+		emit_signal("beat_in_bar_signal", beat_in_bar)
 		
 
 
