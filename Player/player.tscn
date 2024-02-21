@@ -3015,6 +3015,7 @@ stream = ExtResource("57_kvhn2")
 volume_db = -14.0
 
 [node name="AttackArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 4
 collision_mask = 0
 

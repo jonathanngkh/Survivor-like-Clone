@@ -3,7 +3,7 @@ extends Area2D
 var level = 1
 var hp = 1
 var speed = 100
-var damage = 5
+var damage = 10
 var knockback_amount = 100
 var attack_size = 1.0
 var target = Vector2.ZERO
@@ -20,38 +20,38 @@ func _ready():
 	$CollisionShape2D.set_deferred("disabled", true)
 	
 	
-	match level:
-		1:
-			hp = 1 #piercing
-			speed = 100
-			damage = 5
-			knockback_amount = 100
-			attack_size = 1.0 * (1 + player.spell_size)
-		2:
-			hp = 1 #piercing
-			speed = 100
-			damage = 5
-			knockback_amount = 100
-			attack_size = 1.0 * (1 + player.spell_size)
-		3:
-			hp = 2 #piercing
-			speed = 100
-			damage = 8
-			knockback_amount = 100
-			attack_size = 1.0 * (1 + player.spell_size)
-		4:
-			hp = 1 #piercing
-			speed = 100
-			damage = 5
-			knockback_amount = 100
-			attack_size = 1.0 * (1 + player.spell_size)
-	var tween = create_tween()
+	#match level:
+		#1:
+			#hp = 1 #piercing
+			#speed = 100
+			#damage = 5
+			#knockback_amount = 100
+			#attack_size = 1.0 * (1 + player.spell_size)
+		#2:
+			#hp = 1 #piercing
+			#speed = 100
+			#damage = 5
+			#knockback_amount = 100
+			#attack_size = 1.0 * (1 + player.spell_size)
+		#3:
+			#hp = 2 #piercing
+			#speed = 100
+			#damage = 8
+			#knockback_amount = 100
+			#attack_size = 1.0 * (1 + player.spell_size)
+		#4:
+			#hp = 1 #piercing
+			#speed = 100
+			#damage = 5
+			#knockback_amount = 100
+			#attack_size = 1.0 * (1 + player.spell_size)
+	#var tween = create_tween()
 	#var tween = create_tween().set_parallel(true) #runs at the same time
 	#sine=light_ease.cubic=medium_ease.quint=heavy_ease
 	#for more, look up godot tweening cheatsheet
 	#tween.tween_property(self, "modulate", Color(1, 0, 0, 1), 1).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	#color changing
-	tween.tween_property(self, "scale", Vector2(1,1) * attack_size, 1).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
+	#tween.tween_property(self, "scale", Vector2(1,1) * attack_size, 1).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 	#tween.play()
 			
 func _physics_process(delta):
@@ -62,8 +62,8 @@ func _physics_process(delta):
 	elif player.velocity.x > 0:
 		position = player.position + Vector2(40, 0)
 	
-func enemy_hit(charge = 1):
-	hp -= 1
+#func enemy_hit(charge = 1):
+	#hp -= 10
 	#if hp <= 0:
 		#$CollisionShape2D.set_deferred("disabled", true)
 		#$Sprite2D.animation = "ice_hit"

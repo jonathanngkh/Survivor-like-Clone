@@ -21,6 +21,8 @@ var knockback = Vector2.ZERO
 @onready var sound_die = $sound_die
 @onready var loot_base = get_tree().get_first_node_in_group("loot")
 @onready var hit_box = $HitBox
+@onready var queue_free_timer = $QueueFreeTimer
+
 
 #var death_explosion = preload("res://Enemy/explosion.tscn")
 var experience_gem = preload("res://Objects/experience_gem.tscn")
@@ -30,6 +32,7 @@ signal remove_from_array(object)
 func _ready():
 	animator.play(walk_animation)
 	hit_box.damage = enemy_damage
+	
 	
 func _set_walk_animation(animation_name):
 	walk_animation = animation_name
@@ -81,11 +84,13 @@ func death():
 	loot_base.call_deferred("add_child", new_gem)
 	if has_death_animation == true:
 		await animator.animation_finished
-		queue_free()
+		#queue_free()
+		queue_free_timer.start()
 	else:
 		sprite_fade()
 		await sound_hit.finished
-		queue_free()
+		#queue_free()
+		queue_free_timer.start()
 	
 
 func _on_hurt_box_hurt(damage, angle, knockback_amount):
@@ -111,7 +116,6 @@ func sprite_fade() -> void:
 	var tween: Tween = create_tween()
 	tween.tween_property($Sprite2D, "modulate:a", 0, 0.5)
 	tween.play()
-	
-	
-	
-	
+
+func _on_queue_free_timer_timeout():
+	queue_free()

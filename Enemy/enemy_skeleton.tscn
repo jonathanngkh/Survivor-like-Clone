@@ -282,6 +282,9 @@ volume_db = -10.0
 stream = ExtResource("7_hrt4p")
 volume_db = -10.0
 
+[node name="QueueFreeTimer" type="Timer" parent="."]
+wait_time = 0.5
+
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 
 [editable path="HurtBox"]

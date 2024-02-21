@@ -1,4 +1,6 @@
 Timer
+CollisionShape2D
+Area2D
 WorldEnvironment
 Sprite2D
 ColorRect
@@ -10,5 +12,3 @@ Control
 AnimatedSprite2D
 TextureProgressBar
 ProgressBar
-VBoxContainer
-HBoxContainer

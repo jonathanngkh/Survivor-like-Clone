@@ -6,6 +6,7 @@ extends AnimatedSprite2D
 var strikes = 0
 
 func _ready():
+	$LightningStrike/CollisionShape2D.set_deferred("disabled", true)
 	conductor.beat_in_bar_signal.connect(_on_conductor_beat_in_bar_signal)
 	conductor.current_measure_signal.connect(_on_conductor_current_measure_signal)
 	$AnimationPlayer.play("sparking")
@@ -19,6 +20,7 @@ func _process(delta):
 
 func _on_conductor_beat_in_bar_signal(beat_in_bar):
 	if beat_in_bar == 7:
+		$LightningStrike/CollisionShape2D.set_deferred("disabled", false)
 		$StrikingSound.play()
 		$AnimationPlayer.play("striking")
 		strikes += 1
@@ -40,5 +42,6 @@ func _on_animation_player_animation_finished(anim_name):
 
 func _on_rumbling_sound_finished():
 	#if strikes >= 3:
-		#queue_free()
+	#queue_free()
+	#emit_signal("rumbling_finished_signal")
 	pass

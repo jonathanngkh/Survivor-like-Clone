@@ -7,3 +7,10 @@ res://Player/player.gd
 res://Enemy/lightning_strike_effect.tscn
 res://Enemy/lightning_strike_effect.gd
 res://Conductor.gd
+res://Player/Attack/fire_area.gd
+res://Enemy/LightningHitBox.gd
+res://Player/Attack/ice_spear.tscn
+res://Utility/hit_box.tscn
+res://Enemy/enemy.gd
+res://Enemy/enemy.tscn
+res://Enemy/enemy_skeleton.tscn
