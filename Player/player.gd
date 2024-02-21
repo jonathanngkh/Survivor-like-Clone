@@ -28,6 +28,7 @@ var javelin = preload("res://Player/Attack/javelin.tscn")
 @onready var dash = $Dash
 
 
+
 # IceSpear
 var icespear_ammo = 0
 var icespear_baseammo = 0
@@ -476,10 +477,11 @@ func _on_conductor_beat_incremented():
 			#$HEAL_SOUND.play()
 			#heal_sprite.global_position = global_position
 			for enemy in enemy_close:
-				
-				enemy.call_deferred("add_child", lightning_effect.instantiate())
-				#lightning_sprite.position = enemy.global_position
-			#get_parent().call_deferred("add_child", lightning_sprite)
+				var lightning_instance = lightning_effect.instantiate()
+				enemy.call_deferred("add_child", lightning_instance)
+				lightning_instance.rumbling.connect(_on_rumbling)
+				lightning_instance.sparking.connect(_on_sparking)
+				lightning_instance.striking.connect(_on_striking)
 			reset_notes_played()
 			conductor_node.set_stream(lightning_response_song)
 			conductor_node.play_with_beat_offset(8)
@@ -584,6 +586,15 @@ func _on_conductor_beat_incremented():
 		
 		if conductor_node.get_measure() == (saved_measure + 1):
 			music_state = "idle" # ideally, set to idle on beat 8.5 or 8.75. use this for now.
+
+func _on_rumbling():
+	$RumblingSound.play()
+
+func _on_sparking():
+	$SparkingSound.play()
+	
+func _on_striking():
+	$StrikingSound.play()
 
 func _on_conductor_measure_incremented():
 	#print("noteholder size: ", $GUILayer/GUI/StaffControl/NoteHolder.get_child_count())

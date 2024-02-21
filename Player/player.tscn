@@ -1,4 +1,4 @@
-[gd_scene load_steps=218 format=3 uid="uid://c6uuvcthpociv"]
+[gd_scene load_steps=221 format=3 uid="uid://c6uuvcthpociv"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_6neil"]
 [ext_resource type="PackedScene" uid="uid://c3p0e8l8amscb" path="res://Utility/hurt_box.tscn" id="3_5rw0d"]
@@ -154,6 +154,9 @@
 [ext_resource type="AudioStream" uid="uid://da63tvvu135tq" path="res://Audio/MFX/Celesta/007_Celesta_G5_2.5secs.wav" id="141_uv2u5"]
 [ext_resource type="AudioStream" uid="uid://dypx24wc3p2cy" path="res://Audio/MFX/wrong_lute.wav" id="142_pmbrs"]
 [ext_resource type="PackedScene" uid="uid://da0qjdjuenqkd" path="res://dash.tscn" id="153_fvua4"]
+[ext_resource type="AudioStream" uid="uid://m4ccpr2qbt8t" path="res://Audio/SoundEffect/Thunder Rumbling mp3.mp3" id="155_fr3h8"]
+[ext_resource type="AudioStream" uid="uid://bebrq1l2ba4lc" path="res://Audio/SoundEffect/LightningStreakSound.mp3" id="155_t552v"]
+[ext_resource type="AudioStream" uid="uid://xteq15aqbkbg" path="res://Audio/SoundEffect/Sparking.mp3" id="156_4wqrg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bpdif"]
 size = Vector2(41.6638, 33.6962)
@@ -2581,11 +2584,11 @@ show_percentage = false
 
 [node name="StaffControl" type="Control" parent="GUILayer/GUI"]
 anchors_preset = 0
-offset_left = 86.2931
-offset_top = 1138.61
-offset_right = 1862.29
-offset_bottom = 1473.61
-scale = Vector2(0.2, 0.2)
+offset_left = 135.293
+offset_top = 1063.0
+offset_right = 1911.29
+offset_bottom = 1398.0
+scale = Vector2(0.4, 0.4)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="GUILayer/GUI/StaffControl"]
 modulate = Color(1, 1, 1, 0.678431)
@@ -3108,6 +3111,17 @@ process_mode = 3
 stream = ExtResource("119_vxu8k")
 
 [node name="Dash" parent="." instance=ExtResource("153_fvua4")]
+
+[node name="StrikingSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("155_t552v")
+volume_db = 5.0
+
+[node name="SparkingSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("156_4wqrg")
+volume_db = -8.0
+
+[node name="RumblingSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("155_fr3h8")
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]

@@ -70,6 +70,7 @@ func death():
 	sound_die.play()
 	$HurtBox/CollisionShape2D.set_deferred("disabled", true)
 	$HitBox/CollisionShape2D.set_deferred("disabled", true)
+	$CollisionShape2D.set_deferred("disabled", true)
 	emit_signal("remove_from_array", self)
 	#var enemy_death = death_explosion.instantiate()
 	#enemy_death.scale = sprite.scale
@@ -83,14 +84,14 @@ func death():
 	new_gem.experience = experience
 	loot_base.call_deferred("add_child", new_gem)
 	if has_death_animation == true:
+		#queue_free_timer.start()
 		await animator.animation_finished
-		#queue_free()
-		queue_free_timer.start()
+		queue_free()
 	else:
 		sprite_fade()
+		#queue_free_timer.start()
 		await sound_hit.finished
-		#queue_free()
-		queue_free_timer.start()
+		queue_free()
 	
 
 func _on_hurt_box_hurt(damage, angle, knockback_amount):
@@ -117,5 +118,5 @@ func sprite_fade() -> void:
 	tween.tween_property($Sprite2D, "modulate:a", 0, 0.5)
 	tween.play()
 
-func _on_queue_free_timer_timeout():
-	queue_free()
+#func _on_queue_free_timer_timeout():
+	#queue_free()

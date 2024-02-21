@@ -283,9 +283,11 @@ stream = ExtResource("7_hrt4p")
 volume_db = -10.0
 
 [node name="QueueFreeTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 1.6
+one_shot = true
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
+[connection signal="timeout" from="QueueFreeTimer" to="." method="_on_queue_free_timer_timeout"]
 
 [editable path="HurtBox"]
 [editable path="HitBox"]

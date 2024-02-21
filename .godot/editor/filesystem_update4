@@ -14,3 +14,6 @@ res://Utility/hit_box.tscn
 res://Enemy/enemy.gd
 res://Enemy/enemy.tscn
 res://Enemy/enemy_skeleton.tscn
+res://Enemy/enemy_skull.tscn
+res://Enemy/enemy_nightmare.tscn
+res://Enemy/enemy_demon.tscn
