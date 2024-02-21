@@ -625,7 +625,7 @@ func update_song():
 				print("note_played: ", note[0], ", ", note[1])
 				# note[0] is pitch, note[1] is closest beat in bar, note[2] is time of note played, note[3] is measure of note played
 				if note[1] == 1 and note[2] > conductor_node.get_sec_per_beat() * (conductor_node.get_beats_per_bar() - 0.5):
-					print('fast enough?')
+					print('early 1 note')
 					notes_to_keep.append(note)
 			reset_notes_played()
 			

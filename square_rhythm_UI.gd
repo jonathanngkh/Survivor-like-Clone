@@ -16,7 +16,10 @@ func _on_conductor_beat_incremented():
 	if conductor.get_beat_in_bar() % 2 == 0:
 		return
 	var tween = create_tween()
-	tween.tween_property($Path2D/PathFollow2D/Sprite2D, "self_modulate", Color(0.5, 0.5, 0.5), 0.5454).from(Color(1.0, 1.0, 1.0))
+	if conductor.get_beat_in_bar() == 1:
+		tween.tween_property($Path2D/PathFollow2D/Sprite2D, "self_modulate", Color(0.5, 0.5, 0.5), 0.21818).from(Color(1.0, 0.0, 0.0))
+	else:
+		tween.tween_property($Path2D/PathFollow2D/Sprite2D, "self_modulate", Color(0.5, 0.5, 0.5), 0.5454).from(Color(1.0, 1.0, 1.0))
 	tween.play()
 	
 func start_moving():
