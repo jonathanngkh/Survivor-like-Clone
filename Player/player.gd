@@ -9,6 +9,7 @@ var last_movement = Vector2.UP
 var time = 0
 var dash_duration = 0.1
 var dash_speed_multiplier = 50
+var max_velocity = 1500
 
 var experience = 0
 var experience_level = 1
@@ -753,7 +754,7 @@ func movement():
 		velocity *= 5
 	if music_state == "responding_walk_thirds":
 		velocity *= 10
-		# allow walk song to walk through mobs. unfortunately, allows player to leave game boundary. need separate code for limiting boundary instead of using collisionshape borders. as in x y coordinates
+		# allow walk song to walk through mobs. unfortunately, allows player to leave game boundary. need separate code for limiting boundary instead of using collisionshape borders. as in x y coordinates. actually just need to set collision layers correctly.
 		#$CollisionShape2D.set_deferred("disabled", true)
 	#else:
 		#$CollisionShape2D.set_deferred("disabled", false)
@@ -761,6 +762,9 @@ func movement():
 		dash.start_dash($AnimatedSprite2D, dash_duration)
 	
 	velocity *= dash_speed_multiplier if dash.is_dashing() else 1
+	velocity.x = clampf(velocity.x, -max_velocity, max_velocity)
+	velocity.y = clampf(velocity.y, -max_velocity, max_velocity)
+	
 	move_and_slide()
 	
 func _on_animation_tree_animation_finished(anim_name):
