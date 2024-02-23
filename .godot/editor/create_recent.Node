@@ -1,3 +1,5 @@
+Line2D
+RayCast2D
 AudioStreamPlayer
 Timer
 CollisionShape2D
@@ -11,5 +13,3 @@ PathFollow2D
 Path2D
 Control
 AnimatedSprite2D
-TextureProgressBar
-ProgressBar

@@ -832,8 +832,6 @@ func _on_hurt_box_hurt(damage, _angle, _knockback):
 	hp -= clamp(damage - armor, 1, 999.0)
 	health_bar.max_value = max_hp
 	health_bar.value = hp
-	#if hp <= 0: # break the game on death for sais kids lol
-		#get_tree().pause()
 	
 func sprite_flash() -> void:
 	var tween: Tween = create_tween()

@@ -18,3 +18,4 @@ res://Enemy/enemy_skull.tscn
 res://Enemy/enemy_nightmare.tscn
 res://Enemy/enemy_demon.tscn
 res://square_rhythm_UI.gd
+res://Laser.gd
