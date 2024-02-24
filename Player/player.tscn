@@ -1,4 +1,4 @@
-[gd_scene load_steps=221 format=3 uid="uid://c6uuvcthpociv"]
+[gd_scene load_steps=222 format=3 uid="uid://c6uuvcthpociv"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_6neil"]
 [ext_resource type="PackedScene" uid="uid://c3p0e8l8amscb" path="res://Utility/hurt_box.tscn" id="3_5rw0d"]
@@ -157,6 +157,7 @@
 [ext_resource type="AudioStream" uid="uid://m4ccpr2qbt8t" path="res://Audio/SoundEffect/Thunder Rumbling mp3.mp3" id="155_fr3h8"]
 [ext_resource type="AudioStream" uid="uid://bebrq1l2ba4lc" path="res://Audio/SoundEffect/LightningStreakSound.mp3" id="155_t552v"]
 [ext_resource type="AudioStream" uid="uid://xteq15aqbkbg" path="res://Audio/SoundEffect/Sparking.mp3" id="156_4wqrg"]
+[ext_resource type="PackedScene" uid="uid://bb06wbaadygba" path="res://laser.tscn" id="158_wxuyw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bpdif"]
 size = Vector2(41.6638, 33.6962)
@@ -3122,6 +3123,8 @@ volume_db = -8.0
 
 [node name="RumblingSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("155_fr3h8")
+
+[node name="Laser" parent="." instance=ExtResource("158_wxuyw")]
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]

@@ -1,8 +1,11 @@
+GPUParticles2D
+CPUParticles2D
+CollisionShape2D
+StaticBody2D
 Line2D
 RayCast2D
 AudioStreamPlayer
 Timer
-CollisionShape2D
 Area2D
 WorldEnvironment
 Sprite2D
@@ -10,6 +13,3 @@ ColorRect
 PointLight2D
 LightOccluder2D
 PathFollow2D
-Path2D
-Control
-AnimatedSprite2D
