@@ -1,10 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bb06wbaadygba"]
+[gd_scene load_steps=9 format=3 uid="uid://bb06wbaadygba"]
 
 [ext_resource type="Script" path="res://Laser.gd" id="1_irh31"]
 [ext_resource type="Texture2D" uid="uid://blxeexw7hbxjk" path="res://Textures/glowing_circle.png" id="2_xu4tj"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mw3tu"]
-size = Vector2(10, 128)
 
 [sub_resource type="Gradient" id="Gradient_gtfgp"]
 offsets = PackedFloat32Array(0, 0.538767, 0.930417)
@@ -41,14 +38,8 @@ script = ExtResource("1_irh31")
 [node name="Line2D" type="Line2D" parent="."]
 position = Vector2(21.1538, 0)
 scale = Vector2(3.11538, 1)
-points = PackedVector2Array(2.08165e-12, -0.001, 32, 0)
+points = PackedVector2Array(2.08165e-12, -0.001, 47.1359, 0)
 default_color = Color(0, 0.952941, 0.952941, 1)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(173, 0)
-shape = SubResource("RectangleShape2D_mw3tu")
 
 [node name="FiringParticles2D" type="GPUParticles2D" parent="."]
 emitting = false

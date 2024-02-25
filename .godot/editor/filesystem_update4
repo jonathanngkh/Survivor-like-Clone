@@ -5,3 +5,4 @@ res://conductor.tscn
 res://square_rhythm_ui.tscn
 res://laser.tscn
 res://Laser.gd
+res://Player/player.gd
