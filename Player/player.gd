@@ -127,8 +127,8 @@ func check_note_is_valid(played_note):
 
 #region Midi Stuff
 func _input(input_event): #
-	if not input_event.is_action("laser"):
-		return
+	#if not input_event.is_action("laser"):
+		#return
 	$Laser.is_casting = input_event.is_action_pressed("laser")
 	if Input.is_action_just_pressed("pause"):
 		get_tree().paused = true

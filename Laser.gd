@@ -1,11 +1,11 @@
 extends RayCast2D
 
 # Speed at which the laser extends when first fired, in pixels per seconds.
-@export var cast_speed := 7000.0
+@export var cast_speed := 70000.0
 # Maximum length of the laser in pixels.
 @export var max_length := 1400.0
 # Base duration of the tween animation in seconds.
-@export var growth_time := 0.1
+@export var growth_time := 0.05
 
 var is_casting := false: set = set_is_casting
 
@@ -19,11 +19,11 @@ var is_casting := false: set = set_is_casting
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	set_physics_process(false)
+	set_process(false)
 	fill.points[1] = Vector2.ZERO
 	fill.width = 1.0
 	
-func _physics_process(delta):
+func _process(delta):
 	target_position = (target_position + Vector2.RIGHT * cast_speed * delta).limit_length(max_length)
 	cast_beam()
 	print(is_casting)
@@ -63,7 +63,7 @@ func set_is_casting(cast: bool):
 		collision_particles.emitting = false
 		disappear()
 	
-	set_physics_process(is_casting)
+	set_process(is_casting)
 	firing_particles.emitting = is_casting
 	
 

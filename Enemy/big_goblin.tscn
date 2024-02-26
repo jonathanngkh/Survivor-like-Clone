@@ -1,0 +1,77 @@
+[gd_scene load_steps=12 format=3 uid="uid://duw3gdnqy7wdg"]
+
+[ext_resource type="Script" path="res://Enemy/big_goblin.gd" id="1_li5xr"]
+[ext_resource type="Texture2D" uid="uid://cff4at4kjiimh" path="res://Textures/Enemy/FighterGoblin-Sheet.png" id="2_lxamv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxxrs"]
+atlas = ExtResource("2_lxamv")
+region = Rect2(0, 0, 106, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1otq4"]
+atlas = ExtResource("2_lxamv")
+region = Rect2(106, 0, 106, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvdgu"]
+atlas = ExtResource("2_lxamv")
+region = Rect2(212, 0, 106, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ic0hy"]
+atlas = ExtResource("2_lxamv")
+region = Rect2(318, 0, 106, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkyfn"]
+atlas = ExtResource("2_lxamv")
+region = Rect2(424, 0, 106, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_erpe7"]
+atlas = ExtResource("2_lxamv")
+region = Rect2(530, 0, 106, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncyhl"]
+atlas = ExtResource("2_lxamv")
+region = Rect2(636, 0, 106, 76)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wbohu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxxrs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1otq4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vvdgu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ic0hy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gkyfn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_erpe7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncyhl")
+}],
+"loop": true,
+"name": &"biggoblin_idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_idtrg"]
+
+[node name="BigGoblin" type="CharacterBody2D"]
+script = ExtResource("1_li5xr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wbohu")
+animation = &"biggoblin_idle"
+frame_progress = 0.167644
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-16, 0)
+shape = SubResource("CapsuleShape2D_idtrg")

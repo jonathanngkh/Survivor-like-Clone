@@ -6,3 +6,4 @@ res://square_rhythm_ui.tscn
 res://laser.tscn
 res://Laser.gd
 res://Player/player.gd
+res://Enemy/big_goblin.tscn
