@@ -1,7 +1,7 @@
 CollisionShape2D
-AnimationPlayer
 AnimatedSprite2D
 CharacterBody2D
+AnimationPlayer
 GPUParticles2D
 CPUParticles2D
 StaticBody2D

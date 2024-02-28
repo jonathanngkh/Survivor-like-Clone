@@ -1,0 +1,175 @@
+[gd_scene load_steps=23 format=3 uid="uid://b36fhxcyvch8r"]
+
+[ext_resource type="Texture2D" uid="uid://c375dm3psbrcf" path="res://Textures/Enemy/RogueGoblin-Sheet#1.png" id="1_j5dgn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qw8rs"]
+atlas = ExtResource("1_j5dgn")
+region = Rect2(0, 0, 174, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqke2"]
+atlas = ExtResource("1_j5dgn")
+region = Rect2(174, 0, 174, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6y3v4"]
+atlas = ExtResource("1_j5dgn")
+region = Rect2(348, 0, 174, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7cc8j"]
+atlas = ExtResource("1_j5dgn")
+region = Rect2(522, 0, 174, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbdpy"]
+atlas = ExtResource("1_j5dgn")
+region = Rect2(696, 0, 174, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fy7i3"]
+atlas = ExtResource("1_j5dgn")
+region = Rect2(870, 0, 174, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2daih"]
+atlas = ExtResource("1_j5dgn")
+region = Rect2(1044, 0, 174, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7nhl5"]
+atlas = ExtResource("1_j5dgn")
+region = Rect2(1218, 0, 174, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtbid"]
+atlas = ExtResource("1_j5dgn")
+region = Rect2(1392, 0, 174, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ntjtu"]
+atlas = ExtResource("1_j5dgn")
+region = Rect2(1566, 0, 174, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3xwg"]
+atlas = ExtResource("1_j5dgn")
+region = Rect2(1740, 0, 174, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1a7h"]
+atlas = ExtResource("1_j5dgn")
+region = Rect2(1218, 60, 174, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_unogj"]
+atlas = ExtResource("1_j5dgn")
+region = Rect2(1392, 60, 174, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b32n2"]
+atlas = ExtResource("1_j5dgn")
+region = Rect2(1566, 60, 174, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypnic"]
+atlas = ExtResource("1_j5dgn")
+region = Rect2(1740, 60, 174, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwq25"]
+atlas = ExtResource("1_j5dgn")
+region = Rect2(1044, 60, 174, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6li5"]
+atlas = ExtResource("1_j5dgn")
+region = Rect2(1914, 60, 174, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3h6d"]
+atlas = ExtResource("1_j5dgn")
+region = Rect2(2088, 60, 174, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ls3n4"]
+atlas = ExtResource("1_j5dgn")
+region = Rect2(2262, 60, 174, 60)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6txwo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qw8rs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqke2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6y3v4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7cc8j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbdpy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fy7i3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2daih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7nhl5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtbid")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ntjtu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3xwg")
+}],
+"loop": true,
+"name": &"roguegoblin_idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m1a7h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_unogj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b32n2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypnic")
+}],
+"loop": true,
+"name": &"roguegoblin_running",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iwq25")
+}],
+"loop": false,
+"name": &"roguegoblin_runstart",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6li5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3h6d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ls3n4")
+}],
+"loop": false,
+"name": &"roguegoblin_runstop",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_antrw"]
+radius = 8.0
+height = 16.0
+
+[node name="RogueGoblin" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6txwo")
+animation = &"roguegoblin_runstop"
+frame = 2
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-27.9372, 7.05506)
+shape = SubResource("CapsuleShape2D_antrw")

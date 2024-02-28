@@ -747,7 +747,7 @@ script = ExtResource("1_li5xr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_wbohu")
-animation = &"biggoblin_death"
+animation = &"biggoblin_lightattack"
 frame = 19
 frame_progress = 1.0
 
