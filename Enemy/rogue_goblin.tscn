@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b36fhxcyvch8r"]
+[gd_scene load_steps=37 format=3 uid="uid://b36fhxcyvch8r"]
 
 [ext_resource type="Texture2D" uid="uid://c375dm3psbrcf" path="res://Textures/Enemy/RogueGoblin-Sheet#1.png" id="1_j5dgn"]
 
@@ -45,6 +45,62 @@ region = Rect2(1566, 0, 174, 60)
 [sub_resource type="AtlasTexture" id="AtlasTexture_m3xwg"]
 atlas = ExtResource("1_j5dgn")
 region = Rect2(1740, 0, 174, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_av0hk"]
+atlas = ExtResource("1_j5dgn")
+region = Rect2(696, 120, 174, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ur26m"]
+atlas = ExtResource("1_j5dgn")
+region = Rect2(870, 120, 174, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8a7j"]
+atlas = ExtResource("1_j5dgn")
+region = Rect2(1044, 120, 174, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifjg7"]
+atlas = ExtResource("1_j5dgn")
+region = Rect2(1218, 120, 174, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dj0m4"]
+atlas = ExtResource("1_j5dgn")
+region = Rect2(1392, 120, 174, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofx7t"]
+atlas = ExtResource("1_j5dgn")
+region = Rect2(1566, 120, 174, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ir1sb"]
+atlas = ExtResource("1_j5dgn")
+region = Rect2(1740, 120, 174, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oaycw"]
+atlas = ExtResource("1_j5dgn")
+region = Rect2(1914, 120, 174, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55vi2"]
+atlas = ExtResource("1_j5dgn")
+region = Rect2(2088, 120, 174, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7o7w"]
+atlas = ExtResource("1_j5dgn")
+region = Rect2(2262, 120, 174, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jj4tf"]
+atlas = ExtResource("1_j5dgn")
+region = Rect2(174, 120, 174, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b08pr"]
+atlas = ExtResource("1_j5dgn")
+region = Rect2(348, 120, 174, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pp6g2"]
+atlas = ExtResource("1_j5dgn")
+region = Rect2(522, 120, 174, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1g8a3"]
+atlas = ExtResource("1_j5dgn")
+region = Rect2(0, 120, 174, 60)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m1a7h"]
 atlas = ExtResource("1_j5dgn")
@@ -120,6 +176,73 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_av0hk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ur26m")
+}],
+"loop": false,
+"name": &"roguegoblin_jumpapex",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o8a7j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifjg7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dj0m4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofx7t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ir1sb")
+}],
+"loop": true,
+"name": &"roguegoblin_jumpfall",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oaycw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55vi2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7o7w")
+}],
+"loop": false,
+"name": &"roguegoblin_jumpland",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jj4tf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b08pr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pp6g2")
+}],
+"loop": true,
+"name": &"roguegoblin_jumprise",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1g8a3")
+}],
+"loop": false,
+"name": &"roguegoblin_jumpstart",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_m1a7h")
 }, {
 "duration": 1.0,
@@ -166,7 +289,7 @@ height = 16.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6txwo")
-animation = &"roguegoblin_runstop"
+animation = &"roguegoblin_jumpland"
 frame = 2
 frame_progress = 1.0
 

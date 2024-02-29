@@ -8,3 +8,4 @@ res://Laser.gd
 res://Player/player.gd
 res://Enemy/big_goblin.tscn
 res://Enemy/rogue_goblin.tscn
+res://Enemy/enemy.tscn
