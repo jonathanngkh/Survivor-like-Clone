@@ -1,7 +1,8 @@
-CollisionShape2D
-AnimatedSprite2D
-CharacterBody2D
 AnimationPlayer
+AnimationTree
+AnimatedSprite2D
+CollisionShape2D
+CharacterBody2D
 GPUParticles2D
 CPUParticles2D
 StaticBody2D
@@ -11,4 +12,3 @@ AudioStreamPlayer
 Timer
 Area2D
 WorldEnvironment
-Sprite2D
