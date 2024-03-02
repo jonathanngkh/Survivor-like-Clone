@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://mwpeo8u54dt5"]
+
+[ext_resource type="Script" path="res://Utility/state.gd" id="1_ibyl2"]
+
+[node name="State" type="Node2D"]
+script = ExtResource("1_ibyl2")

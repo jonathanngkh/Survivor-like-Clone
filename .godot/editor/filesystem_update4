@@ -10,3 +10,6 @@ res://Enemy/big_goblin.tscn
 res://Enemy/rogue_goblin.tscn
 res://Enemy/enemy.tscn
 res://Enemy/torch_goblin.tscn
+res://Enemy/big_goblin.gd
+res://Utility/state.tscn
+res://Utility/state.gd

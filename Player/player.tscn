@@ -2991,6 +2991,7 @@ theme_override_font_sizes/font_size = 64
 text = "play_tornado_song = "
 
 [node name="RadialRhythmIndicator" type="TextureProgressBar" parent="GUILayer/GUI"]
+visible = false
 layout_mode = 0
 offset_left = 1197.46
 offset_top = 303.23
