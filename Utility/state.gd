@@ -2,12 +2,29 @@ extends Node2D
 
 class_name State
 
+# State machine parent node sets this
+var state_machine = null
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+# Receives events from the `_unhandled_input()` callback.
+func handle_input(_event: InputEvent) -> void:
+	pass
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+# Corresponds to the `_process()` callback.
+func update(_delta: float) -> void:
+	pass
+
+
+# Corresponds to the `_physics_process()` callback.
+func physics_update(_delta: float) -> void:
+	pass
+
+
+# Called by the state machine upon changing the active state. The `msg` parameter is a dictionary with arbitrary data the state can use to initialize itself.
+func enter(_msg := {}) -> void:
+	pass
+
+
+# Called by the state machine before changing the active state. Use this function to clean up the state.
+func exit() -> void:
 	pass
