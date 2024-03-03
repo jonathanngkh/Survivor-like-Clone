@@ -1,7 +1,9 @@
-[gd_scene load_steps=102 format=3 uid="uid://duw3gdnqy7wdg"]
+[gd_scene load_steps=104 format=3 uid="uid://duw3gdnqy7wdg"]
 
 [ext_resource type="Script" path="res://Enemy/big_goblin.gd" id="1_li5xr"]
 [ext_resource type="Texture2D" uid="uid://cff4at4kjiimh" path="res://Textures/Enemy/FighterGoblin-Sheet.png" id="2_lxamv"]
+[ext_resource type="Script" path="res://Utility/state_machine.gd" id="3_k1oc2"]
+[ext_resource type="Script" path="res://Utility/state.gd" id="4_iafnc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w4upi"]
 atlas = ExtResource("2_lxamv")
@@ -747,12 +749,17 @@ script = ExtResource("1_li5xr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_wbohu")
-animation = &"biggoblin_lightattack"
-frame = 19
-frame_progress = 1.0
+animation = &"biggoblin_idle"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-16, 0)
 shape = SubResource("CapsuleShape2D_idtrg")
+
+[node name="StateMachine" type="Node2D" parent="."]
+script = ExtResource("3_k1oc2")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node2D" parent="StateMachine"]
+script = ExtResource("4_iafnc")

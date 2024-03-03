@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cjkdpm3u3wqut"]
+[gd_scene load_steps=27 format=3 uid="uid://cjkdpm3u3wqut"]
 
 [ext_resource type="Texture2D" uid="uid://b6t8hgeek4kfh" path="res://Textures/wol huge air map.png" id="2_6ka0j"]
 [ext_resource type="PackedScene" uid="uid://c6uuvcthpociv" path="res://Player/player.tscn" id="2_rlem7"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://dqyqti70pitgc" path="res://Audio/Music/intro measure Battle 1_1 bar intro_110bpm.wav" id="11_a6cc8"]
 [ext_resource type="PackedScene" uid="uid://4a1v2lndn8qi" path="res://Objects/experience_gem.tscn" id="12_pk5wr"]
 [ext_resource type="FontFile" uid="uid://eltw4hqqgcsj" path="res://Font/tenderness.otf" id="13_pwion"]
+[ext_resource type="PackedScene" uid="uid://duw3gdnqy7wdg" path="res://Enemy/big_goblin.tscn" id="14_lk7st"]
 
 [sub_resource type="Resource" id="Resource_rxj4u"]
 script = ExtResource("5_kyr6r")
@@ -307,6 +308,9 @@ experience = 50
 
 [node name="enemy_skeleton" parent="." instance=ExtResource("3_4kpfq")]
 position = Vector2(192, -26)
+
+[node name="BigGoblin" parent="." instance=ExtResource("14_lk7st")]
+position = Vector2(-115, -15)
 
 [connection signal="beat_incremented" from="Conductor" to="Player" method="_on_conductor_beat_incremented"]
 [connection signal="measure_incremented" from="Conductor" to="Player" method="_on_conductor_measure_incremented"]

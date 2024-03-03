@@ -13,3 +13,5 @@ res://Enemy/torch_goblin.tscn
 res://Enemy/big_goblin.gd
 res://Utility/state.tscn
 res://Utility/state.gd
+res://Utility/state_machine.tscn
+res://Utility/state_machine.gd

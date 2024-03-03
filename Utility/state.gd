@@ -2,7 +2,7 @@ extends Node2D
 
 class_name State
 
-# State machine parent node sets this
+# State machine parent node sets this, so that state can call its state machine's transition_to() function
 var state_machine = null
 
 # Receives events from the `_unhandled_input()` callback.
