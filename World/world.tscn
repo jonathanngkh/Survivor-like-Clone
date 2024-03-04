@@ -310,7 +310,7 @@ experience = 50
 position = Vector2(192, -26)
 
 [node name="BigGoblin" parent="." instance=ExtResource("14_lk7st")]
-position = Vector2(-115, -15)
+position = Vector2(-239, -17)
 
 [connection signal="beat_incremented" from="Conductor" to="Player" method="_on_conductor_beat_incremented"]
 [connection signal="measure_incremented" from="Conductor" to="Player" method="_on_conductor_measure_incremented"]

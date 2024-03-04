@@ -1,9 +1,7 @@
-[gd_scene load_steps=104 format=3 uid="uid://duw3gdnqy7wdg"]
+[gd_scene load_steps=105 format=3 uid="uid://duw3gdnqy7wdg"]
 
 [ext_resource type="Script" path="res://Enemy/big_goblin.gd" id="1_li5xr"]
 [ext_resource type="Texture2D" uid="uid://cff4at4kjiimh" path="res://Textures/Enemy/FighterGoblin-Sheet.png" id="2_lxamv"]
-[ext_resource type="Script" path="res://Utility/state_machine.gd" id="3_k1oc2"]
-[ext_resource type="Script" path="res://Utility/state.gd" id="4_iafnc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w4upi"]
 atlas = ExtResource("2_lxamv")
@@ -744,22 +742,166 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_idtrg"]
 
+[sub_resource type="GDScript" id="GDScript_towui"]
+script/source = "extends StateMachine
+
+# Emitted when transitioning to a new state.
+#signal transitioned(state_name)
+
+# Path to the initial active state
+#@export var initial_state := NodePath()
+
+# The current active state. At the start of the game, we get the `initial_state`.
+#@onready var state: State = get_node(initial_state)
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	await owner.ready
+	# The state machine assigns itself to the State objects' state_machine property.
+	for child_state in get_children():
+		child_state.state_machine = self
+	state.enter()
+
+
+# The state machine subscribes to node callbacks and delegates them to the state objects.
+func _unhandled_input(event: InputEvent) -> void:
+	state.handle_input(event)
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	state.update(delta)
+
+
+func _physics_process(delta: float) -> void:
+	state.physics_update(delta)
+
+
+func transition_to(target_state_name: String, msg: Dictionary = {}) -> void:
+	if not has_node(target_state_name):
+		return
+		
+	state.exit()
+	state = get_node(target_state_name)
+	state.enter(msg)
+	emit_signal(\"transitioned\", state.name)
+
+"
+
+[sub_resource type="GDScript" id="GDScript_h701q"]
+script/source = "class_name BigGoblinState
+extends State
+
+# State machine parent node sets this, so that state can call its state machine's transition_to() function
+#var state_machine = null
+var biggoblin: BigGoblin
+
+func _ready() -> void:
+	await owner.ready
+	biggoblin = owner as BigGoblin
+	assert(biggoblin != null)
+
+# Receives events from the `_unhandled_input()` callback.
+func handle_input(_event: InputEvent) -> void:
+	pass
+
+
+# Corresponds to the `_process()` callback.
+func update(_delta: float) -> void:
+	#$AnimatedSprite2D.play(\"biggoblin_idle\")
+	biggoblin.animated_sprite.play(\"biggoblin_idle\")
+	#print(biggoblin.global_position.distance_to(get_tree().get_first_node_in_group(\"player\").global_position))
+
+# Corresponds to the `_physics_process()` callback.
+func physics_update(_delta: float) -> void:
+	if biggoblin.distance_to_player <= 200:
+		state_machine.transition_to(\"Approach\")
+
+
+# Called by the state machine upon changing the active state. The `msg` parameter is a dictionary with arbitrary data the state can use to initialize itself.
+func enter(_msg := {}) -> void:
+	pass
+
+
+# Called by the state machine before changing the active state. Use this function to clean up the state.
+func exit() -> void:
+	pass
+"
+
+[sub_resource type="GDScript" id="GDScript_dqt7o"]
+script/source = "class_name BigGoblinState
+extends State
+
+# State machine parent node sets this, so that state can call its state machine's transition_to() function
+#var state_machine = null
+var biggoblin: BigGoblin
+
+func _ready() -> void:
+	await owner.ready
+	biggoblin = owner as BigGoblin
+	assert(biggoblin != null)
+
+# Receives events from the `_unhandled_input()` callback.
+func handle_input(_event: InputEvent) -> void:
+	pass
+
+
+# Corresponds to the `_process()` callback.
+func update(_delta: float) -> void:
+	biggoblin.animated_sprite.play(\"biggoblin_walk\")
+
+
+# Corresponds to the `_physics_process()` callback.
+func physics_update(_delta: float) -> void:
+	biggoblin.knockback = biggoblin.knockback.move_toward(Vector2.ZERO, biggoblin.knockback_recovery)
+	if biggoblin.player:
+		biggoblin.direction = biggoblin.global_position.direction_to(biggoblin.player.global_position)
+	biggoblin.velocity = biggoblin.direction * biggoblin.movement_speed
+	biggoblin.velocity += biggoblin.knockback
+	if biggoblin.velocity.x != 0:
+			if biggoblin.direction.x < 0:
+				biggoblin.sprite_container.scale.x = -1
+			else:
+				biggoblin.sprite_container.scale.x = 1
+
+	biggoblin.move_and_slide()
+	
+	if biggoblin.distance_to_player >= 200:
+		state_machine.transition_to(\"Idle\")
+
+
+# Called by the state machine upon changing the active state. The `msg` parameter is a dictionary with arbitrary data the state can use to initialize itself.
+func enter(_msg := {}) -> void:
+	pass
+
+
+# Called by the state machine before changing the active state. Use this function to clean up the state.
+func exit() -> void:
+	pass
+"
+
 [node name="BigGoblin" type="CharacterBody2D"]
 script = ExtResource("1_li5xr")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D"]
+position = Vector2(16, 0)
 sprite_frames = SubResource("SpriteFrames_wbohu")
 animation = &"biggoblin_idle"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-16, 0)
 shape = SubResource("CapsuleShape2D_idtrg")
 
-[node name="StateMachine" type="Node2D" parent="."]
-script = ExtResource("3_k1oc2")
+[node name="BigGoblinStateMachine" type="Node2D" parent="."]
+script = SubResource("GDScript_towui")
 initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node2D" parent="StateMachine"]
-script = ExtResource("4_iafnc")
+[node name="Idle" type="Node2D" parent="BigGoblinStateMachine"]
+script = SubResource("GDScript_h701q")
+
+[node name="Approach" type="Node2D" parent="BigGoblinStateMachine"]
+script = SubResource("GDScript_dqt7o")
