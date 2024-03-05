@@ -7,8 +7,10 @@ extends CharacterBody2D
 
 @export var hp = 10
 @export var knockback_recovery = 3.5
-@export var movement_speed = 20
+@export var movement_speed = 30
 @export var sprite_faces_right = true
+@export var approach_range = 200
+@export var attack_range = 50 
 
 var distance_to_player = null
 var knockback = Vector2.ZERO

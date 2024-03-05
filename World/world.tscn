@@ -307,6 +307,8 @@ visible = false
 experience = 50
 
 [node name="enemy_skeleton" parent="." instance=ExtResource("3_4kpfq")]
+process_mode = 4
+visible = false
 position = Vector2(192, -26)
 
 [node name="BigGoblin" parent="." instance=ExtResource("14_lk7st")]

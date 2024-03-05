@@ -1,4 +1,4 @@
-[gd_scene load_steps=105 format=3 uid="uid://duw3gdnqy7wdg"]
+[gd_scene load_steps=106 format=3 uid="uid://duw3gdnqy7wdg"]
 
 [ext_resource type="Script" path="res://Enemy/big_goblin.gd" id="1_li5xr"]
 [ext_resource type="Texture2D" uid="uid://cff4at4kjiimh" path="res://Textures/Enemy/FighterGoblin-Sheet.png" id="2_lxamv"]
@@ -815,7 +815,7 @@ func update(_delta: float) -> void:
 
 # Corresponds to the `_physics_process()` callback.
 func physics_update(_delta: float) -> void:
-	if biggoblin.distance_to_player <= 200:
+	if biggoblin.distance_to_player <= biggoblin.approach_range:
 		state_machine.transition_to(\"Approach\")
 
 
@@ -854,21 +854,79 @@ func update(_delta: float) -> void:
 
 # Corresponds to the `_physics_process()` callback.
 func physics_update(_delta: float) -> void:
-	biggoblin.knockback = biggoblin.knockback.move_toward(Vector2.ZERO, biggoblin.knockback_recovery)
-	if biggoblin.player:
-		biggoblin.direction = biggoblin.global_position.direction_to(biggoblin.player.global_position)
-	biggoblin.velocity = biggoblin.direction * biggoblin.movement_speed
-	biggoblin.velocity += biggoblin.knockback
-	if biggoblin.velocity.x != 0:
-			if biggoblin.direction.x < 0:
-				biggoblin.sprite_container.scale.x = -1
-			else:
-				biggoblin.sprite_container.scale.x = 1
+	calculate_movement()
 
-	biggoblin.move_and_slide()
-	
-	if biggoblin.distance_to_player >= 200:
+	if biggoblin.distance_to_player >= biggoblin.approach_range:
 		state_machine.transition_to(\"Idle\")
+
+	if biggoblin.distance_to_player <= biggoblin.attack_range:
+		state_machine.transition_to(\"Attack\")
+
+func calculate_movement():
+	calculate_knockback()
+	calculate_velocity()
+	face_movement_direction()
+	biggoblin.move_and_slide()
+
+
+func point_toward(target):
+	biggoblin.direction = biggoblin.global_position.direction_to(target.global_position)
+
+
+func calculate_knockback():
+	biggoblin.knockback = biggoblin.knockback.move_toward(Vector2.ZERO, biggoblin.knockback_recovery)
+	biggoblin.velocity += biggoblin.knockback
+
+
+func calculate_velocity():
+	point_toward(biggoblin.player)
+	biggoblin.velocity = biggoblin.direction * biggoblin.movement_speed
+
+
+func face_movement_direction():
+	if biggoblin.velocity.x != 0:
+		if biggoblin.direction.x < 0:
+			biggoblin.sprite_container.scale.x = -1
+		else:
+			biggoblin.sprite_container.scale.x = 1
+
+
+# Called by the state machine upon changing the active state. The `msg` parameter is a dictionary with arbitrary data the state can use to initialize itself.
+func enter(_msg := {}) -> void:
+	pass
+
+
+# Called by the state machine before changing the active state. Use this function to clean up the state.
+func exit() -> void:
+	pass
+"
+
+[sub_resource type="GDScript" id="GDScript_v2pow"]
+script/source = "class_name BigGoblinState
+extends State
+
+var biggoblin: BigGoblin
+
+func _ready() -> void:
+	await owner.ready
+	biggoblin = owner as BigGoblin
+	assert(biggoblin != null)
+
+# Receives events from the `_unhandled_input()` callback.
+func handle_input(_event: InputEvent) -> void:
+	pass
+
+
+# Corresponds to the `_process()` callback.
+func update(_delta: float) -> void:
+	biggoblin.animated_sprite.play(\"biggoblin_lightattack\")
+
+
+# Corresponds to the `_physics_process()` callback.
+func physics_update(_delta: float) -> void:
+	await biggoblin.animated_sprite.animation_finished
+	if biggoblin.distance_to_player >= biggoblin.attack_range:
+		state_machine.transition_to(\"Approach\")
 
 
 # Called by the state machine upon changing the active state. The `msg` parameter is a dictionary with arbitrary data the state can use to initialize itself.
@@ -905,3 +963,6 @@ script = SubResource("GDScript_h701q")
 
 [node name="Approach" type="Node2D" parent="BigGoblinStateMachine"]
 script = SubResource("GDScript_dqt7o")
+
+[node name="Attack" type="Node2D" parent="BigGoblinStateMachine"]
+script = SubResource("GDScript_v2pow")
