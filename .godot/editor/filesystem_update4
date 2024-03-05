@@ -9,3 +9,4 @@ res://Utility/state.tscn
 res://Utility/state_machine.tscn
 res://Enemy/big_goblin.gd
 res://Utility/state.gd
+res://dash.tscn

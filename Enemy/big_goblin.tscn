@@ -756,7 +756,7 @@ script/source = "extends StateMachine
 
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
 	await owner.ready
 	# The state machine assigns itself to the State objects' state_machine property.
 	for child_state in get_children():
@@ -815,7 +815,7 @@ func update(_delta: float) -> void:
 
 # Corresponds to the `_physics_process()` callback.
 func physics_update(_delta: float) -> void:
-	if biggoblin.distance_to_player <= biggoblin.approach_range:
+	if biggoblin.is_player_in_approach_range():
 		state_machine.transition_to(\"Approach\")
 
 
@@ -854,41 +854,13 @@ func update(_delta: float) -> void:
 
 # Corresponds to the `_physics_process()` callback.
 func physics_update(_delta: float) -> void:
-	calculate_movement()
+	biggoblin.update_movement()
 
-	if biggoblin.distance_to_player >= biggoblin.approach_range:
+	if not biggoblin.is_player_in_approach_range():
 		state_machine.transition_to(\"Idle\")
 
-	if biggoblin.distance_to_player <= biggoblin.attack_range:
+	if biggoblin.is_player_in_attack_range():
 		state_machine.transition_to(\"Attack\")
-
-func calculate_movement():
-	calculate_knockback()
-	calculate_velocity()
-	face_movement_direction()
-	biggoblin.move_and_slide()
-
-
-func point_toward(target):
-	biggoblin.direction = biggoblin.global_position.direction_to(target.global_position)
-
-
-func calculate_knockback():
-	biggoblin.knockback = biggoblin.knockback.move_toward(Vector2.ZERO, biggoblin.knockback_recovery)
-	biggoblin.velocity += biggoblin.knockback
-
-
-func calculate_velocity():
-	point_toward(biggoblin.player)
-	biggoblin.velocity = biggoblin.direction * biggoblin.movement_speed
-
-
-func face_movement_direction():
-	if biggoblin.velocity.x != 0:
-		if biggoblin.direction.x < 0:
-			biggoblin.sprite_container.scale.x = -1
-		else:
-			biggoblin.sprite_container.scale.x = 1
 
 
 # Called by the state machine upon changing the active state. The `msg` parameter is a dictionary with arbitrary data the state can use to initialize itself.
@@ -925,6 +897,7 @@ func update(_delta: float) -> void:
 # Corresponds to the `_physics_process()` callback.
 func physics_update(_delta: float) -> void:
 	await biggoblin.animated_sprite.animation_finished
+
 	if biggoblin.distance_to_player >= biggoblin.attack_range:
 		state_machine.transition_to(\"Approach\")
 
@@ -937,6 +910,12 @@ func enter(_msg := {}) -> void:
 # Called by the state machine before changing the active state. Use this function to clean up the state.
 func exit() -> void:
 	pass
+
+
+func _on_animated_sprite_2d_frame_changed():
+	if biggoblin.animated_sprite.animation == \"biggoblin_lightattack\":
+		if biggoblin.animated_sprite.frame == 5 or biggoblin.animated_sprite.frame == 11:
+			biggoblin.attack_dash()
 "
 
 [node name="BigGoblin" type="CharacterBody2D"]
@@ -947,7 +926,9 @@ script = ExtResource("1_li5xr")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D"]
 position = Vector2(16, 0)
 sprite_frames = SubResource("SpriteFrames_wbohu")
-animation = &"biggoblin_idle"
+animation = &"biggoblin_lightattack"
+frame = 19
+frame_progress = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
@@ -966,3 +947,10 @@ script = SubResource("GDScript_dqt7o")
 
 [node name="Attack" type="Node2D" parent="BigGoblinStateMachine"]
 script = SubResource("GDScript_v2pow")
+
+[node name="DashDurationTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="frame_changed" from="Node2D/AnimatedSprite2D" to="BigGoblinStateMachine/Attack" method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="timeout" from="DashDurationTimer" to="." method="_on_dash_duration_timer_timeout"]
