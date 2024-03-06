@@ -818,6 +818,7 @@ func update_animation_parameters():
 			if Input.is_action_just_pressed("p1_attack"):
 				anim_state_machine.travel("eleanore_attack_1")
 				current_state = "attack1"
+				#$FireArea.target = get_closest_target()
 				is_attacking = true
 			elif velocity == Vector2.ZERO: # stationary
 				anim_state_machine.travel("eleanore_idle")

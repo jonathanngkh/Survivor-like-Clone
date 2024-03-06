@@ -145,7 +145,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_detan"]
-size = Vector2(42.4999, 34.5003)
+size = Vector2(42.4999, 55.7502)
 
 [node name="FireArea" type="Area2D" groups=["attack"]]
 top_level = true
@@ -159,7 +159,7 @@ sprite_frames = SubResource("SpriteFrames_pqpde")
 animation = &"ice_bolt"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-4.49999, 0.499993)
+position = Vector2(6.12494, 0.50006)
 rotation = -1.57079
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_detan")

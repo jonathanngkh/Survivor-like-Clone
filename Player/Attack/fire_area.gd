@@ -14,9 +14,10 @@ var angle = Vector2.ZERO
 signal remove_from_array(object)
 
 func _ready():
-	angle = global_position.direction_to(target)
+	#rotation = angle.angle()
+	#angle = Vector2(1, 1)
 	#$Sprite2D.play("ice_bolt")
-	rotation = angle.angle()
+	target = player.get_closest_target()
 	$CollisionShape2D.set_deferred("disabled", true)
 	
 	
@@ -57,10 +58,14 @@ func _ready():
 func _physics_process(delta):
 	#pass
 	#position += angle * speed * delta
+	
 	if player.velocity.x < 0:
 		position = player.position - Vector2(40, 0)
 	elif player.velocity.x > 0:
 		position = player.position + Vector2(40, 0)
+	#angle = player.global_position.direction_to(target)
+	target = player.get_closest_target()
+	angle = player.global_position.direction_to(target)
 	
 #func enemy_hit(charge = 1):
 	#hp -= 10
@@ -76,3 +81,7 @@ func _physics_process(delta):
 #func _on_visible_on_screen_notifier_2d_screen_exited():
 	#emit_signal("remove_from_array", self)
 	#queue_free()
+
+
+func _on_body_entered(body):
+	target = body

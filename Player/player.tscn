@@ -1,4 +1,4 @@
-[gd_scene load_steps=222 format=3 uid="uid://c6uuvcthpociv"]
+[gd_scene load_steps=221 format=3 uid="uid://c6uuvcthpociv"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_6neil"]
 [ext_resource type="PackedScene" uid="uid://c3p0e8l8amscb" path="res://Utility/hurt_box.tscn" id="3_5rw0d"]
@@ -158,9 +158,6 @@
 [ext_resource type="AudioStream" uid="uid://bebrq1l2ba4lc" path="res://Audio/SoundEffect/LightningStreakSound.mp3" id="155_t552v"]
 [ext_resource type="AudioStream" uid="uid://xteq15aqbkbg" path="res://Audio/SoundEffect/Sparking.mp3" id="156_4wqrg"]
 [ext_resource type="PackedScene" uid="uid://bb06wbaadygba" path="res://laser.tscn" id="158_wxuyw"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bpdif"]
-size = Vector2(41.6638, 33.6962)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e63hs"]
 animations = [{
@@ -661,7 +658,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("AttackArea/CollisionShape2D:disabled")
+tracks/11/path = NodePath("FireArea/CollisionShape2D:disabled")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -673,94 +670,46 @@ tracks/11/keys = {
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("AttackArea/CollisionShape2D:shape")
+tracks/12/path = NodePath("AnimatedSprite2D:sprite_frames")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [SubResource("RectangleShape2D_bpdif")]
+"values": [SubResource("SpriteFrames_e63hs")]
 }
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("AttackArea/CollisionShape2D:position")
+tracks/13/path = NodePath("AnimatedSprite2D:animation")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(32.8481, 4)]
+"update": 1,
+"values": [&"eleanore_hurt"]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("AttackArea/CollisionShape2D:rotation")
+tracks/14/path = NodePath("AnimatedSprite2D:speed_scale")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [-1.57079]
+"values": [1.0]
 }
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("FireArea/CollisionShape2D:disabled")
+tracks/15/path = NodePath("AnimatedSprite2D:frame")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/16/type = "value"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("AnimatedSprite2D:sprite_frames")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [SubResource("SpriteFrames_e63hs")]
-}
-tracks/17/type = "value"
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/path = NodePath("AnimatedSprite2D:animation")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"eleanore_hurt"]
-}
-tracks/18/type = "value"
-tracks/18/imported = false
-tracks/18/enabled = true
-tracks/18/path = NodePath("AnimatedSprite2D:speed_scale")
-tracks/18/interp = 1
-tracks/18/loop_wrap = true
-tracks/18/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
-tracks/19/type = "value"
-tracks/19/imported = false
-tracks/19/enabled = true
-tracks/19/path = NodePath("AnimatedSprite2D:frame")
-tracks/19/interp = 1
-tracks/19/loop_wrap = true
-tracks/19/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -929,58 +878,10 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("AttackArea/CollisionShape2D:disabled")
+tracks/13/path = NodePath("FireArea/CollisionShape2D:disabled")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(0.4, 0.9),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("AttackArea/CollisionShape2D:shape")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
-"times": PackedFloat32Array(0.4),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [SubResource("RectangleShape2D_bpdif")]
-}
-tracks/15/type = "value"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("AttackArea/CollisionShape2D:position")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
-"times": PackedFloat32Array(0.4),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(32.8481, 4)]
-}
-tracks/16/type = "value"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("AttackArea/CollisionShape2D:rotation")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/keys = {
-"times": PackedFloat32Array(0.4),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-1.57079]
-}
-tracks/17/type = "value"
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/path = NodePath("FireArea/CollisionShape2D:disabled")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/keys = {
 "times": PackedFloat32Array(0, 0.4, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
@@ -2101,7 +2002,6 @@ wait_time = 0.2
 one_shot = true
 
 [node name="HurtBox" parent="." instance=ExtResource("3_5rw0d")]
-visible = false
 collision_mask = 2
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
@@ -2109,7 +2009,6 @@ position = Vector2(2, 3)
 shape = SubResource("RectangleShape2D_e4lsk")
 
 [node name="FireArea" parent="." instance=ExtResource("60_r5hxe")]
-visible = false
 
 [node name="Attack" type="Node2D" parent="."]
 
@@ -3019,16 +2918,6 @@ volume_db = -7.732
 stream = ExtResource("57_kvhn2")
 volume_db = -14.0
 
-[node name="AttackArea" type="Area2D" parent="."]
-visible = false
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(32.8481, 4)
-rotation = -1.57079
-shape = SubResource("RectangleShape2D_bpdif")
-
 [node name="sound_damaged" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("68_5tvaa")
 volume_db = -7.0
@@ -3131,6 +3020,7 @@ collide_with_areas = true
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
+[connection signal="body_entered" from="FireArea" to="FireArea" method="_on_body_entered"]
 [connection signal="timeout" from="Attack/IceSpearTimer" to="." method="_on_ice_spear_timer_timeout"]
 [connection signal="timeout" from="Attack/IceSpearTimer/IceSpearAttackTimer" to="." method="_on_ice_spear_attack_timer_timeout"]
 [connection signal="timeout" from="Attack/TornadoTimer" to="." method="_on_tornado_timer_timeout"]

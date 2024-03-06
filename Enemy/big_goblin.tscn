@@ -1,7 +1,20 @@
-[gd_scene load_steps=106 format=3 uid="uid://duw3gdnqy7wdg"]
+[gd_scene load_steps=114 format=3 uid="uid://duw3gdnqy7wdg"]
 
 [ext_resource type="Script" path="res://Enemy/big_goblin.gd" id="1_li5xr"]
+[ext_resource type="PackedScene" uid="uid://c3p0e8l8amscb" path="res://Utility/hurt_box.tscn" id="2_7b0lt"]
 [ext_resource type="Texture2D" uid="uid://cff4at4kjiimh" path="res://Textures/Enemy/FighterGoblin-Sheet.png" id="2_lxamv"]
+[ext_resource type="Script" path="res://Utility/state_machine.gd" id="2_v5e7c"]
+[ext_resource type="Script" path="res://Enemy/BigGoblin States/Idle.gd" id="3_8h7n4"]
+[ext_resource type="Script" path="res://Enemy/BigGoblin States/Approach.gd" id="4_48pvy"]
+[ext_resource type="PackedScene" uid="uid://b1l2qb0u8xev8" path="res://Utility/hit_box.tscn" id="4_xrl4v"]
+[ext_resource type="FontFile" uid="uid://dejderl1lu6q2" path="res://Font/monogram.ttf" id="5_31i3w"]
+[ext_resource type="Script" path="res://Enemy/BigGoblin States/LightAttack.gd" id="5_rm752"]
+[ext_resource type="Script" path="res://Enemy/BigGoblin States/HeavyAttack.gd" id="6_7tcsw"]
+[ext_resource type="Script" path="res://Enemy/BigGoblin States/Hurt.gd" id="7_bw47m"]
+[ext_resource type="Script" path="res://Enemy/BigGoblin States/Death.gd" id="8_4r2gk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhn8g"]
+size = Vector2(29.8451, 46.2154)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w4upi"]
 atlas = ExtResource("2_lxamv")
@@ -740,217 +753,89 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rrjer"]
+size = Vector2(21.9384, 23.4975)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_idtrg"]
 
-[sub_resource type="GDScript" id="GDScript_towui"]
-script/source = "extends StateMachine
-
-# Emitted when transitioning to a new state.
-#signal transitioned(state_name)
-
-# Path to the initial active state
-#@export var initial_state := NodePath()
-
-# The current active state. At the start of the game, we get the `initial_state`.
-#@onready var state: State = get_node(initial_state)
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	await owner.ready
-	# The state machine assigns itself to the State objects' state_machine property.
-	for child_state in get_children():
-		child_state.state_machine = self
-	state.enter()
-
-
-# The state machine subscribes to node callbacks and delegates them to the state objects.
-func _unhandled_input(event: InputEvent) -> void:
-	state.handle_input(event)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	state.update(delta)
-
-
-func _physics_process(delta: float) -> void:
-	state.physics_update(delta)
-
-
-func transition_to(target_state_name: String, msg: Dictionary = {}) -> void:
-	if not has_node(target_state_name):
-		return
-		
-	state.exit()
-	state = get_node(target_state_name)
-	state.enter(msg)
-	emit_signal(\"transitioned\", state.name)
-
-"
-
-[sub_resource type="GDScript" id="GDScript_h701q"]
-script/source = "class_name BigGoblinState
-extends State
-
-# State machine parent node sets this, so that state can call its state machine's transition_to() function
-#var state_machine = null
-var biggoblin: BigGoblin
-
-func _ready() -> void:
-	await owner.ready
-	biggoblin = owner as BigGoblin
-	assert(biggoblin != null)
-
-# Receives events from the `_unhandled_input()` callback.
-func handle_input(_event: InputEvent) -> void:
-	pass
-
-
-# Corresponds to the `_process()` callback.
-func update(_delta: float) -> void:
-	#$AnimatedSprite2D.play(\"biggoblin_idle\")
-	biggoblin.animated_sprite.play(\"biggoblin_idle\")
-	#print(biggoblin.global_position.distance_to(get_tree().get_first_node_in_group(\"player\").global_position))
-
-# Corresponds to the `_physics_process()` callback.
-func physics_update(_delta: float) -> void:
-	if biggoblin.is_player_in_approach_range():
-		state_machine.transition_to(\"Approach\")
-
-
-# Called by the state machine upon changing the active state. The `msg` parameter is a dictionary with arbitrary data the state can use to initialize itself.
-func enter(_msg := {}) -> void:
-	pass
-
-
-# Called by the state machine before changing the active state. Use this function to clean up the state.
-func exit() -> void:
-	pass
-"
-
-[sub_resource type="GDScript" id="GDScript_dqt7o"]
-script/source = "class_name BigGoblinState
-extends State
-
-# State machine parent node sets this, so that state can call its state machine's transition_to() function
-#var state_machine = null
-var biggoblin: BigGoblin
-
-func _ready() -> void:
-	await owner.ready
-	biggoblin = owner as BigGoblin
-	assert(biggoblin != null)
-
-# Receives events from the `_unhandled_input()` callback.
-func handle_input(_event: InputEvent) -> void:
-	pass
-
-
-# Corresponds to the `_process()` callback.
-func update(_delta: float) -> void:
-	biggoblin.animated_sprite.play(\"biggoblin_walk\")
-
-
-# Corresponds to the `_physics_process()` callback.
-func physics_update(_delta: float) -> void:
-	biggoblin.update_movement()
-
-	if not biggoblin.is_player_in_approach_range():
-		state_machine.transition_to(\"Idle\")
-
-	if biggoblin.is_player_in_attack_range():
-		state_machine.transition_to(\"Attack\")
-
-
-# Called by the state machine upon changing the active state. The `msg` parameter is a dictionary with arbitrary data the state can use to initialize itself.
-func enter(_msg := {}) -> void:
-	pass
-
-
-# Called by the state machine before changing the active state. Use this function to clean up the state.
-func exit() -> void:
-	pass
-"
-
-[sub_resource type="GDScript" id="GDScript_v2pow"]
-script/source = "class_name BigGoblinState
-extends State
-
-var biggoblin: BigGoblin
-
-func _ready() -> void:
-	await owner.ready
-	biggoblin = owner as BigGoblin
-	assert(biggoblin != null)
-
-# Receives events from the `_unhandled_input()` callback.
-func handle_input(_event: InputEvent) -> void:
-	pass
-
-
-# Corresponds to the `_process()` callback.
-func update(_delta: float) -> void:
-	biggoblin.animated_sprite.play(\"biggoblin_lightattack\")
-
-
-# Corresponds to the `_physics_process()` callback.
-func physics_update(_delta: float) -> void:
-	await biggoblin.animated_sprite.animation_finished
-
-	if biggoblin.distance_to_player >= biggoblin.attack_range:
-		state_machine.transition_to(\"Approach\")
-
-
-# Called by the state machine upon changing the active state. The `msg` parameter is a dictionary with arbitrary data the state can use to initialize itself.
-func enter(_msg := {}) -> void:
-	pass
-
-
-# Called by the state machine before changing the active state. Use this function to clean up the state.
-func exit() -> void:
-	pass
-
-
-func _on_animated_sprite_2d_frame_changed():
-	if biggoblin.animated_sprite.animation == \"biggoblin_lightattack\":
-		if biggoblin.animated_sprite.frame == 5 or biggoblin.animated_sprite.frame == 11:
-			biggoblin.attack_dash()
-"
-
-[node name="BigGoblin" type="CharacterBody2D"]
+[node name="BigGoblin" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 6
+collision_mask = 0
 script = ExtResource("1_li5xr")
+hp = 100
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="BigGoblinStateMachine" type="Node2D" parent="."]
+script = ExtResource("2_v5e7c")
+initial_state = NodePath("Idle")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D"]
+[node name="Idle" type="Node2D" parent="BigGoblinStateMachine"]
+script = ExtResource("3_8h7n4")
+
+[node name="Approach" type="Node2D" parent="BigGoblinStateMachine"]
+script = ExtResource("4_48pvy")
+
+[node name="LightAttack" type="Node2D" parent="BigGoblinStateMachine"]
+script = ExtResource("5_rm752")
+
+[node name="HeavyAttack" type="Node2D" parent="BigGoblinStateMachine"]
+script = ExtResource("6_7tcsw")
+
+[node name="Hurt" type="Node2D" parent="BigGoblinStateMachine"]
+script = ExtResource("7_bw47m")
+
+[node name="Death" type="Node2D" parent="BigGoblinStateMachine"]
+script = ExtResource("8_4r2gk")
+
+[node name="HurtBox" parent="." instance=ExtResource("2_7b0lt")]
+collision_mask = 4
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(0.532539, -4.05163)
+shape = SubResource("RectangleShape2D_bhn8g")
+debug_color = Color(0.882353, 0.333333, 0, 0.419608)
+
+[node name="SpriteContainer" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteContainer"]
 position = Vector2(16, 0)
 sprite_frames = SubResource("SpriteFrames_wbohu")
-animation = &"biggoblin_lightattack"
-frame = 19
-frame_progress = 1.0
+animation = &"biggoblin_heavyattack"
+
+[node name="HitBox" parent="." instance=ExtResource("4_xrl4v")]
+collision_layer = 2
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(1.2564, -1.26757)
+shape = SubResource("RectangleShape2D_rrjer")
+debug_color = Color(0.921569, 0, 0.686275, 0.419608)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.8909, 0)
 shape = SubResource("CapsuleShape2D_idtrg")
-
-[node name="BigGoblinStateMachine" type="Node2D" parent="."]
-script = SubResource("GDScript_towui")
-initial_state = NodePath("Idle")
-
-[node name="Idle" type="Node2D" parent="BigGoblinStateMachine"]
-script = SubResource("GDScript_h701q")
-
-[node name="Approach" type="Node2D" parent="BigGoblinStateMachine"]
-script = SubResource("GDScript_dqt7o")
-
-[node name="Attack" type="Node2D" parent="BigGoblinStateMachine"]
-script = SubResource("GDScript_v2pow")
+debug_color = Color(0, 0.6, 0.701961, 0.254902)
 
 [node name="DashDurationTimer" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
 
-[connection signal="frame_changed" from="Node2D/AnimatedSprite2D" to="BigGoblinStateMachine/Attack" method="_on_animated_sprite_2d_frame_changed"]
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -43.9881
+offset_top = 20.7134
+offset_right = 5.01189
+offset_bottom = 43.7134
+theme_override_fonts/font = ExtResource("5_31i3w")
+text = "State: "
+
+[connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
+[connection signal="animation_finished" from="SpriteContainer/AnimatedSprite2D" to="BigGoblinStateMachine/LightAttack" method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_finished" from="SpriteContainer/AnimatedSprite2D" to="BigGoblinStateMachine/HeavyAttack" method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_finished" from="SpriteContainer/AnimatedSprite2D" to="BigGoblinStateMachine/Death" method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="frame_changed" from="SpriteContainer/AnimatedSprite2D" to="BigGoblinStateMachine/LightAttack" method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="frame_changed" from="SpriteContainer/AnimatedSprite2D" to="BigGoblinStateMachine/HeavyAttack" method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="timeout" from="DashDurationTimer" to="." method="_on_dash_duration_timer_timeout"]
+
+[editable path="HurtBox"]
+[editable path="HitBox"]

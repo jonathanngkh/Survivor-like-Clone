@@ -1,5 +1,6 @@
-Timer
+Label
 State
+Timer
 Node2D
 StateMachine
 AnimationPlayer
@@ -12,4 +13,3 @@ CPUParticles2D
 StaticBody2D
 Line2D
 RayCast2D
-AudioStreamPlayer

@@ -310,6 +310,8 @@ experience = 50
 process_mode = 4
 visible = false
 position = Vector2(192, -26)
+hp = 1000
+knockback_recovery = 2.0
 
 [node name="BigGoblin" parent="." instance=ExtResource("14_lk7st")]
 position = Vector2(-239, -17)

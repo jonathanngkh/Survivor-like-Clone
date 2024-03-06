@@ -52,7 +52,7 @@ func _set_death_animation(animation_name):
 func _physics_process(_delta):
 	if hp > 0:
 		knockback = knockback.move_toward(Vector2.ZERO, knockback_recovery)
-		var direction = Vector2(1,1)
+		var direction = Vector2.ZERO
 		if player:
 			direction = global_position.direction_to(player.global_position)
 		velocity = direction * movement_speed
