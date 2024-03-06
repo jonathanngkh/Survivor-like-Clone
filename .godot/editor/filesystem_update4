@@ -1,22 +1,6 @@
 res://World/world.tscn
 res://Utility/spawn_info.gd
 res://Utility/state_machine.gd
-res://Player/player.tscn
-res://conductor.tscn
-res://Enemy/enemy.tscn
 res://Enemy/big_goblin.tscn
-res://dash.tscn
-res://Enemy/enemy_skeleton.tscn
-res://Enemy/BigGoblin States/Approach.gd
-res://Enemy/BigGoblin States/LightAttack.gd
 res://Enemy/BigGoblin States/HeavyAttack.gd
-res://Enemy/BigGoblin States/Hurt.gd
-res://Enemy/BigGoblin States/Death.gd
-res://Enemy/BigGoblin States/Idle.gd
-res://Enemy/big_goblin.gd
-res://Player/Attack/fire_area.gd
-res://Player/player.gd
-res://Player/Attack/tornado.tscn
-res://Enemy/enemy.gd
-res://Player/Attack/ice_spear.tscn
-res://Player/Attack/fire_area.tscn
+res://Enemy/BigGoblin States/LightAttack.gd

@@ -1,8 +1,8 @@
 # HeavyAttack
 extends BigGoblinState
 
-var jump_attack = false
-var lunge_velocity_multiplier = 4
+var lunging = false
+var lunge_speed_multiplier = 1.1
 
 # Receives events from the `_unhandled_input()` callback.
 func handle_input(_event: InputEvent) -> void:
@@ -16,9 +16,11 @@ func update(_delta: float) -> void:
 
 # Corresponds to the `_physics_process()` callback.
 func physics_update(_delta: float) -> void:
-	if jump_attack == true:
-		biggoblin.movement_speed *= 1.1
+	if lunging == true:
+		biggoblin.movement_speed *= lunge_speed_multiplier
+		# using speed because nice exponential curve
 		biggoblin.calculate_velocity()
+		# consider no longer tracking player's position once lunge starts
 
 	else:
 		biggoblin.velocity = Vector2.ZERO
@@ -38,9 +40,9 @@ func _on_animated_sprite_2d_animation_finished():
 func _on_animated_sprite_2d_frame_changed():
 	if biggoblin.animated_sprite.animation == "biggoblin_heavyattack":
 		if biggoblin.animated_sprite.frame == 2: # attack start
-			jump_attack = true
+			lunging = true
 		if biggoblin.animated_sprite.frame == 7: # attack end
-			jump_attack = false
+			lunging = false
 
 
 # Called by the state machine upon changing the active state. The `msg` parameter is a dictionary with arbitrary data the state can use to initialize itself.
