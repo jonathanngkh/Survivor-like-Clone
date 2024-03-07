@@ -1,6 +1,12 @@
 # Death
 extends BigGoblinState
 
+@onready var death_sound = $"../../DeathSound"
+@onready var hurt_box = $"../../HurtBox"
+@onready var hit_box = $"../../SpriteContainer/HitBox"
+@onready var collision_shape_2d = $"../../CollisionShape2D"
+
+
 # Receives events from the `_unhandled_input()` callback.
 func handle_input(_event: InputEvent) -> void:
 	pass
@@ -18,8 +24,13 @@ func physics_update(_delta: float) -> void:
 
 # Called by the state machine upon changing the active state. The `msg` parameter is a dictionary with arbitrary data the state can use to initialize itself.
 func enter(_msg := {}) -> void:
-	biggoblin.velocity = Vector2.ZERO
 	biggoblin.death()
+	death_sound.play()
+	biggoblin.velocity = Vector2.ZERO
+	biggoblin.movement_speed = biggoblin.base_movement_speed
+	hurt_box.process_mode = Node.PROCESS_MODE_DISABLED
+	hit_box.process_mode = Node.PROCESS_MODE_DISABLED
+	collision_shape_2d.process_mode = Node.PROCESS_MODE_DISABLED
 
 
 # Called by the state machine before changing the active state. Use this function to clean up the state.

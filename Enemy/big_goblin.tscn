@@ -1,4 +1,4 @@
-[gd_scene load_steps=121 format=3 uid="uid://duw3gdnqy7wdg"]
+[gd_scene load_steps=123 format=3 uid="uid://duw3gdnqy7wdg"]
 
 [ext_resource type="Script" path="res://Enemy/big_goblin.gd" id="1_li5xr"]
 [ext_resource type="PackedScene" uid="uid://c3p0e8l8amscb" path="res://Utility/hurt_box.tscn" id="2_7b0lt"]
@@ -13,8 +13,10 @@
 [ext_resource type="Script" path="res://Enemy/BigGoblin States/Hurt.gd" id="7_bw47m"]
 [ext_resource type="Script" path="res://Enemy/BigGoblin States/Death.gd" id="8_4r2gk"]
 [ext_resource type="AudioStream" uid="uid://ccn0se28frcv8" path="res://Audio/SoundEffect/TOMAHAWK HITMARKER.mp3" id="13_ufeip"]
+[ext_resource type="AudioStream" uid="uid://nhob8ith3iw1" path="res://Audio/SoundEffect/orchurt.wav" id="14_8hgrg"]
 [ext_resource type="AudioStream" uid="uid://bootdnnlyavht" path="res://Audio/SoundEffect/defend1.wav" id="14_cpckr"]
 [ext_resource type="AudioStream" uid="uid://dnbueyybkw4di" path="res://Audio/SoundEffect/flag_punish.wav" id="14_ick3f"]
+[ext_resource type="AudioStream" uid="uid://tfmc46pdyd88" path="res://Audio/SoundEffect/orcdeath3.wav" id="14_s44u3"]
 [ext_resource type="AudioStream" uid="uid://75qsbday651m" path="res://Audio/SoundEffect/heavyattack4.wav" id="14_v11q2"]
 [ext_resource type="AudioStream" uid="uid://v5v42alnj120" path="res://Audio/SoundEffect/orclonggroan.wav" id="15_12k4u"]
 [ext_resource type="AudioStream" uid="uid://dreyheg5ayea2" path="res://Audio/SoundEffect/defend2.wav" id="15_ud4ga"]
@@ -761,15 +763,17 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rrjer"]
-size = Vector2(21.9384, 23.4975)
+size = Vector2(54.2975, 46.6826)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_idtrg"]
 
 [node name="BigGoblin" type="CharacterBody2D" groups=["enemy"]]
+texture_filter = 1
+scale = Vector2(4, 4)
 collision_layer = 6
 collision_mask = 0
 script = ExtResource("1_li5xr")
-hp = 100
+hp = 11
 
 [node name="BigGoblinStateMachine" type="Node2D" parent="."]
 script = ExtResource("2_v5e7c")
@@ -807,12 +811,16 @@ debug_color = Color(0.882353, 0.333333, 0, 0.419608)
 position = Vector2(16, 0)
 sprite_frames = SubResource("SpriteFrames_wbohu")
 animation = &"biggoblin_lightattack"
+frame = 19
+frame_progress = 1.0
 
-[node name="HitBox" parent="." instance=ExtResource("4_xrl4v")]
+[node name="HitBox" parent="SpriteContainer" instance=ExtResource("4_xrl4v")]
+process_mode = 4
+position = Vector2(24.5001, -0.927032)
 collision_layer = 2
 
-[node name="CollisionShape2D" parent="HitBox" index="0"]
-position = Vector2(1.2564, -1.26757)
+[node name="CollisionShape2D" parent="SpriteContainer/HitBox" index="0"]
+position = Vector2(3.23441, -3.3142)
 shape = SubResource("RectangleShape2D_rrjer")
 debug_color = Color(0.921569, 0, 0.686275, 0.419608)
 
@@ -836,9 +844,16 @@ text = "State: "
 stream = ExtResource("13_ufeip")
 volume_db = -10.0
 
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_s44u3")
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_8hgrg")
+volume_db = 4.0
+
 [node name="ShortGrunt1Sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_cpckr")
-volume_db = 6.0
+volume_db = 8.0
 
 [node name="ShortGrunt2Sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_ud4ga")
@@ -866,7 +881,7 @@ pitch_scale = 1.5
 stream = ExtResource("15_xu1eq")
 pitch_scale = 0.9
 
-[connection signal="hurt" from="HurtBox" to="BigGoblinStateMachine/Hurt" method="_on_hurt_box_hurt"]
+[connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 [connection signal="animation_finished" from="SpriteContainer/AnimatedSprite2D" to="BigGoblinStateMachine/LightAttack" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_finished" from="SpriteContainer/AnimatedSprite2D" to="BigGoblinStateMachine/HeavyAttack" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_finished" from="SpriteContainer/AnimatedSprite2D" to="BigGoblinStateMachine/Death" method="_on_animated_sprite_2d_animation_finished"]
@@ -874,4 +889,4 @@ pitch_scale = 0.9
 [connection signal="frame_changed" from="SpriteContainer/AnimatedSprite2D" to="BigGoblinStateMachine/HeavyAttack" method="_on_animated_sprite_2d_frame_changed"]
 
 [editable path="HurtBox"]
-[editable path="HitBox"]
+[editable path="SpriteContainer/HitBox"]

@@ -4,20 +4,21 @@ extends CharacterBody2D
 @onready var animated_sprite = $SpriteContainer/AnimatedSprite2D
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var sprite_container = $SpriteContainer
-@onready var dash_duration_timer = $DashDurationTimer
 @onready var state_machine = $BigGoblinStateMachine
 @onready var experience_gem = preload("res://Objects/experience_gem.tscn")
 @onready var loot_base = get_tree().get_first_node_in_group("loot")
+@onready var hit_marker_sound = $HitMarkerSound
+
 
 @export var hp = 15
 @export var knockback_recovery = 2
-@export var base_movement_speed = 50
+@export var base_movement_speed = 70
 @export var movement_speed = base_movement_speed
 @export var experience = 5
 @export var approach_range = 300
-@export var attack_range = 90
-@export var dash_speed_multiplier = 45
+@export var attack_range = 110
 
+var tracking_enabled = true
 var distance_to_player = null
 var knockback = Vector2.ZERO
 var direction = Vector2.ZERO
@@ -27,7 +28,7 @@ func _ready() -> void:
 
 
 func _process(_delta) -> void:
-	#$Label.text = "State: " + str(state_machine.state)
+	$Label.text = "State: " + str(state_machine.state)
 	pass
 
 
@@ -52,7 +53,8 @@ func calculate_knockback() -> void:
 
 
 func calculate_velocity() -> void:
-	point_toward(player)
+	if tracking_enabled:
+		point_toward(player)
 	velocity = direction * movement_speed
 
 
@@ -64,21 +66,19 @@ func face_movement_direction() -> void:
 			sprite_container.scale.x = 1
 
 
-func attack_dash():
-	movement_speed *= dash_speed_multiplier
-	update_movement()
-	dash_duration_timer.start()
-
-
-func _on_dash_duration_timer_timeout():
-	movement_speed = movement_speed / dash_speed_multiplier
-	update_movement()
+func _on_hurt_box_hurt(damage, angle, knockback_amount):
+	hp -= damage
+	knockback = angle * knockback_amount
+	sprite_flash()
+	hit_marker_sound.play()
+	velocity = Vector2.ZERO
+	if hp <= 0:
+		state_machine.transition_to("Death")
+	else:
+		state_machine.transition_to("Hurt")
 
 
 func death():
-	$HurtBox/CollisionShape2D.set_deferred("disabled", true)
-	$HitBox/CollisionShape2D.set_deferred("disabled", true)
-	$CollisionShape2D.set_deferred("disabled", true)
 	emit_signal("remove_from_array", self)
 	var new_gem = experience_gem.instantiate()
 	new_gem.global_position = global_position
