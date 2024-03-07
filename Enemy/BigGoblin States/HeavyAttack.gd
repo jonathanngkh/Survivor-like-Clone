@@ -1,6 +1,10 @@
 # HeavyAttack
 extends BigGoblinState
 
+@onready var heavy_attack_sound = $"../../HeavyAttackSound"
+@onready var orc_heavy_grunt_sound = $"../../OrcHeavyGruntSound"
+@onready var orc_long_roar_sound = $"../../OrcLongRoarSound"
+
 var lunging = false
 var lunge_speed_multiplier = 1.1
 
@@ -41,13 +45,18 @@ func _on_animated_sprite_2d_frame_changed():
 	if biggoblin.animated_sprite.animation == "biggoblin_heavyattack":
 		if biggoblin.animated_sprite.frame == 2: # attack start
 			lunging = true
+		if biggoblin.animated_sprite.frame == 3:
+			orc_long_roar_sound.play()
 		if biggoblin.animated_sprite.frame == 7: # attack end
 			lunging = false
+			heavy_attack_sound.play()
+		#if biggoblin.animated_sprite.frame == 8:
 
 
 # Called by the state machine upon changing the active state. The `msg` parameter is a dictionary with arbitrary data the state can use to initialize itself.
 func enter(_msg := {}) -> void:
 	biggoblin.velocity = Vector2.ZERO
+	orc_heavy_grunt_sound.play()
 
 
 # Called by the state machine before changing the active state. Use this function to clean up the state.

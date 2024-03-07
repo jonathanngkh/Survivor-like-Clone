@@ -1,6 +1,11 @@
 # LightAttack
 extends BigGoblinState
 
+@onready var light_attack_1_sound = $"../../LightAttack1Sound"
+@onready var light_attack_2_sound = $"../../LightAttack2Sound"
+@onready var short_grunt_1_sound = $"../../ShortGrunt1Sound"
+@onready var short_grunt_2_sound = $"../../ShortGrunt2Sound"
+
 var lunging = false
 var lunge_speed = 550
 
@@ -41,9 +46,15 @@ func _on_animated_sprite_2d_animation_finished():
 
 func _on_animated_sprite_2d_frame_changed():
 	if biggoblin.animated_sprite.animation == "biggoblin_lightattack":
-		if biggoblin.animated_sprite.frame == 5 or biggoblin.animated_sprite.frame == 11:
+		if biggoblin.animated_sprite.frame == 5: # attack 1
 			lunging = true
-		if biggoblin.animated_sprite.frame == 6 or biggoblin.animated_sprite.frame == 12:
+			light_attack_1_sound.play()
+			short_grunt_1_sound.play()
+		elif biggoblin.animated_sprite.frame == 11: # attack 2
+			lunging = true
+			short_grunt_2_sound.play()
+			light_attack_2_sound.play()
+		elif biggoblin.animated_sprite.frame == 6 or biggoblin.animated_sprite.frame == 12:
 			lunging = false
 
 

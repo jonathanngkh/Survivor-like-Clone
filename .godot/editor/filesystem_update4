@@ -4,3 +4,7 @@ res://Utility/state_machine.gd
 res://Enemy/big_goblin.tscn
 res://Enemy/BigGoblin States/HeavyAttack.gd
 res://Enemy/BigGoblin States/LightAttack.gd
+res://Player/player.tscn
+res://Enemy/big_goblin.gd
+res://Enemy/BigGoblin States/Hurt.gd
+res://Enemy/BigGoblin States/Death.gd

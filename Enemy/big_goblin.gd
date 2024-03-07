@@ -17,14 +17,12 @@ extends CharacterBody2D
 @export var approach_range = 300
 @export var attack_range = 90
 @export var dash_speed_multiplier = 45
-@export var dash_duration = 0.5 # each frame is 0.1s
 
 var distance_to_player = null
 var knockback = Vector2.ZERO
 var direction = Vector2.ZERO
 
 func _ready() -> void:
-	dash_duration_timer.wait_time = dash_duration
 	pass
 
 
@@ -77,19 +75,7 @@ func _on_dash_duration_timer_timeout():
 	update_movement()
 
 
-func _on_hurt_box_hurt(damage, angle, knockback_amount):
-	#sound_hit.play()
-	hp -= damage
-	knockback = angle * knockback_amount
-	sprite_flash()
-	if hp <= 0:
-		state_machine.transition_to("Death")
-		death()
-	else:
-		state_machine.transition_to("Hurt")
-
 func death():
-	#sound_die.play()
 	$HurtBox/CollisionShape2D.set_deferred("disabled", true)
 	$HitBox/CollisionShape2D.set_deferred("disabled", true)
 	$CollisionShape2D.set_deferred("disabled", true)
@@ -100,6 +86,7 @@ func death():
 	loot_base.call_deferred("add_child", new_gem)
 	await animated_sprite.animation_finished
 	queue_free()
+
 
 func is_player_in_approach_range() -> bool:
 	return distance_to_player <= approach_range

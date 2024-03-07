@@ -19,13 +19,9 @@ func physics_update(_delta: float) -> void:
 # Called by the state machine upon changing the active state. The `msg` parameter is a dictionary with arbitrary data the state can use to initialize itself.
 func enter(_msg := {}) -> void:
 	biggoblin.velocity = Vector2.ZERO
+	biggoblin.death()
 
 
 # Called by the state machine before changing the active state. Use this function to clean up the state.
 func exit() -> void:
 	pass
-
-
-#func _on_animated_sprite_2d_animation_finished():
-	#if biggoblin.animated_sprite.animation == "biggoblin_death":
-		#biggoblin.death()

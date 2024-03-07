@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=3 uid="uid://duw3gdnqy7wdg"]
+[gd_scene load_steps=121 format=3 uid="uid://duw3gdnqy7wdg"]
 
 [ext_resource type="Script" path="res://Enemy/big_goblin.gd" id="1_li5xr"]
 [ext_resource type="PackedScene" uid="uid://c3p0e8l8amscb" path="res://Utility/hurt_box.tscn" id="2_7b0lt"]
@@ -12,6 +12,13 @@
 [ext_resource type="Script" path="res://Enemy/BigGoblin States/HeavyAttack.gd" id="6_7tcsw"]
 [ext_resource type="Script" path="res://Enemy/BigGoblin States/Hurt.gd" id="7_bw47m"]
 [ext_resource type="Script" path="res://Enemy/BigGoblin States/Death.gd" id="8_4r2gk"]
+[ext_resource type="AudioStream" uid="uid://ccn0se28frcv8" path="res://Audio/SoundEffect/TOMAHAWK HITMARKER.mp3" id="13_ufeip"]
+[ext_resource type="AudioStream" uid="uid://bootdnnlyavht" path="res://Audio/SoundEffect/defend1.wav" id="14_cpckr"]
+[ext_resource type="AudioStream" uid="uid://dnbueyybkw4di" path="res://Audio/SoundEffect/flag_punish.wav" id="14_ick3f"]
+[ext_resource type="AudioStream" uid="uid://75qsbday651m" path="res://Audio/SoundEffect/heavyattack4.wav" id="14_v11q2"]
+[ext_resource type="AudioStream" uid="uid://v5v42alnj120" path="res://Audio/SoundEffect/orclonggroan.wav" id="15_12k4u"]
+[ext_resource type="AudioStream" uid="uid://dreyheg5ayea2" path="res://Audio/SoundEffect/defend2.wav" id="15_ud4ga"]
+[ext_resource type="AudioStream" uid="uid://bik7xoicnlnmn" path="res://Audio/SoundEffect/graverobber_explosion.wav" id="15_xu1eq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhn8g"]
 size = Vector2(29.8451, 46.2154)
@@ -816,10 +823,6 @@ position = Vector2(0.8909, 0)
 shape = SubResource("CapsuleShape2D_idtrg")
 debug_color = Color(0, 0.6, 0.701961, 0.254902)
 
-[node name="DashDurationTimer" type="Timer" parent="."]
-wait_time = 0.2
-one_shot = true
-
 [node name="Label" type="Label" parent="."]
 visible = false
 offset_left = -43.9881
@@ -829,13 +832,46 @@ offset_bottom = 43.7134
 theme_override_fonts/font = ExtResource("5_31i3w")
 text = "State: "
 
-[connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
+[node name="HitMarkerSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_ufeip")
+volume_db = -10.0
+
+[node name="ShortGrunt1Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_cpckr")
+volume_db = 6.0
+
+[node name="ShortGrunt2Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_ud4ga")
+volume_db = 4.0
+
+[node name="OrcHeavyGruntSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_v11q2")
+volume_db = 2.0
+pitch_scale = 0.95
+
+[node name="OrcLongRoarSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_12k4u")
+
+[node name="LightAttack1Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_ick3f")
+volume_db = -10.0
+pitch_scale = 2.0
+
+[node name="LightAttack2Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_ick3f")
+volume_db = -10.0
+pitch_scale = 1.5
+
+[node name="HeavyAttackSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_xu1eq")
+pitch_scale = 0.9
+
+[connection signal="hurt" from="HurtBox" to="BigGoblinStateMachine/Hurt" method="_on_hurt_box_hurt"]
 [connection signal="animation_finished" from="SpriteContainer/AnimatedSprite2D" to="BigGoblinStateMachine/LightAttack" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_finished" from="SpriteContainer/AnimatedSprite2D" to="BigGoblinStateMachine/HeavyAttack" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_finished" from="SpriteContainer/AnimatedSprite2D" to="BigGoblinStateMachine/Death" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="SpriteContainer/AnimatedSprite2D" to="BigGoblinStateMachine/LightAttack" method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="frame_changed" from="SpriteContainer/AnimatedSprite2D" to="BigGoblinStateMachine/HeavyAttack" method="_on_animated_sprite_2d_frame_changed"]
-[connection signal="timeout" from="DashDurationTimer" to="." method="_on_dash_duration_timer_timeout"]
 
 [editable path="HurtBox"]
 [editable path="HitBox"]
