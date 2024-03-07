@@ -8,3 +8,6 @@ res://Player/player.tscn
 res://Enemy/big_goblin.gd
 res://Enemy/BigGoblin States/Hurt.gd
 res://Enemy/BigGoblin States/Death.gd
+res://Utility/hit_box.gd
+res://Player/player.gd
+res://Player/Attack/fire_area.gd

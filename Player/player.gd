@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var movement_speed = 400.0
 @export var hp = 80
 @export var max_hp = 200
+@export var knockback_recovery = 2
 var max_stamina = 100
 var stamina = 100
 var last_movement = Vector2.UP
@@ -10,6 +11,7 @@ var time = 0
 var dash_duration = 0.1
 var dash_speed_multiplier = 50
 var max_velocity = 1500
+var knockback = Vector2.ZERO
 
 var experience = 0
 var experience_level = 1
@@ -752,6 +754,7 @@ func movement():
 		last_movement = mov
 		
 	last_velocity = velocity
+	
 	velocity = mov.normalized() * movement_speed
 	if music_state == "responding_walk":
 		velocity *= 5
@@ -765,6 +768,8 @@ func movement():
 		dash.start_dash($AnimatedSprite2D, dash_duration)
 	
 	velocity *= dash_speed_multiplier if dash.is_dashing() else 1
+	knockback = knockback.move_toward(Vector2.ZERO, knockback_recovery)
+	velocity += knockback
 	velocity.x = clampf(velocity.x, -max_velocity, max_velocity)
 	velocity.y = clampf(velocity.y, -max_velocity, max_velocity)
 	
@@ -827,9 +832,11 @@ func update_animation_parameters():
 				anim_state_machine.travel("eleanore_walk")
 				is_attacking = false
 
-func _on_hurt_box_hurt(damage, _angle, _knockback):
+func _on_hurt_box_hurt(damage, angle, knockback_amount):
 	if dash.is_dashing():
 		return
+	knockback = angle * knockback_amount
+	print("knockback: ", knockback)
 	is_hurt = true
 	sprite_flash()
 	$sound_damaged.play()

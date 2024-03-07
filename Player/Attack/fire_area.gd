@@ -17,7 +17,7 @@ func _ready():
 	#rotation = angle.angle()
 	#angle = Vector2(1, 1)
 	#$Sprite2D.play("ice_bolt")
-	target = player.get_closest_target()
+	#target = player.get_closest_target()
 	$CollisionShape2D.set_deferred("disabled", true)
 	
 	

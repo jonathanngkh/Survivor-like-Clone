@@ -4,6 +4,10 @@ extends Area2D
 
 @onready var collision = $CollisionShape2D
 @onready var disableTimer = $DisableHitBoxTimer
+@onready var player = get_tree().get_first_node_in_group("player")
+var target = Vector2.ZERO
+var angle = Vector2.ZERO
+@export var knockback_amount = 100
 
 func tempdisable():
 	collision.call_deferred("set", "disabled", true)
@@ -16,6 +20,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	target = player.global_position
+	angle = global_position.direction_to(target)
 	pass
 
 
