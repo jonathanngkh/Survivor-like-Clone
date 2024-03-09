@@ -67,6 +67,7 @@ func _on_animated_sprite_2d_frame_changed():
 
 # Called by the state machine upon changing the active state. The `msg` parameter is a dictionary with arbitrary data the state can use to initialize itself.
 func enter(_msg := {}) -> void:
+	biggoblin.tracking_enabled = true
 	biggoblin.velocity = Vector2.ZERO
 
 

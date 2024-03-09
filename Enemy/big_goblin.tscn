@@ -763,7 +763,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rrjer"]
-size = Vector2(54.2975, 46.6826)
+size = Vector2(54.2975, 75.9503)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_idtrg"]
 
@@ -820,7 +820,7 @@ position = Vector2(24.5001, -0.927032)
 collision_layer = 2
 
 [node name="CollisionShape2D" parent="SpriteContainer/HitBox" index="0" groups=["biggoblin"]]
-position = Vector2(3.23441, -3.3142)
+position = Vector2(3.23441, -2.25473)
 shape = SubResource("RectangleShape2D_rrjer")
 debug_color = Color(0.921569, 0, 0.686275, 0.419608)
 

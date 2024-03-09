@@ -7,7 +7,8 @@ extends Area2D
 @onready var player = get_tree().get_first_node_in_group("player")
 var target = Vector2.ZERO
 var angle = Vector2.ZERO
-@export var knockback_amount = 100
+@export var base_knockback_amount = 100
+@export var knockback_amount = base_knockback_amount
 
 func tempdisable():
 	collision.call_deferred("set", "disabled", true)

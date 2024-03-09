@@ -7,8 +7,9 @@ extends BigGoblinState
 @onready var hit_box = $"../../SpriteContainer/HitBox"
 
 var lunging = false
-var lunge_speed_multiplier = 1.1
+@export var lunge_speed_multiplier = 1.1
 var hit_box_enabled = false
+@export var knockback_bonus_amount = 250
 
 # Receives events from the `_unhandled_input()` callback.
 func handle_input(_event: InputEvent) -> void:
@@ -68,11 +69,13 @@ func _on_animated_sprite_2d_frame_changed():
 
 # Called by the state machine upon changing the active state. The `msg` parameter is a dictionary with arbitrary data the state can use to initialize itself.
 func enter(_msg := {}) -> void:
+	hit_box.knockback_amount = knockback_bonus_amount
 	biggoblin.velocity = Vector2.ZERO
 
 
 # Called by the state machine before changing the active state. Use this function to clean up the state.
 func exit() -> void:
+	hit_box.knockback_amount = hit_box.base_knockback_amount
 	hit_box_enabled = false
 	hit_box.process_mode = Node.PROCESS_MODE_DISABLED
 	biggoblin.tracking_enabled = true
