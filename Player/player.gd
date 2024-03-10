@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var movement_speed = 400.0
 @export var hp = 80
 @export var max_hp = 200
-@export var knockback_recovery = 2
+@export var knockback_recovery = 3
 var max_stamina = 100
 var stamina = 100
 var last_movement = Vector2.UP

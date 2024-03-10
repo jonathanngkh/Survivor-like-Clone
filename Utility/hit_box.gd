@@ -22,8 +22,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	target = player.global_position
-	angle = global_position.direction_to(target)
-	pass
+	angle =  owner.global_position.direction_to(target)
 
 
 func _on_disable_hit_box_timer_timeout():

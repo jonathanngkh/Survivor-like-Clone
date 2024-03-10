@@ -7,7 +7,7 @@ extends BigGoblinState
 @onready var hit_box = $"../../SpriteContainer/HitBox"
 
 var lunging = false
-@export var lunge_speed_multiplier = 1.1
+@export var lunge_speed_multiplier = 1.04
 var hit_box_enabled = false
 @export var knockback_bonus_amount = 250
 
