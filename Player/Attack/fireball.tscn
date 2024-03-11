@@ -1,0 +1,103 @@
+[gd_scene load_steps=18 format=3 uid="uid://d0xqnehww4kwr"]
+
+[ext_resource type="Script" path="res://Player/Attack/fireball.gd" id="1_6qn2l"]
+[ext_resource type="Texture2D" uid="uid://c2lb54gfxdnaj" path="res://Textures/VFX/fireball/Dissipate(Glow)1.png" id="2_2jifa"]
+[ext_resource type="Texture2D" uid="uid://bixkuqyyna1tb" path="res://Textures/VFX/fireball/Dissipate(Glow)2.png" id="3_6hlms"]
+[ext_resource type="AudioStream" uid="uid://c87teh3eell61" path="res://Audio/SoundEffect/ice.wav" id="4_obmfr"]
+[ext_resource type="Texture2D" uid="uid://l41801ol5yht" path="res://Textures/VFX/fireball/Dissipate(Glow)3.png" id="4_xlfq4"]
+[ext_resource type="Texture2D" uid="uid://drxcav0qvjsoa" path="res://Textures/VFX/fireball/Dissipate(Glow)4.png" id="5_hchj3"]
+[ext_resource type="Texture2D" uid="uid://dxwsqti1yl0ff" path="res://Textures/VFX/fireball/Dissipate(Glow)5.png" id="6_75ta8"]
+[ext_resource type="Texture2D" uid="uid://dvbl2nruby3rf" path="res://Textures/VFX/fireball/Casted(Glow)1.png" id="7_d7eoj"]
+[ext_resource type="Texture2D" uid="uid://dp70ya64q2g3j" path="res://Textures/VFX/fireball/Casted(Glow)2.png" id="8_kvamy"]
+[ext_resource type="Texture2D" uid="uid://b3as68fewf43w" path="res://Textures/VFX/fireball/Triggered(Glow)1.png" id="9_tlcv0"]
+[ext_resource type="Texture2D" uid="uid://c4av4pu664yej" path="res://Textures/VFX/fireball/Triggered(Glow)2.png" id="10_xflcq"]
+[ext_resource type="Texture2D" uid="uid://5r4ka3ujm1i1" path="res://Textures/VFX/fireball/Triggered(Glow)3.png" id="11_4seua"]
+[ext_resource type="Texture2D" uid="uid://0b8v8qdvy0r2" path="res://Textures/VFX/fireball/Triggered(Glow)4.png" id="12_curjl"]
+[ext_resource type="Texture2D" uid="uid://huk7yi26sjfx" path="res://Textures/VFX/fireball/Triggered(Glow)5.png" id="13_ws0e3"]
+[ext_resource type="Texture2D" uid="uid://b3ge2qnfms337" path="res://Textures/VFX/fireball/Triggered(Glow)6.png" id="14_smrp0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pqpde"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2jifa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6hlms")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xlfq4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_hchj3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_75ta8")
+}],
+"loop": false,
+"name": &"fireball_hit",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_d7eoj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_kvamy")
+}],
+"loop": false,
+"name": &"fireball_start",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_tlcv0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_xflcq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_4seua")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_curjl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ws0e3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_smrp0")
+}],
+"loop": true,
+"name": &"fireball_travel",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_detan"]
+size = Vector2(9.00001, 31)
+
+[node name="Fireball" type="Area2D" groups=["attack"]]
+top_level = true
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_6qn2l")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pqpde")
+animation = &"fireball_travel"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4.49999, 0.499993)
+rotation = -1.57079
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_detan")
+
+[node name="sound_play" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_obmfr")
+volume_db = -10.0
+autoplay = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="animation_finished" from="Sprite2D" to="." method="_on_sprite_2d_animation_finished"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -1,6 +1,8 @@
 # Cast
 extends SpellGoblinState
 
+@onready var fireball = preload("res://Player/Attack/fireball.tscn")
+
 # Called by the state machine upon changing the active state. The `msg` parameter is a dictionary with arbitrary data the state can use to initialize itself.
 func enter(_msg := {}) -> void:
 	spellgoblin.animated_sprite.play("spellgoblin_castfireball")
@@ -12,6 +14,8 @@ func update(_delta: float) -> void:
 
 	if spellgoblin.is_player_in_approach_range():
 		state_machine.transition_to("Approach")
+	else:
+		state_machine.transition_to("Idle")
 
 
 # Corresponds to the `_physics_process()` callback.
@@ -25,11 +29,12 @@ func physics_update(_delta: float) -> void:
 		#state_machine.transition_to("Approach")
 
 
-#func _on_animated_sprite_2d_frame_changed():
-	#if spellgoblin.animated_sprite.animation == "spellgoblin_castfireball":
-		#if spellgoblin.animated_sprite.frame == 6:
-			## preload fire ball at top of script. instatiate. set speed damage knockback angle, add as child. programme movement toward player
-			#pass
+func _on_animated_sprite_2d_frame_changed():
+	if spellgoblin.animated_sprite.animation == "spellgoblin_castfireball":
+		if spellgoblin.animated_sprite.frame == 6:
+			var new_fireball = fireball.instantiate()
+			new_fireball.position = spellgoblin.position
+			spellgoblin.add_child(new_fireball)
 
 
 # Called by the state machine before changing the active state. Use this function to clean up the state.

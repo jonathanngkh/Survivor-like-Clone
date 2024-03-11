@@ -11,3 +11,6 @@ res://Enemy/spell_goblin.gd
 res://Enemy/SpellGoblin States/Cast.gd
 res://Enemy/SpellGoblin States/Approach.gd
 res://Enemy/SpellGoblin States/Charge.gd
+res://Player/Attack/ice_spear.gd
+res://Player/Attack/fireball.tscn
+res://Player/Attack/fireball.gd
