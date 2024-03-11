@@ -769,7 +769,6 @@ size = Vector2(63.733, 75.9503)
 
 [node name="BigGoblin" type="CharacterBody2D" groups=["enemy"]]
 texture_filter = 1
-scale = Vector2(4, 4)
 collision_layer = 6
 collision_mask = 0
 script = ExtResource("1_li5xr")
@@ -853,32 +852,31 @@ volume_db = 4.0
 
 [node name="ShortGrunt1Sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_cpckr")
-volume_db = 8.0
 
 [node name="ShortGrunt2Sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_ud4ga")
-volume_db = 4.0
 
 [node name="OrcHeavyGruntSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_v11q2")
-volume_db = 2.0
 pitch_scale = 0.95
 
 [node name="OrcLongRoarSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_12k4u")
+volume_db = -5.0
 
 [node name="LightAttack1Sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_ick3f")
-volume_db = -10.0
+volume_db = -20.0
 pitch_scale = 2.0
 
 [node name="LightAttack2Sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_ick3f")
-volume_db = -10.0
+volume_db = -20.0
 pitch_scale = 1.5
 
 [node name="HeavyAttackSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_xu1eq")
+volume_db = -10.0
 pitch_scale = 0.9
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
