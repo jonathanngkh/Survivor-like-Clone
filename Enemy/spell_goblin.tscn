@@ -1,4 +1,4 @@
-[gd_scene load_steps=115 format=3 uid="uid://dtia68lwn55nt"]
+[gd_scene load_steps=117 format=3 uid="uid://dtia68lwn55nt"]
 
 [ext_resource type="Script" path="res://Enemy/spell_goblin.gd" id="1_7cpxs"]
 [ext_resource type="Script" path="res://Utility/state_machine.gd" id="2_jrtaf"]
@@ -14,8 +14,10 @@
 [ext_resource type="Texture2D" uid="uid://c1ndlmjoqhy5k" path="res://Textures/Enemy/FemaleGoblin-Sheet.png" id="11_m7swt"]
 [ext_resource type="FontFile" uid="uid://dejderl1lu6q2" path="res://Font/monogram.ttf" id="12_nqpv8"]
 [ext_resource type="AudioStream" uid="uid://ccn0se28frcv8" path="res://Audio/SoundEffect/TOMAHAWK HITMARKER.mp3" id="13_0g6ka"]
+[ext_resource type="Texture2D" uid="uid://dtpbmm67c0u4j" path="res://Textures/GUI/healthbar.png" id="14_s8udf"]
 [ext_resource type="AudioStream" uid="uid://tfmc46pdyd88" path="res://Audio/SoundEffect/orcdeath3.wav" id="14_tbo54"]
 [ext_resource type="AudioStream" uid="uid://nhob8ith3iw1" path="res://Audio/SoundEffect/orchurt.wav" id="15_in4bt"]
+[ext_resource type="Texture2D" uid="uid://7j1t26gnx2vm" path="res://Textures/GUI/health.png" id="15_nwda0"]
 [ext_resource type="AudioStream" uid="uid://bootdnnlyavht" path="res://Audio/SoundEffect/defend1.wav" id="16_08ogn"]
 [ext_resource type="AudioStream" uid="uid://dreyheg5ayea2" path="res://Audio/SoundEffect/defend2.wav" id="17_8fhkj"]
 [ext_resource type="AudioStream" uid="uid://75qsbday651m" path="res://Audio/SoundEffect/heavyattack4.wav" id="18_l2sis"]
@@ -803,6 +805,16 @@ offset_right = 5.01189
 offset_bottom = 43.7134
 theme_override_fonts/font = ExtResource("12_nqpv8")
 text = "State: "
+
+[node name="ChargeProgressBar" type="TextureProgressBar" parent="."]
+visible = false
+offset_left = -16.3703
+offset_top = -21.9384
+offset_right = 23.6297
+offset_bottom = 18.0616
+value = 50.0
+texture_under = ExtResource("14_s8udf")
+texture_progress = ExtResource("15_nwda0")
 
 [node name="HitMarkerSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_0g6ka")
