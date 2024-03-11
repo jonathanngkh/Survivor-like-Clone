@@ -1,8 +1,8 @@
 SpellGoblinState
+Timer
 AudioStreamPlayer
 Label
 State
-Timer
 Node2D
 StateMachine
 AnimationPlayer
@@ -12,4 +12,3 @@ CollisionShape2D
 CharacterBody2D
 GPUParticles2D
 CPUParticles2D
-StaticBody2D

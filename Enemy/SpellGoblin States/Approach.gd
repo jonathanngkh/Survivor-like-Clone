@@ -20,7 +20,10 @@ func physics_update(_delta: float) -> void:
 	if not spellgoblin.is_player_in_approach_range():
 		state_machine.transition_to("Idle")
 
-	if spellgoblin.is_player_in_attack_range():
+	elif spellgoblin.is_player_in_cast_range():
+		state_machine.transition_to("Charge")
+
+	elif spellgoblin.is_player_in_attack_range():
 		state_machine.transition_to("LightAttack")
 
 

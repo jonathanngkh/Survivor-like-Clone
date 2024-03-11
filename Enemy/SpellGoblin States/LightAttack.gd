@@ -7,14 +7,15 @@ extends SpellGoblinState
 @onready var short_grunt_2_sound = $"../../ShortGrunt2Sound"
 @onready var hit_box = $"../../SpriteContainer/HitBox"
 
-
 @export var lunge_speed = 300
+
 var lunging = false
 var hit_box_enabled = false
 
-# Receives events from the `_unhandled_input()` callback.
-func handle_input(_event: InputEvent) -> void:
-	pass
+# Called by the state machine upon changing the active state. The `msg` parameter is a dictionary with arbitrary data the state can use to initialize itself.
+func enter(_msg := {}) -> void:
+	spellgoblin.tracking_enabled = true
+	spellgoblin.velocity = Vector2.ZERO
 
 
 # Corresponds to the `_process()` callback.
@@ -61,12 +62,6 @@ func _on_animated_sprite_2d_frame_changed():
 			spellgoblin.tracking_enabled = true
 
 
-# Called by the state machine upon changing the active state. The `msg` parameter is a dictionary with arbitrary data the state can use to initialize itself.
-func enter(_msg := {}) -> void:
-	spellgoblin.tracking_enabled = true
-	spellgoblin.velocity = Vector2.ZERO
-
-
 # Called by the state machine before changing the active state. Use this function to clean up the state.
 func exit() -> void:
 	hit_box.process_mode = Node.PROCESS_MODE_DISABLED
@@ -80,5 +75,6 @@ func exit() -> void:
 	spellgoblin.movement_speed = spellgoblin.base_movement_speed
 
 
-func _on_animated_sprite_2d_animation_changed():
-	pass # Replace with function body.
+# Receives events from the `_unhandled_input()` callback.
+func handle_input(_event: InputEvent) -> void:
+	pass

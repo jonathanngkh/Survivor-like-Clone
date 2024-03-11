@@ -1,12 +1,13 @@
-[gd_scene load_steps=114 format=3 uid="uid://dtia68lwn55nt"]
+[gd_scene load_steps=115 format=3 uid="uid://dtia68lwn55nt"]
 
 [ext_resource type="Script" path="res://Enemy/spell_goblin.gd" id="1_7cpxs"]
 [ext_resource type="Script" path="res://Utility/state_machine.gd" id="2_jrtaf"]
 [ext_resource type="Script" path="res://Enemy/SpellGoblin States/Idle.gd" id="3_xegwf"]
 [ext_resource type="Script" path="res://Enemy/SpellGoblin States/Approach.gd" id="4_vct3j"]
 [ext_resource type="Script" path="res://Enemy/SpellGoblin States/LightAttack.gd" id="5_siiqj"]
+[ext_resource type="Script" path="res://Enemy/SpellGoblin States/Charge.gd" id="6_iv0nf"]
+[ext_resource type="Script" path="res://Enemy/SpellGoblin States/Cast.gd" id="6_mn2en"]
 [ext_resource type="Script" path="res://Enemy/SpellGoblin States/Hurt.gd" id="7_jvg4l"]
-[ext_resource type="Script" path="res://Enemy/SpellGoblin States/SpellGoblinState.gd" id="8_hchjt"]
 [ext_resource type="Script" path="res://Enemy/SpellGoblin States/Death.gd" id="8_vqvkn"]
 [ext_resource type="PackedScene" uid="uid://c3p0e8l8amscb" path="res://Utility/hurt_box.tscn" id="9_pufux"]
 [ext_resource type="PackedScene" uid="uid://b1l2qb0u8xev8" path="res://Utility/hit_box.tscn" id="11_egmqe"]
@@ -744,14 +745,17 @@ script = ExtResource("4_vct3j")
 [node name="LightAttack" type="Node2D" parent="SpellGoblinStateMachine"]
 script = ExtResource("5_siiqj")
 
+[node name="Charge" type="Node2D" parent="SpellGoblinStateMachine"]
+script = ExtResource("6_iv0nf")
+
+[node name="Cast" type="Node2D" parent="SpellGoblinStateMachine"]
+script = ExtResource("6_mn2en")
+
 [node name="Hurt" type="Node2D" parent="SpellGoblinStateMachine"]
 script = ExtResource("7_jvg4l")
 
 [node name="Death" type="Node2D" parent="SpellGoblinStateMachine"]
 script = ExtResource("8_vqvkn")
-
-[node name="Charge" type="Node2D" parent="SpellGoblinStateMachine"]
-script = ExtResource("8_hchjt")
 
 [node name="HurtBox" parent="." instance=ExtResource("9_pufux")]
 visible = false
@@ -768,9 +772,7 @@ debug_color = Color(0.882353, 0.333333, 0, 0.419608)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteContainer"]
 position = Vector2(-12.193, 0)
 sprite_frames = SubResource("SpriteFrames_c64cs")
-animation = &"spellgoblin_lightattack"
-frame = 11
-frame_progress = 1.0
+animation = &"spellgoblin_charge"
 
 [node name="HitBox" parent="SpriteContainer" instance=ExtResource("11_egmqe")]
 process_mode = 4
@@ -783,6 +785,9 @@ position = Vector2(-10.8751, 8.67703)
 shape = SubResource("RectangleShape2D_rrjer")
 debug_color = Color(0.921569, 0, 0.686275, 0.419608)
 
+[node name="ChargeTimer" type="Timer" parent="."]
+one_shot = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -792,7 +797,6 @@ shape = SubResource("CapsuleShape2D_idtrg")
 debug_color = Color(0, 0.6, 0.701961, 0.254902)
 
 [node name="Label" type="Label" parent="."]
-visible = false
 offset_left = -43.9881
 offset_top = 20.7134
 offset_right = 5.01189
@@ -843,7 +847,11 @@ pitch_scale = 0.9
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 [connection signal="animation_finished" from="SpriteContainer/AnimatedSprite2D" to="SpellGoblinStateMachine/LightAttack" method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_finished" from="SpriteContainer/AnimatedSprite2D" to="SpellGoblinStateMachine/Charge" method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_finished" from="SpriteContainer/AnimatedSprite2D" to="SpellGoblinStateMachine/Cast" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="SpriteContainer/AnimatedSprite2D" to="SpellGoblinStateMachine/LightAttack" method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="frame_changed" from="SpriteContainer/AnimatedSprite2D" to="SpellGoblinStateMachine/Cast" method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="timeout" from="ChargeTimer" to="SpellGoblinStateMachine/Charge" method="_on_charge_timer_timeout"]
 
 [editable path="HurtBox"]
 [editable path="SpriteContainer/HitBox"]

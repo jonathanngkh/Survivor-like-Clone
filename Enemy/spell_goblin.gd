@@ -15,8 +15,9 @@ extends CharacterBody2D
 @export var base_movement_speed = 70
 @export var movement_speed = base_movement_speed
 @export var experience = 5
-@export var approach_range = 300
-@export var attack_range = 110
+@export var approach_range = 400
+@export var attack_range = 50
+@export var cast_range = 200
 
 var tracking_enabled = true
 var distance_to_player = null
@@ -94,6 +95,10 @@ func is_player_in_approach_range() -> bool:
 
 func is_player_in_attack_range() -> bool:
 	return distance_to_player <= attack_range
+
+
+func is_player_in_cast_range() -> bool:
+	return distance_to_player <= cast_range
 
 
 func sprite_flash() -> void:

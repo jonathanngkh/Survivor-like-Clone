@@ -8,3 +8,6 @@ res://Enemy/BigGoblin States/BigGoblinState.gd
 res://Enemy/SpellGoblin States/Idle.gd
 res://Enemy/SpellGoblin States/LightAttack.gd
 res://Enemy/spell_goblin.gd
+res://Enemy/SpellGoblin States/Cast.gd
+res://Enemy/SpellGoblin States/Approach.gd
+res://Enemy/SpellGoblin States/Charge.gd
