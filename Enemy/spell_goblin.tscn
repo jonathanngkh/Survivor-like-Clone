@@ -5,8 +5,8 @@
 [ext_resource type="Script" path="res://Enemy/SpellGoblin States/Idle.gd" id="3_xegwf"]
 [ext_resource type="Script" path="res://Enemy/SpellGoblin States/Approach.gd" id="4_vct3j"]
 [ext_resource type="Script" path="res://Enemy/SpellGoblin States/LightAttack.gd" id="5_siiqj"]
-[ext_resource type="Script" path="res://Enemy/SpellGoblin States/HeavyAttack.gd" id="6_qdcn5"]
 [ext_resource type="Script" path="res://Enemy/SpellGoblin States/Hurt.gd" id="7_jvg4l"]
+[ext_resource type="Script" path="res://Enemy/SpellGoblin States/SpellGoblinState.gd" id="8_hchjt"]
 [ext_resource type="Script" path="res://Enemy/SpellGoblin States/Death.gd" id="8_vqvkn"]
 [ext_resource type="PackedScene" uid="uid://c3p0e8l8amscb" path="res://Utility/hurt_box.tscn" id="9_pufux"]
 [ext_resource type="PackedScene" uid="uid://b1l2qb0u8xev8" path="res://Utility/hit_box.tscn" id="11_egmqe"]
@@ -744,16 +744,17 @@ script = ExtResource("4_vct3j")
 [node name="LightAttack" type="Node2D" parent="SpellGoblinStateMachine"]
 script = ExtResource("5_siiqj")
 
-[node name="HeavyAttack" type="Node2D" parent="SpellGoblinStateMachine"]
-script = ExtResource("6_qdcn5")
-
 [node name="Hurt" type="Node2D" parent="SpellGoblinStateMachine"]
 script = ExtResource("7_jvg4l")
 
 [node name="Death" type="Node2D" parent="SpellGoblinStateMachine"]
 script = ExtResource("8_vqvkn")
 
+[node name="Charge" type="Node2D" parent="SpellGoblinStateMachine"]
+script = ExtResource("8_hchjt")
+
 [node name="HurtBox" parent="." instance=ExtResource("9_pufux")]
+visible = false
 position = Vector2(0.125, 11.875)
 collision_mask = 4
 
@@ -767,10 +768,13 @@ debug_color = Color(0.882353, 0.333333, 0, 0.419608)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteContainer"]
 position = Vector2(-12.193, 0)
 sprite_frames = SubResource("SpriteFrames_c64cs")
-animation = &"spellgoblin_walkstop"
+animation = &"spellgoblin_lightattack"
+frame = 11
+frame_progress = 1.0
 
 [node name="HitBox" parent="SpriteContainer" instance=ExtResource("11_egmqe")]
 process_mode = 4
+visible = false
 position = Vector2(24.5001, -0.927032)
 collision_layer = 2
 
@@ -782,6 +786,7 @@ debug_color = Color(0.921569, 0, 0.686275, 0.419608)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0.3909, 10.625)
 shape = SubResource("CapsuleShape2D_idtrg")
 debug_color = Color(0, 0.6, 0.701961, 0.254902)
@@ -837,6 +842,8 @@ stream = ExtResource("21_rc2b3")
 pitch_scale = 0.9
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
+[connection signal="animation_finished" from="SpriteContainer/AnimatedSprite2D" to="SpellGoblinStateMachine/LightAttack" method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="frame_changed" from="SpriteContainer/AnimatedSprite2D" to="SpellGoblinStateMachine/LightAttack" method="_on_animated_sprite_2d_frame_changed"]
 
 [editable path="HurtBox"]
 [editable path="SpriteContainer/HitBox"]

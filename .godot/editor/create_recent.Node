@@ -1,3 +1,4 @@
+SpellGoblinState
 AudioStreamPlayer
 Label
 State
@@ -12,4 +13,3 @@ CharacterBody2D
 GPUParticles2D
 CPUParticles2D
 StaticBody2D
-Line2D

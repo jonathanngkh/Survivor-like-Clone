@@ -8,7 +8,7 @@ extends SpellGoblinState
 @onready var hit_box = $"../../SpriteContainer/HitBox"
 
 
-@export var lunge_speed = 550
+@export var lunge_speed = 300
 var lunging = false
 var hit_box_enabled = false
 
@@ -51,16 +51,12 @@ func _on_animated_sprite_2d_animation_finished():
 
 func _on_animated_sprite_2d_frame_changed():
 	if spellgoblin.animated_sprite.animation == "spellgoblin_lightattack":
-		if spellgoblin.animated_sprite.frame == 5: # attack 1
+		if spellgoblin.animated_sprite.frame == 5: # attacking
 			lunging = true
 			spellgoblin.tracking_enabled = false
 			light_attack_1_sound.play()
 			short_grunt_1_sound.play()
-		elif spellgoblin.animated_sprite.frame == 11: # attack 2
-			lunging = true
-			short_grunt_2_sound.play()
-			light_attack_2_sound.play()
-		elif spellgoblin.animated_sprite.frame == 6 or spellgoblin.animated_sprite.frame == 12:
+		elif spellgoblin.animated_sprite.frame == 6:
 			lunging = false
 			spellgoblin.tracking_enabled = true
 
@@ -82,3 +78,7 @@ func exit() -> void:
 	lunging = false
 	spellgoblin.velocity = Vector2.ZERO
 	spellgoblin.movement_speed = spellgoblin.base_movement_speed
+
+
+func _on_animated_sprite_2d_animation_changed():
+	pass # Replace with function body.

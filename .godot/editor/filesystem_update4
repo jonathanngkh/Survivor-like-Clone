@@ -7,3 +7,4 @@ res://Enemy/spell_goblin.tscn
 res://Enemy/BigGoblin States/BigGoblinState.gd
 res://Enemy/SpellGoblin States/Idle.gd
 res://Enemy/SpellGoblin States/LightAttack.gd
+res://Enemy/spell_goblin.gd
