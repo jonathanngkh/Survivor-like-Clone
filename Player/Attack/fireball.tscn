@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://Player/Attack/fireball.gd" id="1_6qn2l"]
 [ext_resource type="Texture2D" uid="uid://c2lb54gfxdnaj" path="res://Textures/VFX/fireball/Dissipate(Glow)1.png" id="2_2jifa"]
 [ext_resource type="Texture2D" uid="uid://bixkuqyyna1tb" path="res://Textures/VFX/fireball/Dissipate(Glow)2.png" id="3_6hlms"]
-[ext_resource type="AudioStream" uid="uid://c87teh3eell61" path="res://Audio/SoundEffect/ice.wav" id="4_obmfr"]
 [ext_resource type="Texture2D" uid="uid://l41801ol5yht" path="res://Textures/VFX/fireball/Dissipate(Glow)3.png" id="4_xlfq4"]
 [ext_resource type="Texture2D" uid="uid://drxcav0qvjsoa" path="res://Textures/VFX/fireball/Dissipate(Glow)4.png" id="5_hchj3"]
 [ext_resource type="Texture2D" uid="uid://dxwsqti1yl0ff" path="res://Textures/VFX/fireball/Dissipate(Glow)5.png" id="6_75ta8"]
@@ -15,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://0b8v8qdvy0r2" path="res://Textures/VFX/fireball/Triggered(Glow)4.png" id="12_curjl"]
 [ext_resource type="Texture2D" uid="uid://huk7yi26sjfx" path="res://Textures/VFX/fireball/Triggered(Glow)5.png" id="13_ws0e3"]
 [ext_resource type="Texture2D" uid="uid://b3ge2qnfms337" path="res://Textures/VFX/fireball/Triggered(Glow)6.png" id="14_smrp0"]
+[ext_resource type="AudioStream" uid="uid://drrquvalm273c" path="res://Audio/SoundEffect/01_Fire_Cast.wav" id="15_vmkon"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pqpde"]
 animations = [{
@@ -78,6 +78,7 @@ size = Vector2(9.00001, 31)
 
 [node name="Fireball" type="Area2D" groups=["attack"]]
 top_level = true
+scale = Vector2(1.5, 1.5)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_6qn2l")
@@ -93,7 +94,7 @@ scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_detan")
 
 [node name="sound_play" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_obmfr")
+stream = ExtResource("15_vmkon")
 volume_db = -10.0
 autoplay = true
 

@@ -5,7 +5,7 @@ extends SpellGoblinState
 @onready var charge_progress_bar = $"../../ChargeProgressBar"
 
 
-@export var charge_duration = 1.0
+@export var charge_duration = 0.6
 
 # Called by the state machine upon changing the active state. The `msg` parameter is a dictionary with arbitrary data the state can use to initialize itself.
 func enter(_msg := {}) -> void:
