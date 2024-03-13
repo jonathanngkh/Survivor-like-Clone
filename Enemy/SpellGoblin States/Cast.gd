@@ -2,12 +2,15 @@
 extends SpellGoblinState
 
 @onready var fireball = preload("res://Player/Attack/fireball.tscn")
+@onready var fireball_launch_sound = $"../../FireballLaunchSound"
 @onready var player = get_tree().get_first_node_in_group("player")
 
 # Called by the state machine upon changing the active state. The `msg` parameter is a dictionary with arbitrary data the state can use to initialize itself.
 func enter(_msg := {}) -> void:
+	spellgoblin.animated_sprite.set_speed_scale(2)
 	spellgoblin.animated_sprite.play("spellgoblin_castfireball")
 	spellgoblin.movement_speed = 1
+	fireball_launch_sound.play()
 
 
 # Corresponds to the `_process()` callback.
@@ -38,12 +41,14 @@ func _on_animated_sprite_2d_frame_changed():
 			var new_fireball = fireball.instantiate()
 			new_fireball.position = spellgoblin.position
 			spellgoblin.add_child(new_fireball)
+			spellgoblin.animated_sprite.set_speed_scale(1)
 
 
 # Called by the state machine before changing the active state. Use this function to clean up the state.
 func exit() -> void:
 	#spellgoblin.animated_sprite.stop()
 	spellgoblin.movement_speed = spellgoblin.base_movement_speed
+	spellgoblin.animated_sprite.set_speed_scale(1)
 
 
 # Receives events from the `_unhandled_input()` callback.

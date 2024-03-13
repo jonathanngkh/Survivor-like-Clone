@@ -1,4 +1,4 @@
-[gd_scene load_steps=117 format=3 uid="uid://dtia68lwn55nt"]
+[gd_scene load_steps=118 format=3 uid="uid://dtia68lwn55nt"]
 
 [ext_resource type="Script" path="res://Enemy/spell_goblin.gd" id="1_7cpxs"]
 [ext_resource type="Script" path="res://Utility/state_machine.gd" id="2_jrtaf"]
@@ -24,6 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://v5v42alnj120" path="res://Audio/SoundEffect/orclonggroan.wav" id="19_y52a6"]
 [ext_resource type="AudioStream" uid="uid://dnbueyybkw4di" path="res://Audio/SoundEffect/flag_punish.wav" id="20_tb4xh"]
 [ext_resource type="AudioStream" uid="uid://bik7xoicnlnmn" path="res://Audio/SoundEffect/graverobber_explosion.wav" id="21_rc2b3"]
+[ext_resource type="AudioStream" uid="uid://drrquvalm273c" path="res://Audio/SoundEffect/01_Fire_Cast.wav" id="25_jdluf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhn8g"]
 size = Vector2(29.8451, 46.2154)
@@ -822,14 +823,17 @@ volume_db = -10.0
 
 [node name="DeathSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_tbo54")
+pitch_scale = 1.35
 
 [node name="HurtSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_in4bt")
 volume_db = 4.0
+pitch_scale = 1.35
 
 [node name="ShortGrunt1Sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_08ogn")
 volume_db = 8.0
+pitch_scale = 1.35
 
 [node name="ShortGrunt2Sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_8fhkj")
@@ -838,7 +842,7 @@ volume_db = 4.0
 [node name="OrcHeavyGruntSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_l2sis")
 volume_db = 2.0
-pitch_scale = 0.95
+pitch_scale = 1.35
 
 [node name="OrcLongRoarSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_y52a6")
@@ -856,6 +860,11 @@ pitch_scale = 1.5
 [node name="HeavyAttackSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("21_rc2b3")
 pitch_scale = 0.9
+
+[node name="FireballLaunchSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("25_jdluf")
+volume_db = -10.0
+pitch_scale = 1.4
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 [connection signal="animation_finished" from="SpriteContainer/AnimatedSprite2D" to="SpellGoblinStateMachine/LightAttack" method="_on_animated_sprite_2d_animation_finished"]

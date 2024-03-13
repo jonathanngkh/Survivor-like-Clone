@@ -35,7 +35,7 @@ func enemy_hit(charge = 1):
 		$Sprite2D.animation = "fireball_hit"
 		
 		#$Sprite2D.visible = false
-		await $sound_play.finished
+		#await $sound_play.finished
 		emit_signal("remove_from_array", self)
 		queue_free()
 

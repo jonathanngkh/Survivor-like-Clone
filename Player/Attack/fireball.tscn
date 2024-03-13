@@ -93,10 +93,10 @@ rotation = -1.57079
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_detan")
 
-[node name="sound_play" type="AudioStreamPlayer" parent="."]
+[node name="FireballLaunchSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_vmkon")
 volume_db = -10.0
-autoplay = true
+pitch_scale = 1.4
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 

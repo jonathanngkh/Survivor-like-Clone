@@ -15,8 +15,8 @@ extends CharacterBody2D
 @export var movement_speed = base_movement_speed
 @export var experience = 5
 @export var approach_range = 400
-@export var attack_range = 50
-@export var cast_range = 200
+@export var attack_range = 60
+@export var cast_range = 300
 
 var tracking_enabled = true
 var distance_to_player = null

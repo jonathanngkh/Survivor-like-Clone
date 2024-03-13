@@ -7,7 +7,7 @@ extends SpellGoblinState
 @onready var short_grunt_2_sound = $"../../ShortGrunt2Sound"
 @onready var hit_box = $"../../SpriteContainer/HitBox"
 
-@export var lunge_speed = 300
+@export var lunge_speed = 400
 
 var lunging = false
 var hit_box_enabled = false
@@ -54,12 +54,12 @@ func _on_animated_sprite_2d_frame_changed():
 	if spellgoblin.animated_sprite.animation == "spellgoblin_lightattack":
 		if spellgoblin.animated_sprite.frame == 5: # attacking
 			lunging = true
-			spellgoblin.tracking_enabled = false
+			#spellgoblin.tracking_enabled = false
 			light_attack_1_sound.play()
 			short_grunt_1_sound.play()
 		elif spellgoblin.animated_sprite.frame == 6:
 			lunging = false
-			spellgoblin.tracking_enabled = true
+			#spellgoblin.tracking_enabled = true
 
 
 # Called by the state machine before changing the active state. Use this function to clean up the state.
