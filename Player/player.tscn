@@ -1,4 +1,4 @@
-[gd_scene load_steps=221 format=3 uid="uid://c6uuvcthpociv"]
+[gd_scene load_steps=223 format=3 uid="uid://c6uuvcthpociv"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_6neil"]
 [ext_resource type="PackedScene" uid="uid://c3p0e8l8amscb" path="res://Utility/hurt_box.tscn" id="3_5rw0d"]
@@ -158,6 +158,8 @@
 [ext_resource type="AudioStream" uid="uid://bebrq1l2ba4lc" path="res://Audio/SoundEffect/LightningStreakSound.mp3" id="155_t552v"]
 [ext_resource type="AudioStream" uid="uid://xteq15aqbkbg" path="res://Audio/SoundEffect/Sparking.mp3" id="156_4wqrg"]
 [ext_resource type="PackedScene" uid="uid://bb06wbaadygba" path="res://laser.tscn" id="158_wxuyw"]
+[ext_resource type="Script" path="res://Utility/state_machine.gd" id="159_7rayq"]
+[ext_resource type="Script" path="res://Player/Idle.gd" id="160_anoq3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e63hs"]
 animations = [{
@@ -1915,7 +1917,7 @@ states/eleanore_walk_start/position = Vector2(558.501, 153.91)
 states/eleanore_walk_stop/node = SubResource("AnimationNodeBlendTree_bk4mc")
 states/eleanore_walk_stop/position = Vector2(560.005, 248.91)
 transitions = ["eleanore_attack_2", "eleanore_attack_3", SubResource("AnimationNodeStateMachineTransition_2pm1g"), "eleanore_attack_1", "eleanore_attack_2", SubResource("AnimationNodeStateMachineTransition_cplmr"), "eleanore_attack_1", "eleanore_walk", SubResource("AnimationNodeStateMachineTransition_i53tr"), "eleanore_walk", "eleanore_walk_stop", SubResource("AnimationNodeStateMachineTransition_h8ge0"), "eleanore_walk_start", "eleanore_walk", SubResource("AnimationNodeStateMachineTransition_gc30c"), "Start", "eleanore_idle", SubResource("AnimationNodeStateMachineTransition_5ar50"), "eleanore_idle", "eleanore_walk_start", SubResource("AnimationNodeStateMachineTransition_pwlfb"), "eleanore_attack_1", "eleanore_idle", SubResource("AnimationNodeStateMachineTransition_2t5lj"), "eleanore_walk_stop", "eleanore_idle", SubResource("AnimationNodeStateMachineTransition_3oscn"), "eleanore_hurt", "eleanore_idle", SubResource("AnimationNodeStateMachineTransition_t2oeb"), "eleanore_hurt", "eleanore_walk", SubResource("AnimationNodeStateMachineTransition_h3la8")]
-graph_offset = Vector2(240.612, -299.5)
+graph_offset = Vector2(276.612, -147.5)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ypqgu"]
 radius = 4.0
@@ -3017,6 +3019,13 @@ stream = ExtResource("155_fr3h8")
 [node name="Laser" parent="." instance=ExtResource("158_wxuyw")]
 collision_mask = 7
 collide_with_areas = true
+
+[node name="PlayerStateMachine" type="Node2D" parent="."]
+script = ExtResource("159_7rayq")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node2D" parent="PlayerStateMachine"]
+script = ExtResource("160_anoq3")
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]

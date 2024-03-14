@@ -14,3 +14,6 @@ res://Enemy/SpellGoblin States/Charge.gd
 res://Player/Attack/ice_spear.gd
 res://Player/Attack/fireball.tscn
 res://Player/Attack/fireball.gd
+res://Player/player.gd
+res://Player/PlayerState.gd
+res://Player/Idle.gd

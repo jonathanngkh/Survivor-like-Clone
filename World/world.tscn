@@ -321,6 +321,8 @@ position = Vector2(-239, -17)
 scale = Vector2(1.5, 1.5)
 
 [node name="SpellGoblin" parent="." instance=ExtResource("15_1b2st")]
+process_mode = 4
+visible = false
 position = Vector2(-369, -221)
 
 [connection signal="beat_incremented" from="Conductor" to="Player" method="_on_conductor_beat_incremented"]

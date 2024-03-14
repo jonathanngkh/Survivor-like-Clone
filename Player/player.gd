@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 @export var movement_speed = 400.0
@@ -836,7 +837,6 @@ func _on_hurt_box_hurt(damage, angle, knockback_amount):
 	if dash.is_dashing():
 		return
 	knockback = angle * knockback_amount
-	print("knockback: ", knockback)
 	is_hurt = true
 	sprite_flash()
 	$sound_damaged.play()
