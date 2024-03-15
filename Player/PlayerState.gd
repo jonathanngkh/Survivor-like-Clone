@@ -1,4 +1,4 @@
-# Boilerplate class to get full autocompletion and type checks for the `Player` when coding the pell goblin's states.
+# Boilerplate class to get full autocompletion and type checks for the `Player` when coding the player's states.
 class_name PlayerState
 extends State
 

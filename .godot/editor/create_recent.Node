@@ -1,4 +1,10 @@
+Node
 PlayerState
+Node2D
+Player
+AnimatedSprite2D
+CollisionShape2D
+CharacterBody2D
 StateMachine
 TextureProgressBar
 SpellGoblinState
@@ -6,10 +12,3 @@ Timer
 AudioStreamPlayer
 Label
 State
-Node2D
-AnimationPlayer
-AnimationTree
-AnimatedSprite2D
-CollisionShape2D
-CharacterBody2D
-GPUParticles2D

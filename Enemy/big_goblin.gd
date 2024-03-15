@@ -38,6 +38,7 @@ func _physics_process(delta: float) -> void:
 	face_movement_direction()
 
 
+#region Helper Functions
 func update_movement() -> void:
 	calculate_velocity()
 	calculate_knockback()
@@ -106,3 +107,5 @@ func sprite_fade() -> void:
 	var tween: Tween = create_tween()
 	tween.tween_property(self, "modulate:a", 0, 1.0).from(1.0)
 	tween.play()
+
+#endregion

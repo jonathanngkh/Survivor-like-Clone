@@ -23,7 +23,7 @@ func _ready():
 
 # The state machine subscribes to node callbacks and delegates them to the state objects.
 func _unhandled_input(event: InputEvent) -> void:
-	state.handle_input(event)	
+	state.handle_input(event)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cjkdpm3u3wqut"]
+[gd_scene load_steps=29 format=3 uid="uid://cjkdpm3u3wqut"]
 
 [ext_resource type="Texture2D" uid="uid://b6t8hgeek4kfh" path="res://Textures/wol huge air map.png" id="2_6ka0j"]
 [ext_resource type="PackedScene" uid="uid://c6uuvcthpociv" path="res://Player/player.tscn" id="2_rlem7"]
@@ -15,6 +15,7 @@
 [ext_resource type="FontFile" uid="uid://eltw4hqqgcsj" path="res://Font/tenderness.otf" id="13_pwion"]
 [ext_resource type="PackedScene" uid="uid://duw3gdnqy7wdg" path="res://Enemy/big_goblin.tscn" id="14_lk7st"]
 [ext_resource type="PackedScene" uid="uid://dtia68lwn55nt" path="res://Enemy/spell_goblin.tscn" id="15_1b2st"]
+[ext_resource type="PackedScene" uid="uid://cdne6nnjoc5s1" path="res://Player/player_2.tscn" id="16_77xqr"]
 
 [sub_resource type="Resource" id="Resource_rxj4u"]
 script = ExtResource("5_kyr6r")
@@ -116,6 +117,8 @@ texture = ExtResource("2_6ka0j")
 offset = Vector2(150.5, 1028.5)
 
 [node name="Player" parent="." instance=ExtResource("2_rlem7")]
+process_mode = 4
+visible = false
 position = Vector2(-15, -21)
 hp = 10000
 max_hp = 10000
@@ -141,7 +144,6 @@ theme_override_font_sizes/font_size = 64
 text = "You Survived!"
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_gdiqe")]
-process_mode = 4
 spawns = Array[ExtResource("5_kyr6r")]([SubResource("Resource_rxj4u"), SubResource("Resource_0ghsp"), SubResource("Resource_ixasv"), SubResource("Resource_y4opa"), SubResource("Resource_tol0s"), SubResource("Resource_h3dng"), SubResource("Resource_tvmlh"), SubResource("Resource_x21cl"), SubResource("Resource_cc6wm")])
 
 [node name="Loot" type="Node2D" parent="." groups=["loot"]]
@@ -324,6 +326,8 @@ scale = Vector2(1.5, 1.5)
 process_mode = 4
 visible = false
 position = Vector2(-369, -221)
+
+[node name="Player2" parent="." instance=ExtResource("16_77xqr")]
 
 [connection signal="beat_incremented" from="Conductor" to="Player" method="_on_conductor_beat_incremented"]
 [connection signal="measure_incremented" from="Conductor" to="Player" method="_on_conductor_measure_incremented"]

@@ -3,7 +3,7 @@ extends SpellGoblinState
 
 @onready var charge_timer = $"../../ChargeTimer"
 @onready var charge_progress_bar = $"../../ChargeProgressBar"
-@onready var fire_charge_sound = $"../../FireChargeSound"
+#@onready var fire_charge_sound = $"../../FireChargeSound"
 @onready var orc_heavy_grunt_sound = $"../../OrcHeavyGruntSound"
 
 
@@ -46,7 +46,6 @@ func physics_update(_delta: float) -> void:
 func exit() -> void:
 	charge_progress_bar.visible = false
 	spellgoblin.animated_sprite.set_speed_scale(1)
-	#fire_charge_sound.stop()
 
 
 # Receives events from the `_unhandled_input()` callback.
