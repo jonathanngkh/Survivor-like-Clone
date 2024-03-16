@@ -26,3 +26,4 @@ res://Utility/signal_bus.gd
 res://Player/Attack1.gd
 res://Player/Attack2.gd
 res://Player/Attack3.gd
+res://Player/Dash.gd

@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=3 uid="uid://cdne6nnjoc5s1"]
+[gd_scene load_steps=112 format=3 uid="uid://cdne6nnjoc5s1"]
 
 [ext_resource type="Script" path="res://Player/player_2.gd" id="1_60g52"]
 [ext_resource type="Script" path="res://Utility/state_machine.gd" id="2_k8yfy"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Player/Walk.gd" id="4_xav5h"]
 [ext_resource type="Script" path="res://Player/Attack1.gd" id="5_l8rio"]
 [ext_resource type="Texture2D" uid="uid://vr6slqqn7fpa" path="res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)2.png" id="5_v6qa5"]
+[ext_resource type="Script" path="res://Player/Dash.gd" id="5_vsksd"]
 [ext_resource type="Script" path="res://Player/Attack2.gd" id="6_2rcej"]
 [ext_resource type="Texture2D" uid="uid://dnfhuykdcnq3c" path="res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)3.png" id="6_tc7d8"]
 [ext_resource type="Texture2D" uid="uid://c0ev37uwkekax" path="res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)4.png" id="7_3wtrp"]
@@ -481,6 +482,9 @@ script = ExtResource("3_0tvjk")
 
 [node name="Walk" type="Node2D" parent="PlayerStateMachine"]
 script = ExtResource("4_xav5h")
+
+[node name="Dash" type="Node2D" parent="PlayerStateMachine"]
+script = ExtResource("5_vsksd")
 
 [node name="Attack1" type="Node2D" parent="PlayerStateMachine"]
 script = ExtResource("5_l8rio")
