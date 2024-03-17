@@ -486,6 +486,14 @@ script = ExtResource("4_xav5h")
 [node name="Dash" type="Node2D" parent="PlayerStateMachine"]
 script = ExtResource("5_vsksd")
 
+[node name="DurationTimer" type="Timer" parent="PlayerStateMachine/Dash"]
+one_shot = true
+
+[node name="CooldownTimer" type="Timer" parent="PlayerStateMachine/Dash"]
+one_shot = true
+
+[node name="GhostSpawnTimer" type="Timer" parent="PlayerStateMachine/Dash"]
+
 [node name="Attack1" type="Node2D" parent="PlayerStateMachine"]
 script = ExtResource("5_l8rio")
 
@@ -500,10 +508,13 @@ script = ExtResource("7_en51m")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteContainer"]
 position = Vector2(-2, -3)
 sprite_frames = SubResource("SpriteFrames_g1nje")
-animation = &"eleanore_attack_1"
+animation = &"eleanore_spin"
+frame = 17
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1
 shape = SubResource("CapsuleShape2D_yuvdc")
 
+[connection signal="timeout" from="PlayerStateMachine/Dash/DurationTimer" to="PlayerStateMachine/Dash" method="_on_duration_timer_timeout"]
 [connection signal="animation_finished" from="SpriteContainer/AnimatedSprite2D" to="PlayerStateMachine/Walk" method="_on_animated_sprite_2d_animation_finished"]

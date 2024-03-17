@@ -20,6 +20,8 @@ func physics_update(_delta: float) -> void:
 # Receives events from the `_unhandled_input()` callback.
 func handle_input(event: InputEvent) -> void:
 	if event is InputEventKey:
+		if event.keycode == KEY_SHIFT:
+			state_machine.transition_to("Dash")
 		if event.keycode == KEY_F:
 			state_machine.transition_to("Attack1")
 

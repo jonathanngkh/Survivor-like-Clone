@@ -1,3 +1,4 @@
+Timer
 Node
 PlayerState
 Node2D
@@ -8,7 +9,6 @@ CharacterBody2D
 StateMachine
 TextureProgressBar
 SpellGoblinState
-Timer
 AudioStreamPlayer
 Label
 State

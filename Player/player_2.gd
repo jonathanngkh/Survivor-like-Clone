@@ -5,8 +5,9 @@ extends CharacterBody2D
 @onready var sprite_container = $SpriteContainer
 @onready var animated_sprite = $SpriteContainer/AnimatedSprite2D
 
+@export var base_movement_speed = 30
+@export var movement_speed = base_movement_speed
 
-@export var movement_speed = 30
 var can_flip = true
 
 func _ready():
