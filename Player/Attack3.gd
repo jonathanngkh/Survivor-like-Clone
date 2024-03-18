@@ -16,16 +16,13 @@ func update(_delta: float) -> void:
 
 # Corresponds to the `_physics_process()` callback.
 func physics_update(_delta: float) -> void:
+	#player.movement()
 	pass
 
 
 # Receives events from the `_unhandled_input()` callback.
 func handle_input(event: InputEvent) -> void:
 	pass
-	#if event is InputEventKey:
-		#if event.keycode == KEY_F and ready_for_attack_3:
-			#await player.animated_sprite.animation_finished
-			#state_machine.transition_to("Attack3")
 
 
 func _on_animated_sprite_2d_frame_changed():

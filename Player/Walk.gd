@@ -2,6 +2,10 @@
 extends PlayerState
 
 # Called by the state machine upon changing the active state. The `msg` parameter is a dictionary with arbitrary data the state can use to initialize itself.
+
+@onready var dash = $"../Dash"
+
+
 func enter(_msg := {}) -> void:
 	player.animated_sprite.play("eleanore_walk_start")
 
@@ -13,6 +17,7 @@ func update(_delta: float) -> void:
 
 # Corresponds to the `_physics_process()` callback.
 func physics_update(_delta: float) -> void:
+	#player.movement()
 	if player.velocity == Vector2.ZERO:
 		player.animated_sprite.play("eleanore_walk_stop")
 
@@ -20,9 +25,9 @@ func physics_update(_delta: float) -> void:
 # Receives events from the `_unhandled_input()` callback.
 func handle_input(event: InputEvent) -> void:
 	if event is InputEventKey:
-		if event.keycode == KEY_SHIFT:
+		if event.keycode == KEY_SHIFT and dash.can_dash:
 			state_machine.transition_to("Dash")
-		if event.keycode == KEY_F:
+		if event.is_action_pressed("p1_attack"):
 			state_machine.transition_to("Attack1")
 
 

@@ -493,6 +493,7 @@ one_shot = true
 one_shot = true
 
 [node name="GhostSpawnTimer" type="Timer" parent="PlayerStateMachine/Dash"]
+wait_time = 0.08
 
 [node name="Attack1" type="Node2D" parent="PlayerStateMachine"]
 script = ExtResource("5_l8rio")
@@ -516,5 +517,14 @@ frame_progress = 1.0
 z_index = 1
 shape = SubResource("CapsuleShape2D_yuvdc")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3.3, 3.3)
+limit_left = -1314
+limit_top = -474
+limit_right = 1314
+limit_bottom = 490
+
 [connection signal="timeout" from="PlayerStateMachine/Dash/DurationTimer" to="PlayerStateMachine/Dash" method="_on_duration_timer_timeout"]
+[connection signal="timeout" from="PlayerStateMachine/Dash/CooldownTimer" to="PlayerStateMachine/Dash" method="_on_cooldown_timer_timeout"]
+[connection signal="timeout" from="PlayerStateMachine/Dash/GhostSpawnTimer" to="PlayerStateMachine/Dash" method="_on_ghost_spawn_timer_timeout"]
 [connection signal="animation_finished" from="SpriteContainer/AnimatedSprite2D" to="PlayerStateMachine/Walk" method="_on_animated_sprite_2d_animation_finished"]
