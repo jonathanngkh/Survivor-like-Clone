@@ -1,11 +1,13 @@
-[gd_scene load_steps=112 format=3 uid="uid://cdne6nnjoc5s1"]
+[gd_scene load_steps=116 format=3 uid="uid://cdne6nnjoc5s1"]
 
 [ext_resource type="Script" path="res://Player/player_2.gd" id="1_60g52"]
 [ext_resource type="Script" path="res://Utility/state_machine.gd" id="2_k8yfy"]
 [ext_resource type="Script" path="res://Player/Idle.gd" id="3_0tvjk"]
 [ext_resource type="Texture2D" uid="uid://bqov4000jvjuf" path="res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)1.png" id="4_kfje2"]
+[ext_resource type="Script" path="res://Player/Hurt.gd" id="4_vqx2p"]
 [ext_resource type="Script" path="res://Player/Walk.gd" id="4_xav5h"]
 [ext_resource type="Script" path="res://Player/Attack1.gd" id="5_l8rio"]
+[ext_resource type="AudioStream" uid="uid://do3imwfj06tg5" path="res://Audio/SoundEffect/damaged2.wav" id="5_ogxfl"]
 [ext_resource type="Texture2D" uid="uid://vr6slqqn7fpa" path="res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)2.png" id="5_v6qa5"]
 [ext_resource type="Script" path="res://Player/Dash.gd" id="5_vsksd"]
 [ext_resource type="Script" path="res://Player/Attack2.gd" id="6_2rcej"]
@@ -109,6 +111,7 @@
 [ext_resource type="Texture2D" uid="uid://d2fqr80ib3hjo" path="res://Textures/Player/Eleanore/e_walk_start/Move2.png" id="103_yl8s8"]
 [ext_resource type="Texture2D" uid="uid://cowyg1wd1ams0" path="res://Textures/Player/Eleanore/e_walk_stop/Move12.png" id="105_s5ihn"]
 [ext_resource type="Texture2D" uid="uid://dmuhb8qmpwrdn" path="res://Textures/Player/Eleanore/e_walk_stop/Move13.png" id="106_pdnyb"]
+[ext_resource type="PackedScene" uid="uid://c3p0e8l8amscb" path="res://Utility/hurt_box.tscn" id="111_mg01r"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g1nje"]
 animations = [{
@@ -470,6 +473,9 @@ animations = [{
 radius = 4.31927
 height = 25.6741
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3pync"]
+size = Vector2(20, 28.0333)
+
 [node name="Player2" type="CharacterBody2D"]
 script = ExtResource("1_60g52")
 
@@ -479,6 +485,13 @@ initial_state = NodePath("Idle")
 
 [node name="Idle" type="Node2D" parent="PlayerStateMachine"]
 script = ExtResource("3_0tvjk")
+
+[node name="Hurt" type="Node2D" parent="PlayerStateMachine"]
+script = ExtResource("4_vqx2p")
+
+[node name="sound_damaged" type="AudioStreamPlayer" parent="PlayerStateMachine/Hurt"]
+stream = ExtResource("5_ogxfl")
+volume_db = -7.0
 
 [node name="Walk" type="Node2D" parent="PlayerStateMachine"]
 script = ExtResource("4_xav5h")
@@ -509,9 +522,7 @@ script = ExtResource("7_en51m")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteContainer"]
 position = Vector2(-2, -3)
 sprite_frames = SubResource("SpriteFrames_g1nje")
-animation = &"eleanore_spin"
-frame = 17
-frame_progress = 1.0
+animation = &"eleanore_hurt"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1
@@ -524,7 +535,19 @@ limit_top = -474
 limit_right = 1314
 limit_bottom = 490
 
+[node name="HurtBox" parent="." instance=ExtResource("111_mg01r")]
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(0.31498, 0.237885)
+shape = SubResource("RectangleShape2D_3pync")
+debug_color = Color(0.819608, 0.298039, 0.694118, 0.419608)
+
 [connection signal="timeout" from="PlayerStateMachine/Dash/DurationTimer" to="PlayerStateMachine/Dash" method="_on_duration_timer_timeout"]
 [connection signal="timeout" from="PlayerStateMachine/Dash/CooldownTimer" to="PlayerStateMachine/Dash" method="_on_cooldown_timer_timeout"]
 [connection signal="timeout" from="PlayerStateMachine/Dash/GhostSpawnTimer" to="PlayerStateMachine/Dash" method="_on_ghost_spawn_timer_timeout"]
 [connection signal="animation_finished" from="SpriteContainer/AnimatedSprite2D" to="PlayerStateMachine/Walk" method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_finished" from="SpriteContainer/AnimatedSprite2D" to="PlayerStateMachine/Hurt" method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
+
+[editable path="HurtBox"]

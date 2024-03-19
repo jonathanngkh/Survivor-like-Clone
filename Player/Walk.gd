@@ -17,7 +17,6 @@ func update(_delta: float) -> void:
 
 # Corresponds to the `_physics_process()` callback.
 func physics_update(_delta: float) -> void:
-	#player.movement()
 	if player.velocity == Vector2.ZERO:
 		player.animated_sprite.play("eleanore_walk_stop")
 

@@ -1,13 +1,18 @@
 class_name Player
 extends CharacterBody2D
 
-
+@onready var state_machine = $PlayerStateMachine
 @onready var sprite_container = $SpriteContainer
 @onready var animated_sprite = $SpriteContainer/AnimatedSprite2D
 
+@export var max_hp = 100
+@export var hp = max_hp
 @export var base_movement_speed = 30
 @export var movement_speed = base_movement_speed
+@export var knockback = Vector2.ZERO
+@export var knockback_recovery = 3
 
+var is_immune = false
 var can_flip = true
 var is_dashing = false
 var last_velocity = Vector2.ZERO
@@ -35,6 +40,22 @@ func _unhandled_input(event): # Character input
 	pass
 
 
+func _on_hurt_box_hurt(damage, angle, knockback_amount):
+	if state_machine.state.name == "Hurt" or state_machine.state.name == "Dash":
+		return
+	knockback = angle * knockback_amount
+	sprite_flash()
+	#hp -= clamp(damage - armor, 1, 999.0)
+	hp -= damage
+	state_machine.transition_to("Hurt")
+	#health_bar.max_value = max_hp
+	#health_bar.value = hp
+
+func sprite_flash() -> void:
+	var tween: Tween = create_tween()
+	tween.tween_property(animated_sprite, "modulate:v", 1, 0.25).from(15)
+	tween.play()
+
 func normal_movement():
 	var x_direction = Input.get_action_strength("right") - Input.get_action_strength("left")
 	var y_direction = Input.get_action_strength("down") - Input.get_action_strength("up")
@@ -42,6 +63,9 @@ func normal_movement():
 	
 	velocity = direction.normalized() * movement_speed
 	last_velocity = velocity
+	knockback = knockback.move_toward(Vector2.ZERO, knockback_recovery)
+	velocity += knockback
+	
 	
 	if can_flip:
 		if not velocity.x == 0:
