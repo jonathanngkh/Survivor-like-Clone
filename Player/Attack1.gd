@@ -5,7 +5,7 @@ var ready_for_attack_2 = false
 
 # Called by the state machine upon changing the active state. The `msg` parameter is a dictionary with arbitrary data the state can use to initialize itself.
 func enter(_msg := {}) -> void:
-	player.animated_sprite.set_speed_scale(1.2)
+	player.animated_sprite.set_speed_scale(1.3)
 	player.can_flip = false
 	player.animated_sprite.play("eleanore_attack_1")
 	player.animated_sprite.connect("animation_finished", _on_animated_sprite_2d_animation_finished)
