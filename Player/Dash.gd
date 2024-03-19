@@ -70,7 +70,7 @@ func exit() -> void:
 
 func spawn_ghost():
 	var ghost = dash_ghost.instantiate()
-	get_parent().get_parent().get_parent().add_child(ghost)
+	get_tree().get_first_node_in_group("world").add_child(ghost)
 	ghost.global_position = global_position
 	ghost.sprite_frames = player.animated_sprite.sprite_frames
 	ghost.animation = player.animated_sprite.animation

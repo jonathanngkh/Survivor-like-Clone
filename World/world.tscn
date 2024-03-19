@@ -98,7 +98,7 @@ size = Vector2(66.25, 1940)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_10ttd"]
 size = Vector2(42, 42)
 
-[node name="World" type="Node2D"]
+[node name="World" type="Node2D" groups=["world"]]
 metadata/_edit_horizontal_guides_ = [-474.0, 490.0]
 metadata/_edit_vertical_guides_ = [-1310.0, 1310.0]
 

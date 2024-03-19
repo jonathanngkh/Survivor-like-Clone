@@ -3,4 +3,5 @@
 [ext_resource type="Script" path="res://dash_ghost.gd" id="2_knfw3"]
 
 [node name="DashGhost" type="AnimatedSprite2D"]
+modulate = Color(0.65098, 0.458824, 1, 1)
 script = ExtResource("2_knfw3")
