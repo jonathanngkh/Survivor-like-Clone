@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var sprite_container = $SpriteContainer
 @onready var animated_sprite = $SpriteContainer/AnimatedSprite2D
 
-@export var max_hp = 100
+@export var max_hp = 1
 @export var hp = max_hp
 @export var base_movement_speed = 30
 @export var movement_speed = base_movement_speed
@@ -14,7 +14,6 @@ extends CharacterBody2D
 
 var is_immune = false
 var can_flip = true
-var is_dashing = false
 var last_velocity = Vector2.ZERO
 
 func _ready():
@@ -26,8 +25,10 @@ func _process(delta):
 
 
 func _physics_process(delta):
-	if is_dashing:
+	if state_machine.state.name == "Dash":
 		move_and_slide()
+	elif state_machine.state.name == "Dead":
+		return
 	else:
 		normal_movement()
 
@@ -41,7 +42,7 @@ func _unhandled_input(event): # Character input
 
 
 func _on_hurt_box_hurt(damage, angle, knockback_amount):
-	if state_machine.state.name == "Hurt" or state_machine.state.name == "Dash":
+	if state_machine.state.name == "Hurt" or state_machine.state.name == "Dash" or state_machine.state.name ==  "Dead":
 		return
 	knockback = angle * knockback_amount
 	sprite_flash()

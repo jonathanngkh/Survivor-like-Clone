@@ -12,3 +12,5 @@ res://Utility/signal_bus.tscn
 res://dash_ghost.tscn
 res://Player/player_2.gd
 res://dash.gd
+res://Player/Dead.gd
+res://Player/Dash.gd

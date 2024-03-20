@@ -1,4 +1,4 @@
-[gd_scene load_steps=116 format=3 uid="uid://cdne6nnjoc5s1"]
+[gd_scene load_steps=117 format=3 uid="uid://cdne6nnjoc5s1"]
 
 [ext_resource type="Script" path="res://Player/player_2.gd" id="1_60g52"]
 [ext_resource type="Script" path="res://Utility/state_machine.gd" id="2_k8yfy"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://vr6slqqn7fpa" path="res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)2.png" id="5_v6qa5"]
 [ext_resource type="Script" path="res://Player/Dash.gd" id="5_vsksd"]
 [ext_resource type="Script" path="res://Player/Attack2.gd" id="6_2rcej"]
+[ext_resource type="Script" path="res://Player/Dead.gd" id="6_co1ov"]
 [ext_resource type="Texture2D" uid="uid://dnfhuykdcnq3c" path="res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)3.png" id="6_tc7d8"]
 [ext_resource type="Texture2D" uid="uid://c0ev37uwkekax" path="res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)4.png" id="7_3wtrp"]
 [ext_resource type="Script" path="res://Player/Attack3.gd" id="7_en51m"]
@@ -493,6 +494,9 @@ script = ExtResource("4_vqx2p")
 stream = ExtResource("5_ogxfl")
 volume_db = -7.0
 
+[node name="Dead" type="Node2D" parent="PlayerStateMachine"]
+script = ExtResource("6_co1ov")
+
 [node name="Walk" type="Node2D" parent="PlayerStateMachine"]
 script = ExtResource("4_xav5h")
 
@@ -522,7 +526,7 @@ script = ExtResource("7_en51m")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteContainer"]
 position = Vector2(-2, -3)
 sprite_frames = SubResource("SpriteFrames_g1nje")
-animation = &"eleanore_hurt"
+animation = &"eleanore_death"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1
@@ -548,6 +552,7 @@ debug_color = Color(0.819608, 0.298039, 0.694118, 0.419608)
 [connection signal="timeout" from="PlayerStateMachine/Dash/GhostSpawnTimer" to="PlayerStateMachine/Dash" method="_on_ghost_spawn_timer_timeout"]
 [connection signal="animation_finished" from="SpriteContainer/AnimatedSprite2D" to="PlayerStateMachine/Walk" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_finished" from="SpriteContainer/AnimatedSprite2D" to="PlayerStateMachine/Hurt" method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_finished" from="SpriteContainer/AnimatedSprite2D" to="PlayerStateMachine/Dead" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 
 [editable path="HurtBox"]

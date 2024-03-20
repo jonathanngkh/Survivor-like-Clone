@@ -17,7 +17,6 @@ var can_dash = true
 # Called by the state machine upon changing the active state. The `msg` parameter is a dictionary with arbitrary data the state can use to initialize itself.
 func enter(_msg := {}) -> void:
 	# _msg = {"sprite": sprite, "duration": duration}
-	player.is_dashing = true
 	player.animated_sprite.set_speed_scale(animation_speed_increase)
 	player.animated_sprite.play("eleanore_spin")
 	duration_timer.wait_time = duration
@@ -64,7 +63,6 @@ func exit() -> void:
 	can_dash = false
 	player.movement_speed = player.base_movement_speed
 	player.animated_sprite.set_speed_scale(1)
-	player.is_dashing = false
 	ghost_spawn_timer.stop()
 
 
