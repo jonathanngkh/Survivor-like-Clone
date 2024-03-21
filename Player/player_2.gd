@@ -25,10 +25,10 @@ func _process(delta):
 
 
 func _physics_process(delta):
-	if state_machine.state.name == "Dash":
-		move_and_slide()
-	elif state_machine.state.name == "Dead":
+	if state_machine.state.name == "Dead":
 		return
+	elif state_machine.state.name == "Dash":
+		move_and_slide()
 	else:
 		normal_movement()
 

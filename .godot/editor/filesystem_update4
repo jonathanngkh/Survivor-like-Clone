@@ -14,3 +14,4 @@ res://Player/player_2.gd
 res://dash.gd
 res://Player/Dead.gd
 res://Player/Dash.gd
+res://Player/FastCast.gd

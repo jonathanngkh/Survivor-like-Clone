@@ -1,4 +1,4 @@
-[gd_scene load_steps=117 format=3 uid="uid://cdne6nnjoc5s1"]
+[gd_scene load_steps=133 format=3 uid="uid://cdne6nnjoc5s1"]
 
 [ext_resource type="Script" path="res://Player/player_2.gd" id="1_60g52"]
 [ext_resource type="Script" path="res://Utility/state_machine.gd" id="2_k8yfy"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://c0ev37uwkekax" path="res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)4.png" id="7_3wtrp"]
 [ext_resource type="Script" path="res://Player/Attack3.gd" id="7_en51m"]
 [ext_resource type="Texture2D" uid="uid://uhltf48tybys" path="res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)5.png" id="8_pxdvr"]
+[ext_resource type="Script" path="res://Player/FastCast.gd" id="9_bn8bl"]
 [ext_resource type="Texture2D" uid="uid://ckcpb0hfg77pc" path="res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)6.png" id="9_qnpgm"]
 [ext_resource type="Texture2D" uid="uid://c375m5pqbprmj" path="res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)7.png" id="10_2v7c5"]
 [ext_resource type="Texture2D" uid="uid://dm3x801qwqf2r" path="res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)8.png" id="11_64fjv"]
@@ -75,6 +76,7 @@
 [ext_resource type="Texture2D" uid="uid://0php03nq6c13" path="res://Textures/Player/Eleanore/e_hurt/Hurt5.png" id="66_gqysf"]
 [ext_resource type="Texture2D" uid="uid://daxpl1oeht4bu" path="res://Textures/Player/Eleanore/e_idle/Idle1.png" id="67_3d3fh"]
 [ext_resource type="Texture2D" uid="uid://mufcr6utf2uc" path="res://Textures/Player/Eleanore/e_idle/Idle2.png" id="68_ut8fo"]
+[ext_resource type="Texture2D" uid="uid://c2xi1cnk7jx5s" path="res://Textures/Player/Eleanore/FastCastSpriteSheet.png" id="69_1luiu"]
 [ext_resource type="Texture2D" uid="uid://dk585cnn17iqg" path="res://Textures/Player/Eleanore/e_idle/Idle3.png" id="69_c5e3k"]
 [ext_resource type="Texture2D" uid="uid://cx7ed1smpbh6a" path="res://Textures/Player/Eleanore/e_idle/Idle4.png" id="70_iavpy"]
 [ext_resource type="Texture2D" uid="uid://bidqra8knpe7e" path="res://Textures/Player/Eleanore/e_idle/Idle5.png" id="71_gafii"]
@@ -113,6 +115,62 @@
 [ext_resource type="Texture2D" uid="uid://cowyg1wd1ams0" path="res://Textures/Player/Eleanore/e_walk_stop/Move12.png" id="105_s5ihn"]
 [ext_resource type="Texture2D" uid="uid://dmuhb8qmpwrdn" path="res://Textures/Player/Eleanore/e_walk_stop/Move13.png" id="106_pdnyb"]
 [ext_resource type="PackedScene" uid="uid://c3p0e8l8amscb" path="res://Utility/hurt_box.tscn" id="111_mg01r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmbw5"]
+atlas = ExtResource("69_1luiu")
+region = Rect2(0, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o42s5"]
+atlas = ExtResource("69_1luiu")
+region = Rect2(256, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3qy3x"]
+atlas = ExtResource("69_1luiu")
+region = Rect2(512, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pya3i"]
+atlas = ExtResource("69_1luiu")
+region = Rect2(768, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5v6mr"]
+atlas = ExtResource("69_1luiu")
+region = Rect2(1024, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4rswy"]
+atlas = ExtResource("69_1luiu")
+region = Rect2(1280, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cenhc"]
+atlas = ExtResource("69_1luiu")
+region = Rect2(1536, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdtua"]
+atlas = ExtResource("69_1luiu")
+region = Rect2(1792, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmp0t"]
+atlas = ExtResource("69_1luiu")
+region = Rect2(2048, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ug4re"]
+atlas = ExtResource("69_1luiu")
+region = Rect2(2304, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mp3s"]
+atlas = ExtResource("69_1luiu")
+region = Rect2(2560, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_al82d"]
+atlas = ExtResource("69_1luiu")
+region = Rect2(2816, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56i8f"]
+atlas = ExtResource("69_1luiu")
+region = Rect2(3072, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jc0de"]
+atlas = ExtResource("69_1luiu")
+region = Rect2(3328, 0, 256, 144)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g1nje"]
 animations = [{
@@ -309,6 +367,53 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_vmbw5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o42s5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3qy3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pya3i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5v6mr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4rswy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cenhc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdtua")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmp0t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ug4re")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mp3s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_al82d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_56i8f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jc0de")
+}],
+"loop": false,
+"name": &"eleanore_fast_cast",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("62_evevd")
 }, {
 "duration": 1.0,
@@ -487,16 +592,6 @@ initial_state = NodePath("Idle")
 [node name="Idle" type="Node2D" parent="PlayerStateMachine"]
 script = ExtResource("3_0tvjk")
 
-[node name="Hurt" type="Node2D" parent="PlayerStateMachine"]
-script = ExtResource("4_vqx2p")
-
-[node name="sound_damaged" type="AudioStreamPlayer" parent="PlayerStateMachine/Hurt"]
-stream = ExtResource("5_ogxfl")
-volume_db = -7.0
-
-[node name="Dead" type="Node2D" parent="PlayerStateMachine"]
-script = ExtResource("6_co1ov")
-
 [node name="Walk" type="Node2D" parent="PlayerStateMachine"]
 script = ExtResource("4_xav5h")
 
@@ -512,6 +607,25 @@ one_shot = true
 [node name="GhostSpawnTimer" type="Timer" parent="PlayerStateMachine/Dash"]
 wait_time = 0.08
 
+[node name="Hurt" type="Node2D" parent="PlayerStateMachine"]
+script = ExtResource("4_vqx2p")
+
+[node name="sound_damaged" type="AudioStreamPlayer" parent="PlayerStateMachine/Hurt"]
+stream = ExtResource("5_ogxfl")
+volume_db = -7.0
+
+[node name="Dead" type="Node2D" parent="PlayerStateMachine"]
+script = ExtResource("6_co1ov")
+
+[node name="FastCast" type="Node2D" parent="PlayerStateMachine"]
+script = ExtResource("9_bn8bl")
+
+[node name="DurationTimer" type="Timer" parent="PlayerStateMachine/FastCast"]
+one_shot = true
+
+[node name="CooldownTimer" type="Timer" parent="PlayerStateMachine/FastCast"]
+one_shot = true
+
 [node name="Attack1" type="Node2D" parent="PlayerStateMachine"]
 script = ExtResource("5_l8rio")
 
@@ -526,9 +640,12 @@ script = ExtResource("7_en51m")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteContainer"]
 position = Vector2(-2, -3)
 sprite_frames = SubResource("SpriteFrames_g1nje")
-animation = &"eleanore_death"
+animation = &"eleanore_fast_cast"
+frame = 13
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 z_index = 1
 shape = SubResource("CapsuleShape2D_yuvdc")
 
@@ -540,6 +657,7 @@ limit_right = 1314
 limit_bottom = 490
 
 [node name="HurtBox" parent="." instance=ExtResource("111_mg01r")]
+visible = false
 collision_mask = 2
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
@@ -550,6 +668,8 @@ debug_color = Color(0.819608, 0.298039, 0.694118, 0.419608)
 [connection signal="timeout" from="PlayerStateMachine/Dash/DurationTimer" to="PlayerStateMachine/Dash" method="_on_duration_timer_timeout"]
 [connection signal="timeout" from="PlayerStateMachine/Dash/CooldownTimer" to="PlayerStateMachine/Dash" method="_on_cooldown_timer_timeout"]
 [connection signal="timeout" from="PlayerStateMachine/Dash/GhostSpawnTimer" to="PlayerStateMachine/Dash" method="_on_ghost_spawn_timer_timeout"]
+[connection signal="timeout" from="PlayerStateMachine/FastCast/DurationTimer" to="PlayerStateMachine/FastCast" method="_on_duration_timer_timeout"]
+[connection signal="timeout" from="PlayerStateMachine/FastCast/CooldownTimer" to="PlayerStateMachine/FastCast" method="_on_cooldown_timer_timeout"]
 [connection signal="animation_finished" from="SpriteContainer/AnimatedSprite2D" to="PlayerStateMachine/Walk" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_finished" from="SpriteContainer/AnimatedSprite2D" to="PlayerStateMachine/Hurt" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_finished" from="SpriteContainer/AnimatedSprite2D" to="PlayerStateMachine/Dead" method="_on_animated_sprite_2d_animation_finished"]

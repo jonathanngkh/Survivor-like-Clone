@@ -28,6 +28,8 @@ func handle_input(event: InputEvent) -> void:
 			state_machine.transition_to("Dash")
 		if event.is_action_pressed("p1_attack"):
 			state_machine.transition_to("Attack1")
+		if event.is_action_pressed("fast_cast"):
+			state_machine.transition_to("FastCast")
 
 
 # Called by the state machine before changing the active state. Use this function to clean up the state.
