@@ -12,8 +12,8 @@ extends PlayerState
 func enter(_msg := {}) -> void:
 	player.animated_sprite.set_speed_scale(animation_speed_increase)
 	player.animated_sprite.play("eleanore_fast_cast")
-	#duration_timer.wait_time = duration
-	#duration_timer.start()
+	player.animated_sprite.connect("animation_finished", _on_animated_sprite_2d_animation_finished)
+	player.animated_sprite.connect("frame_changed", _on_animated_sprite_2d_frame_changed)
 
 
 # Corresponds to the `_process()` callback.
@@ -31,14 +31,21 @@ func handle_input(event: InputEvent) -> void:
 	pass
 
 
-func _on_duration_timer_timeout():
-	state_machine.transition_to("Walk")
-	pass
-
-
 func _on_cooldown_timer_timeout():
 	pass
 
+
+func _on_animated_sprite_2d_animation_finished():
+	if player.animated_sprite.animation == "eleanore_fast_cast":
+		state_machine.transition_to("Idle")
+		#if player.velocity == Vector2.ZERO:
+		#else:
+			#state_machine.transition_to("Walk")
+
+
+func _on_animated_sprite_2d_frame_changed():
+	# on frame 7, instantiate, set variables, and launch fireball scene
+	pass
 
 # Called by the state machine before changing the active state. Use this function to clean up the state.
 func exit() -> void:

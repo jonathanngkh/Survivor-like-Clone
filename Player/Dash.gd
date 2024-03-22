@@ -44,7 +44,11 @@ func handle_input(event: InputEvent) -> void:
 
 
 func _on_duration_timer_timeout():
-	state_machine.transition_to("Walk")
+	if player.animated_sprite.animation == "eleanore_spin":
+		if player.velocity == Vector2.ZERO:
+			state_machine.transition_to("Idle")
+		else:
+			state_machine.transition_to("Walk")
 
 
 func _on_cooldown_timer_timeout():
