@@ -1,4 +1,4 @@
-[gd_scene load_steps=133 format=3 uid="uid://cdne6nnjoc5s1"]
+[gd_scene load_steps=150 format=3 uid="uid://cdne6nnjoc5s1"]
 
 [ext_resource type="Script" path="res://Player/player_2.gd" id="1_60g52"]
 [ext_resource type="Script" path="res://Utility/state_machine.gd" id="2_k8yfy"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" path="res://Player/FastCast.gd" id="9_bn8bl"]
 [ext_resource type="Texture2D" uid="uid://ckcpb0hfg77pc" path="res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)6.png" id="9_qnpgm"]
 [ext_resource type="Texture2D" uid="uid://c375m5pqbprmj" path="res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)7.png" id="10_2v7c5"]
+[ext_resource type="Script" path="res://Player/StrikeCast.gd" id="10_v1k0r"]
 [ext_resource type="Texture2D" uid="uid://dm3x801qwqf2r" path="res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)8.png" id="11_64fjv"]
 [ext_resource type="Texture2D" uid="uid://eggfepa4mr2x" path="res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)9.png" id="12_to527"]
 [ext_resource type="Texture2D" uid="uid://ddn6fblgofiow" path="res://Textures/Player/Eleanore/e_attack_2/ComboAtk(FX)10.png" id="13_5ngef"]
@@ -112,6 +113,7 @@
 [ext_resource type="Texture2D" uid="uid://jh1jsj6ve7h4" path="res://Textures/Player/Eleanore/e_walk/Moving8.png" id="101_dfy1m"]
 [ext_resource type="Texture2D" uid="uid://bcar7ehi7dvae" path="res://Textures/Player/Eleanore/e_walk_start/Move1.png" id="102_cthmf"]
 [ext_resource type="Texture2D" uid="uid://d2fqr80ib3hjo" path="res://Textures/Player/Eleanore/e_walk_start/Move2.png" id="103_yl8s8"]
+[ext_resource type="Texture2D" uid="uid://c47twlt2ugxp1" path="res://Textures/Player/Eleanore/StrikeCastSpriteSheet.png" id="104_vhdlq"]
 [ext_resource type="Texture2D" uid="uid://cowyg1wd1ams0" path="res://Textures/Player/Eleanore/e_walk_stop/Move12.png" id="105_s5ihn"]
 [ext_resource type="Texture2D" uid="uid://dmuhb8qmpwrdn" path="res://Textures/Player/Eleanore/e_walk_stop/Move13.png" id="106_pdnyb"]
 [ext_resource type="PackedScene" uid="uid://c3p0e8l8amscb" path="res://Utility/hurt_box.tscn" id="111_mg01r"]
@@ -171,6 +173,66 @@ region = Rect2(3072, 0, 256, 144)
 [sub_resource type="AtlasTexture" id="AtlasTexture_dpyii"]
 atlas = ExtResource("69_1luiu")
 region = Rect2(3328, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sc5a7"]
+atlas = ExtResource("104_vhdlq")
+region = Rect2(0, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o88j3"]
+atlas = ExtResource("104_vhdlq")
+region = Rect2(256, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rdt4"]
+atlas = ExtResource("104_vhdlq")
+region = Rect2(512, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ba16w"]
+atlas = ExtResource("104_vhdlq")
+region = Rect2(768, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gclp"]
+atlas = ExtResource("104_vhdlq")
+region = Rect2(1024, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0megk"]
+atlas = ExtResource("104_vhdlq")
+region = Rect2(1280, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mhea"]
+atlas = ExtResource("104_vhdlq")
+region = Rect2(1536, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q05mf"]
+atlas = ExtResource("104_vhdlq")
+region = Rect2(1792, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fff6c"]
+atlas = ExtResource("104_vhdlq")
+region = Rect2(2048, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2yvaf"]
+atlas = ExtResource("104_vhdlq")
+region = Rect2(2304, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fh7k0"]
+atlas = ExtResource("104_vhdlq")
+region = Rect2(2560, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pu1t"]
+atlas = ExtResource("104_vhdlq")
+region = Rect2(2816, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2kp8e"]
+atlas = ExtResource("104_vhdlq")
+region = Rect2(3072, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_phtrl"]
+atlas = ExtResource("104_vhdlq")
+region = Rect2(3328, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4oka"]
+atlas = ExtResource("104_vhdlq")
+region = Rect2(3584, 0, 256, 144)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g1nje"]
 animations = [{
@@ -525,6 +587,56 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_sc5a7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o88j3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8rdt4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ba16w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gclp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0megk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mhea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q05mf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fff6c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2yvaf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fh7k0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pu1t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2kp8e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_phtrl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4oka")
+}],
+"loop": false,
+"name": &"eleanore_strike_cast",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("94_fnaps")
 }, {
 "duration": 1.0,
@@ -626,6 +738,15 @@ one_shot = true
 [node name="CooldownTimer" type="Timer" parent="PlayerStateMachine/FastCast"]
 one_shot = true
 
+[node name="StrikeCast" type="Node2D" parent="PlayerStateMachine"]
+script = ExtResource("10_v1k0r")
+
+[node name="DurationTimer" type="Timer" parent="PlayerStateMachine/StrikeCast"]
+one_shot = true
+
+[node name="CooldownTimer" type="Timer" parent="PlayerStateMachine/StrikeCast"]
+one_shot = true
+
 [node name="Attack1" type="Node2D" parent="PlayerStateMachine"]
 script = ExtResource("5_l8rio")
 
@@ -668,6 +789,8 @@ debug_color = Color(0.819608, 0.298039, 0.694118, 0.419608)
 [connection signal="timeout" from="PlayerStateMachine/Dash/GhostSpawnTimer" to="PlayerStateMachine/Dash" method="_on_ghost_spawn_timer_timeout"]
 [connection signal="timeout" from="PlayerStateMachine/FastCast/DurationTimer" to="PlayerStateMachine/FastCast" method="_on_duration_timer_timeout"]
 [connection signal="timeout" from="PlayerStateMachine/FastCast/CooldownTimer" to="PlayerStateMachine/FastCast" method="_on_cooldown_timer_timeout"]
+[connection signal="timeout" from="PlayerStateMachine/StrikeCast/DurationTimer" to="PlayerStateMachine/StrikeCast" method="_on_duration_timer_timeout"]
+[connection signal="timeout" from="PlayerStateMachine/StrikeCast/CooldownTimer" to="PlayerStateMachine/StrikeCast" method="_on_cooldown_timer_timeout"]
 [connection signal="animation_finished" from="SpriteContainer/AnimatedSprite2D" to="PlayerStateMachine/Walk" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_finished" from="SpriteContainer/AnimatedSprite2D" to="PlayerStateMachine/Hurt" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_finished" from="SpriteContainer/AnimatedSprite2D" to="PlayerStateMachine/Dead" method="_on_animated_sprite_2d_animation_finished"]
