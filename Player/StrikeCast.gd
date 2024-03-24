@@ -37,7 +37,10 @@ func _on_cooldown_timer_timeout():
 
 func _on_animated_sprite_2d_animation_finished():
 	if player.animated_sprite.animation == "eleanore_strike_cast":
-		state_machine.transition_to("Idle")
+		if Input.is_action_pressed("fast_cast"):
+			state_machine.transition_to("FastCast")
+		else:
+			state_machine.transition_to("Idle")
 		#if player.velocity == Vector2.ZERO:
 		#else:
 			#state_machine.transition_to("Walk")

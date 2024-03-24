@@ -18,6 +18,8 @@ func physics_update(_delta: float) -> void:
 
 # Receives events from the `_unhandled_input()` callback.
 func handle_input(event: InputEvent) -> void:
+	# something about the way the ifs are structured makes holding buttons not make state transitions work as expected.
+	# V can transition to C if c is held. But not vice versa. something about VI CE is funny here
 	if event is InputEventKey:
 		if event.keycode == KEY_F:
 			state_machine.transition_to("Attack1") # F

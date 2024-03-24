@@ -57,7 +57,9 @@ func _on_animated_sprite_2d_frame_changed():
 
 func _on_animated_sprite_2d_animation_finished():
 	if player.animated_sprite.animation == "eleanore_attack_2":
-		if player.velocity == Vector2.ZERO:
+		if Input.is_action_pressed("p1_attack"):
+			state_machine.transition_to("Attack3")
+		elif player.velocity == Vector2.ZERO:
 			state_machine.transition_to("Idle")
 		else:
 			state_machine.transition_to("Walk")
