@@ -23,10 +23,12 @@ func handle_input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if event.keycode == KEY_F:
 			state_machine.transition_to("Attack1") # F
-	if event.is_action_pressed("fast_cast"): # C
+	if Input.is_action_pressed("fast_cast"): # C
 		state_machine.transition_to("FastCast")
-	if event.is_action_pressed("strike_cast"): # V
+	if Input.is_action_pressed("strike_cast"): # V
 		state_machine.transition_to("StrikeCast")
+	if Input.is_action_pressed("ice_cast"): # G
+		state_machine.transition_to("IceCast")
 
 
 # Called by the state machine before changing the active state. Use this function to clean up the state.

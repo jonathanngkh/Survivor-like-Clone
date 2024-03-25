@@ -1,4 +1,4 @@
-[gd_scene load_steps=150 format=3 uid="uid://cdne6nnjoc5s1"]
+[gd_scene load_steps=169 format=3 uid="uid://cdne6nnjoc5s1"]
 
 [ext_resource type="Script" path="res://Player/player_2.gd" id="1_60g52"]
 [ext_resource type="Script" path="res://Utility/state_machine.gd" id="2_k8yfy"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://c375m5pqbprmj" path="res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)7.png" id="10_2v7c5"]
 [ext_resource type="Script" path="res://Player/StrikeCast.gd" id="10_v1k0r"]
 [ext_resource type="Texture2D" uid="uid://dm3x801qwqf2r" path="res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)8.png" id="11_64fjv"]
+[ext_resource type="Script" path="res://Player/IceCast.gd" id="11_m10mr"]
 [ext_resource type="Texture2D" uid="uid://eggfepa4mr2x" path="res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)9.png" id="12_to527"]
 [ext_resource type="Texture2D" uid="uid://ddn6fblgofiow" path="res://Textures/Player/Eleanore/e_attack_2/ComboAtk(FX)10.png" id="13_5ngef"]
 [ext_resource type="Texture2D" uid="uid://14sgk5i7rits" path="res://Textures/Player/Eleanore/e_attack_2/ComboAtk(FX)11.png" id="14_040nc"]
@@ -87,6 +88,7 @@
 [ext_resource type="Texture2D" uid="uid://dw3xfqn31fgp0" path="res://Textures/Player/Eleanore/e_idle/Idle9.png" id="75_obhdd"]
 [ext_resource type="Texture2D" uid="uid://y7bv3pxkpy0h" path="res://Textures/Player/Eleanore/e_spin/Spin1.png" id="76_tsxwo"]
 [ext_resource type="Texture2D" uid="uid://c5ijfpytuljg1" path="res://Textures/Player/Eleanore/e_spin/Spin2.png" id="77_ip5rr"]
+[ext_resource type="Texture2D" uid="uid://iav6x5lmbaq" path="res://Textures/Player/Eleanore/IceCastSpriteSheet.png" id="78_b0ut3"]
 [ext_resource type="Texture2D" uid="uid://bf8tvp6aob27x" path="res://Textures/Player/Eleanore/e_spin/Spin3.png" id="78_i0x8q"]
 [ext_resource type="Texture2D" uid="uid://dx215pqrwgniq" path="res://Textures/Player/Eleanore/e_spin/Spin4.png" id="79_g6axu"]
 [ext_resource type="Texture2D" uid="uid://ckptf8qofvwwu" path="res://Textures/Player/Eleanore/e_spin/Spin5.png" id="80_oiiod"]
@@ -173,6 +175,74 @@ region = Rect2(3072, 0, 256, 144)
 [sub_resource type="AtlasTexture" id="AtlasTexture_dpyii"]
 atlas = ExtResource("69_1luiu")
 region = Rect2(3328, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4sse"]
+atlas = ExtResource("78_b0ut3")
+region = Rect2(0, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojgxm"]
+atlas = ExtResource("78_b0ut3")
+region = Rect2(256, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6hyr"]
+atlas = ExtResource("78_b0ut3")
+region = Rect2(512, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88s5y"]
+atlas = ExtResource("78_b0ut3")
+region = Rect2(768, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxnhe"]
+atlas = ExtResource("78_b0ut3")
+region = Rect2(1024, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sl032"]
+atlas = ExtResource("78_b0ut3")
+region = Rect2(1280, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40rkl"]
+atlas = ExtResource("78_b0ut3")
+region = Rect2(1536, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfnyp"]
+atlas = ExtResource("78_b0ut3")
+region = Rect2(1792, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5f7or"]
+atlas = ExtResource("78_b0ut3")
+region = Rect2(2048, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0702"]
+atlas = ExtResource("78_b0ut3")
+region = Rect2(2304, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1k2m3"]
+atlas = ExtResource("78_b0ut3")
+region = Rect2(2560, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ot0me"]
+atlas = ExtResource("78_b0ut3")
+region = Rect2(2816, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5eb41"]
+atlas = ExtResource("78_b0ut3")
+region = Rect2(3072, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tu1go"]
+atlas = ExtResource("78_b0ut3")
+region = Rect2(3328, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltll2"]
+atlas = ExtResource("78_b0ut3")
+region = Rect2(3584, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5vp0"]
+atlas = ExtResource("78_b0ut3")
+region = Rect2(3840, 0, 256, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qefo5"]
+atlas = ExtResource("78_b0ut3")
+region = Rect2(4096, 0, 256, 144)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sc5a7"]
 atlas = ExtResource("104_vhdlq")
@@ -496,6 +566,62 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_r4sse")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ojgxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l6hyr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88s5y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qxnhe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sl032")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40rkl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfnyp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5f7or")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o0702")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1k2m3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ot0me")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5eb41")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tu1go")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ltll2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5vp0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qefo5")
+}],
+"loop": false,
+"name": &"eleanore_ice_cast",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("67_3d3fh")
 }, {
 "duration": 1.0,
@@ -747,6 +873,15 @@ one_shot = true
 [node name="CooldownTimer" type="Timer" parent="PlayerStateMachine/StrikeCast"]
 one_shot = true
 
+[node name="IceCast" type="Node2D" parent="PlayerStateMachine"]
+script = ExtResource("11_m10mr")
+
+[node name="DurationTimer" type="Timer" parent="PlayerStateMachine/IceCast"]
+one_shot = true
+
+[node name="CooldownTimer" type="Timer" parent="PlayerStateMachine/IceCast"]
+one_shot = true
+
 [node name="Attack1" type="Node2D" parent="PlayerStateMachine"]
 script = ExtResource("5_l8rio")
 
@@ -761,7 +896,7 @@ script = ExtResource("7_en51m")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteContainer"]
 position = Vector2(-2, -3)
 sprite_frames = SubResource("SpriteFrames_g1nje")
-animation = &"eleanore_idle"
+animation = &"eleanore_ice_cast"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -791,6 +926,8 @@ debug_color = Color(0.819608, 0.298039, 0.694118, 0.419608)
 [connection signal="timeout" from="PlayerStateMachine/FastCast/CooldownTimer" to="PlayerStateMachine/FastCast" method="_on_cooldown_timer_timeout"]
 [connection signal="timeout" from="PlayerStateMachine/StrikeCast/DurationTimer" to="PlayerStateMachine/StrikeCast" method="_on_duration_timer_timeout"]
 [connection signal="timeout" from="PlayerStateMachine/StrikeCast/CooldownTimer" to="PlayerStateMachine/StrikeCast" method="_on_cooldown_timer_timeout"]
+[connection signal="timeout" from="PlayerStateMachine/IceCast/DurationTimer" to="PlayerStateMachine/IceCast" method="_on_duration_timer_timeout"]
+[connection signal="timeout" from="PlayerStateMachine/IceCast/CooldownTimer" to="PlayerStateMachine/IceCast" method="_on_cooldown_timer_timeout"]
 [connection signal="animation_finished" from="SpriteContainer/AnimatedSprite2D" to="PlayerStateMachine/Walk" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_finished" from="SpriteContainer/AnimatedSprite2D" to="PlayerStateMachine/Hurt" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_finished" from="SpriteContainer/AnimatedSprite2D" to="PlayerStateMachine/Dead" method="_on_animated_sprite_2d_animation_finished"]

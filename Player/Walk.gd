@@ -26,12 +26,14 @@ func handle_input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if event.keycode == KEY_SHIFT and dash.can_dash:
 			state_machine.transition_to("Dash")
-		if event.is_action_pressed("p1_attack"):
-			state_machine.transition_to("Attack1")
-		if event.is_action_pressed("fast_cast"):
-			state_machine.transition_to("FastCast")
-		if event.is_action_pressed("strike_cast"):
-			state_machine.transition_to("StrikeCast")
+	if Input.is_action_pressed("p1_attack"):
+		state_machine.transition_to("Attack1")
+	if Input.is_action_pressed("fast_cast"):
+		state_machine.transition_to("FastCast")
+	if Input.is_action_pressed("strike_cast"):
+		state_machine.transition_to("StrikeCast")
+	if Input.is_action_pressed("ice_cast"):
+		state_machine.transition_to("IceCast")
 
 
 # Called by the state machine before changing the active state. Use this function to clean up the state.
