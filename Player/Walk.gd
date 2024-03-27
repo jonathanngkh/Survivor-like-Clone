@@ -34,6 +34,8 @@ func handle_input(event: InputEvent) -> void:
 		state_machine.transition_to("StrikeCast")
 	if Input.is_action_pressed("ice_cast"):
 		state_machine.transition_to("IceCast")
+	if Input.is_action_pressed("light_cast"):
+		state_machine.transition_to("LightCast")
 
 
 # Called by the state machine before changing the active state. Use this function to clean up the state.
