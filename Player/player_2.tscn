@@ -1,4 +1,4 @@
-[gd_scene load_steps=188 format=3 uid="uid://cdne6nnjoc5s1"]
+[gd_scene load_steps=189 format=3 uid="uid://cdne6nnjoc5s1"]
 
 [ext_resource type="Script" path="res://Player/player_2.gd" id="1_60g52"]
 [ext_resource type="Script" path="res://Utility/state_machine.gd" id="2_k8yfy"]
@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://eggfepa4mr2x" path="res://Textures/Player/Eleanore/e_attack_1/ComboAtk(FX)9.png" id="12_to527"]
 [ext_resource type="Script" path="res://Player/LightCast.gd" id="12_v5fv2"]
 [ext_resource type="Texture2D" uid="uid://ddn6fblgofiow" path="res://Textures/Player/Eleanore/e_attack_2/ComboAtk(FX)10.png" id="13_5ngef"]
+[ext_resource type="Script" path="res://Player/HeavyCast.gd" id="13_8nx4b"]
 [ext_resource type="Texture2D" uid="uid://14sgk5i7rits" path="res://Textures/Player/Eleanore/e_attack_2/ComboAtk(FX)11.png" id="14_040nc"]
 [ext_resource type="Texture2D" uid="uid://cq44cf4fia0bw" path="res://Textures/Player/Eleanore/e_attack_2/ComboAtk(FX)12.png" id="15_mkwac"]
 [ext_resource type="Texture2D" uid="uid://dpnm6ubalxxt5" path="res://Textures/Player/Eleanore/e_attack_2/ComboAtk(FX)13.png" id="16_66rp1"]
@@ -1037,6 +1038,16 @@ one_shot = true
 [node name="CooldownTimer" type="Timer" parent="PlayerStateMachine/LightCast"]
 one_shot = true
 
+[node name="HeavyCast" type="Node2D" parent="PlayerStateMachine"]
+process_mode = 4
+script = ExtResource("13_8nx4b")
+
+[node name="ChargeTimer" type="Timer" parent="PlayerStateMachine/HeavyCast"]
+one_shot = true
+
+[node name="CooldownTimer" type="Timer" parent="PlayerStateMachine/HeavyCast"]
+one_shot = true
+
 [node name="Attack1" type="Node2D" parent="PlayerStateMachine"]
 script = ExtResource("5_l8rio")
 
@@ -1083,8 +1094,9 @@ debug_color = Color(0.819608, 0.298039, 0.694118, 0.419608)
 [connection signal="timeout" from="PlayerStateMachine/StrikeCast/CooldownTimer" to="PlayerStateMachine/StrikeCast" method="_on_cooldown_timer_timeout"]
 [connection signal="timeout" from="PlayerStateMachine/IceCast/DurationTimer" to="PlayerStateMachine/IceCast" method="_on_duration_timer_timeout"]
 [connection signal="timeout" from="PlayerStateMachine/IceCast/CooldownTimer" to="PlayerStateMachine/IceCast" method="_on_cooldown_timer_timeout"]
-[connection signal="timeout" from="PlayerStateMachine/LightCast/ChargeTimer" to="PlayerStateMachine/LightCast" method="_on_charge_timer_timeout"]
 [connection signal="timeout" from="PlayerStateMachine/LightCast/CooldownTimer" to="PlayerStateMachine/LightCast" method="_on_cooldown_timer_timeout"]
+[connection signal="timeout" from="PlayerStateMachine/HeavyCast/ChargeTimer" to="PlayerStateMachine/HeavyCast" method="_on_charge_timer_timeout"]
+[connection signal="timeout" from="PlayerStateMachine/HeavyCast/CooldownTimer" to="PlayerStateMachine/HeavyCast" method="_on_cooldown_timer_timeout"]
 [connection signal="animation_finished" from="SpriteContainer/AnimatedSprite2D" to="PlayerStateMachine/Walk" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_finished" from="SpriteContainer/AnimatedSprite2D" to="PlayerStateMachine/Hurt" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_finished" from="SpriteContainer/AnimatedSprite2D" to="PlayerStateMachine/Dead" method="_on_animated_sprite_2d_animation_finished"]

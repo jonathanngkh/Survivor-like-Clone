@@ -20,3 +20,4 @@ res://Player/Attack1.gd
 res://Player/Attack2.gd
 res://Player/IceCast.gd
 res://Player/LightCast.gd
+res://Player/HeavyCast.gd

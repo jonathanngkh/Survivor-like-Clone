@@ -16,6 +16,7 @@ func enter(_msg := {}) -> void:
 	player.animated_sprite.connect("animation_finished", _on_animated_sprite_2d_animation_finished)
 	player.animated_sprite.connect("frame_changed", _on_animated_sprite_2d_frame_changed)
 	charge_timer.wait_time = charge_time
+	charge_timer.connect("timeout", _on_charge_timer_timeout)
 
 
 # Corresponds to the `_process()` callback.
@@ -71,5 +72,6 @@ func exit() -> void:
 	cooldown_timer.start()
 	player.movement_speed = player.base_movement_speed
 	player.animated_sprite.set_speed_scale(1)
+	charge_timer.disconnect("timeout", _on_charge_timer_timeout)
 
 
