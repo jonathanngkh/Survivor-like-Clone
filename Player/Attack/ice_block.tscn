@@ -1,0 +1,80 @@
+[gd_scene load_steps=12 format=3 uid="uid://b0xqmq6324es1"]
+
+[ext_resource type="Script" path="res://Player/Attack/ice_block.gd" id="1_712pp"]
+[ext_resource type="Texture2D" uid="uid://cqg0iwuoddo36" path="res://Textures/VFX/iceblock/Hit1/IcePillarHited1_1.png" id="2_2p48r"]
+[ext_resource type="Texture2D" uid="uid://b1sub8hfdxx31" path="res://Textures/VFX/iceblock/Hit1/IcePillarHited1_2.png" id="3_6l14r"]
+[ext_resource type="Texture2D" uid="uid://de0pn5kcsxmkg" path="res://Textures/VFX/iceblock/Hit1/IcePillarHited1_3.png" id="4_xy5ru"]
+[ext_resource type="Texture2D" uid="uid://cp1qdfjrbr0u" path="res://Textures/VFX/iceblock/Hit2/IcePillarHited2_1.png" id="5_8uves"]
+[ext_resource type="Texture2D" uid="uid://m67im58nie6n" path="res://Textures/VFX/iceblock/Hit2/IcePillarHited2_2.png" id="6_ojoib"]
+[ext_resource type="Texture2D" uid="uid://hfyyuxhe0mu6" path="res://Textures/VFX/iceblock/Hit2/IcePillarHited2_3.png" id="7_e78ci"]
+[ext_resource type="Texture2D" uid="uid://br3gdofbm4d5v" path="res://Textures/VFX/iceblock/IcePillarCasted.png" id="8_xlrbu"]
+[ext_resource type="AudioStream" uid="uid://drrquvalm273c" path="res://Audio/SoundEffect/01_Fire_Cast.wav" id="15_y34k6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pqpde"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2p48r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6l14r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xy5ru")
+}],
+"loop": false,
+"name": &"hit1",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_8uves")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ojoib")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_e78ci")
+}],
+"loop": false,
+"name": &"hit2",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_xlrbu")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_detan"]
+size = Vector2(9.00001, 31)
+
+[node name="IceBlock" type="Area2D" groups=["attack"]]
+top_level = true
+scale = Vector2(1.5, 1.5)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_712pp")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pqpde")
+animation = &"hit1"
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(-4.49999, 0.499993)
+rotation = -1.57079
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_detan")
+
+[node name="LaunchSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_y34k6")
+volume_db = -10.0
+pitch_scale = 1.4
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_sprite_2d_animation_finished"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

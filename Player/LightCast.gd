@@ -63,7 +63,6 @@ func _on_charge_timer_timeout():
 	# launch fire tornadoes
 
 func _on_animated_sprite_2d_frame_changed():
-	# on frame 6 (starting at index 0), ice wall starts to launch
 	pass
 
 # Called by the state machine before changing the active state. Use this function to clean up the state.

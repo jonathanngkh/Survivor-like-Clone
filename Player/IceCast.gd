@@ -4,6 +4,8 @@ extends PlayerState
 @onready var duration_timer = $DurationTimer
 @onready var cooldown_timer = $CooldownTimer
 
+@onready var ice_block = preload("res://Player/Attack/ice_block.tscn")
+
 @export var duration = 0.3
 @export var cooldown = 1
 @export var animation_speed_increase = 1.2
@@ -46,7 +48,12 @@ func _on_animated_sprite_2d_animation_finished():
 
 func _on_animated_sprite_2d_frame_changed():
 	# on frame 6 (starting at index 0), ice wall starts to launch
-	pass
+	if player.animated_sprite.animation == "eleanore_ice_cast":
+		if player.animated_sprite.frame == 6:
+			var new_ice_block = ice_block.instantiate()
+			new_ice_block.position = player.position
+			player.add_child(new_ice_block)
+
 
 # Called by the state machine before changing the active state. Use this function to clean up the state.
 func exit() -> void:

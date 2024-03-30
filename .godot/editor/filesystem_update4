@@ -21,3 +21,8 @@ res://Player/Attack2.gd
 res://Player/IceCast.gd
 res://Player/LightCast.gd
 res://Player/HeavyCast.gd
+res://Player/Attack/fireball.tscn
+res://Player/Attack/ice_block.tscn
+res://Player/Attack/ice_block.gd
+res://Enemy/spell_goblin.tscn
+res://Player/Attack/ice_spear.tscn
