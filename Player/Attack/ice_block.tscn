@@ -50,21 +50,24 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_detan"]
-size = Vector2(9.00001, 31)
+size = Vector2(18.8333, 12.6667)
 
 [node name="IceBlock" type="Area2D" groups=["attack"]]
 top_level = true
-scale = Vector2(1.5, 1.5)
+scale = Vector2(4, 4)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_712pp")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(0.8, 0.8, 0.8, 0.705882)
+position = Vector2(-2.41666, -2.12339)
+scale = Vector2(0.274038, 0.274038)
 sprite_frames = SubResource("SpriteFrames_pqpde")
 animation = &"hit1"
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
-position = Vector2(-4.49999, 0.499993)
+position = Vector2(-0.166612, 0.249962)
 rotation = -1.57079
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_detan")

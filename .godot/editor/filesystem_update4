@@ -26,3 +26,4 @@ res://Player/Attack/ice_block.tscn
 res://Player/Attack/ice_block.gd
 res://Enemy/spell_goblin.tscn
 res://Player/Attack/ice_spear.tscn
+res://Conductor.gd

@@ -1,4 +1,5 @@
 # launches on player ice cast signal lauch frame
+# give it a hurt box. set collision layer so player spell can hit it for testing
 # has 3 health. on first hit by enemy, play hit1
 # on 2nd hit by enemy, play hit2
 # on 3rd hit by enemy, play break. collisionshape disappears
@@ -31,6 +32,11 @@ func _ready():
 	angle = global_position.direction_to(target)
 	animated_sprite.play("idle")
 	rotation = angle.angle()
+	if player.sprite_container.scale.x >= 0:
+		position = player.global_position + Vector2(80, -12)
+	else:
+		animated_sprite.flip_h = true
+		position = player.global_position + Vector2(-80, -12)
 
 
 func _on_sprite_2d_animation_finished():
@@ -40,7 +46,7 @@ func _on_sprite_2d_animation_finished():
 
 
 func _physics_process(delta):
-	position += angle * speed * delta
+	pass
 	
 func enemy_hit(charge = 1):
 	hp -= 1

@@ -116,33 +116,6 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_6ka0j")
 offset = Vector2(150.5, 1028.5)
 
-[node name="Player" parent="." instance=ExtResource("2_rlem7")]
-process_mode = 4
-visible = false
-position = Vector2(-15, -21)
-hp = 10000
-max_hp = 10000
-
-[node name="YouAreDeadLabel" type="Label" parent="Player" groups=["you are dead"]]
-visible = false
-offset_left = -175.0
-offset_top = -96.0
-offset_right = 193.0
-offset_bottom = -31.0
-theme_override_fonts/font = ExtResource("13_pwion")
-theme_override_font_sizes/font_size = 64
-text = "You Are Dead..."
-
-[node name="YouSurvivedLabel" type="Label" parent="Player" groups=["survived"]]
-visible = false
-offset_left = -175.0
-offset_top = -96.0
-offset_right = 193.0
-offset_bottom = -31.0
-theme_override_fonts/font = ExtResource("13_pwion")
-theme_override_font_sizes/font_size = 64
-text = "You Survived!"
-
 [node name="EnemySpawner" parent="." instance=ExtResource("3_gdiqe")]
 spawns = Array[ExtResource("5_kyr6r")]([SubResource("Resource_rxj4u"), SubResource("Resource_0ghsp"), SubResource("Resource_ixasv"), SubResource("Resource_y4opa"), SubResource("Resource_tol0s"), SubResource("Resource_h3dng"), SubResource("Resource_tvmlh"), SubResource("Resource_x21cl"), SubResource("Resource_cc6wm")])
 
@@ -328,6 +301,33 @@ visible = false
 position = Vector2(-369, -221)
 
 [node name="Player2" parent="." instance=ExtResource("16_77xqr")]
+
+[node name="Player" parent="." instance=ExtResource("2_rlem7")]
+process_mode = 4
+visible = false
+position = Vector2(-15, -21)
+hp = 10000
+max_hp = 10000
+
+[node name="YouAreDeadLabel" type="Label" parent="Player" groups=["you are dead"]]
+visible = false
+offset_left = -175.0
+offset_top = -96.0
+offset_right = 193.0
+offset_bottom = -31.0
+theme_override_fonts/font = ExtResource("13_pwion")
+theme_override_font_sizes/font_size = 64
+text = "You Are Dead..."
+
+[node name="YouSurvivedLabel" type="Label" parent="Player" groups=["survived"]]
+visible = false
+offset_left = -175.0
+offset_top = -96.0
+offset_right = 193.0
+offset_bottom = -31.0
+theme_override_fonts/font = ExtResource("13_pwion")
+theme_override_font_sizes/font_size = 64
+text = "You Survived!"
 
 [connection signal="beat_incremented" from="Conductor" to="Player" method="_on_conductor_beat_incremented"]
 [connection signal="measure_incremented" from="Conductor" to="Player" method="_on_conductor_measure_incremented"]

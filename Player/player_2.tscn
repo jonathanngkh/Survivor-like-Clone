@@ -967,7 +967,7 @@ height = 25.6741
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3pync"]
 size = Vector2(20, 28.0333)
 
-[node name="Player2" type="CharacterBody2D"]
+[node name="Player2" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_60g52")
 
 [node name="PlayerStateMachine" type="Node2D" parent="."]

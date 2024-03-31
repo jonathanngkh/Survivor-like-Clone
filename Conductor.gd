@@ -57,16 +57,17 @@ func _ready():
 	sec_per_beat = 60.0 / bpm
 	
 func _process(_delta):
+	pass
 	#if Input.is_action_just_pressed("restart"):
 		#player.restart_application()
 	
-	if player.get_leveling_state() == true:
-		if player.get_music_state() == "idle":
-			if last_reported_beat == beats_per_bar:
-				play_from_beat(1, 0)
-				print('conductor about to attempt to set notesplayed')
-				player.reset_notes_played()
-				print('conductor attempted to set notesplayed')
+	#if player.get_leveling_state() == true:
+		#if player.get_music_state() == "idle":
+			#if last_reported_beat == beats_per_bar:
+				#play_from_beat(1, 0)
+				#print('conductor about to attempt to set notesplayed')
+				#player.reset_notes_played()
+				#print('conductor attempted to set notesplayed')
 
 func _physics_process(_delta):
 	if playing:
@@ -162,8 +163,8 @@ func _on_start_timer_timeout():
 
 
 func _on_beat_incremented():
-	debug_label4.text = "perfect quaver_played_on: " +  str(closest_beat_in_song(get_song_position_in_seconds()).x)
-	debug_label5.text = "perfect time_off_quaver: " +  str(closest_beat_in_song(get_song_position_in_seconds()).y)
+	#debug_label4.text = "perfect quaver_played_on: " +  str(closest_beat_in_song(get_song_position_in_seconds()).x)
+	#debug_label5.text = "perfect time_off_quaver: " +  str(closest_beat_in_song(get_song_position_in_seconds()).y)
 	if beat_in_bar == 1:
 		measure += 1
 		emit_signal("measure_incremented")
