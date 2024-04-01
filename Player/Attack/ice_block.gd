@@ -1,3 +1,4 @@
+# the launch effects need to be part of the anim sprite too, for layers and sizing to be perfect
 # launches on player ice cast signal lauch frame
 # give it a hurt box. set collision layer so player spell can hit it for testing
 # has 3 health. on first hit by enemy, play hit1
@@ -30,13 +31,13 @@ signal remove_from_array(object)
 func _ready():
 	target = player.global_position
 	angle = global_position.direction_to(target)
-	animated_sprite.play("idle")
+	animated_sprite.play("launch")
 	rotation = angle.angle()
+	position = player.global_position
 	if player.sprite_container.scale.x >= 0:
-		position = player.global_position + Vector2(80, -12)
+		animated_sprite.scale.x = 1
 	else:
-		animated_sprite.flip_h = true
-		position = player.global_position + Vector2(-80, -12)
+		animated_sprite.scale.x = -1
 
 
 func _on_sprite_2d_animation_finished():
