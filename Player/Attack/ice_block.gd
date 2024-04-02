@@ -15,7 +15,7 @@ extends Area2D
 var level = 1
 var hp = 1
 var speed = 250
-var damage = 5
+#var damage = 5
 var knockback_amount = 100
 var attack_size = 1.0
 var target = Vector2.ZERO
@@ -38,6 +38,7 @@ func _ready():
 		animated_sprite.scale.x = 1
 	else:
 		animated_sprite.scale.x = -1
+	move_and_collide()
 
 
 func _on_sprite_2d_animation_finished():
@@ -49,16 +50,16 @@ func _on_sprite_2d_animation_finished():
 func _physics_process(delta):
 	pass
 	
-func enemy_hit(charge = 1):
-	hp -= 1
-	if hp <= 0:
-		collision_shape.set_deferred("disabled", true)
-		animated_sprite.animation = "fireball_hit"
-		
-		#$Sprite2D.visible = false
-		#await $sound_play.finished
-		emit_signal("remove_from_array", self)
-		queue_free()
+#func enemy_hit(charge = 1):
+	#hp -= 1
+	#if hp <= 0:
+		#collision_shape.set_deferred("disabled", true)
+		#animated_sprite.animation = "fireball_hit"
+		#
+		##$Sprite2D.visible = false
+		##await $sound_play.finished
+		#emit_signal("remove_from_array", self)
+		#queue_free()
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited():

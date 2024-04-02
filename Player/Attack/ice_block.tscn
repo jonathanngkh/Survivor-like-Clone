@@ -266,12 +266,12 @@ size = Vector2(69.025, 52.03)
 
 [node name="IceBlock" type="Area2D" groups=["attack"]]
 top_level = true
-collision_layer = 4
-collision_mask = 0
+collision_layer = 6
+collision_mask = 6
 script = ExtResource("1_712pp")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
-self_modulate = Color(0.8, 0.8, 0.8, 0.705882)
+self_modulate = Color(0.870588, 0.870588, 0.870588, 0.705882)
 sprite_frames = SubResource("SpriteFrames_pqpde")
 animation = &"launch"
 frame = 10
