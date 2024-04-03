@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://b0xqmq6324es1"]
+[gd_scene load_steps=44 format=3 uid="uid://b0xqmq6324es1"]
 
 [ext_resource type="Script" path="res://Player/Attack/ice_block.gd" id="1_712pp"]
 [ext_resource type="Texture2D" uid="uid://bnj5beqv0v54f" path="res://Textures/Player/Eleanore/IceBlockHit1SpriteSheet.png" id="2_pcj1f"]
@@ -6,6 +6,15 @@
 [ext_resource type="Texture2D" uid="uid://dtve1ef73fbjq" path="res://Textures/Player/Eleanore/IceBlockHit3BreakSpriteSheet.png" id="4_dtpfj"]
 [ext_resource type="Texture2D" uid="uid://7a4223i513gh" path="res://Textures/Player/Eleanore/IceBlockSpriteSheet.png" id="5_aesey"]
 [ext_resource type="AudioStream" uid="uid://drrquvalm273c" path="res://Audio/SoundEffect/01_Fire_Cast.wav" id="15_y34k6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5wjbr"]
+size = Vector2(26.7747, 47.2498)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_htmf3"]
+size = Vector2(20.5, 23.4797)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lx5by"]
+size = Vector2(9.28557, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ffje4"]
 atlas = ExtResource("2_pcj1f")
@@ -261,14 +270,35 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5wjbr"]
-size = Vector2(69.025, 52.03)
-
 [node name="IceBlock" type="Area2D" groups=["attack"]]
 top_level = true
 collision_layer = 6
 collision_mask = 6
 script = ExtResource("1_712pp")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(84.6248, 14.6375)
+rotation = -1.57079
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_5wjbr")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(92.25, -9.26016)
+shape = SubResource("RectangleShape2D_htmf3")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(83.197, 4.74034)
+shape = SubResource("RectangleShape2D_htmf3")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(98.9396, -30.5274)
+shape = SubResource("RectangleShape2D_lx5by")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(88.3076, -14.8426)
+shape = SubResource("RectangleShape2D_lx5by")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 self_modulate = Color(0.870588, 0.870588, 0.870588, 0.705882)
@@ -278,10 +308,26 @@ frame = 10
 frame_progress = 1.0
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
-position = Vector2(78.9848, -6.7377)
+position = Vector2(84.6248, 14.6375)
 rotation = -1.57079
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_5wjbr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(92.25, -9.26016)
+shape = SubResource("RectangleShape2D_htmf3")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(83.197, 4.74034)
+shape = SubResource("RectangleShape2D_htmf3")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(98.9396, -30.5274)
+shape = SubResource("RectangleShape2D_lx5by")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+position = Vector2(88.3076, -14.8426)
+shape = SubResource("RectangleShape2D_lx5by")
 
 [node name="LaunchSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_y34k6")

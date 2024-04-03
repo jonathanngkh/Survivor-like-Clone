@@ -38,7 +38,6 @@ func _ready():
 		animated_sprite.scale.x = 1
 	else:
 		animated_sprite.scale.x = -1
-	move_and_collide()
 
 
 func _on_sprite_2d_animation_finished():
