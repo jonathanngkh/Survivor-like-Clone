@@ -26,6 +26,7 @@ var knockback = Vector2.ZERO
 
 #var death_explosion = preload("res://Enemy/explosion.tscn")
 var experience_gem = preload("res://Objects/experience_gem.tscn")
+var frozen = false
 
 signal remove_from_array(object)
 
@@ -50,7 +51,7 @@ func _set_death_animation(animation_name):
 	death_animation = animation_name
 
 func _physics_process(_delta):
-	if hp > 0:
+	if hp > 0 and not frozen:
 		knockback = knockback.move_toward(Vector2.ZERO, knockback_recovery)
 		var direction = Vector2.ZERO
 		if player:
@@ -65,6 +66,12 @@ func _physics_process(_delta):
 	else:
 		velocity = Vector2.ZERO
 	move_and_slide()
+	
+
+func freeze():
+	frozen = true
+	animator.pause()
+	$CollisionShape2D.set_deferred("disabled", true)
 
 func death():
 	sound_die.play()
