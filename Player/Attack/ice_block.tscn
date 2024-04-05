@@ -1,10 +1,11 @@
-[gd_scene load_steps=44 format=3 uid="uid://b0xqmq6324es1"]
+[gd_scene load_steps=45 format=3 uid="uid://b0xqmq6324es1"]
 
 [ext_resource type="Script" path="res://Player/Attack/ice_block.gd" id="1_712pp"]
 [ext_resource type="Texture2D" uid="uid://bnj5beqv0v54f" path="res://Textures/Player/Eleanore/IceBlockHit1SpriteSheet.png" id="2_pcj1f"]
 [ext_resource type="Texture2D" uid="uid://cylal0cqv45qe" path="res://Textures/Player/Eleanore/IceBlockHit2SpriteSheet.png" id="3_dw3i3"]
 [ext_resource type="Texture2D" uid="uid://dtve1ef73fbjq" path="res://Textures/Player/Eleanore/IceBlockHit3BreakSpriteSheet.png" id="4_dtpfj"]
 [ext_resource type="Texture2D" uid="uid://7a4223i513gh" path="res://Textures/Player/Eleanore/IceBlockSpriteSheet.png" id="5_aesey"]
+[ext_resource type="PackedScene" uid="uid://c3p0e8l8amscb" path="res://Utility/hurt_box.tscn" id="7_m15nv"]
 [ext_resource type="AudioStream" uid="uid://drrquvalm273c" path="res://Audio/SoundEffect/01_Fire_Cast.wav" id="15_y34k6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5wjbr"]
@@ -277,29 +278,33 @@ collision_mask = 6
 script = ExtResource("1_712pp")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-process_mode = 4
 
 [node name="CollisionShape2" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(84.6248, 14.6375)
 rotation = -1.57079
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_5wjbr")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(92.25, -9.26016)
 shape = SubResource("RectangleShape2D_htmf3")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(83.197, 4.74034)
 shape = SubResource("RectangleShape2D_htmf3")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(98.9396, -30.5274)
 shape = SubResource("RectangleShape2D_lx5by")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(88.3076, -14.8426)
 shape = SubResource("RectangleShape2D_lx5by")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 self_modulate = Color(0.870588, 0.870588, 0.870588, 0.705882)
@@ -313,22 +318,27 @@ position = Vector2(84.6248, 14.6375)
 rotation = -1.57079
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_5wjbr")
+debug_color = Color(0.92549, 0.168627, 0.537255, 0.419608)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(92.25, -9.26016)
 shape = SubResource("RectangleShape2D_htmf3")
+debug_color = Color(0.92549, 0.168627, 0.537255, 0.419608)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(83.197, 4.74034)
 shape = SubResource("RectangleShape2D_htmf3")
+debug_color = Color(0.92549, 0.168627, 0.537255, 0.419608)
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
 position = Vector2(98.9396, -30.5274)
 shape = SubResource("RectangleShape2D_lx5by")
+debug_color = Color(0.92549, 0.168627, 0.537255, 0.419608)
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
 position = Vector2(88.3076, -14.8426)
 shape = SubResource("RectangleShape2D_lx5by")
+debug_color = Color(0.92549, 0.168627, 0.537255, 0.419608)
 
 [node name="LaunchSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_y34k6")
@@ -337,6 +347,8 @@ pitch_scale = 1.4
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 visible = false
+
+[node name="HurtBox" parent="." instance=ExtResource("7_m15nv")]
 
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite" to="." method="_on_animated_sprite_frame_changed"]

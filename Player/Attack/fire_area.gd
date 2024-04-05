@@ -19,6 +19,7 @@ func _ready():
 	#$Sprite2D.play("ice_bolt")
 	#target = player.get_closest_target()
 	$CollisionShape2D.set_deferred("disabled", true)
+	#pass
 	
 	
 	#match level:
@@ -64,8 +65,8 @@ func _physics_process(delta):
 	elif player.velocity.x > 0:
 		position = player.position + Vector2(40, 0)
 	#angle = player.global_position.direction_to(target)
-	target = player.get_closest_target()
-	angle = player.global_position.direction_to(target)
+	#target = player.get_closest_target()
+	#angle = player.global_position.direction_to(target)
 	
 #func enemy_hit(charge = 1):
 	#hp -= 10

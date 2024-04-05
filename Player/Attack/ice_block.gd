@@ -35,15 +35,19 @@ func _ready():
 	animated_sprite.play("launch")
 	rotation = angle.angle()
 	position = player.global_position
-	if player.sprite_container.scale.x >= 0:
-		animated_sprite.scale.x = 1
+	if player.sprite_container.scale.x > 0:
+		scale.x = 1
 	else:
-		animated_sprite.scale.x = -1
+		scale.x = -1
+		#animated_sprite.scale.x = -1
 
 func _physics_process(delta):
+	if hp < 0:
+		queue_free()
 	if has_overlapping_bodies():
 		for body in get_overlapping_bodies():
-			body.freeze()
+			if body as Enemy:
+				body.freeze()
 			# stop interacting physically with ice
 	
 

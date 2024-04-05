@@ -1,8 +1,8 @@
+Node
 CollisionShape2D
 CharacterBody2D
 Camera2D
 Timer
-Node
 PlayerState
 Node2D
 Player

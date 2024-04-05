@@ -72,6 +72,7 @@ func freeze():
 	frozen = true
 	animator.pause()
 	$CollisionShape2D.set_deferred("disabled", true)
+	print('frozen')
 
 func death():
 	sound_die.play()
