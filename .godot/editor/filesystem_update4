@@ -30,3 +30,4 @@ res://Conductor.gd
 res://Enemy/enemy.gd
 res://Player/Attack/fire_area.gd
 res://Utility/hurt_box.gd
+res://Enemy/enemy.tscn

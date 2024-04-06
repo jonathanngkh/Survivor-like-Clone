@@ -271,7 +271,7 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="IceBlock" type="Area2D" groups=["attack"]]
+[node name="IceBlock" type="Area2D" groups=["attack", "ice_block"]]
 top_level = true
 collision_layer = 4
 collision_mask = 6
@@ -309,9 +309,7 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 self_modulate = Color(0.870588, 0.870588, 0.870588, 0.705882)
 sprite_frames = SubResource("SpriteFrames_pqpde")
-animation = &"launch"
-frame = 10
-frame_progress = 1.0
+animation = &"hit1"
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(84.6248, 14.6375)
@@ -350,6 +348,10 @@ visible = false
 
 [node name="HurtBox" parent="." instance=ExtResource("7_m15nv")]
 
+[node name="MeltTimer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite" to="." method="_on_animated_sprite_frame_changed"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="MeltTimer" to="." method="_on_melt_timer_timeout"]

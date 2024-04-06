@@ -9,7 +9,7 @@ var can_dash = true
 var dash_cooldown = 0.4
 var sprite
 
-func start_dash(sprite, duration): # duration will be passed in from player
+func start_dash(sprite, duration): # duration will be passed in from playere
 	self.sprite = sprite
 	spawn_ghost()
 	duration_timer.wait_time = duration

@@ -74,6 +74,13 @@ func freeze():
 	$CollisionShape2D.set_deferred("disabled", true)
 	print('frozen')
 
+
+func unfreeze():
+	print('unfrozen')
+	$CollisionShape2D.set_deferred("disabled", false)
+	frozen = false
+	animator.play()
+
 func death():
 	sound_die.play()
 	$HurtBox/CollisionShape2D.set_deferred("disabled", true)

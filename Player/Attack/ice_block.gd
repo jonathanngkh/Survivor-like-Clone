@@ -25,9 +25,11 @@ var angle = Vector2.ZERO
 @onready var launch_sound = $LaunchSound
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var character_body = $CharacterBody2D
+@onready var melt_timer = $MeltTimer
 
 
 signal remove_from_array(object)
+signal unfreeze()
 
 func _ready():
 	target = player.global_position
@@ -39,22 +41,23 @@ func _ready():
 		scale.x = 1
 	else:
 		scale.x = -1
-		#animated_sprite.scale.x = -1
 
 func _physics_process(delta):
-	if hp < 0:
-		queue_free()
-	if has_overlapping_bodies():
-		for body in get_overlapping_bodies():
-			if body as Enemy:
-				body.freeze()
-			# stop interacting physically with ice
-	
+	for body in get_overlapping_bodies():
+		if body is Enemy:
+			body.freeze()
+			#body.connect("unfreeze", unfreeze)
+			unfreeze.connect(Callable(body, "unfreeze"))
+			#button.button_down.connect(_on_button_down)
+	# Option 4: Signal.connect() with a constructed Callable using a target object and method name.
+			#button.button_down.connect(Callable(self, "_on_button_down"))
+
+
 
 func _on_sprite_2d_animation_finished():
-	pass
-	#if animated_sprite.animation == "fireball_start":
-		#animated_sprite.play("fireball_travel")
+	if animated_sprite.animation == "hit3break":
+		emit_signal("unfreeze")
+		queue_free()
 
 
 func _on_animated_sprite_frame_changed():
@@ -63,18 +66,16 @@ func _on_animated_sprite_frame_changed():
 			character_body.process_mode = Node.PROCESS_MODE_INHERIT
 
 
-#func enemy_hit(charge = 1):
-	#hp -= 1
-	#if hp <= 0:
-		#collision_shape.set_deferred("disabled", true)
-		#animated_sprite.animation = "fireball_hit"
-		#
-		##$Sprite2D.visible = false
-		##await $sound_play.finished
-		#emit_signal("remove_from_array", self)
-		#queue_free()
-
-
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	emit_signal("remove_from_array", self)
 	queue_free()
+
+
+func _on_melt_timer_timeout():
+	hp -= 1
+	if hp == 2:
+		animated_sprite.play("hit1")
+	if hp == 1:
+		animated_sprite.play("hit2")
+	if hp == 0:
+		animated_sprite.play("hit3break")
