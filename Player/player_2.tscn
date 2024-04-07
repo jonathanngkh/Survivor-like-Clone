@@ -1,4 +1,4 @@
-[gd_scene load_steps=189 format=3 uid="uid://cdne6nnjoc5s1"]
+[gd_scene load_steps=190 format=3 uid="uid://cdne6nnjoc5s1"]
 
 [ext_resource type="Script" path="res://Player/player_2.gd" id="1_60g52"]
 [ext_resource type="Script" path="res://Utility/state_machine.gd" id="2_k8yfy"]
@@ -122,6 +122,7 @@
 [ext_resource type="Texture2D" uid="uid://cowyg1wd1ams0" path="res://Textures/Player/Eleanore/e_walk_stop/Move12.png" id="105_s5ihn"]
 [ext_resource type="Texture2D" uid="uid://dmuhb8qmpwrdn" path="res://Textures/Player/Eleanore/e_walk_stop/Move13.png" id="106_pdnyb"]
 [ext_resource type="PackedScene" uid="uid://c3p0e8l8amscb" path="res://Utility/hurt_box.tscn" id="111_mg01r"]
+[ext_resource type="PackedScene" uid="uid://bxl3b55utmxfo" path="res://Player/Attack/fire_area.tscn" id="123_qvqhp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rw0wt"]
 atlas = ExtResource("69_1luiu")
@@ -965,7 +966,7 @@ radius = 4.31927
 height = 25.6741
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3pync"]
-size = Vector2(20, 28.0333)
+size = Vector2(12.9142, 27.0883)
 
 [node name="Player2" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_60g52")
@@ -1077,13 +1078,19 @@ limit_right = 1314
 limit_bottom = 490
 
 [node name="HurtBox" parent="." instance=ExtResource("111_mg01r")]
-visible = false
 collision_mask = 2
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
-position = Vector2(0.31498, 0.237885)
+position = Vector2(0.618576, 0.710354)
 shape = SubResource("RectangleShape2D_3pync")
 debug_color = Color(0.819608, 0.298039, 0.694118, 0.419608)
+
+[node name="FireArea" parent="." instance=ExtResource("123_qvqhp")]
+position = Vector2(39.0952, -2.22977)
+collision_mask = 4
+
+[node name="VisibleOnScreenNotifier2D" parent="FireArea" index="3"]
+visible = false
 
 [connection signal="timeout" from="PlayerStateMachine/Dash/DurationTimer" to="PlayerStateMachine/Dash" method="_on_duration_timer_timeout"]
 [connection signal="timeout" from="PlayerStateMachine/Dash/CooldownTimer" to="PlayerStateMachine/Dash" method="_on_cooldown_timer_timeout"]
@@ -1103,3 +1110,4 @@ debug_color = Color(0.819608, 0.298039, 0.694118, 0.419608)
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 
 [editable path="HurtBox"]
+[editable path="FireArea"]

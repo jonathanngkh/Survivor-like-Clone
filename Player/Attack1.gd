@@ -2,6 +2,8 @@
 extends PlayerState
 
 var ready_for_attack_2 = false
+@onready var fire_area = $"../../FireArea"
+
 
 # Called by the state machine upon changing the active state. The `msg` parameter is a dictionary with arbitrary data the state can use to initialize itself.
 func enter(_msg := {}) -> void:
@@ -10,6 +12,8 @@ func enter(_msg := {}) -> void:
 	player.animated_sprite.play("eleanore_attack_1")
 	player.animated_sprite.connect("animation_finished", _on_animated_sprite_2d_animation_finished)
 	player.animated_sprite.connect("frame_changed", _on_animated_sprite_2d_frame_changed)
+	fire_area.collision_shape.set_deferred("disabled", false)
+	
 
 
 # Corresponds to the `_process()` callback.
@@ -66,6 +70,7 @@ func _on_animated_sprite_2d_animation_finished():
 
 # Called by the state machine before changing the active state. Use this function to clean up the state.
 func exit() -> void:
+	fire_area.collision_shape.set_deferred("disabled", true)
 	player.animated_sprite.set_speed_scale(1)
 	ready_for_attack_2 = false
 	player.can_flip = true

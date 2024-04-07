@@ -79,3 +79,13 @@ func _on_melt_timer_timeout():
 		animated_sprite.play("hit2")
 	if hp == 0:
 		animated_sprite.play("hit3break")
+
+
+func _on_hurt_box_hurt(damage, angle, knockback):
+	hp -= 1
+	if hp == 2:
+		animated_sprite.play("hit1")
+	if hp == 1:
+		animated_sprite.play("hit2")
+	if hp == 0:
+		animated_sprite.play("hit3break")

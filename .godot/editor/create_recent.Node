@@ -1,6 +1,7 @@
+CollisionPolygon2D
+CollisionShape2D
 Timer
 Node
-CollisionShape2D
 CharacterBody2D
 Camera2D
 PlayerState
@@ -11,4 +12,3 @@ StateMachine
 TextureProgressBar
 SpellGoblinState
 AudioStreamPlayer
-Label
