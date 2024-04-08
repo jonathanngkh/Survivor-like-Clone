@@ -278,6 +278,7 @@ collision_mask = 6
 script = ExtResource("1_712pp")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+process_mode = 4
 
 [node name="CollisionShape2" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(84.6248, 14.6375)
@@ -356,6 +357,8 @@ position = Vector2(79.2537, -7.8012)
 polygon = PackedVector2Array(54.7762, 27.5843, 104.179, -41.5794, 104.389, 27.7945)
 
 [node name="MeltTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
 
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite" to="." method="_on_animated_sprite_frame_changed"]
