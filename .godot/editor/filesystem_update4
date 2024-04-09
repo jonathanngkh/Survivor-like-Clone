@@ -7,3 +7,5 @@ res://Player/Attack/ice_block.tscn
 res://Enemy/enemy.tscn
 res://Enemy/spell_goblin.tscn
 res://Player/Attack/ice_block.gd
+res://Player/player_2.gd
+res://Player/Dash.gd

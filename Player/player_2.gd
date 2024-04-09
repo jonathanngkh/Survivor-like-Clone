@@ -5,9 +5,9 @@ extends CharacterBody2D
 @onready var sprite_container = $SpriteContainer
 @onready var animated_sprite = $SpriteContainer/AnimatedSprite2D
 
-@export var max_hp = 1
+@export var max_hp = 50
 @export var hp = max_hp
-@export var base_movement_speed = 50
+@export var base_movement_speed = 100
 @export var movement_speed = base_movement_speed
 @export var knockback = Vector2.ZERO
 @export var knockback_recovery = 3

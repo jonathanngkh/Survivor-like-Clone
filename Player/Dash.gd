@@ -8,7 +8,7 @@ extends PlayerState
 
 @export var duration = 0.3
 @export var cooldown = 1
-@export var velocity_multiplier = 20
+@export var velocity_multiplier = 10
 @export var ghost_spawn_frequency = 0.07
 @export var animation_speed_increase = 3.8
 
@@ -17,6 +17,9 @@ var can_dash = true
 # Called by the state machine upon changing the active state. The `msg` parameter is a dictionary with arbitrary data the state can use to initialize itself.
 func enter(_msg := {}) -> void:
 	# _msg = {"sprite": sprite, "duration": duration}
+	player.velocity = player.last_velocity * velocity_multiplier
+	#player.velocity = clamp(player.velocity, Vector2.ZERO, player.velocity * )
+	player.set_collision_mask_value(1, false)
 	player.animated_sprite.set_speed_scale(animation_speed_increase)
 	player.animated_sprite.play("eleanore_spin")
 	duration_timer.wait_time = duration
@@ -24,8 +27,6 @@ func enter(_msg := {}) -> void:
 	ghost_spawn_timer.wait_time = ghost_spawn_frequency
 	ghost_spawn_timer.start()
 	spawn_ghost()
-	player.velocity = player.last_velocity * velocity_multiplier
-	player.set_collision_mask_value(1, false)
 
 
 # Corresponds to the `_process()` callback.
