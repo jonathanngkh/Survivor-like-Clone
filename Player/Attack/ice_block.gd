@@ -6,7 +6,7 @@ var hp = 3
 var attack_size = 1.0
 
 @onready var animated_sprite = $AnimatedSprite
-@onready var collision_shape = $CollisionShape
+@onready var collision_shape = $CollisionPolygon2D
 @onready var launch_sound = $LaunchSound
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var character_body = $CharacterBody2D

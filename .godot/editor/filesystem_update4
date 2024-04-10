@@ -9,3 +9,4 @@ res://Enemy/spell_goblin.tscn
 res://Player/Attack/ice_block.gd
 res://Player/player_2.gd
 res://Player/Dash.gd
+res://Enemy/enemy.gd

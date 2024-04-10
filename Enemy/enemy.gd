@@ -73,6 +73,7 @@ func freeze():
 	animator.pause()
 	$CollisionShape2D.set_deferred("disabled", true)
 	print('frozen')
+	hit_box.process_mode = Node.PROCESS_MODE_DISABLED
 
 
 func unfreeze():
@@ -80,6 +81,7 @@ func unfreeze():
 	$CollisionShape2D.set_deferred("disabled", false)
 	frozen = false
 	animator.play()
+	hit_box.process_mode = Node.PROCESS_MODE_INHERIT
 
 func death():
 	sound_die.play()
@@ -116,7 +118,7 @@ func _on_hurt_box_hurt(damage, angle, knockback_amount):
 	if hp <= 0:
 		death()
 	else:
-		if has_hit_animation == true:
+		if has_hit_animation == true and frozen == false:
 			animator.stop()
 			animator.queue("skeleton_hit")
 			animator.queue("skeleton_walk")
