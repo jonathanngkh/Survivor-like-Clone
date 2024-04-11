@@ -1,4 +1,4 @@
-# LightCast
+# LightCast: R
 extends PlayerState
 
 @onready var charge_timer = $ChargeTimer

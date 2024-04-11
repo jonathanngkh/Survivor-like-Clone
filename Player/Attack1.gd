@@ -1,4 +1,4 @@
-# Attack1
+# Attack1: F
 extends PlayerState
 
 var ready_for_attack_2 = false

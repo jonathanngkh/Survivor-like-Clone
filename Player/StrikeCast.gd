@@ -1,8 +1,9 @@
-# StrikeCast
+# StrikeCast: V
 extends PlayerState
 
 @onready var duration_timer = $DurationTimer
 @onready var cooldown_timer = $CooldownTimer
+@onready var lightning_bolt = preload("res://Enemy/lightning_strike_effect.tscn")
 
 @export var duration = 0.3
 @export var cooldown = 1
@@ -50,7 +51,10 @@ func _on_animated_sprite_2d_animation_finished():
 func _on_animated_sprite_2d_frame_changed():
 	# from including frame 2, lightning sparks on even frames
 	# on frame 10, lightning starts to come down
-	pass
+	if player.animated_sprite.animation == "eleanore_strike_cast":
+		if player.animated_sprite.frame == 6:
+			var lightning_spawn = lightning_bolt.instantiate()
+			player.add_child(lightning_spawn)
 
 # Called by the state machine before changing the active state. Use this function to clean up the state.
 func exit() -> void:

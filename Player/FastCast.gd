@@ -1,4 +1,4 @@
-# FastCast
+# FastCast: C
 extends PlayerState
 
 @onready var duration_timer = $DurationTimer

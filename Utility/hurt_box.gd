@@ -10,7 +10,6 @@ signal hurt(damage, angle, knockback)
 var hit_once_array = []
 
 func _on_area_entered(area):
-	print('hurt')
 	#if area.is_in_group("magic_attack"):
 		#var damage = area.damage
 		#var angle = Vector2.ZERO

@@ -1,4 +1,4 @@
-# IceCast
+# IceCast: G
 extends PlayerState
 
 @onready var duration_timer = $DurationTimer

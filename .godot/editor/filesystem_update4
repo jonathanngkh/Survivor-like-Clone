@@ -10,3 +10,9 @@ res://Player/Attack/ice_block.gd
 res://Player/player_2.gd
 res://Player/Dash.gd
 res://Enemy/enemy.gd
+res://Player/Attack1.gd
+res://Player/FastCast.gd
+res://Player/IceCast.gd
+res://Player/LightCast.gd
+res://Player/StrikeCast.gd
+res://Utility/hurt_box.gd
