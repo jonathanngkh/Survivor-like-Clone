@@ -71,14 +71,14 @@ func _physics_process(_delta):
 func freeze():
 	frozen = true
 	animator.pause()
-	$CollisionShape2D.set_deferred("disabled", true)
+	#$CollisionShape2D.set_deferred("disabled", true)
 	print('frozen')
 	hit_box.process_mode = Node.PROCESS_MODE_DISABLED
 
 
 func unfreeze():
 	print('unfrozen')
-	$CollisionShape2D.set_deferred("disabled", false)
+	#$CollisionShape2D.set_deferred("disabled", false)
 	frozen = false
 	animator.play()
 	hit_box.process_mode = Node.PROCESS_MODE_INHERIT

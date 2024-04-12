@@ -53,8 +53,13 @@ func _on_animated_sprite_2d_frame_changed():
 	# on frame 10, lightning starts to come down
 	if player.animated_sprite.animation == "eleanore_strike_cast":
 		if player.animated_sprite.frame == 6:
-			var lightning_spawn = lightning_bolt.instantiate()
-			player.add_child(lightning_spawn)
+			for enemy in player.enemy_close:
+				var lightning_spawn = lightning_bolt.instantiate()
+				enemy.add_child(lightning_spawn)
+			# add to closest enemy
+			# need to make enemy detection area for player
+			# and write a get closest enemy function
+			# should make it so that it instantiates with the damage, aftershock time, launch time
 
 # Called by the state machine before changing the active state. Use this function to clean up the state.
 func exit() -> void:

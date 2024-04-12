@@ -26,10 +26,6 @@ func _ready():
 		scale.x = -1
 
 func _physics_process(delta):
-	for body in get_overlapping_bodies():
-		if body is Enemy:
-			body.freeze()
-			unfreeze.connect(Callable(body, "unfreeze"))
 	pass
 
 
@@ -73,3 +69,11 @@ func _on_hurt_box_hurt(damage, angle, knockback):
 		character_body.process_mode = Node.PROCESS_MODE_DISABLED
 		monitoring = false
 		emit_signal("unfreeze")
+
+
+func _on_body_entered(body):
+	#for body in get_overlapping_bodies():
+	if body is Enemy:
+		body.freeze()
+		body.add_collision_exception_with($CharacterBody2D)
+		unfreeze.connect(Callable(body, "unfreeze"))

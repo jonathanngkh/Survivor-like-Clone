@@ -15,6 +15,7 @@ extends CharacterBody2D
 var is_immune = false
 var can_flip = true
 var last_velocity = Vector2.ZERO
+var enemy_close = []
 
 func _ready():
 	pass
@@ -76,3 +77,11 @@ func normal_movement():
 				sprite_container.scale.x = 1
 
 	move_and_slide()
+
+func _on_enemy_detection_area_body_entered(body):
+	if not enemy_close.has(body):
+		enemy_close.append(body)
+
+func _on_enemy_detection_area_body_exited(body):
+	if enemy_close.has(body):
+		enemy_close.erase(body)

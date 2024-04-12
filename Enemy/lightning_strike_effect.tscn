@@ -512,6 +512,7 @@ _data = {
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_0k6f7")
 animation = &"sparking"
+frame = 1
 script = ExtResource("28_2in57")
 
 [node name="LightningStrike" type="Area2D" parent="." groups=["attack"]]
