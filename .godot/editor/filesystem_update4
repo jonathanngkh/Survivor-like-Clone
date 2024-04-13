@@ -17,3 +17,4 @@ res://Player/LightCast.gd
 res://Player/StrikeCast.gd
 res://Utility/hurt_box.gd
 res://Enemy/lightning_strike_effect.tscn
+res://Enemy/lightning_strike_effect.gd

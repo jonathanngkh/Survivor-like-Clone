@@ -34,6 +34,8 @@ func _on_conductor_current_measure_signal(measure):
 
 
 func _on_animation_player_animation_finished(anim_name):
+	#if anim_name == "sparking":
+		#$AnimationPlayer.play("striking")
 	if anim_name == "striking":
 		$AnimationPlayer.play("aftershock")
 		#emit_signal("sparking")
