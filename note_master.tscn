@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cy57bq6o82jo4"]
+
+[ext_resource type="Script" path="res://NoteMaster.gd" id="1_681iv"]
+[ext_resource type="AudioStream" uid="uid://bbnuw2sl6qurf" path="res://Audio/MFX/003_Lute_C4_2.5secs.wav" id="2_byw1d"]
+
+[node name="NoteMaster" type="Node2D"]
+script = ExtResource("1_681iv")
+
+[node name="C4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_byw1d")
