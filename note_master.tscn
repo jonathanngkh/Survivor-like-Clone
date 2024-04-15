@@ -1,10 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://cy57bq6o82jo4"]
+[gd_scene load_steps=5 format=3 uid="uid://cy57bq6o82jo4"]
 
 [ext_resource type="Script" path="res://NoteMaster.gd" id="1_681iv"]
-[ext_resource type="AudioStream" uid="uid://bbnuw2sl6qurf" path="res://Audio/MFX/003_Lute_C4_2.5secs.wav" id="2_byw1d"]
+[ext_resource type="AudioStream" uid="uid://msdbh15bbenx" path="res://Audio/MFX/Celesta/003_Celesta_C5_2.5secs.wav" id="2_v56kj"]
+[ext_resource type="Texture2D" uid="uid://cd7ijcqkbsnjl" path="res://Textures/Notes/doremifasolati.png" id="3_t33ik"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_anhbc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_t33ik")
+}],
+"loop": false,
+"name": &"do",
+"speed": 10.0
+}]
 
 [node name="NoteMaster" type="Node2D"]
 script = ExtResource("1_681iv")
 
-[node name="C4" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_byw1d")
+[node name="C5" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_v56kj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(1, 0.309804, 1, 1)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_anhbc")
+animation = &"do"
+offset = Vector2(60, -60)
