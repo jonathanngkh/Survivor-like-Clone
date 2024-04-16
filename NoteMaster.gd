@@ -16,6 +16,14 @@ func _unhandled_input(event):
 	if Input.is_key_pressed(KEY_1):
 		$C5.play()
 		$AnimatedSprite2D.visible = true
+		$AnimatedSprite2D.offset = Vector2(60, -60)
+		$AnimatedSprite2D.play("do")
+		sprite_fade()
+	if Input.is_key_pressed(KEY_4):
+		$F5.play()
+		$AnimatedSprite2D.visible = true
+		$AnimatedSprite2D.offset = Vector2(10, 75)
+		$AnimatedSprite2D.play("fa")
 		sprite_fade()
 		
 func sprite_fade() -> void:
