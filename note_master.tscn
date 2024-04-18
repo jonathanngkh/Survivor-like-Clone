@@ -41,7 +41,7 @@ sprite_frames = SubResource("SpriteFrames_anhbc")
 animation = &"fa"
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
-self_modulate = Color(1, 0.309804, 1, 1)
+self_modulate = Color(0, 0.772549, 0.47451, 1)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_anhbc")
 animation = &"fa"

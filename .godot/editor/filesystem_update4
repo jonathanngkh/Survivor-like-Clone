@@ -1,11 +1,8 @@
+res://World/world.tscn
 res://Utility/spawn_info.gd
 res://Utility/state_machine.gd
-res://NoteMaster.gd
-res://World/world.tscn
 res://Player/player.tscn
 res://Player/player_2.tscn
 res://Player/Attack/ice_block.tscn
 res://Enemy/enemy.tscn
-res://Enemy/spell_goblin.tscn
-res://Enemy/lightning_strike_effect.tscn
 res://note_master.tscn

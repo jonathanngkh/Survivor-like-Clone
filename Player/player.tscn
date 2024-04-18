@@ -2111,6 +2111,8 @@ texture_progress = ExtResource("60_y8d5x")
 tint_progress = Color(0, 1, 1, 1)
 
 [node name="Pianos" type="Control" parent="GUILayer/GUI"]
+process_mode = 4
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -2485,6 +2487,8 @@ fill_mode = 2
 show_percentage = false
 
 [node name="StaffControl" type="Control" parent="GUILayer/GUI"]
+process_mode = 4
+visible = false
 anchors_preset = 0
 offset_left = 135.293
 offset_top = 1063.0
