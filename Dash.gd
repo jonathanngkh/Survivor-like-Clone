@@ -6,8 +6,10 @@ extends Node2D
 @onready var dash_ghost = preload("res://dash_ghost.tscn")
 
 var can_dash = true
-var dash_cooldown = 0.4
+var dash_cooldown = 0.9
 var sprite
+
+signal end_dash_signal
 
 func start_dash(sprite, duration): # duration will be passed in from playere
 	self.sprite = sprite
@@ -36,6 +38,7 @@ func end_dash(dash_cooldown):
 	cooldown_timer.wait_time = dash_cooldown
 	cooldown_timer.start()
 	ghost_spawn_timer.stop()
+	emit_signal("end_dash_signal")
 
 
 func _on_dash_cooldown_timer_timeout():

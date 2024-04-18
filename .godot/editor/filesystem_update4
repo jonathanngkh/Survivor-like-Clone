@@ -9,3 +9,7 @@ res://Enemy/enemy.tscn
 res://Enemy/spell_goblin.tscn
 res://Enemy/lightning_strike_effect.tscn
 res://note_master.tscn
+res://Player/Attack/fire_area.gd
+res://Conductor.gd
+res://Player/player.gd
+res://dash.gd

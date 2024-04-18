@@ -9,8 +9,8 @@ var max_stamina = 100
 var stamina = 100
 var last_movement = Vector2.UP
 var time = 0
-var dash_duration = 0.1
-var dash_speed_multiplier = 50
+var dash_duration = 0.13
+var dash_speed_multiplier = 30
 var max_velocity = 1500
 var knockback = Vector2.ZERO
 
@@ -100,6 +100,7 @@ func _ready():
 	set_experience_bar(experience, calculate_experience_cap())
 	OS.open_midi_inputs() #
 	print(OS.get_connected_midi_inputs()) #
+	dash.connect("end_dash_signal", _on_dash_end_dash_signal)
 	
 var notes_pressed = []
 
@@ -120,7 +121,7 @@ func add_to_notes_played(note_played):
 	#$GUILayer/GUI/debug_label7.text = "time off beat: " +  str(conductor_node.closest_beat_in_song(conductor_node.get_song_position_in_seconds()).y)
 	#$GUILayer/GUI/debug_label8.text = "beat_in_bar_played_on: " +  str(conductor_node.closest_beat_in_bar(conductor_node.get_song_position_in_seconds()).x)
 
-var valid_notes = [[64, 1], [62, 2], [60,3], [60, 5], [64, 3], [64, 4], [60, 1], [62, 3], [64, 5], [65, 3], [67, 5], [67, 1], [67, 3], [67, 4], [65, 2]]
+var valid_notes = [[64, 1], [62, 2], [60,3], [60, 5], [64, 3], [64, 4], [60, 1], [62, 3], [64, 5], [65, 3], [67, 5], [67, 1], [67, 3], [67, 4], [65, 2], [69, 1], [67, 2], [65, 3], [64, 4], [62, 5]]
  
 func check_note_is_valid(played_note):
 	if valid_notes.has(played_note) == true:
@@ -202,7 +203,7 @@ func _input(input_event): #
 				if input_event.pitch == 76: # E5
 					$E5_lute.play()
 			else: # invalid_note
-				#$wrong_sound.play()
+				$wrong_sound.play()
 				pass
 			#add_to_notes_held(input_event.pitch)
 			#add_to_notes_played(input_event.pitch)
@@ -767,6 +768,7 @@ func movement():
 		#$CollisionShape2D.set_deferred("disabled", false)
 	if Input.is_action_just_pressed("dash") and !dash.is_dashing() and dash.can_dash:
 		dash.start_dash($AnimatedSprite2D, dash_duration)
+		$CollisionShape2D.set_deferred("disabled", true)
 	
 	velocity *= dash_speed_multiplier if dash.is_dashing() else 1
 	knockback = knockback.move_toward(Vector2.ZERO, knockback_recovery)
@@ -775,6 +777,9 @@ func movement():
 	velocity.y = clampf(velocity.y, -max_velocity, max_velocity)
 	
 	move_and_slide()
+	
+func _on_dash_end_dash_signal():
+	$CollisionShape2D.set_deferred("disabled", false)
 	
 func _on_animation_tree_animation_finished(anim_name):
 	if anim_name == "eleanore_attack_1" and current_state == "attack2":
@@ -1090,7 +1095,7 @@ func change_time(argtime = 0):
 	if get_seconds < 10:
 		get_seconds = str(0, get_seconds)
 	label_timer.text = str(get_minutes, ":", get_seconds)
-	if label_timer.text == "05:15":
+	if label_timer.text == "05:10":
 		survived = true
 
 func adjust_gui_collection(upgrade):

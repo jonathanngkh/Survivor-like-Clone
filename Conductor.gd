@@ -61,13 +61,14 @@ func _process(_delta):
 	#if Input.is_action_just_pressed("restart"):
 		#player.restart_application()
 	
-	#if player.get_leveling_state() == true:
-		#if player.get_music_state() == "idle":
-			#if last_reported_beat == beats_per_bar:
-				#play_from_beat(1, 0)
-				#print('conductor about to attempt to set notesplayed')
-				#player.reset_notes_played()
-				#print('conductor attempted to set notesplayed')
+	# player 1 code
+	if player.get_leveling_state() == true:
+		if player.get_music_state() == "idle":
+			if last_reported_beat == beats_per_bar:
+				play_from_beat(1, 0)
+				print('conductor about to attempt to set notesplayed')
+				player.reset_notes_played()
+				print('conductor attempted to set notesplayed')
 
 func _physics_process(_delta):
 	if playing:

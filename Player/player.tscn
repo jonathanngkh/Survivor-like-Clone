@@ -1985,8 +1985,6 @@ sprite_frames = SubResource("SpriteFrames_e63hs")
 animation = &"eleanore_hurt"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-process_mode = 4
-enabled = false
 zoom = Vector2(3.3, 3.3)
 limit_left = -1314
 limit_top = -474

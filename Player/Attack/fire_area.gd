@@ -61,20 +61,20 @@ func _physics_process(delta):
 	#pass
 	# code for player 2
 	#position = player.global_position
-	if player.sprite_container.scale.x < 0:
-		position = player.position - Vector2(30, 0)
-	elif player.sprite_container.scale.x > 0:
-		position = player.position + Vector2(30, 0)
+	#if player.sprite_container.scale.x < 0:
+		#position = player.position - Vector2(30, 0)
+	#elif player.sprite_container.scale.x > 0:
+		#position = player.position + Vector2(30, 0)
 	#position += angle * speed * delta
 	
 	# code for player 1
-	#if player.velocity.x < 0:
-		#position = player.position - Vector2(40, 0)
-	#elif player.velocity.x > 0:
-		#position = player.position + Vector2(40, 0)
-	#angle = player.global_position.direction_to(target)
-	#target = player.get_closest_target()
-	#angle = player.global_position.direction_to(target)
+	if player.velocity.x < 0:
+		position = player.position - Vector2(40, 0)
+	elif player.velocity.x > 0:
+		position = player.position + Vector2(40, 0)
+	angle = player.global_position.direction_to(target)
+	target = player.get_closest_target()
+	angle = player.global_position.direction_to(target)
 	
 #func enemy_hit(charge = 1):
 	#hp -= 10
