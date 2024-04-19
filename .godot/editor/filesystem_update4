@@ -1,6 +1,7 @@
 res://World/world.tscn
 res://Utility/spawn_info.gd
 res://Utility/state_machine.gd
+res://Player/Dash.gd
 res://Player/player.tscn
 res://Player/player_2.tscn
 res://Player/Attack/ice_block.tscn

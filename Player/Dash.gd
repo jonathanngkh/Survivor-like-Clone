@@ -6,9 +6,9 @@ extends PlayerState
 @onready var ghost_spawn_timer = $GhostSpawnTimer
 @onready var dash_ghost = preload("res://dash_ghost.tscn")
 
-@export var duration = 0.3
+@export var duration = 0.2
 @export var cooldown = 1
-@export var velocity_multiplier = 10
+@export var velocity_multiplier = 8
 @export var ghost_spawn_frequency = 0.07
 @export var animation_speed_increase = 3.8
 
