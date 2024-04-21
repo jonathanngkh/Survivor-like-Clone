@@ -3,6 +3,10 @@
 [ext_resource type="Script" path="res://Enemy/rogue_goblin.gd" id="1_eg5i4"]
 [ext_resource type="Texture2D" uid="uid://c375dm3psbrcf" path="res://Textures/Enemy/RogueGoblin-Sheet#1.png" id="1_j5dgn"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_antrw"]
+radius = 8.0
+height = 16.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_b8clw"]
 atlas = ExtResource("1_j5dgn")
 region = Rect2(0, 360, 174, 60)
@@ -720,19 +724,17 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_antrw"]
-radius = 8.0
-height = 16.0
-
 [node name="RogueGoblin" type="CharacterBody2D"]
 script = ExtResource("1_eg5i4")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_6txwo")
-animation = &"roguegoblin_runstop"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-27.9372, 7.05506)
 shape = SubResource("CapsuleShape2D_antrw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="SpriteContainer" type="Node" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteContainer"]
+sprite_frames = SubResource("SpriteFrames_6txwo")
+animation = &"roguegoblin_runstop"

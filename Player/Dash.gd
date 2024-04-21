@@ -8,7 +8,7 @@ extends PlayerState
 
 @export var duration = 0.2
 @export var cooldown = 1
-@export var velocity_multiplier = 8
+@export var velocity_multiplier = 10
 @export var ghost_spawn_frequency = 0.07
 @export var animation_speed_increase = 3.8
 
