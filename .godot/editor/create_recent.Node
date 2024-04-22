@@ -1,8 +1,8 @@
+Node2D
 Node
 SubViewport
 AnimatedSprite2D
 AudioStreamPlayer
-Node2D
 CollisionPolygon2D
 CollisionShape2D
 Timer

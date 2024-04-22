@@ -1,4 +1,12 @@
-res://Enemy/rogue_goblin.tscn
+res://World/world.tscn
 res://Utility/spawn_info.gd
 res://Utility/state_machine.gd
+res://Player/player.tscn
+res://Player/player_2.tscn
+res://Player/Attack/ice_block.tscn
+res://Enemy/enemy.tscn
+res://note_master.tscn
+res://Enemy/rogue_goblin.tscn
+res://Enemy/spell_goblin.tscn
+res://Enemy/RogueGoblin States/Idle.gd
 res://Enemy/rogue_goblin.gd

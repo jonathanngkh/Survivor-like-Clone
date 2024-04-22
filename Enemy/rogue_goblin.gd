@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var loot_base = get_tree().get_first_node_in_group("loot")
 @onready var animated_sprite = $SpriteContainer/AnimatedSprite2D
 @onready var sprite_container = $SpriteContainer
-@onready var state_machine = $SpellGoblinStateMachine
+@onready var state_machine = $RogueGoblinStateMachine
 @onready var hit_marker_sound = $HitMarkerSound
 @onready var experience_gem = preload("res://Objects/experience_gem.tscn")
 

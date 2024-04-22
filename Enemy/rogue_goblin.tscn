@@ -1,11 +1,10 @@
-[gd_scene load_steps=97 format=3 uid="uid://b36fhxcyvch8r"]
+[gd_scene load_steps=100 format=3 uid="uid://b36fhxcyvch8r"]
 
 [ext_resource type="Script" path="res://Enemy/rogue_goblin.gd" id="1_eg5i4"]
 [ext_resource type="Texture2D" uid="uid://c375dm3psbrcf" path="res://Textures/Enemy/RogueGoblin-Sheet#1.png" id="1_j5dgn"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_antrw"]
-radius = 8.0
-height = 16.0
+[ext_resource type="Script" path="res://Utility/state_machine.gd" id="2_prhfm"]
+[ext_resource type="Script" path="res://Enemy/RogueGoblin States/Idle.gd" id="3_v8n4e"]
+[ext_resource type="FontFile" uid="uid://dejderl1lu6q2" path="res://Font/monogram.ttf" id="5_vodru"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b8clw"]
 atlas = ExtResource("1_j5dgn")
@@ -724,17 +723,37 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_antrw"]
+radius = 8.0
+height = 16.0
+
 [node name="RogueGoblin" type="CharacterBody2D"]
 script = ExtResource("1_eg5i4")
 
+[node name="RogueGoblinStateMachine" type="Node2D" parent="."]
+script = ExtResource("2_prhfm")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node2D" parent="RogueGoblinStateMachine"]
+script = ExtResource("3_v8n4e")
+
+[node name="SpriteContainer" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteContainer"]
+position = Vector2(26.3413, -3.99824)
+sprite_frames = SubResource("SpriteFrames_6txwo")
+animation = &"roguegoblin_runstop"
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-27.9372, 7.05506)
+position = Vector2(-1.59587, 3.05682)
 shape = SubResource("CapsuleShape2D_antrw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
-[node name="SpriteContainer" type="Node" parent="."]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteContainer"]
-sprite_frames = SubResource("SpriteFrames_6txwo")
-animation = &"roguegoblin_runstop"
+[node name="Label" type="Label" parent="."]
+offset_left = -43.9881
+offset_top = 20.7134
+offset_right = 5.01189
+offset_bottom = 43.7134
+theme_override_fonts/font = ExtResource("5_vodru")
+text = "State: "

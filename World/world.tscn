@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cjkdpm3u3wqut"]
+[gd_scene load_steps=31 format=3 uid="uid://cjkdpm3u3wqut"]
 
 [ext_resource type="Texture2D" uid="uid://b6t8hgeek4kfh" path="res://Textures/wol huge air map.png" id="2_6ka0j"]
 [ext_resource type="PackedScene" uid="uid://c6uuvcthpociv" path="res://Player/player.tscn" id="2_rlem7"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://dtia68lwn55nt" path="res://Enemy/spell_goblin.tscn" id="15_1b2st"]
 [ext_resource type="PackedScene" uid="uid://cdne6nnjoc5s1" path="res://Player/player_2.tscn" id="16_77xqr"]
 [ext_resource type="PackedScene" uid="uid://cy57bq6o82jo4" path="res://note_master.tscn" id="17_nrceg"]
+[ext_resource type="PackedScene" uid="uid://b36fhxcyvch8r" path="res://Enemy/rogue_goblin.tscn" id="18_yabio"]
 
 [sub_resource type="Resource" id="Resource_rxj4u"]
 script = ExtResource("5_kyr6r")
@@ -330,6 +331,8 @@ theme_override_font_sizes/font_size = 64
 text = "You Survived!"
 
 [node name="NoteMaster" parent="." instance=ExtResource("17_nrceg")]
+
+[node name="RogueGoblin" parent="." instance=ExtResource("18_yabio")]
 
 [connection signal="beat_incremented" from="Conductor" to="Player" method="_on_conductor_beat_incremented"]
 [connection signal="measure_incremented" from="Conductor" to="Player" method="_on_conductor_measure_incremented"]
